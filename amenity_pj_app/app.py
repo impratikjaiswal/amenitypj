@@ -26,7 +26,7 @@ def tlv_play():
 
 
 @app.route('/excelPlay', methods=('GET', 'POST'))
-def excelPlay():
+def excel_play():
     return render_template('wip.html', page='excelPlay', git_end_point='excelPlay')
 
 

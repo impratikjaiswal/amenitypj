@@ -1,5 +1,6 @@
 from asn1_play.main.data_type.data_type_master import DataTypeMaster
 from asn1_play.main.helper.constants_config import ConfigConst
+from asn1_play.main.helper.defaults import Defaults
 from asn1_play.main.helper.formats import Formats
 from asn1_play.main.helper.formats_group import FormatsGroup
 from flask import render_template, request
@@ -73,7 +74,6 @@ def get_sample_data(key):
             'output_format': Formats.ASCII,
             'asn1_element': ' ',
             'tlv_parsing_of_output': False,
-
         }
     }
     return sample_data.get(key, None)
@@ -94,8 +94,8 @@ def handle_requests():
         'version': f'v{ConfigConst.TOOL_VERSION}',
         'input_formats': input_formats,
         'output_formats': output_formats,
-        'selected_input_format': Formats.HEX,
-        'selected_output_format': Formats.ASN1,
+        'selected_input_format': Defaults.FORMAT_INPUT,
+        'selected_output_format': Defaults.FORMAT_OUTPUT,
         'sample_processing': 'load_only',
         'output_data': '',
     }
@@ -133,7 +133,6 @@ def handle_requests():
             default_data.update({'asn1_element': sample_data_dict.get('asn1_element')})
             default_data.update({'remarks_list': sample_data_dict.get('remarks_list')})
             default_data.update({'tlv_parsing_of_output': sample_data_dict.get('tlv_parsing_of_output')})
-            default_data.update({'sample_processing': sample_processing})
         else:
             default_data.update({'raw_data': request.form['raw_data']})
             default_data.update({'selected_input_format': request.form['input_format']})
@@ -142,6 +141,6 @@ def handle_requests():
             default_data.update({'remarks_list': request.form['remarks_list']})
             default_data.update(
                 {'tlv_parsing_of_output': True if 'tlv_parsing_of_output' in request.form.keys() else False})
-            default_data.update({'sample_processing': sample_processing})
+        default_data.update({'sample_processing': sample_processing})
         return render_template(page_url, **default_data)
     return render_template(page_url, **default_data)

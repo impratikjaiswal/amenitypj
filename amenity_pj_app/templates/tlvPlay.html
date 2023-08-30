@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{% block title %}TlvPlay {{version}}{% endblock %}</h1>
+<a href="https://github.com/impratikjaiswal/tlvPlay" target="_blank" rel="noopener noreferrer">
+    <span class="badge badge-success">@Github</span>
+</a>
+<form method="post">
+    <div class="form-group">
+        <label for="raw_data">Raw Data</label>
+        <textarea name="raw_data" placeholder="Raw Data" class="form-control">{{raw_data}}</textarea>
+    </div>
+    <div class="form-group">
+        <label for="length_in_decimal">Length In Decimal</label>
+        {% if length_in_decimal: %}
+        <input type="checkbox" name="length_in_decimal" class="form-control" value="{{length_in_decimal}}"
+               checked>
+        {% else %}
+        <input type="checkbox" name="length_in_decimal" class="form-control" value="{{length_in_decimal}}">
+        {% endif %}
+    </div>
+    <div class="form-group">
+        <label for="value_in_ascii">Value In Ascii</label>
+        {% if value_in_ascii: %}
+        <input type="checkbox" name="value_in_ascii" class="form-control" value="{{value_in_ascii}}"
+               checked>
+        {% else %}
+        <input type="checkbox" name="value_in_ascii" class="form-control" value="{{value_in_ascii}}">
+        {% endif %}
+    </div>
+    <div class="form-group">
+        <label for="one_liner">One Liner</label>
+        {% if one_liner: %}
+        <input type="checkbox" name="one_liner" class="form-control" value="{{one_liner}}"
+               checked>
+        {% else %}
+        <input type="checkbox" name="one_liner" class="form-control" value="{{one_liner}}">
+        {% endif %}
+    </div>
+    <div class="form-group">
+        <label for="remarks_list">Remarks</label>
+        <input type="text" name="remarks_list" placeholder="Remarks" class="form-control" value="{{remarks_list}}">
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+    <div id="output_data">
+        <p class="output-statement">
+        <pre>Output Data:<BR>{{output_data}}</pre>
+    </div>
+    <BR>
+    <h2>Not Sure How To Proceed? Try Below Samples.</h2>
+    <div class="form-group">
+        <label for="sample_processing">How the Sample should be processed? </label>
+        <BR>&nbsp;&nbsp;&nbsp;
+        <!-- TODO: Try alternates of "class="form-control", Manual Spaces needs to be removed -->
+        {% if sample_processing == 'load_only': %}
+        <input type="radio" name="sample_processing" value="load_and_submit">&nbsp;&nbsp;Load & Submit</input>
+        <BR>&nbsp;&nbsp;&nbsp;
+        <input type="radio" name="sample_processing" value="load_only" checked>&nbsp;&nbsp;Load Only</input>
+        {% else %}
+        <input type="radio" name="sample_processing" value="load_and_submit" checked>&nbsp;&nbsp;Load & Submit</input>
+        <BR>&nbsp;&nbsp;&nbsp;
+        <input type="radio" name="sample_processing" value="load_only">&nbsp;&nbsp;Load Only</input>
+        {% endif %}
+    </div>
+    <div class="form-group">
+        <button type="submit" name="sample_1" class="btn btn-success">Simple TLV</button>
+        <button type="submit" name="sample_2" class="btn btn-success">Parallel Simple TLVs</button>
+        <button type="submit" name="sample_3" class="btn btn-success">Multi Byte Tag</button>
+        <button type="submit" name="sample_4" class="btn btn-success">Nested BER TLV; Ascii</button>
+        <button type="submit" name="sample_5" class="btn btn-success">Nested BER TLV; Length</button>
+        <button type="submit" name="sample_6" class="btn btn-success">Complex Nested Ber TLVs</button>
+    </div>
+</form>
+{% endblock %}
