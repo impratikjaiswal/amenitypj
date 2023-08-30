@@ -4,7 +4,8 @@ import sqlite3
 from flask import Flask, render_template, request, url_for, flash, redirect
 from werkzeug.exceptions import abort
 
-from amenity_pj_app.helpers import app_tlv_play, app_asn1_play
+from amenity_pj_app.helper import app_tlv_play, app_asn1_play
+from amenity_pj_app.helper.constants_config import ConfigConst
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'Pj Test'
@@ -12,7 +13,11 @@ app.config['SECRET_KEY'] = 'Pj Test'
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    page_url = 'index.html'
+    default_data = {
+        'version': f'v{ConfigConst.TOOL_VERSION}',
+    }
+    return render_template(page_url, **default_data)
 
 
 @app.route('/asn1Play', methods=('GET', 'POST'))
