@@ -1,3 +1,3 @@
-echo Attempting to activate existing Virtual Environment
+echo "Attempting to activate existing Virtual Environment"
 
 source ../venv/bin/activate
