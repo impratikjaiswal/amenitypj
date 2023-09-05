@@ -4,7 +4,7 @@ import sqlite3
 from flask import Flask, render_template, request, url_for, flash, redirect
 from werkzeug.exceptions import abort
 
-from amenity_pj_app.helper import app_tlv_play, app_asn1_play
+from amenity_pj_app.helper import app_tlv_play, app_asn1_play, app_qr_play
 from amenity_pj_app.helper.constants_config import ConfigConst
 
 app = Flask(__name__)
@@ -28,6 +28,11 @@ def asn1_play():
 @app.route('/tlvPlay', methods=('GET', 'POST'))
 def tlv_play():
     return app_tlv_play.handle_requests()
+
+
+@app.route('/qrPlay', methods=('GET', 'POST'))
+def qr_play():
+    return app_qr_play.handle_requests()
 
 
 @app.route('/excelPlay', methods=('GET', 'POST'))

@@ -4,5 +4,8 @@ asn1Play
 # tlvPlay
 tlvPlay
 
+# qrPlay
+qrPlay
+
 # Python Helpers
 pythonHelpers

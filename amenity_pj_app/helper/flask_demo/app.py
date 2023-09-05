@@ -1,7 +1,9 @@
+import io
 import os
 import sqlite3
 
-from flask import Flask, render_template, request, url_for, flash, redirect
+import segno
+from flask import Flask, render_template, request, url_for, flash, redirect,  send_file, abort
 from werkzeug.exceptions import abort
 
 app = Flask(__name__)
@@ -126,3 +128,33 @@ def delete(id):
 def delete_w_edit(id):
     get_delete(id)
     return redirect(url_for('index'))
+
+
+@app.route('/segno_sample')
+def segno_sample():
+    qr = segno.make('The Continuing Story of Bungalow Bill')
+    return render_template('segno_sample.html', qr=qr)
+
+
+@app.route('/qr-svg/')
+def qrcode_svg():
+    data = request.args.get('data')
+    if data not in ('Savoy Truffle', 'Rocky Raccoon'):
+        return abort(404)
+    buff = io.BytesIO()
+    segno.make(data, micro=False).save(buff, kind='svg', scale=4)
+    buff.seek(0)
+    return send_file(buff, mimetype='image/svg+xml')
+
+
+@app.route('/qr-png/')
+def qrcode_png():
+    data = request.args.get('data')
+    if data not in ('Savoy Truffle', 'Rocky Raccoon'):
+        return abort(404)
+    buff = io.BytesIO()
+    segno.make(data, micro=False) \
+        .save(buff, kind='png', scale=4, dark='darkblue', data_dark='#474747',
+              light='#efefef')
+    buff.seek(0)
+    return send_file(buff, mimetype='image/png')
