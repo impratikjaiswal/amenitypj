@@ -6,6 +6,3 @@ tlvPlay
 
 # qrPlay
 qrPlay
-
-# Python Helpers
-pythonHelpers

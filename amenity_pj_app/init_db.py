@@ -19,5 +19,9 @@ cur.execute("INSERT INTO posts (title, content, publisher) VALUES (?, ?, ?)",
             ('TlvPlay', 'Great Tool, able to parse any TLV for known as well as unknown Tools', 'Pj')
             )
 
+cur.execute("INSERT INTO posts (title, content, publisher) VALUES (?, ?, ?)",
+            ('QrPlay', 'Wow !!!, Variety of Qr versions are supporrted under one roof', 'Amrit')
+            )
+
 connection.commit()
 connection.close()

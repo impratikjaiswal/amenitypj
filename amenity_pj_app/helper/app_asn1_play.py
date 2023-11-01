@@ -3,6 +3,7 @@ from asn1_play.main.helper.constants_config import ConfigConst
 from asn1_play.main.helper.defaults import Defaults
 from asn1_play.main.helper.formats import Formats
 from asn1_play.main.helper.formats_group import FormatsGroup
+from asn1_play.main.mapping.asn1_elements import all_asn1_elements_list
 from flask import render_template, request
 from python_helpers.ph_modes_error_handling import PhErrorHandlingModes
 from python_helpers.ph_util import PhUtil
@@ -74,7 +75,15 @@ def get_sample_data(key):
             'output_format': Formats.ASCII,
             'asn1_element': ' ',
             'tlv_parsing_of_output': False,
-        }
+        },
+        'sample_7': {
+            'remarks_list': 'PKIX1Explicit88; Der to Asn1; Certificate',
+            'raw_data': '308201ff308201a6a0030201020209020000000000000001300a06082a8648ce3d0403023037310b300906035504061302455331153013060355040a0c0c52535020546573742045554d3111300f06035504030c0845554d20546573743020170d3230303430313039343835385a180f37343936303132343039343835385a3064310b300906035504061302455331153013060355040a0c0c52535020546573742045554d312930270603550405132038393034393033323132333435313233343531323334353637383930313233353113301106035504030c0a54657374206555494343305a301406072a8648ce3d020106092b2403030208010107034200043e590c38a9c256315ecff3291416dd335409a666fd41b3b51e5e5114f343abf0a26774c6c26c48753afe283643227bb6608cd261cc972d374a479124ebf27722a36b3069301f0603551d230418301680146fa1e5217363a822bded988a1a0d0ff5d7620db7301d0603551d0e04160414c8a64f343b85b7b0578dc57f8f13586dc804ed84300e0603551d0f0101ff04040302078030170603551d200101ff040d300b3009060767811201020101300a06082a8648ce3d040302034700304402205673c0fe8ff495ae93ae37a13296b2cb1b1017d7697053ed6920e987928699d70220059c7fec056869f24b548ac64757e4cb14d3a08609752c79a5b872a4980e338b',
+            'asn1_element': 'Certificate',
+            'input_format': Formats.DER,
+            'output_format': Formats.ASN1,
+            'tlv_parsing_of_output': False,
+        },
     }
     return sample_data.get(key, None)
 
@@ -85,17 +94,18 @@ def handle_requests():
     :return:
     """
 
-    input_formats = FormatsGroup.INPUT_FORMATS
-    input_formats.sort()
-    output_formats = FormatsGroup.ALL_FORMATS
-    output_formats.sort()
+    input_formats = PhUtil.generalise_list(FormatsGroup.INPUT_FORMATS)
+    output_formats = PhUtil.generalise_list(FormatsGroup.ALL_FORMATS)
+    asn1_elements = PhUtil.generalise_list(all_asn1_elements_list)
     page_url = 'asn1Play.html'
     default_data = {
         'version': f'v{ConfigConst.TOOL_VERSION}',
         'input_formats': input_formats,
         'output_formats': output_formats,
+        'asn1_elements': asn1_elements,
         'selected_input_format': Defaults.FORMAT_INPUT,
         'selected_output_format': Defaults.FORMAT_OUTPUT,
+        'selected_asn1_element': all_asn1_elements_list[0],
         'sample_processing': 'load_only',
         'output_data': '',
     }
@@ -130,17 +140,18 @@ def handle_requests():
             default_data.update({'raw_data': sample_data_dict.get('raw_data')})
             default_data.update({'selected_input_format': sample_data_dict.get('input_format')})
             default_data.update({'selected_output_format': sample_data_dict.get('output_format')})
-            default_data.update({'asn1_element': sample_data_dict.get('asn1_element')})
-            default_data.update({'remarks_list': sample_data_dict.get('remarks_list')})
+            default_data.update({'selected_asn1_element': sample_data_dict.get('asn1_element')})
             default_data.update({'tlv_parsing_of_output': sample_data_dict.get('tlv_parsing_of_output')})
+            default_data.update({'remarks_list': sample_data_dict.get('remarks_list')})
         else:
             default_data.update({'raw_data': request.form['raw_data']})
             default_data.update({'selected_input_format': request.form['input_format']})
             default_data.update({'selected_output_format': request.form['output_format']})
+            default_data.update({'selected_asn1_element': request.form['asn1_element']})
             default_data.update({'asn1_element': request.form['asn1_element']})
-            default_data.update({'remarks_list': request.form['remarks_list']})
             default_data.update(
                 {'tlv_parsing_of_output': True if 'tlv_parsing_of_output' in request.form.keys() else False})
+            default_data.update({'remarks_list': request.form['remarks_list']})
         default_data.update({'sample_processing': sample_processing})
         return render_template(page_url, **default_data)
     return render_template(page_url, **default_data)
