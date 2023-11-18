@@ -8,6 +8,8 @@ from flask import render_template, request
 from python_helpers.ph_modes_error_handling import PhErrorHandlingModes
 from python_helpers.ph_util import PhUtil
 
+from amenity_pj_app.helper.constants import Const
+
 
 def get_sample_data(key):
     sample_data = {
@@ -99,7 +101,9 @@ def handle_requests():
     asn1_elements = PhUtil.generalise_list(all_asn1_elements_list)
     page_url = 'asn1Play.html'
     default_data = {
-        'version': f'v{ConfigConst.TOOL_VERSION}',
+        'app_title': Const.TITLE_ASN1_PLAY,
+        'app_version': f'v{ConfigConst.TOOL_VERSION}',
+        'app_github_url': Const.GITHUB_URL_ASN1_PLAY,
         'input_formats': input_formats,
         'output_formats': output_formats,
         'asn1_elements': asn1_elements,

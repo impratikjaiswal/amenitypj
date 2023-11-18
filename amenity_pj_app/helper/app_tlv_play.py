@@ -5,6 +5,8 @@ from tlv_play.main.data_type.data_type_master import DataTypeMaster
 from tlv_play.main.helper.constants_config import ConfigConst
 from tlv_play.main.helper.defaults import Defaults
 
+from amenity_pj_app.helper.constants import Const
+
 
 def get_sample_data(key):
     sample_data = {
@@ -47,9 +49,10 @@ def handle_requests():
     :return:
     """
 
-    page_url = 'tlvPlay.html'
     default_data = {
-        'version': f'v{ConfigConst.TOOL_VERSION}',
+        'app_title': Const.TITLE_TLV_PLAY,
+        'app_version': f'v{ConfigConst.TOOL_VERSION}',
+        'app_github_url': Const.GITHUB_URL_TLV_PLAY,
         'sample_processing': 'load_only',
         'length_in_decimal': Defaults.LENGTH_IN_DECIMAL,
         'value_in_ascii': Defaults.VALUE_IN_ASCII,
@@ -57,7 +60,7 @@ def handle_requests():
         'output_data': '',
     }
     if request.method == 'GET':
-        return render_template(page_url, **default_data)
+        return render_template(Const.TEMPLATE_TLV_PLAY, **default_data)
     if request.method == 'POST':
         PhUtil.print_iter(request.form, header='request.form')
         sample_processing = request.form['sample_processing']
@@ -99,5 +102,5 @@ def handle_requests():
             default_data.update({'one_liner': True if 'one_liner' in request.form.keys() else False})
             default_data.update({'remarks_list': request.form['remarks_list']})
         default_data.update({'sample_processing': sample_processing})
-        return render_template(page_url, **default_data)
-    return render_template(page_url, **default_data)
+        return render_template(Const.TEMPLATE_TLV_PLAY, **default_data)
+    return render_template(Const.TEMPLATE_TLV_PLAY, **default_data)

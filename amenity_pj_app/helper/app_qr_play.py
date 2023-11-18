@@ -8,9 +8,12 @@ from qr_play.main.helper.constants_config import ConfigConst
 from qr_play.main.helper.defaults import Defaults
 from qr_play.main.helper.formats import Formats
 
+from amenity_pj_app.helper.constants import Const
+
 
 def get_sample_data(key):
     sample_data = {
+		# TODO: chnage the usage of Defaults
         PhKeys.SAMPLE_1: {
             PhKeys.REMARKS_LIST: 'Simple Qr',
             PhKeys.RAW_DATA: small_data,
@@ -32,6 +35,20 @@ def get_sample_data(key):
             PhKeys.SPLIT_QRS: True,
             PhKeys.QR_CODE_VERSION: Defaults.QR_CODE_VERSION
         },
+        PhKeys.SAMPLE_4: {
+            PhKeys.REMARKS_LIST: 'Simple Qr (LPA)',
+            PhKeys.RAW_DATA: 'LPA:1$SMDP.EXAMPLE.COM$04386-AGYFT-A74Y8-3F815',
+            PhKeys.SCALE: Defaults.SCALE,
+            PhKeys.SPLIT_QRS: False,
+            PhKeys.QR_CODE_VERSION: 5
+        },
+        PhKeys.SAMPLE_5: {
+            PhKeys.REMARKS_LIST: 'Simple Qr (Google Pay/GPay)',
+            PhKeys.RAW_DATA: 'upi://pay?pa=impratikjaiswal@okicici&pn=Pratik%20Jaiswal&aid=uGICAgICw6tuJBw',
+            PhKeys.SCALE: Defaults.SCALE,
+            PhKeys.SPLIT_QRS: False,
+            PhKeys.QR_CODE_VERSION: 5
+        },
     }
     return sample_data.get(key, None)
 
@@ -42,20 +59,22 @@ def handle_requests():
     :return:
     """
 
-    page_url = 'qrPlay.html'
     default_data = {
-        PhKeys.VERSION: f'v{ConfigConst.TOOL_VERSION}',
+        'app_title': Const.TITLE_QR_PLAY,
+        'app_version': f'v{ConfigConst.TOOL_VERSION}',
+        'app_github_url': Const.GITHUB_URL_QR_PLAY,
         PhKeys.QR_CODE_VERSIONS: list(range(40, 0, -1)),
-        PhKeys.SELECTED_QR_CODE_VERSION: Defaults.QR_CODE_VERSION,
+		# PhKeys.SELECTED_QR_CODE_VERSION: Defaults.QR_CODE_VERSION,
+        PhKeys.SELECTED_QR_CODE_VERSION: 5,
         PhKeys.SPLIT_QRS: Defaults.SPLIT_QRS,
         PhKeys.SCALE: Defaults.SCALE,
         PhKeys.SAMPLE_PROCESSING: PhKeys.SAMPLE_LOAD_ONLY,
         PhKeys.OUTPUT_DATA: '',
     }
     if request.method == PhKeys.GET:
-        return render_template(page_url, **default_data)
+        return render_template(Const.TEMPLATE_QR_PLAY, **default_data)
     if request.method == PhKeys.POST:
-        PhUtil.print_separator(main_text=f'{page_url} Post Request Started')
+        PhUtil.print_separator(main_text=f'{Const.TEMPLATE_QR_PLAY} Post Request Started')
         PhUtil.print_iter(request.form, header='Request Input')
         # if not request.form[PhKeys.RAW_DATA]:
         #     flash('raw_data is required!')
@@ -120,6 +139,6 @@ def handle_requests():
             default_data.update({PhKeys.REMARKS_LIST: requested_data_dict[PhKeys.REMARKS_LIST]})
         default_data.update({PhKeys.SAMPLE_PROCESSING: sample_processing})
         PhUtil.print_iter(default_data, header='Request Output')
-        PhUtil.print_separator(main_text=f'{page_url} Post Request Completed')
-        return render_template(page_url, **default_data)
-    return render_template(page_url, **default_data)
+        PhUtil.print_separator(main_text=f'{Const.TEMPLATE_QR_PLAY} Post Request Completed')
+        return render_template(Const.TEMPLATE_QR_PLAY, **default_data)
+    return render_template(Const.TEMPLATE_QR_PLAY, **default_data)
