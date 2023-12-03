@@ -1,5 +1,4 @@
 from asn1_play.main.data_type.data_type_master import DataTypeMaster
-from asn1_play.main.helper.constants_config import ConfigConst
 from asn1_play.main.helper.defaults import Defaults
 from asn1_play.main.helper.formats import Formats
 from asn1_play.main.helper.formats_group import FormatsGroup
@@ -102,7 +101,8 @@ def handle_requests():
     page_url = 'asn1Play.html'
     default_data = {
         'app_title': Const.TITLE_ASN1_PLAY,
-        'app_version': f'v{ConfigConst.TOOL_VERSION}',
+        'app_description': Const.DESCRIPTION_ASN1_PLAY,
+        'app_version': Const.VERSION_ASN1_PLAY,
         'app_github_url': Const.GITHUB_URL_ASN1_PLAY,
         'input_formats': input_formats,
         'output_formats': output_formats,

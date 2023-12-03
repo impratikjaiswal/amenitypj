@@ -2,7 +2,6 @@ from flask import render_template, request
 from python_helpers.ph_modes_error_handling import PhErrorHandlingModes
 from python_helpers.ph_util import PhUtil
 from tlv_play.main.data_type.data_type_master import DataTypeMaster
-from tlv_play.main.helper.constants_config import ConfigConst
 from tlv_play.main.helper.defaults import Defaults
 
 from amenity_pj_app.helper.constants import Const
@@ -51,7 +50,8 @@ def handle_requests():
 
     default_data = {
         'app_title': Const.TITLE_TLV_PLAY,
-        'app_version': f'v{ConfigConst.TOOL_VERSION}',
+        'app_description': Const.DESCRIPTION_TLV_PLAY,
+        'app_version': Const.VERSION_TLV_PLAY,
         'app_github_url': Const.GITHUB_URL_TLV_PLAY,
         'sample_processing': 'load_only',
         'length_in_decimal': Defaults.LENGTH_IN_DECIMAL,

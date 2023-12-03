@@ -1,12 +1,15 @@
 <!-- Common Content -->
 {% extends 'base.html' %}
+{% block description %}{{app_description}}{% endblock %}
 {% block title %}{{app_title}}{% endblock %}
 <!-- Page Specific Content -->
 {% block content %}
-    <h1>{{app_title}} {{app_version}}</h1>
+    <h1>Welcome to {{app_title}} {{app_version}}</h1>
     <a href="{{app_github_url}}" rel="noopener noreferrer" target="_blank">
         <span class="badge badge-success">@Github</span>
     </a>
+    <BR>
+    <h6>{{app_description}}</h6>
     <form method="post">
         <div class="form-group">
             <label for="raw_data">Raw Data</label>
@@ -15,30 +18,30 @@
         <div class="form-group">
             <label for="length_in_decimal">Length In Decimal</label>
             {% if length_in_decimal: %}
-                <input type="checkbox" name="length_in_decimal" class="form-control" 
+                <input type="checkbox" name="length_in_decimal" class="form-check-inline" 
                     value="{{length_in_decimal}}" checked>
             {% else %}
-                <input type="checkbox" name="length_in_decimal" class="form-control"
+                <input type="checkbox" name="length_in_decimal" class="form-check-inline"
                     value="{{length_in_decimal}}">
             {% endif %}
         </div>
         <div class="form-group">
             <label for="value_in_ascii">Value In Ascii</label>
             {% if value_in_ascii: %}
-                <input type="checkbox" name="value_in_ascii" class="form-control"
+                <input type="checkbox" name="value_in_ascii" class="form-check-inline"
                     value="{{value_in_ascii}}" checked>
             {% else %}
-                <input type="checkbox" name="value_in_ascii" class="form-control"
+                <input type="checkbox" name="value_in_ascii" class="form-check-inline"
                     value="{{value_in_ascii}}">
             {% endif %}
         </div>
         <div class="form-group">
             <label for="one_liner">One Liner</label>
             {% if one_liner: %}
-                <input type="checkbox" name="one_liner" class="form-control"
+                <input type="checkbox" name="one_liner" class="form-check-inline"
                     value="{{one_liner}}" checked>
             {% else %}
-                <input type="checkbox" name="one_liner" class="form-control"
+                <input type="checkbox" name="one_liner" class="form-check-inline"
                     value="{{one_liner}}">
             {% endif %}
         </div>

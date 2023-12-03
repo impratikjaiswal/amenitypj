@@ -2,7 +2,7 @@ import os
 import sqlite3
 
 from flask import Flask, render_template, request, url_for, flash, redirect
-from flask_sitemap import Sitemap
+from flask_sitemapper import Sitemapper
 from werkzeug.exceptions import abort
 
 from amenity_pj_app.helper import app_tlv_play, app_asn1_play, app_qr_play
@@ -11,11 +11,11 @@ from amenity_pj_app.helper.constants_config import ConfigConst
 
 app = Flask(__name__)
 
-ext = Sitemap(app=app)
+sitemapper = Sitemapper()
+sitemapper.init_app(app)
+
 app.config['SECRET_KEY'] = 'Pj Test'
 
-
-# app.config['SITEMAP_MAX_URL_COUNT'] = 10
 
 def get_db_connection():
     # conn = sqlite3.connect(r'database.db')
@@ -35,94 +35,112 @@ def get_post(post_id):
     return post
 
 
-@ext.register_generator
-def index():
-    # Not needed if you set SITEMAP_INCLUDE_RULES_WITHOUT_PARAMS=True
-    yield Const.END_POINT_INDEX, {}
-    yield Const.END_POINT_ASN1_PLAY, {}
-    yield Const.END_POINT_TLV_PLAY, {}
-    yield Const.END_POINT_QR_PLAY, {}
-    yield Const.END_POINT_EXCEL_PLAY, {}
-    yield Const.END_POINT_SPONSORSHIP, {}
-    yield Const.END_POINT_ABOUT_US, {}
-    yield Const.END_POINT_TESTIMONIALS, {}
+# @sitemap.register_generator
+# def index():
+# This function is Not needed if you set SITEMAP_INCLUDE_RULES_WITHOUT_PARAMS=True
+# https://www.sitemaps.org/protocol.html
+# yield Const.END_POINT_INDEX, {}
+# yield Const.END_POINT_INDEX, {}, Const.DEPLOYMENT_DATE, 'monthly'
 
 
 @app.context_processor
 def utility_processor():
     def title_for(end_point=None):
-        return Const.END_POINT_AND_TITLE_MAPPING.get(end_point, ConfigConst.TOOL_TITLE)
+        return Const.END_POINT_AND_TITLE_MAPPING.get(end_point, Const.TITLE_AMENITY_PJ)
 
     return dict(title_for=title_for)
 
 
-@app.route(Const.URL_INDEX)
+@app.context_processor
+def utility_processor_asn1_play():
+    def is_selected_asn1_element(asn1_element, selected_asn1_element):
+        if asn1_element == selected_asn1_element:
+            return 'SELECTED'
+        else:
+            return ''
+
+    return dict(is_selected_asn1_element=is_selected_asn1_element)
+
+
+@app.route(Const.URL_SITEMAP)
+def sitemap():
+    return sitemapper.generate()
+
+
+@sitemapper.include(lastmod=Const.DEPLOYMENT_DATE)
+@app.route(Const.URL_AMENITY_PJ)
 def index():
     default_data = {
-        'app_title': ConfigConst.TOOL_TITLE,
-        'app_version': f'v{ConfigConst.TOOL_VERSION}',
-        'app_github_url': Const.GITHUB_URL_DEFAULT,
+        'app_title': Const.TITLE_AMENITY_PJ,
+        'app_description': Const.DESCRIPTION_AMENITY_PJ,
+        'app_version': Const.VERSION_AMENITY_PJ,
+        'app_github_url': Const.GITHUB_URL_AMENITY_PJ,
     }
-    return render_template(Const.TEMPLATE_INDEX, **default_data)
+    return render_template(Const.TEMPLATE_AMENITY_PJ, **default_data)
 
 
+@sitemapper.include(lastmod=Const.DEPLOYMENT_DATE)
 @app.route(Const.URL_ASN1_PLAY, methods=('GET', 'POST'))
 def asn1_play():
     return app_asn1_play.handle_requests()
 
 
+@sitemapper.include(lastmod=Const.DEPLOYMENT_DATE)
 @app.route(Const.URL_TLV_PLAY, methods=('GET', 'POST'))
 def tlv_play():
     return app_tlv_play.handle_requests()
 
 
+@sitemapper.include(lastmod=Const.DEPLOYMENT_DATE)
 @app.route(Const.URL_QR_PLAY, methods=('GET', 'POST'))
 def qr_play():
     return app_qr_play.handle_requests()
 
 
+@sitemapper.include(lastmod=Const.DEPLOYMENT_DATE)
 @app.route(Const.URL_EXCEL_PLAY, methods=('GET', 'POST'))
 def excel_play():
     default_data = {
         'app_title': Const.TITLE_EXCEL_PLAY,
-        'app_version': Const.VERSION_DEFAULT,
+        'app_description': Const.DESCRIPTION_EXCEL_PLAY,
+        'app_version': Const.VERSION_EXCEL_PLAY,
         'app_github_url': Const.GITHUB_URL_EXCEL_PLAY,
     }
-    return render_template(Const.TEMPLATE_WIP, **default_data)
+    return render_template(Const.TEMPLATE_EXCEL_PLAY , **default_data)
 
 
+@sitemapper.include(lastmod=Const.DEPLOYMENT_DATE)
 @app.route(Const.URL_SPONSORSHIP, methods=('GET', 'POST'))
 def sponsorship():
     default_data = {
         'app_title': Const.TITLE_SPONSORSHIP,
-        'app_version': Const.VERSION_DEFAULT,
-        'app_github_url': Const.GITHUB_URL_DEFAULT,
+        'app_description': Const.DESCRIPTION_SPONSORSHIP,
+        'app_version': Const.VERSION_SPONSORSHIP,
+        'app_github_url': Const.GITHUB_URL_SPONSORSHIP,
     }
-    return render_template(Const.TEMPLATE_WIP, **default_data)
+    return render_template(Const.TEMPLATE_SPONSORSHIP, **default_data)
 
 
+@sitemapper.include(lastmod=Const.DEPLOYMENT_DATE)
 @app.route(Const.URL_ABOUT_US, methods=('GET', 'POST'))
 def about_us():
     default_data = {
         'app_title': Const.TITLE_ABOUT_US,
-        'app_version': Const.VERSION_DEFAULT,
-        'app_github_url': Const.GITHUB_URL_DEFAULT,
+        'app_description': Const.DESCRIPTION_ABOUT_US,
+        'app_version': Const.VERSION_ABOUT_US,
+        'app_github_url': Const.GITHUB_URL_ABOUT_US,
     }
     return render_template(Const.TEMPLATE_ABOUT_US, **default_data)
 
 
-@app.route('/<int:post_id>')
-def post(post_id):
-    post = get_post(post_id)
-    return render_template(Const.TEMPLATE_POST, post=post)
-
-
+@sitemapper.include(lastmod=Const.DEPLOYMENT_DATE)
 @app.route(Const.URL_TESTIMONIALS, methods=('GET', 'POST'))
 def testimonials():
     default_data = {
         'app_title': Const.TITLE_TESTIMONIALS,
-        'app_version': Const.VERSION_DEFAULT,
-        'app_github_url': Const.GITHUB_URL_DEFAULT,
+        'app_description': Const.DESCRIPTION_TESTIMONIALS,
+        'app_version': Const.VERSION_TESTIMONIALS,
+        'app_github_url': Const.GITHUB_URL_TESTIMONIALS,
     }
     if request.method == 'GET':
         conn = get_db_connection()
@@ -144,6 +162,12 @@ def testimonials():
             conn.close()
             return redirect(url_for(Const.END_POINT_TESTIMONIALS))
     return render_template(Const.TEMPLATE_TESTIMONIALS, **default_data)
+
+
+@app.route('/<int:post_id>')
+def post(post_id):
+    post = get_post(post_id)
+    return render_template(Const.TEMPLATE_POST, post=post)
 
 
 if __name__ == "__main__":

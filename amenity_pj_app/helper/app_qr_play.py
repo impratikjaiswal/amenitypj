@@ -61,7 +61,8 @@ def handle_requests():
 
     default_data = {
         'app_title': Const.TITLE_QR_PLAY,
-        'app_version': f'v{ConfigConst.TOOL_VERSION}',
+        'app_description': Const.DESCRIPTION_QR_PLAY,
+        'app_version': Const.VERSION_QR_PLAY,
         'app_github_url': Const.GITHUB_URL_QR_PLAY,
         PhKeys.QR_CODE_VERSIONS: list(range(40, 0, -1)),
 		# PhKeys.SELECTED_QR_CODE_VERSION: Defaults.QR_CODE_VERSION,

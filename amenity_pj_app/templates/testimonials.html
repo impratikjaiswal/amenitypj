@@ -1,5 +1,6 @@
 <!-- Common Content -->
 {% extends 'base.html' %}
+{% block description %}{{app_description}}{% endblock %}
 {% block title %}{{app_title}}{% endblock %}
 <!-- Page Specific Content -->
 {% block content %}
@@ -8,7 +9,7 @@
         <span class="badge badge-success">@Github</span>
     </a>
     <BR>
-    <h3>Read What others feel about us</h3>
+    <h6>{{app_description}}</h6>
     {% for post in posts %}
         <!-- <a href="#"> -->
         <a href="{{ url_for('post', post_id=post['id']) }}">

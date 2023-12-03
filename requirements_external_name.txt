@@ -1,0 +1,6 @@
+
+# Flask Sitemap
+flask-sitemap
+Flask-Sitemap
+flask-sitemapper
+sitemapper

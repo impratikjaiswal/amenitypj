@@ -1,5 +1,6 @@
 <!-- Common Content -->
 {% extends 'base.html' %}
+{% block description %}{{app_description}}{% endblock %}
 {% block title %}{{app_title}}{% endblock %}
 <!-- Page Specific Content -->
 {% block content %}
@@ -8,6 +9,7 @@
         <span class="badge badge-success">@Github</span>
     </a>
     <BR>
+	<h6>{{app_description}}</h6>
     Follow us on:
     <ul>
         <li class="nav-item">

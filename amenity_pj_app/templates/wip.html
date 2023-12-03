@@ -1,5 +1,6 @@
 <!-- Common Content -->
 {% extends 'base.html' %}
+{% block description %}{{app_description}}{% endblock %}
 {% block title %}{{app_title}}{% endblock %}
 <!-- Page Specific Content -->
 {% block content %}
@@ -7,6 +8,8 @@
     <a href="{{app_github_url}}" rel="noopener noreferrer" target="_blank">
         <span class="badge badge-success">@Github</span>
     </a>
+    <BR>
+    <h6>{{app_description}}</h6>
     <p align="center">
         <BR>
         <BR>

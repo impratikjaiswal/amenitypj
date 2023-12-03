@@ -1,12 +1,15 @@
 <!-- Common Content -->
 {% extends 'base.html' %}
+{% block description %}{{app_description}}{% endblock %}
 {% block title %}{{app_title}}{% endblock %}
 <!-- Page Specific Content -->
 {% block content %}
-    <h1>{{app_title}} {{app_version}}</h1>
+    <h1>Welcome to {{app_title}} {{app_version}}</h1>
     <a href="{{app_github_url}}" rel="noopener noreferrer" target="_blank">
         <span class="badge badge-success">@Github</span>
     </a>
+    <BR>
+    <h6>{{app_description}}</h6>
     <form method="post">
         <div class="form-group">
             <label for="raw_data">Raw Data</label>
@@ -15,10 +18,10 @@
         <div class="form-group">
         <label for="split_qrs">Auto Split Message Across Multiple Qrs</label>
             {% if split_qrs: %}
-                <input type="checkbox" name="split_qrs" class="form-control" value="{{split_qrs}}"
+                <input type="checkbox" name="split_qrs" class="form-check-inline" value="{{split_qrs}}"
                checked>
             {% else %}
-                <input type="checkbox" name="split_qrs" class="form-control" value="{{split_qrs}}">
+                <input type="checkbox" name="split_qrs" class="form-check-inline" value="{{split_qrs}}">
             {% endif %}
         </div>
         <div class="form-group">

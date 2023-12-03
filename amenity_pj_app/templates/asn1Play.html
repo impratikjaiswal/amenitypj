@@ -1,12 +1,15 @@
 <!-- Common Content -->
 {% extends 'base.html' %}
+{% block description %}{{app_description}}{% endblock %}
 {% block title %}{{app_title}}{% endblock %}
 <!-- Page Specific Content -->
 {% block content %}
-    <h1>{{app_title}} {{app_version}}</h1>
+    <h1>Welcome to {{app_title}} {{app_version}}</h1>
     <a href="{{app_github_url}}" rel="noopener noreferrer" target="_blank">
         <span class="badge badge-success">@Github</span>
     </a>
+    <BR>
+    <h6>{{app_description}}</h6>
     <form method="post">
         <div class="form-group">
             <label for="raw_data">Raw Data</label>
@@ -40,21 +43,24 @@
             <label for="asn1_element">Asn1 Element</label>
             <select name="asn1_element" class="form-control" placeholder="Asn1 Element">
                 {% for asn1_element in asn1_elements %}
+                    <option value="{{asn1_element}}" {{ is_selected_asn1_element(asn1_element, selected_asn1_element) }}>{{asn1_element}}</option>
+                <!--
                     {% if asn1_element == selected_asn1_element: %}
                         <option value="{{asn1_element}}" SELECTED>{{asn1_element}}</option>
                     {% else %}
                         <option value="{{asn1_element}}">{{asn1_element}}</option>
                     {% endif %}
+                   -->
                 {% endfor %}
             </select>
         </div>
         <div class="form-group">
             <label for="tlv_parsing_of_output">TLV Parsing of Output (if possible)</label>
             {% if tlv_parsing_of_output: %}
-                <input type="checkbox" name="tlv_parsing_of_output" class="form-control"
+                <input type="checkbox" name="tlv_parsing_of_output" class="form-check-inline"
                     value="{{tlv_parsing_of_output}}" checked>
             {% else %}
-                <input type="checkbox" name="tlv_parsing_of_output" class="form-control"
+                <input type="checkbox" name="tlv_parsing_of_output" class="form-check-inline"
                     value="{{tlv_parsing_of_output}}">
             {% endif %}
         </div>

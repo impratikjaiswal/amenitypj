@@ -1,8 +1,9 @@
 # Flask
 flask
 
-# Flask Sitemap
-flask-sitemap
+# Flask Sitemapper
+# https://pypi.org/project/flask-sitemapper/
+flask-sitemapper
 
 # Gunicorn (For Prod)
 gunicorn
