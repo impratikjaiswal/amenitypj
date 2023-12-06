@@ -7,7 +7,6 @@ from werkzeug.exceptions import abort
 
 from amenity_pj_app.helper import app_tlv_play, app_asn1_play, app_qr_play
 from amenity_pj_app.helper.constants import Const
-from amenity_pj_app.helper.constants_config import ConfigConst
 
 app = Flask(__name__)
 

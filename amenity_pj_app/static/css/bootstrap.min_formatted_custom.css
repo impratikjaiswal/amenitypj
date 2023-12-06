@@ -1,9 +1,10 @@
 /* add margin for buttons */
-.btn-success{
-   margin-bottom:.2rem;
+.btn-success {
+    margin-bottom:.2rem;
 }
 
-.form-check-inline{
+/* increase size of check box */
+.form-check-inline {
     width: 30px; 
     height: 30px;
     margin-left:.75rem;

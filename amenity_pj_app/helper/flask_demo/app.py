@@ -3,7 +3,7 @@ import os
 import sqlite3
 
 import segno
-from flask import Flask, render_template, request, url_for, flash, redirect,  send_file, abort
+from flask import Flask, render_template, request, url_for, flash, redirect, send_file, abort
 from werkzeug.exceptions import abort
 
 app = Flask(__name__)

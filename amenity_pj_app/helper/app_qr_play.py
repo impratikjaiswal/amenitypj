@@ -4,7 +4,6 @@ from python_helpers.ph_modes_error_handling import PhErrorHandlingModes
 from python_helpers.ph_util import PhUtil
 from qr_play.main.data_type.any_data import small_data, bulk_data_1, bulk_data_2
 from qr_play.main.data_type.data_type_master import DataTypeMaster
-from qr_play.main.helper.constants_config import ConfigConst
 from qr_play.main.helper.defaults import Defaults
 from qr_play.main.helper.formats import Formats
 
@@ -13,7 +12,7 @@ from amenity_pj_app.helper.constants import Const
 
 def get_sample_data(key):
     sample_data = {
-		# TODO: chnage the usage of Defaults
+        # TODO: chnage the usage of Defaults
         PhKeys.SAMPLE_1: {
             PhKeys.REMARKS_LIST: 'Simple Qr',
             PhKeys.RAW_DATA: small_data,
@@ -65,7 +64,7 @@ def handle_requests():
         'app_version': Const.VERSION_QR_PLAY,
         'app_github_url': Const.GITHUB_URL_QR_PLAY,
         PhKeys.QR_CODE_VERSIONS: list(range(40, 0, -1)),
-		# PhKeys.SELECTED_QR_CODE_VERSION: Defaults.QR_CODE_VERSION,
+        # PhKeys.SELECTED_QR_CODE_VERSION: Defaults.QR_CODE_VERSION,
         PhKeys.SELECTED_QR_CODE_VERSION: 5,
         PhKeys.SPLIT_QRS: Defaults.SPLIT_QRS,
         PhKeys.SCALE: Defaults.SCALE,
