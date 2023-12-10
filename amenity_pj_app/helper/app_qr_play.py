@@ -106,7 +106,7 @@ def handle_requests():
             #     PhUtil.print_iter(requested_data_dict, header='Request Input for requested_data_dict')
             dic_to_process = {k: v for k, v in
                               (sample_data_dict if sample_data_dict else requested_data_dict).items() if
-                              not k.startswith(PhKeys.SAMPLE)}
+                              not (k.startswith(PhKeys.SAMPLE) or k.startswith('process'))}
             dic_to_process.update({PhKeys.IMAGE_FORMAT: Formats.PNG_URI})
             dic_to_process.update({PhKeys.PRINT_INPUT: True})
             PhUtil.print_iter(dic_to_process, header='Request to Process')

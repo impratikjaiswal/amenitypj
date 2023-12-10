@@ -72,10 +72,19 @@
         </div>
         <div class="form-group">
             <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" name="process_reset" class="btn btn-primary" disabled>Reset</button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button type="submit" id="process_copy_clipboard" name="process_copy_clipboard" class="btn btn-secondary">Copy Output</button>
+            <button type="submit" name="process_download_output" class="btn btn-secondary" disabled>Download Output</button>
+            <button type="submit" name="process_download_yml" class="btn btn-secondary" disabled>Download Yml</button>
         </div>
         <div id="output_data">
-            <p class="output-statement">
-            <pre>Output Data:<BR>{{output_data}}</pre>
+            <label for="output_data">Output Data</label>
+            <div id="output_statement">
+                <pre>{{output_data}}</pre>
+            </div>
+        </div>
+        <div id="debug_data">
         </div>
         <BR>
         <h2>Not Sure How To Proceed? Try Below Samples.</h2>

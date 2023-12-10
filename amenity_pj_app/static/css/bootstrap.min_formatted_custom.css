@@ -3,6 +3,16 @@
     margin-bottom:.2rem;
 }
 
+/* add margin for buttons */
+.btn-primary {
+    margin-bottom:.2rem;
+}
+
+/* add margin for buttons */
+.btn-secondary {
+    margin-bottom:.2rem;
+}
+
 /* increase size of check box */
 .form-check-inline {
     width: 30px; 

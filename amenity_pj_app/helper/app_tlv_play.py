@@ -81,7 +81,7 @@ def handle_requests():
             # Filter All Sample Keys
             dic_to_process = {k: v for k, v in
                               (sample_data_dict if sample_data_dict else request.form.to_dict()).items() if
-                              not k.startswith('sample')}
+                              not (k.startswith('sample') or k.startswith('process'))}
             data_type = DataTypeMaster()
             data_type.set_data_pool(data_pool=dic_to_process)
             data_type.parse_safe(PhErrorHandlingModes.CONTINUE_ON_ERROR)
