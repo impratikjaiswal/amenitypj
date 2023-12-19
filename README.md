@@ -1,6 +1,5 @@
 # AmenityPj
-Source code of [Amenity Pj - https://amenitypj.in/](https://amenitypj.in/ "Amenity Pj" )
-A Home of Various Utilities
+Source code of [https://amenitypj.in/](https://amenitypj.in/)
 
 # How To Install
 
