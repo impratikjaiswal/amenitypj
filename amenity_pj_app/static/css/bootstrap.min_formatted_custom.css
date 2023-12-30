@@ -1,15 +1,6 @@
 /* add margin for buttons */
-.btn-success {
-    margin-bottom:.2rem;
-}
-
-/* add margin for buttons */
-.btn-primary {
-    margin-bottom:.2rem;
-}
-
-/* add margin for buttons */
-.btn-secondary {
+.btn {
+/* .btn-success, .btn-primary, .btn-secondary { */
     margin-bottom:.2rem;
 }
 
@@ -19,3 +10,5 @@
     height: 30px;
     margin-left:.75rem;
 }
+
+/* New Stuff - Experimental*/
