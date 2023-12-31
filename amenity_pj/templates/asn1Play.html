@@ -40,19 +40,28 @@
             </select>
         </div>
         <div class="form-group">
-            <label for="asn1_element">Asn1 Element</label>
-            <select name="asn1_element" class="form-control" placeholder="Asn1 Element">
-                {% for asn1_element in asn1_elements %}
-                    <option value="{{asn1_element}}" {{ is_selected_asn1_element(asn1_element, selected_asn1_element) }}>{{asn1_element}}</option>
-                <!--
-                    {% if asn1_element == selected_asn1_element: %}
-                        <option value="{{asn1_element}}" SELECTED>{{asn1_element}}</option>
-                    {% else %}
-                        <option value="{{asn1_element}}">{{asn1_element}}</option>
-                    {% endif %}
-                   -->
+            <label for="asn1_schema">Asn1 Schema</label>
+            <select name="asn1_schema" class="form-control" placeholder="Asn1 Schema">
+                {% for asn1_schema in asn1_schemas %}
+                    <option value="{{asn1_schema}}" {{ is_selected_asn1_schema(asn1_schema, selected_asn1_schema) }}>{{asn1_schema}}</option>
                 {% endfor %}
             </select>
+        </div>
+        <div class="form-group">
+            <label for="asn1_object">Asn1 Object</label>
+            <select name="asn1_object" class="form-control" placeholder="Asn1 Object">
+                {% for asn1_object in asn1_objects %}
+                    <option value="{{asn1_object}}" {{ is_selected_asn1_object(asn1_object, selected_asn1_object) }}>{{asn1_object}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <i><B>Pro Tip:</B> If Asn1 Object drop down list is empty or required object is not listed, try below field !!!</i><BR>
+        </div>
+        <div class="form-group">
+            <label for="asn1_object_alternate">Asn1 Object Alternate</label>
+            <input type="text" name="asn1_object_alternate" placeholder="Alternate Object" class="form-control"
+                value="{{asn1_object_alternate}}">
         </div>
         <div class="form-group">
             <label for="tlv_parsing_of_output">TLV Parsing of Output (if possible)</label>
@@ -103,8 +112,10 @@
             {% endif %}
         </div>
         <div class="form-group">
-            <button type="submit" name="sample_1" class="btn btn-success">StoreMetaData</button>
+            <button type="submit" name="sample_1" class="btn btn-success">StoreMetaData v3_0_0</button>
+            <button type="submit" name="sample_1_1" class="btn btn-success">StoreMetaData v2_4</button>
             <button type="submit" name="sample_2" class="btn btn-success">StoreMetaData; Asn to Der; Tlv</button>
+            <button type="submit" name="sample_2_1" class="btn btn-success">StoreMetaData; Asn to Der</button>
             <button type="submit" name="sample_3" class="btn btn-success">TCA; Asn to Der</button>
             <button type="submit" name="sample_7" class="btn btn-success">Certificate</button>
             <button type="submit" name="sample_4" class="btn btn-success">Der to Base64</button>

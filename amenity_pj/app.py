@@ -51,14 +51,25 @@ def utility_processor():
 
 
 @app.context_processor
-def utility_processor_asn1_play():
-    def is_selected_asn1_element(asn1_element, selected_asn1_element):
-        if asn1_element == selected_asn1_element:
+def utility_processor_asn1_play_1():
+    def is_selected_asn1_schema(asn1_schema, selected_asn1_schema):
+        if asn1_schema == selected_asn1_schema:
             return 'SELECTED'
         else:
             return ''
 
-    return dict(is_selected_asn1_element=is_selected_asn1_element)
+    return dict(is_selected_asn1_schema=is_selected_asn1_schema)
+
+
+@app.context_processor
+def utility_processor_asn1_play_2():
+    def is_selected_asn1_object(asn1_object, selected_asn1_object):
+        if asn1_object == selected_asn1_object:
+            return 'SELECTED'
+        else:
+            return ''
+
+    return dict(is_selected_asn1_object=is_selected_asn1_object)
 
 
 @app.route(Const.URL_SITEMAP)
@@ -105,7 +116,7 @@ def excel_play():
         'app_version': Const.VERSION_EXCEL_PLAY,
         'app_github_url': Const.GITHUB_URL_EXCEL_PLAY,
     }
-    return render_template(Const.TEMPLATE_EXCEL_PLAY , **default_data)
+    return render_template(Const.TEMPLATE_EXCEL_PLAY, **default_data)
 
 
 @sitemapper.include(lastmod=Const.DEPLOYMENT_DATE)
