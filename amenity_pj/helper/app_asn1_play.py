@@ -1,13 +1,14 @@
+from asn1_play.generated_code.asn1.GSMA.SGP_22 import asn1_mapping
 from asn1_play.main.data_type.data_type_master import DataTypeMaster
 from asn1_play.main.helper.defaults import Defaults
 from asn1_play.main.helper.formats import Formats
 from asn1_play.main.helper.formats_group import FormatsGroup
-from asn1_play.main.mapping.asn1_elements import all_asn1_elements_list
 from flask import render_template, request
+from python_helpers.ph_constants import PhConstants
 from python_helpers.ph_modes_error_handling import PhErrorHandlingModes
 from python_helpers.ph_util import PhUtil
 
-from amenity_pj_app.helper.constants import Const
+from amenity_pj.helper.constants import Const
 
 
 def get_sample_data(key):
@@ -97,8 +98,7 @@ def handle_requests():
 
     input_formats = PhUtil.generalise_list(FormatsGroup.INPUT_FORMATS)
     output_formats = PhUtil.generalise_list(FormatsGroup.ALL_FORMATS)
-    asn1_elements = PhUtil.generalise_list(all_asn1_elements_list)
-    page_url = 'asn1Play.html'
+    asn1_elements = PhUtil.generalise_list(asn1_mapping)
     default_data = {
         'app_title': Const.TITLE_ASN1_PLAY,
         'app_description': Const.DESCRIPTION_ASN1_PLAY,
@@ -109,16 +109,16 @@ def handle_requests():
         'asn1_elements': asn1_elements,
         'selected_input_format': Defaults.FORMAT_INPUT,
         'selected_output_format': Defaults.FORMAT_OUTPUT,
-        'selected_asn1_element': all_asn1_elements_list[0],
+        'selected_asn1_element': PhConstants.STR_EMPTY if asn1_mapping is None else asn1_mapping[0],
         'sample_processing': 'load_only',
         'output_data': '',
     }
     if request.method == 'GET':
-        return render_template(page_url, **default_data)
+        return render_template(Const.TEMPLATE_ASN1_PLAY, **default_data)
     if request.method == 'POST':
         PhUtil.print_iter(request.form, header='request.form')
         sample_processing = request.form['sample_processing']
-        # if not request.form['raw_data']:
+        # if not request.form[PhKeys.RAW_DATA]:
         #     flash('raw_data is required!')
         sample_data_dict = None
         for key in request.form.keys():
@@ -157,5 +157,5 @@ def handle_requests():
                 {'tlv_parsing_of_output': True if 'tlv_parsing_of_output' in request.form.keys() else False})
             default_data.update({'remarks_list': request.form['remarks_list']})
         default_data.update({'sample_processing': sample_processing})
-        return render_template(page_url, **default_data)
-    return render_template(page_url, **default_data)
+        return render_template(Const.TEMPLATE_ASN1_PLAY, **default_data)
+    return render_template(Const.TEMPLATE_ASN1_PLAY, **default_data)

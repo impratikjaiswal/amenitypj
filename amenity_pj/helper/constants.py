@@ -2,7 +2,7 @@ from asn1_play.main.helper.constants_config import ConfigConst as asn1_play_conf
 from qr_play.main.helper.constants_config import ConfigConst as qr_play_config
 from tlv_play.main.helper.constants_config import ConfigConst as tlv_play_config
 
-from amenity_pj_app.helper.constants_config import ConfigConst as amenity_pj_config
+from amenity_pj.helper.constants_config import ConfigConst as amenity_pj_config
 
 
 class Const:

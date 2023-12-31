@@ -4,7 +4,7 @@ from python_helpers.ph_util import PhUtil
 from tlv_play.main.data_type.data_type_master import DataTypeMaster
 from tlv_play.main.helper.defaults import Defaults
 
-from amenity_pj_app.helper.constants import Const
+from amenity_pj.helper.constants import Const
 
 
 def get_sample_data(key):
@@ -64,7 +64,7 @@ def handle_requests():
     if request.method == 'POST':
         PhUtil.print_iter(request.form, header='request.form')
         sample_processing = request.form['sample_processing']
-        # if not request.form['raw_data']:
+        # if not request.form[PhKeys.RAW_DATA]:
         #     flash('raw_data is required!')
         sample_data_dict = None
         for key in request.form.keys():

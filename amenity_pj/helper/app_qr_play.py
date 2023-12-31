@@ -7,12 +7,11 @@ from qr_play.main.data_type.data_type_master import DataTypeMaster
 from qr_play.main.helper.defaults import Defaults
 from qr_play.main.helper.formats import Formats
 
-from amenity_pj_app.helper.constants import Const
+from amenity_pj.helper.constants import Const
 
 
 def get_sample_data(key):
     sample_data = {
-        # TODO: chnage the usage of Defaults
         PhKeys.SAMPLE_1: {
             PhKeys.REMARKS_LIST: 'Simple Qr',
             PhKeys.RAW_DATA: small_data,
@@ -25,28 +24,28 @@ def get_sample_data(key):
             PhKeys.RAW_DATA: bulk_data_1,
             PhKeys.SCALE: Defaults.SCALE,
             PhKeys.SPLIT_QRS: False,
-            PhKeys.QR_CODE_VERSION: Defaults.QR_CODE_VERSION
+            PhKeys.QR_CODE_VERSION: 40
         },
         PhKeys.SAMPLE_3: {
             PhKeys.REMARKS_LIST: 'Bulk Data Split Qrs',
             PhKeys.RAW_DATA: bulk_data_2,
             PhKeys.SCALE: Defaults.SCALE,
             PhKeys.SPLIT_QRS: True,
-            PhKeys.QR_CODE_VERSION: Defaults.QR_CODE_VERSION
+            PhKeys.QR_CODE_VERSION: 40
         },
         PhKeys.SAMPLE_4: {
             PhKeys.REMARKS_LIST: 'Simple Qr (LPA)',
             PhKeys.RAW_DATA: 'LPA:1$SMDP.EXAMPLE.COM$04386-AGYFT-A74Y8-3F815',
             PhKeys.SCALE: Defaults.SCALE,
             PhKeys.SPLIT_QRS: False,
-            PhKeys.QR_CODE_VERSION: 5
+            PhKeys.QR_CODE_VERSION: Defaults.QR_CODE_VERSION
         },
         PhKeys.SAMPLE_5: {
             PhKeys.REMARKS_LIST: 'Simple Qr (Google Pay/GPay)',
             PhKeys.RAW_DATA: 'upi://pay?pa=impratikjaiswal@okicici&pn=Pratik%20Jaiswal&aid=uGICAgICw6tuJBw',
             PhKeys.SCALE: Defaults.SCALE,
             PhKeys.SPLIT_QRS: False,
-            PhKeys.QR_CODE_VERSION: 5
+            PhKeys.QR_CODE_VERSION: Defaults.QR_CODE_VERSION
         },
     }
     return sample_data.get(key, None)
@@ -64,8 +63,7 @@ def handle_requests():
         'app_version': Const.VERSION_QR_PLAY,
         'app_github_url': Const.GITHUB_URL_QR_PLAY,
         PhKeys.QR_CODE_VERSIONS: list(range(40, 0, -1)),
-        # PhKeys.SELECTED_QR_CODE_VERSION: Defaults.QR_CODE_VERSION,
-        PhKeys.SELECTED_QR_CODE_VERSION: 5,
+        PhKeys.SELECTED_QR_CODE_VERSION: Defaults.QR_CODE_VERSION,
         PhKeys.SPLIT_QRS: Defaults.SPLIT_QRS,
         PhKeys.SCALE: Defaults.SCALE,
         PhKeys.SAMPLE_PROCESSING: PhKeys.SAMPLE_LOAD_ONLY,
