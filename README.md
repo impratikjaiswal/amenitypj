@@ -1,4 +1,4 @@
-# AmenityPj
+# amenitypj
 Source code of [https://amenitypj.in/](https://amenitypj.in/)
 
 # How To Install

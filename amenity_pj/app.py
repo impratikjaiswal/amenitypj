@@ -5,8 +5,8 @@ from flask import Flask, render_template, request, url_for, flash, redirect
 from flask_sitemapper import Sitemapper
 from werkzeug.exceptions import abort
 
-from amenity_pj_app.helper import app_tlv_play, app_asn1_play, app_qr_play
-from amenity_pj_app.helper.constants import Const
+from amenity_pj.helper import app_tlv_play, app_asn1_play, app_qr_play
+from amenity_pj.helper.constants import Const
 
 app = Flask(__name__)
 
