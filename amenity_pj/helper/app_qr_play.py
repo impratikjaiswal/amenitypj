@@ -74,15 +74,13 @@ def handle_requests():
     if request.method == PhKeys.POST:
         PhUtil.print_separator(main_text=f'{Const.TEMPLATE_QR_PLAY} Post Request Started')
         PhUtil.print_iter(request.form, header='Request Input')
-        # if not request.form[PhKeys.RAW_DATA]:
-        #     flash('raw_data is required!')
         requested_data_dict = request.form.to_dict()
         sample_processing = requested_data_dict[PhKeys.SAMPLE_PROCESSING]
         # When submitting an HTML form,
-        # 1) unchecked checkboxes do not send any data
-        if PhKeys.SPLIT_QRS not in requested_data_dict:
-            requested_data_dict.update({PhKeys.SPLIT_QRS: False})
-        # 2) Integer is converted to String
+        # 1) unchecked checkboxes do not send any data, however checked checkboxes do send False (may send True as well)
+        requested_data_dict.update({PhKeys.SPLIT_QRS: True if PhKeys.SPLIT_QRS in requested_data_dict else False})
+        # 2) Everything is converted to String; below should be integer
+        # XXX: This should be handled in parse_config
         requested_data_dict.update({PhKeys.QR_CODE_VERSION: int(requested_data_dict.get(PhKeys.QR_CODE_VERSION))})
         sample_data_dict = None
         for key in requested_data_dict.keys():
@@ -111,8 +109,8 @@ def handle_requests():
             data_type = DataTypeMaster()
             data_type.set_data_pool(data_pool=dic_to_process)
             data_type.parse_safe(PhErrorHandlingModes.CONTINUE_ON_ERROR)
-            temp_output_data = []
             output_data = data_type.get_output_data()
+            temp_output_data = []
             if isinstance(output_data, list):
                 temp_output_data = output_data
             else:
@@ -120,21 +118,28 @@ def handle_requests():
             default_data.update({PhKeys.OUTPUT_DATA: temp_output_data})
         if sample_data_dict:
             # PhUtil.print_iter(sample_data_dict, header='Request Output for sample_data_dict')
-            default_data.update({PhKeys.RAW_DATA: sample_data_dict.get(PhKeys.RAW_DATA)})
+            if PhKeys.RAW_DATA in sample_data_dict:
+                default_data.update({PhKeys.RAW_DATA: sample_data_dict.get(PhKeys.RAW_DATA)})
             if PhKeys.SPLIT_QRS in sample_data_dict:
                 default_data.update({PhKeys.SPLIT_QRS: sample_data_dict.get(PhKeys.SPLIT_QRS)})
             if PhKeys.QR_CODE_VERSION in sample_data_dict:
                 default_data.update({PhKeys.SELECTED_QR_CODE_VERSION: sample_data_dict.get(PhKeys.QR_CODE_VERSION)})
             if PhKeys.SCALE in sample_data_dict:
                 default_data.update({PhKeys.SCALE: sample_data_dict.get(PhKeys.SCALE)})
-            default_data.update({PhKeys.REMARKS_LIST: sample_data_dict.get(PhKeys.REMARKS_LIST)})
+            if PhKeys.REMARKS_LIST in sample_data_dict:
+                default_data.update({PhKeys.REMARKS_LIST: sample_data_dict.get(PhKeys.REMARKS_LIST)})
         else:
             # PhUtil.print_iter(requested_data_dict, header='Request Output for requested_data_dict')
-            default_data.update({PhKeys.RAW_DATA: requested_data_dict[PhKeys.RAW_DATA]})
-            default_data.update({PhKeys.SPLIT_QRS: requested_data_dict[PhKeys.SPLIT_QRS]})
-            default_data.update({PhKeys.SELECTED_QR_CODE_VERSION: requested_data_dict[PhKeys.QR_CODE_VERSION]})
-            default_data.update({PhKeys.SCALE: requested_data_dict[PhKeys.SCALE]})
-            default_data.update({PhKeys.REMARKS_LIST: requested_data_dict[PhKeys.REMARKS_LIST]})
+            if PhKeys.RAW_DATA in requested_data_dict:
+                default_data.update({PhKeys.RAW_DATA: requested_data_dict[PhKeys.RAW_DATA]})
+            if PhKeys.SPLIT_QRS in requested_data_dict:
+                default_data.update({PhKeys.SPLIT_QRS: requested_data_dict[PhKeys.SPLIT_QRS]})
+            if PhKeys.QR_CODE_VERSION in requested_data_dict:
+                default_data.update({PhKeys.SELECTED_QR_CODE_VERSION: requested_data_dict[PhKeys.QR_CODE_VERSION]})
+            if PhKeys.SCALE in requested_data_dict:
+                default_data.update({PhKeys.SCALE: requested_data_dict[PhKeys.SCALE]})
+            if PhKeys.REMARKS_LIST in requested_data_dict:
+                default_data.update({PhKeys.REMARKS_LIST: requested_data_dict[PhKeys.REMARKS_LIST]})
         default_data.update({PhKeys.SAMPLE_PROCESSING: sample_processing})
         PhUtil.print_iter(default_data, header='Request Output')
         PhUtil.print_separator(main_text=f'{Const.TEMPLATE_QR_PLAY} Post Request Completed')

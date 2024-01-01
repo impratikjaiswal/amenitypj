@@ -8,6 +8,9 @@
     <a href="{{app_github_url}}" rel="noopener noreferrer" target="_blank">
         <span class="badge badge-success">@Github</span>
     </a>
+    <a href="#samples_section" rel="noopener noreferrer">
+        <span class="badge badge-info">Jump To Samples</span>
+    </a>
     <BR>
     <h6>{{app_description}}</h6>
     <form method="post">
@@ -58,6 +61,9 @@
             <button type="submit" name="process_download_output" class="btn btn-secondary" disabled>Download Output</button>
             <button type="submit" name="process_download_yml" class="btn btn-secondary" disabled>Download Yml</button>
         </div>
+        <a href="#samples_section" rel="noopener noreferrer">
+            <span class="badge badge-info">Jump To Samples</span>
+        </a>
         <div id="output_data">
             <label for="output_data">Output Data</label>
             <div id="output_statement">
@@ -67,8 +73,11 @@
         <div id="debug_data">
         </div>
         <BR>
+        <a href="" rel="noopener noreferrer">
+            <span class="badge badge-info">Jump To Input</span>
+        </a>
         <h2>Not Sure How To Proceed? Try Below Samples.</h2>
-        <div class="form-group">
+        <div class="form-group" id="samples_section">
             <label for="sample_processing">How the Sample should be processed?</label>
             <BR>&nbsp;&nbsp;&nbsp;
             <!-- TODO: Try alternates of "class="form-control", Manual Spaces needs to be removed -->
@@ -86,9 +95,14 @@
             <button type="submit" name="sample_1" class="btn btn-success">Simple TLV</button>
             <button type="submit" name="sample_2" class="btn btn-success">Parallel Simple TLVs</button>
             <button type="submit" name="sample_3" class="btn btn-success">Multi Byte Tag</button>
-            <button type="submit" name="sample_4" class="btn btn-success">Nested BER TLV; Ascii</button>
-            <button type="submit" name="sample_5" class="btn btn-success">Nested BER TLV; Length</button>
-            <button type="submit" name="sample_6" class="btn btn-success">Complex Nested Ber TLVs</button>
+            <BR>
+            <button type="submit" name="sample_4" class="btn btn-success">BER TLV; without One Liner</button>
+            <button type="submit" name="sample_4_1" class="btn btn-success">BER TLV; One Liner</button>
+            <button type="submit" name="sample_4_2" class="btn btn-success">BER TLV; Length In Decimal</button>
+            <button type="submit" name="sample_4_3" class="btn btn-success">BER TLV; Value In Ascii</button>
+            <button type="submit" name="sample_4_4" class="btn btn-success">Nested BER TLV; All Options</button>
+            <BR>
+            <button type="submit" name="sample_5" class="btn btn-success">Complex Nested Ber TLVs</button>
         </div>
     </form>
 {% endblock %}

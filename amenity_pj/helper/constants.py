@@ -22,7 +22,7 @@ class Const:
     END_POINT_AMENITY_PJ = 'index'
     URL_AMENITY_PJ = '/'
     TEMPLATE_AMENITY_PJ = 'index.html'
-    GITHUB_URL_AMENITY_PJ = GITHUB_URL_DEFAULT
+    GITHUB_URL_AMENITY_PJ = 'https://impratikjaiswal.github.io/amenitypj/'
 
     TITLE_ASN1_PLAY = 'ASN1 Play'
     DESCRIPTION_ASN1_PLAY = 'ASN1 Encoder & Decoder based on pycrate.'
