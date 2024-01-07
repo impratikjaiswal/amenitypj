@@ -1,0 +1,5 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="debug_script" type="JavascriptDebugType" uri="http://127.0.0.1:5000/asn1Play" useFirstLineBreakpoints="true">
+    <method v="2" />
+  </configuration>
+</component>

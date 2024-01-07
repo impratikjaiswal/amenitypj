@@ -1,0 +1,19 @@
+import sqlite3
+
+connection = sqlite3.connect('db/cars.db')
+
+with open('db/create_tables_and_data.sql') as f:
+    connection.executescript(f.read())
+
+cur = connection.cursor()
+
+# cur.execute("INSERT INTO posts (title, content) VALUES (?, ?)",
+#             ('First Post', 'Content for the first post')
+#             )
+#
+# cur.execute("INSERT INTO posts (title, content) VALUES (?, ?)",
+#             ('Second Post', 'Content for the second post')
+#             )
+
+connection.commit()
+connection.close()

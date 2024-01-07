@@ -19,7 +19,7 @@
     <h3>Sample 3: specific is selected</h3>
     <select name="colour" method="GET" action="/">
         {% for colour in colours %}
-            {% if colour == default_colour: %}
+            {% if colour == default_colour %}
                 <option value= "{{colour}}" SELECTED>{{colour}}</option>"
         	{% else %}
                 <option value="{{colour}}">{{colour}}</option>

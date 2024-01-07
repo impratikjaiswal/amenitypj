@@ -20,7 +20,7 @@
         </div>
         <div class="form-group">
             <label for="length_in_decimal">Length In Decimal</label>
-            {% if length_in_decimal: %}
+            {% if length_in_decimal %}
                 <input type="checkbox" name="length_in_decimal" class="form-check-inline" 
                     value="{{length_in_decimal}}" checked>
             {% else %}
@@ -30,7 +30,7 @@
         </div>
         <div class="form-group">
             <label for="value_in_ascii">Value In Ascii</label>
-            {% if value_in_ascii: %}
+            {% if value_in_ascii %}
                 <input type="checkbox" name="value_in_ascii" class="form-check-inline"
                     value="{{value_in_ascii}}" checked>
             {% else %}
@@ -40,7 +40,7 @@
         </div>
         <div class="form-group">
             <label for="one_liner">One Liner</label>
-            {% if one_liner: %}
+            {% if one_liner %}
                 <input type="checkbox" name="one_liner" class="form-check-inline"
                     value="{{one_liner}}" checked>
             {% else %}
@@ -81,7 +81,7 @@
             <label for="sample_processing">How the Sample should be processed?</label>
             <BR>&nbsp;&nbsp;&nbsp;
             <!-- TODO: Try alternates of "class="form-control", Manual Spaces needs to be removed -->
-            {% if sample_processing == 'load_only': %}
+            {% if sample_processing == 'load_only' %}
                 <input type="radio" name="sample_processing" value="load_and_submit">&nbsp;&nbsp;Load & Submit</input>
                 <BR>&nbsp;&nbsp;&nbsp;
                 <input type="radio" name="sample_processing" value="load_only" checked>&nbsp;&nbsp;Load Only</input>
