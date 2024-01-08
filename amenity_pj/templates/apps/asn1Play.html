@@ -54,7 +54,7 @@
         </div>
         <div class="form-group">
             <label for="asn1_schema">Asn1 Schema</label>
-            <select name="asn1_schemas" id="asn1_schemas" class="form-control" placeholder="Asn1 Schema">
+            <select name="asn1_schema" id="asn1_schema" class="form-control" placeholder="Asn1 Schema">
                 {% for asn1_schema in asn1_schemas %}
                     <option value="{{asn1_schema}}" {{ is_selected_asn1_schema(asn1_schema, selected_asn1_schema) }}>{{asn1_schema}}</option>
                 {% endfor %}
@@ -62,7 +62,7 @@
         </div>
         <div class="form-group">
             <label for="asn1_object">Asn1 Object</label>
-            <select name="asn1_objects" id="asn1_objects" class="form-control" placeholder="Asn1 Object">
+            <select name="asn1_object" id="asn1_object" class="form-control" placeholder="Asn1 Object">
                 {% for asn1_object in asn1_objects %}
                     <option value="{{asn1_object}}" {{ is_selected_asn1_object(asn1_object, selected_asn1_object) }}>{{asn1_object}}</option>
                 {% endfor %}
