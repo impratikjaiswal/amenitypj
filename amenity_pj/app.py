@@ -95,6 +95,11 @@ def asn1_play():
     return app_asn1_play.handle_requests()
 
 
+@app.route(Const.URL_ASN1_PLAY_ASN1_OBJECTS)
+def asn1_play_asn1_objects():
+    return app_asn1_play.handle_asn1_objects()
+
+
 @sitemapper.include(lastmod=Const.DEPLOYMENT_DATE)
 @app.route(Const.URL_TLV_PLAY, methods=('GET', 'POST'))
 def tlv_play():

@@ -22,7 +22,7 @@
             <label for="input_format">Input Format</label>
             <select name="input_format" class="form-control" placeholder="Input Format">
                 {% for input_format in input_formats %}
-                    {% if input_format == selected_input_format: %}
+                    {% if input_format == selected_input_format %}
                         <option value="{{input_format}}" SELECTED>{{input_format}}</option>
                     {% else %}
                         <option value="{{input_format}}">{{input_format}}</option>
@@ -34,7 +34,7 @@
             <label for="output_format">Output Format</label>
             <select name="output_format" class="form-control" placeholder="Output Format">
                 {% for output_format in output_formats %}
-                    {% if output_format == selected_output_format: %}
+                    {% if output_format == selected_output_format %}
                         <option value="{{output_format}}" SELECTED>{{output_format}}</option>
                     {% else %}
                         <option value="{{output_format}}">{{output_format}}</option>
@@ -44,7 +44,7 @@
         </div>
         <div class="form-group">
             <label for="tlv_parsing_of_output">TLV Parsing of Output (if possible)</label>
-            {% if tlv_parsing_of_output: %}
+            {% if tlv_parsing_of_output %}
                 <input type="checkbox" name="tlv_parsing_of_output" class="form-check-inline"
                     value="{{tlv_parsing_of_output}}" checked>
             {% else %}
@@ -54,7 +54,7 @@
         </div>
         <div class="form-group">
             <label for="asn1_schema">Asn1 Schema</label>
-            <select name="asn1_schema" class="form-control" placeholder="Asn1 Schema">
+            <select name="asn1_schemas" id="asn1_schemas" class="form-control" placeholder="Asn1 Schema">
                 {% for asn1_schema in asn1_schemas %}
                     <option value="{{asn1_schema}}" {{ is_selected_asn1_schema(asn1_schema, selected_asn1_schema) }}>{{asn1_schema}}</option>
                 {% endfor %}
@@ -62,7 +62,7 @@
         </div>
         <div class="form-group">
             <label for="asn1_object">Asn1 Object</label>
-            <select name="asn1_object" class="form-control" placeholder="Asn1 Object">
+            <select name="asn1_objects" id="asn1_objects" class="form-control" placeholder="Asn1 Object">
                 {% for asn1_object in asn1_objects %}
                     <option value="{{asn1_object}}" {{ is_selected_asn1_object(asn1_object, selected_asn1_object) }}>{{asn1_object}}</option>
                 {% endfor %}
@@ -81,7 +81,7 @@
         </div>
         <div class="form-group">
             <label for="fetch_asn1_objects_list">Fetch Asn1 Objects List</label>
-            {% if fetch_asn1_objects_list: %}
+            {% if fetch_asn1_objects_list %}
                 <input type="checkbox" name="fetch_asn1_objects_list" class="form-check-inline"
                     value="{{fetch_asn1_objects_list}}" checked>
             {% else %}
@@ -95,12 +95,12 @@
                 value="{{remarks_list}}">
         </div>
         <div class="form-group">
-            <button type="submit" class="btn btn-primary">Submit</button>
-            <button type="submit" name="process_reset" class="btn btn-primary" disabled>Reset</button>
+            <button type="submit" id="process_input" name="process_input" class="btn btn-primary">Submit</button>
+            <button type="submit" id="process_reset" name="process_reset" class="btn btn-primary" disabled>Reset</button>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button type="submit" id="process_copy_clipboard" name="process_copy_clipboard" class="btn btn-secondary">Copy Output</button>
-            <button type="submit" name="process_download_output" class="btn btn-secondary" disabled>Download Output</button>
-            <button type="submit" name="process_download_yml" class="btn btn-secondary" disabled>Download Yml</button>
+            <button type="submit" id="process_download_output" name="process_download_output" class="btn btn-secondary" disabled>Download Output</button>
+            <button type="submit" id="process_download_yml" name="process_download_yml" class="btn btn-secondary" disabled>Download Yml</button>
         </div>
         <a href="#samples_section" rel="noopener noreferrer">
             <span class="badge badge-info">Jump To Samples</span>
@@ -114,7 +114,7 @@
         <div id="debug_data">
         </div>
         <BR>
-        <a href="" rel="noopener noreferrer">
+        <a href="#" rel="noopener noreferrer">
             <span class="badge badge-info">Jump To Input</span>
         </a>
         <h2>Not Sure How To Proceed? Try Below Samples.</h2>
@@ -122,7 +122,7 @@
             <label for="sample_processing">How the Sample should be processed?</label>
             <BR>&nbsp;&nbsp;&nbsp;
             <!-- TODO: Try alternates of "class="form-control", Manual Spaces needs to be removed -->
-            {% if sample_processing == 'load_only': %}
+            {% if sample_processing == 'load_only' %}
                 <input type="radio" name="sample_processing" value="load_and_submit">&nbsp;&nbsp;Load & Submit</input>
                 <BR>&nbsp;&nbsp;&nbsp;
                 <input type="radio" name="sample_processing" value="load_only" checked>&nbsp;&nbsp;Load Only</input>
@@ -147,4 +147,8 @@
             <button type="submit" name="sample_6" class="btn btn-success">Hex to Ascii</button>
         </div>
     </form>
+{% endblock %}
+<!-- Page Specific Script -->
+{% block page_specific_script %}
+        <script src="{{ url_for('static', filename='/js/custom_asn1Play.js') }}"></script>
 {% endblock %}

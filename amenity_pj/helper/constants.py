@@ -29,6 +29,7 @@ class Const:
     VERSION_ASN1_PLAY = f'v{asn1_play_config.TOOL_VERSION}'
     END_POINT_ASN1_PLAY = 'asn1_play'
     URL_ASN1_PLAY = '/asn1Play'
+    URL_ASN1_PLAY_ASN1_OBJECTS = '/asn1Play/asn1Objects'
     TEMPLATE_ASN1_PLAY = 'asn1Play.html'
     GITHUB_URL_ASN1_PLAY = 'https://impratikjaiswal.github.io/asn1play/'
 

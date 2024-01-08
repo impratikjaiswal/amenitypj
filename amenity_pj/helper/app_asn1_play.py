@@ -1,10 +1,11 @@
 from asn1_play.generated_code.asn1.GSMA.SGP_22 import asn1_mapping
+from asn1_play.generated_code.asn1.asn1 import Asn1
 from asn1_play.generated_code.asn1.asn1_versions import Asn1Versions
 from asn1_play.main.data_type.data_type_master import DataTypeMaster
 from asn1_play.main.helper.defaults import Defaults
 from asn1_play.main.helper.formats import Formats
 from asn1_play.main.helper.formats_group import FormatsGroup
-from flask import render_template, request
+from flask import render_template, request, jsonify
 from python_helpers.ph_constants import PhConstants
 from python_helpers.ph_keys import PhKeys
 from python_helpers.ph_modes_error_handling import PhErrorHandlingModes
@@ -128,8 +129,9 @@ def handle_requests():
 
     input_formats = PhUtil.generalise_list(FormatsGroup.INPUT_FORMATS)
     output_formats = PhUtil.generalise_list(FormatsGroup.ALL_FORMATS)
-    asn1_objects = PhUtil.generalise_list(asn1_mapping)
-    asn1_schemas = PhUtil.generalise_list(PhUtil.get_obj_list(Asn1Versions, clean_name=True))
+    asn1_schemas = PhUtil.generalise_list(Asn1Versions._get_list_of_supported_versions())
+    default_selected_asn1_schema = Defaults.ASN1_SCHEMA.get_name()
+    asn1_objects = get_asn1_objects_list(default_selected_asn1_schema)
     default_data = {
         'app_title': Const.TITLE_ASN1_PLAY,
         'app_description': Const.DESCRIPTION_ASN1_PLAY,
@@ -144,7 +146,7 @@ def handle_requests():
         'asn1_object_alternate': PhConstants.STR_EMPTY,
         'selected_input_format': Defaults.FORMAT_INPUT,
         'selected_output_format': Defaults.FORMAT_OUTPUT,
-        'selected_asn1_schema': Defaults.ASN1_SCHEMA.get_name(),
+        'selected_asn1_schema': default_selected_asn1_schema,
         'selected_asn1_object': Defaults.ASN1_OBJECT,
         PhKeys.FETCH_ASN1_OBJECTS_LIST: False,
         'sample_processing': 'load_only',
@@ -161,8 +163,10 @@ def handle_requests():
         sample_processing = requested_data_dict[PhKeys.SAMPLE_PROCESSING]
         # When submitting an HTML form,
         # 1) unchecked checkboxes do not send any data, however checked checkboxes do send False (may send True as well)
-        requested_data_dict.update({'tlv_parsing_of_output': True if 'tlv_parsing_of_output' in requested_data_dict else False})
-        requested_data_dict.update({PhKeys.FETCH_ASN1_OBJECTS_LIST: True if PhKeys.FETCH_ASN1_OBJECTS_LIST in requested_data_dict else False})
+        requested_data_dict.update(
+            {'tlv_parsing_of_output': True if 'tlv_parsing_of_output' in requested_data_dict else False})
+        requested_data_dict.update(
+            {PhKeys.FETCH_ASN1_OBJECTS_LIST: True if PhKeys.FETCH_ASN1_OBJECTS_LIST in requested_data_dict else False})
         sample_data_dict = None
         for key in requested_data_dict.keys():
             if not key.startswith(PhKeys.SAMPLE):
@@ -237,3 +241,28 @@ def handle_requests():
         PhUtil.print_separator(main_text=f'{Const.TEMPLATE_ASN1_PLAY} Post Request Completed')
         return render_template(Const.TEMPLATE_ASN1_PLAY, **default_data)
     return render_template(Const.TEMPLATE_ASN1_PLAY, **default_data)
+
+
+def get_asn1_objects_list(asn1_schema_str):
+    asn1_objects_list = []
+    if not PhUtil.is_generalised_item(asn1_schema_str):
+        asn1_schema = Asn1Versions._get_asn1_version(asn1_schema_str)
+        asn1 = Asn1(asn1_schema=asn1_schema)
+        asn1_objects_list = asn1.get_asn1_object_list()
+    asn1_objects_list = PhUtil.generalise_list(asn1_objects_list)
+    return asn1_objects_list
+
+
+def handle_asn1_objects():
+    """
+
+    :return:
+    """
+    selected_asn1_schema_js = request.args.get('selected_asn1_schema_js', type=str)
+    updated_values = get_asn1_objects_list(selected_asn1_schema_js)
+    html_string_selected = ''
+    for entry in updated_values:
+        html_string_selected += '<option value="{}">{}</option>'.format(entry, entry)
+    print(f'selected_asn1_schema_js: {selected_asn1_schema_js}')
+    print(f'html_string_selected: {html_string_selected}')
+    return jsonify(html_string_selected=html_string_selected)

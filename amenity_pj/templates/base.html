@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
     <head>
-        <!-- Required meta tags -->
+        <!-- Meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="{% block description %} {% endblock %}">
@@ -65,11 +65,17 @@
             {% endfor %}
             {% block content %} {% endblock %}
         </div>
-        <!-- Optional JavaScript; choose one of the two! -->
-        <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
-        <script src="{{ url_for('static', filename='/js/jquery.slim.min_formatted.js') }}"></script>
-        <script src="{{ url_for('static', filename='/js/bootstrap.bundle.min_formatted.js') }}"></script>
-        <!-- Custom Scripts -->
+        <!-- JavaScripts -->
+        <!-- Option 2: Separate Popper and Bootstrap JS -->
+		<!-- Jquery (with Ajax) Script -->
+        <script src="{{ url_for('static', filename='/js/jquery-3.5.1.min_formatted.js') }}"></script>
+		<!-- Pooper Script -->
+        <script src="{{ url_for('static', filename='/js/popper-1.16.1.min_formatted.js') }}"></script>
+		<!-- Bootstrap Script -->
+        <script src="{{ url_for('static', filename='/js/bootstrap-4.6.2.min_formatted.js') }}"></script>
+        <!-- Custom Script -->
         <script src="{{ url_for('static', filename='/js/custom.js') }}"></script>
+        <!-- Page Specific Script -->
+        {% block page_specific_script %} {% endblock %}
     </body>
 </html>
