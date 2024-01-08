@@ -30,7 +30,7 @@ class Const:
     END_POINT_ASN1_PLAY = 'asn1_play'
     URL_ASN1_PLAY = '/asn1Play'
     URL_ASN1_PLAY_ASN1_OBJECTS = '/asn1Play/asn1Objects'
-    TEMPLATE_ASN1_PLAY = 'asn1Play.html'
+    TEMPLATE_ASN1_PLAY = '/apps/asn1Play.html'
     GITHUB_URL_ASN1_PLAY = 'https://impratikjaiswal.github.io/asn1play/'
 
     TITLE_EXCEL_PLAY = 'Excel Play'
@@ -48,7 +48,7 @@ class Const:
     VERSION_TLV_PLAY = f'v{tlv_play_config.TOOL_VERSION}'
     END_POINT_TLV_PLAY = 'tlv_play'
     URL_TLV_PLAY = '/tlvPlay'
-    TEMPLATE_TLV_PLAY = 'tlvPlay.html'
+    TEMPLATE_TLV_PLAY = '/apps/tlvPlay.html'
     GITHUB_URL_TLV_PLAY = 'https://impratikjaiswal.github.io/tlvPlay/'
 
     TITLE_QR_PLAY = 'QR Play'
@@ -56,7 +56,7 @@ class Const:
     VERSION_QR_PLAY = f'v{qr_play_config.TOOL_VERSION}'
     END_POINT_QR_PLAY = 'qr_play'
     URL_QR_PLAY = '/qrPlay'
-    TEMPLATE_QR_PLAY = 'qrPlay.html'
+    TEMPLATE_QR_PLAY = '/apps/qrPlay.html'
     GITHUB_URL_QR_PLAY = 'https://impratikjaiswal.github.io/qrPlay/'
 
     TITLE_TESTIMONIALS = 'Testimonials'
