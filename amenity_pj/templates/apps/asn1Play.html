@@ -69,7 +69,8 @@
             </select>
         </div>
         <div class="form-group">
-            <i><B>Pro Tip:</B> If above drop down list is empty (dynamic list population fails) or required object is not listed, try below field !!!</i><BR>
+            <!-- TODO: Font Size can be reduced -->
+            <i><B>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pro Tip:</B> If above drop down list is empty (dynamic list population fails) or required object is not listed, try below field !!!</i><BR>
         </div>
         <div class="form-group">
             <label for="asn1_object_alternate">Asn1 Object Alternate</label>
@@ -77,9 +78,7 @@
                 value="{{asn1_object_alternate}}">
         </div>
         <div class="form-group">
-            <i><B>Pro Tip:</B> Use below field to fetch the (static) list for selected Asn1 Schema !!!</i><BR>
-        </div>
-        <div class="form-group">
+        <!-- TODO: Tool Tip: Use this field to fetch the (static) list for selected Asn1 Schema !!! -->
             <label for="fetch_asn1_objects_list">Fetch Asn1 Objects List</label>
             {% if fetch_asn1_objects_list %}
                 <input type="checkbox" name="fetch_asn1_objects_list" class="form-check-inline"

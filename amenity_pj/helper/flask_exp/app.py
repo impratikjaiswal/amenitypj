@@ -1,4 +1,19 @@
-# SEE: https://stackoverflow.com/questions/25978879/how-to-create-chained-selectfield-in-flask-without-refreshing-the-page/49969686#49969686
+# References:
+# https://stackoverflow.com/questions/68852940/how-to-create-two-dependent-dynamic-dropdown-lists-using-flask/68860222#68860222
+# https://stackoverflow.com/questions/25978879/how-to-create-chained-selectfield-in-flask-without-refreshing-the-page/49969686#49969686
+
+""" Below is the list of changed variables names, when implementing in amenityPj
+
+all_classes = asn1_schema
+all_entries = asn1_object
+process_input = process_input
+processed_results = debug_data
+_update_dropdown    =   _update_asn1_object
+selected_class = selected_asn1_schema_js
+selected_entry = selected_asn1_object_js
+update_dropdown = update_asn1_object
+https://code.jquery.com/jquery-1.12.4.js" = jquery-3.5.1.min_formatted.js
+"""
 import os
 
 # flask sqlalchemy
