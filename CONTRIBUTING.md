@@ -1,16 +1,10 @@
 # Contributing to this project
 
-Thanks for your interest in contributing to Amenity Pj! Please take a moment to review this document in order to make
+Thanks for your interest in contributing to Amenity Pj !!! Please take a moment to review this document in order to make
 the contribution process easy and effective for everyone involved.
 
 Following these guidelines helps to communicate that you respect the time of the developers managing and developing this
 open source project. In return, they should reciprocate that respect in addressing your issue or assessing patches and features.
-
-## Where do I go from here?
-
-For any questions, support, or ideas, etc. 
-[please create a GitHub discussion](https://github.com/impratikjaiswal/amenitypj/discussions/new/choose).
-If you've noticed a bug, [please submit an issue](https://github.com/impratikjaiswal/amenitypj/issues/new).
 
 ## Using the issue tracker
 
@@ -24,21 +18,26 @@ respect the following restrictions:
 * Please **do not** derail or troll issues. Keep the discussion on topic and
   respect the opinions of others.
 
+For any questions, support, or ideas, etc. 
+[please create a GitHub discussion](https://github.com/impratikjaiswal/amenitypj/discussions/new/choose).
+
 ## Bug reports
 
 A bug is a _demonstrable problem_ that is caused by the code in the repository.
 Good bug reports are extremely helpful - thank you!
 
-Guidelines for bug reports:
+If you've noticed a bug, [please submit an issue](https://github.com/impratikjaiswal/amenitypj/issues/new).
+
+## Bug Reports Guidelines
 
 1. **Use the GitHub issue search.** Check if the issue has already been
-   reported.
+   [reported](https://github.com/impratikjaiswal/amenitypj/issues).
 
 2. **Check if the issue has been fixed.** Try to reproduce it using the
-   latest `main` or development branch in the repository.
+   latest `main` or `dev` branch in the repository.
 
 3. **Provide environment details.** Provide your operating system, browser(s),
-   python version, Project version.
+   python version, project version and other details.
 
 4. **Include supporting references (if any).** 
 
@@ -59,13 +58,10 @@ Example:
 > 2. This is the second step
 > 3. Further steps, etc.
 >
-> `<url>` - a link to the reduced test case
->
 > Any other information you want to share that is relevant to the issue being
 > reported. This might include the lines of code that you have identified as
 > causing the bug, and potential solutions (and your opinions on their
 > merits).
-
 
 ## Feature requests
 
@@ -84,7 +80,7 @@ feature. To avoid this from happening, we request that contributors create
 new ideas. Your ideas and suggestions are welcome!
 
 Please ensure that the tests are passing when submitting a pull request. 
-If you're adding new features to Amenity Pj, please include tests.
+If you're adding new features to this project, please include tests.
 
 ## Pull Request Guidelines
 
@@ -93,7 +89,7 @@ the authors (and/or leaders) of the project a non-exclusive license to
 re-distribute your code under the current license and possibly re-license the
 code as deemed necessary.
 
-If this is something you think you can fix, then [fork Amenity Pj](https://github.com/impratikjaiswal/amenitypj/fork) and create
+If this is something you think you can fix, then [fork](https://github.com/impratikjaiswal/amenitypj/fork) and create
 a branch with a descriptive name.
 
 * IMPORTANT: base your PR on the `dev` branch and target the `dev` branch
