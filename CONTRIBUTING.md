@@ -1,6 +1,6 @@
-# Contributing to this project
+# Contributing to Amenity Pj !!!
 
-Thanks for your interest in contributing to Amenity Pj !!! Please take a moment to review this document in order to make
+Thanks for your interest in contributing to this project. Please take a moment to review this document in order to make
 the contribution process easy and effective for everyone involved.
 
 Following these guidelines helps to communicate that you respect the time of the developers managing and developing this
