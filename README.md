@@ -1,5 +1,15 @@
 # amenitypj
-Source code of [https://amenitypj.in/](https://amenitypj.in/)
+<h1 style="text-align: center;">amenitypj</h1>
+
+<div style="text-align: center;">
+    Source code of [https://amenitypj.in/](https://amenitypj.in/)
+</div>
+
+<p style="text-align: center;">
+    <strong>
+        Source code of [https://amenitypj.in/](https://amenitypj.in/)
+    </strong>
+</p>
 
 [![GitHub License](https://img.shields.io/github/license/impratikjaiswal/amenitypj)](LICENSE)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CONDUCT.md)
@@ -16,4 +26,4 @@ Source code of [https://amenitypj.in/](https://amenitypj.in/)
 [![Sample 1](https://github.com/impratikjaiswal/amenitypj/blob/main/static/images/sample_web_1.gif?raw=true)](https://amenitypj.in/)
 
 # How To Install
-Installation Steps can be found [here](https://github.com/impratikjaiswal/pythonHelpers/blob/main/HOW_TO_INSTALL_PYTHON_APPS.md)
+Installation Steps can be found [here](https://github.com/impratikjaiswal/pythonHelpers/blob/main/HOW_TO_INSTALL_PYTHON_APPS.md).
