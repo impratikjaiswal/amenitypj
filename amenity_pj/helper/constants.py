@@ -17,7 +17,8 @@ class Const:
 
     TITLE_AMENITY_PJ = amenity_pj_config.TOOL_TITLE
     DESCRIPTION_AMENITY_PJ = ('Amenity Pj offers a playground for various open source tools (amenities) such as ASN1 '
-                              'Play, TLV Play, QR Play which are crafted with the purpose of enhancing productivity.')
+                              'Play, TLV Play, QR Play, Excel Play which are crafted with the purpose of enhancing '
+                              'productivity.')
     VERSION_AMENITY_PJ = f'v{amenity_pj_config.TOOL_VERSION}'
     END_POINT_AMENITY_PJ = 'index'
     URL_AMENITY_PJ = '/'

@@ -1,5 +1,6 @@
 # amenitypj
 Source code of [https://amenitypj.in/](https://amenitypj.in/)
+<BR>Amenity Pj offers a playground for various open source tools (amenities) such as ASN1 Play, TLV Play, QR Play, Excel Play which are crafted with the purpose of enhancing productivity.
 
 [![GitHub License](https://img.shields.io/github/license/impratikjaiswal/amenitypj)](LICENSE)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CONDUCT.md)
@@ -15,5 +16,28 @@ Source code of [https://amenitypj.in/](https://amenitypj.in/)
 # Screen Shot(s) of Web App [![Static Badge](https://img.shields.io/badge/amenitypj.in-a)](https://amenitypj.in/) 
 ![sample_web_1](https://github.com/impratikjaiswal/amenitypj/blob/main/static/images/sample_web_1.gif?raw=true)
 
-# How To Install
-Installation Steps can be found [here](https://github.com/impratikjaiswal/pythonHelpers/blob/main/HOW_TO_INSTALL_PYTHON_APPS.md).
+# Installation/Setup
+Steps can be found [here](https://github.com/impratikjaiswal/pythonHelpers/blob/main/HOW_TO_INSTALL_PYTHON_APPS.md).
+
+# How To Use
+There are various ways to Get Started:
+
+  - Online Mode
+    - Website [![Static Badge](https://img.shields.io/badge/amenitypj.in-a)](https://amenitypj.in/) can be used
+  - Offline Mode (Requires Download / Cloning of the Repo)
+    - Code can be directly run from ```amenitypj/amenity_pj/app.py``` using any IDE
+    - Local Web server can be started by running ```/scripts/server_amenity_pj_start_debug.bat```
+
+# References
+1. [ASN1 Play](https://impratikjaiswal.github.io/asn1Play/)
+    [![Static Badge](https://img.shields.io/badge/amenitypj.in/asn1Play-a?label=website%20url)](https://amenitypj.in/asn1Play)
+    [![Website](https://img.shields.io/website?url=https://amenitypj.in/asn1Play&label=website%20status)](https://amenitypj.in/asn1Play)
+2. [TLV Play](https://impratikjaiswal.github.io/tlvPlay/)
+    [![Static Badge](https://img.shields.io/badge/amenitypj.in/asn1Play-a?label=website%20url)](https://amenitypj.in/asn1Play)
+    [![Website](https://img.shields.io/website?url=https://amenitypj.in/asn1Play&label=website%20status)](https://amenitypj.in/asn1Play)
+3. [QR Play](https://impratikjaiswal.github.io/qrPlay/)
+    [![Static Badge](https://img.shields.io/badge/amenitypj.in/asn1Play-a?label=website%20url)](https://amenitypj.in/asn1Play)
+    [![Website](https://img.shields.io/website?url=https://amenitypj.in/asn1Play&label=website%20status)](https://amenitypj.in/asn1Play)
+4. [Excel Play](https://impratikjaiswal.github.io/excelPlay/)
+    [![Static Badge](https://img.shields.io/badge/amenitypj.in/asn1Play-a?label=website%20url)](https://amenitypj.in/asn1Play)
+    [![Website](https://img.shields.io/website?url=https://amenitypj.in/asn1Play&label=website%20status)](https://amenitypj.in/asn1Play)
