@@ -8,10 +8,8 @@ Source code of [https://amenitypj.in/](https://amenitypj.in/)
 [![Static Badge](https://img.shields.io/badge/amenitypj.in-a?label=website%20url)](https://amenitypj.in/)
 [![Website](https://img.shields.io/website?url=https://amenitypj.in)](https://amenitypj.in/)
 
-[![Static Badge](https://img.shields.io/badge/amenitypj.in-a)](https://amenitypj.in/)
-[![Static Badge](https://img.shields.io/badge/impratikjaiswal.github.io-a)](https://impratikjaiswal.github.io/)
 
-# Screen Shot(s) of Web App
+# Screen Shot(s) of Web App [![Static Badge](https://img.shields.io/badge/amenitypj.in-a)](https://amenitypj.in/) [![Static Badge](https://img.shields.io/badge/impratikjaiswal.github.io-a)](https://impratikjaiswal.github.io/)
 [![Sample 1](https://github.com/impratikjaiswal/amenitypj/blob/main/static/images/sample_web_1.gif?raw=true)](https://amenitypj.in/)
 
 # How To Install
