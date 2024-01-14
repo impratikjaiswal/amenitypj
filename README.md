@@ -12,8 +12,7 @@ Source code of [https://amenitypj.in/](https://amenitypj.in/)
 [![Static Badge](https://img.shields.io/badge/impratikjaiswal.github.io-a)](https://impratikjaiswal.github.io/)
 
 # Screen Shot(s) of Web App
-[![Sample 1](https://github.com/impratikjaiswal/amenitypj/blob/main/images/sample_amenity_pj.png?raw=true)](https://amenitypj.in/)
+[![Sample 1](https://github.com/impratikjaiswal/amenitypj/blob/main/static/images/sample_web_1.gif?raw=true)](https://amenitypj.in/)
 
 # How To Install
 Installation Steps can be found [here](https://github.com/impratikjaiswal/pythonHelpers/blob/main/HOW_TO_INSTALL_PYTHON_APPS.md)
-
