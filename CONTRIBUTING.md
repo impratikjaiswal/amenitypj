@@ -1,26 +1,28 @@
 # Contributing to this project
 
-Please take a moment to review this document in order to make the contribution
-process easy and effective for everyone involved.
+Thanks for your interest in contributing to Amenity Pj! Please take a moment to review this document in order to make
+the contribution process easy and effective for everyone involved.
 
-Following these guidelines helps to communicate that you respect the time of
-the developers managing and developing this open source project. In return,
-they should reciprocate that respect in addressing your issue or assessing
-patches and features.
+Following these guidelines helps to communicate that you respect the time of the developers managing and developing this
+open source project. In return, they should reciprocate that respect in addressing your issue or assessing patches and features.
 
+## Where do I go from here?
+
+For any questions, support, or ideas, etc. 
+[please create a GitHub discussion](https://github.com/impratikjaiswal/amenitypj/discussions/new/choose).
+If you've noticed a bug, [please submit an issue](https://github.com/impratikjaiswal/amenitypj/issues/new).
 
 ## Using the issue tracker
 
 The issue tracker is the preferred channel for [bug reports](#bug-reports),
-[features requests](#feature-requests) and submitting pull requests, but please
+[features requests](#feature-requests) and submitting [pull requests](#pull-requests), but please
 respect the following restrictions:
 
 * Please **do not** use the issue tracker for personal support requests (use
-  [Stack Overflow](https://stackoverflow.com) or IRC).
+  [Stack Overflow](https://stackoverflow.com)).
 
 * Please **do not** derail or troll issues. Keep the discussion on topic and
   respect the opinions of others.
-
 
 ## Bug reports
 
@@ -33,15 +35,12 @@ Guidelines for bug reports:
    reported.
 
 2. **Check if the issue has been fixed.** Try to reproduce it using the
-   latest `master` or development branch in the repository.
+   latest `main` or development branch in the repository.
 
 3. **Provide environment details.** Provide your operating system, browser(s),
-   jQuery version, Bootstrap version, and bootstrap-select version.
+   python version, Project version.
 
-4. **Create an isolated and reproducible test case.** Create a [reduced test
-   case](https://css-tricks.com/reduced-test-cases/).
-
-5. **Include a live example.** Use [this Plunker debugging template](https://developer.snapappointments.com/bootstrap-select/playground/) to share your isolated test cases. You can also make use of [jsFiddle](https://jsfiddle.net/) or [JS Bin](https://jsbin.com/).
+4. **Include supporting references (if any).** 
 
 A good bug report shouldn't leave others needing to chase you up for more
 information. Please try to be as detailed as possible in your report. What is
@@ -75,6 +74,18 @@ fits with the scope and aims of the project. It's up to *you* to make a strong
 case to convince the project's developers of the merits of this feature. Please
 provide as much detail and context as possible.
 
+## Pull requests
+
+**Please ask first before starting work on any significant new features.**
+
+It's never a fun experience to have your pull request declined after investing a lot of time and effort into a new
+feature. To avoid this from happening, we request that contributors create
+[a feature request](https://github.com/impratikjaiswal/amenitypj/discussions/new?category=ideas) to first discuss any 
+new ideas. Your ideas and suggestions are welcome!
+
+Please ensure that the tests are passing when submitting a pull request. 
+If you're adding new features to Amenity Pj, please include tests.
+
 ## Pull Request Guidelines
 
 You must understand that by contributing code to this project, you are granting
@@ -82,9 +93,10 @@ the authors (and/or leaders) of the project a non-exclusive license to
 re-distribute your code under the current license and possibly re-license the
 code as deemed necessary.
 
+If this is something you think you can fix, then [fork Amenity Pj](https://github.com/impratikjaiswal/amenitypj/fork) and create
+a branch with a descriptive name.
+
 * IMPORTANT: base your PR on the `dev` branch and target the `dev` branch
-* To instantiate a context or use it, use the variable **that** instead of
-  **_this**.
 * Please check to make sure that there aren't existing pull requests attempting
   to address the issue mentioned. We also recommend checking for issues related
   to the issue on the tracker, as a team member may be working on the issue in
