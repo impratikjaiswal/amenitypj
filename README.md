@@ -1,5 +1,6 @@
 # amenitypj
 <h1 style="text-align: center;">amenitypj</h1>
+<h1 align="center">amenitypj</h1>
 
 <div style="text-align: center;">
     Source code of [https://amenitypj.in/](https://amenitypj.in/)
