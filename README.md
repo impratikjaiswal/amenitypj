@@ -1,22 +1,19 @@
 # amenitypj
+
 Source code of [https://amenitypj.in/](https://amenitypj.in/)
 
-[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](code_of_conduct.md)
+[![GitHub Release](https://img.shields.io/github/v/release/impratikjaiswal/amenitypj)](https://github.com/impratikjaiswal/amenitypj/releases/latest)
+[![GitHub License](https://img.shields.io/github/license/impratikjaiswal/amenitypj)](LICENSE)
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CONDUCT.md)
+[![Static Badge](https://img.shields.io/badge/amenitypj.in-a?label=website%20url)](https://amenitypj.in/)
+[![Website](https://img.shields.io/website?url=https://amenitypj.in)](https://amenitypj.in/)
+
+[![Static Badge](https://img.shields.io/badge/amenitypj.in-a)](https://amenitypj.in/)
+[![Static Badge](https://img.shields.io/badge/impratikjaiswal.github.io-a)](https://impratikjaiswal.github.io/)
+
+# Screen Shot(s) of Web App
+[![Sample 1](https://github.com/impratikjaiswal/amenitypj/blob/main/images/sample_amenity_pj.png?raw=true)](https://amenitypj.in/)
 
 # How To Install
-
-1. All Required packages are listed in requirements.txt
-1. Few Basic Scripts are also present under <i>scripts</i> folder.
-   - Currently, Scripts are targeting virtual environment with folder name as <i>venv</i> (Present in parallel of <i>scripts</i> folder)
-   - However, same can be modified as per user choice.
-   
-    **Note:** installing tool in virtual environment is optional but preferred.
-
-# Screen Shots
-![Sample 1](images\sample_amenity_pj.png)
-![Sample 1](images\sample_asn1play.png)
-![Sample 1](images\sample_tlv_play.png)
-![Sample 1](images\sample_qr_play.png)
-
-
+Installation Steps can be found [here](https://github.com/impratikjaiswal/pythonHelpers/blob/main/HOW_TO_INSTALL_PYTHON_APPS.md)
 

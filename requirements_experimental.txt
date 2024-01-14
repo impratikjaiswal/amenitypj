@@ -3,3 +3,4 @@
 #### Not the part of requirements.txt
 ##################################################
 
+flask_sqlalchemy
