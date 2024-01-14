@@ -1,7 +1,6 @@
 # amenitypj
-
 Source code of [https://amenitypj.in/](https://amenitypj.in/)
-<BR> 
+
 [![GitHub License](https://img.shields.io/github/license/impratikjaiswal/amenitypj)](LICENSE)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CONDUCT.md)
 
