@@ -1,17 +1,14 @@
-# amenitypj
-<h1 style="text-align: center;" markdown="1">amenitypj</h1>
-<h1 style="text-align: center;">amenitypj</h1>
-<h1 align="center">amenitypj</h1>
+<h1 align="center">
+    amenitypj
+</h1>
 
-<div style="text-align: center;">
-    Source code of [https://amenitypj.in/](https://amenitypj.in/)
-</div>
-
-<p style="text-align: center;">
+<div align="center">
     <strong>
         Source code of [https://amenitypj.in/](https://amenitypj.in/)
     </strong>
-</p>
+</div>
+
+<div align="center">
 
 [![GitHub License](https://img.shields.io/github/license/impratikjaiswal/amenitypj)](LICENSE)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CONDUCT.md)
@@ -23,6 +20,7 @@
 [![Website](https://img.shields.io/website?url=https://amenitypj.in&label=website%20status)](https://amenitypj.in/)
 [![Static Badge](https://img.shields.io/badge/impratikjaiswal.github.io-a?label=gihub%20website%20url)](https://impratikjaiswal.github.io/)
 [![Website](https://img.shields.io/website?url=https://amenitypj.in&label=website%20status)](https://amenitypj.in/)
+</div>
 
 # Screen Shot(s) of Web App [![Static Badge](https://img.shields.io/badge/amenitypj.in-a)](https://amenitypj.in/) 
 [![Sample 1](https://github.com/impratikjaiswal/amenitypj/blob/main/static/images/sample_web_1.gif?raw=true)](https://amenitypj.in/)
