@@ -10,10 +10,10 @@ Source code of [https://amenitypj.in/](https://amenitypj.in/)
 [![Static Badge](https://img.shields.io/badge/amenitypj.in-a?label=website%20url)](https://amenitypj.in/)
 [![Website](https://img.shields.io/website?url=https://amenitypj.in&label=website%20status)](https://amenitypj.in/)
 [![Static Badge](https://img.shields.io/badge/impratikjaiswal.github.io-a?label=gihub%20website%20url)](https://impratikjaiswal.github.io/)
-[![Website](https://img.shields.io/website?url=https://amenitypj.in&label=website%20status)](https://amenitypj.in/)
+[![Website](https://img.shields.io/website?url=https://amenitypj.in&label=website%20status)](https://impratikjaiswal.github.io/)
 
 # Screen Shot(s) of Web App [![Static Badge](https://img.shields.io/badge/amenitypj.in-a)](https://amenitypj.in/) 
-[![Sample 1](https://github.com/impratikjaiswal/amenitypj/blob/main/static/images/sample_web_1.gif?raw=true)](https://amenitypj.in/)
+![sample_web_1](https://github.com/impratikjaiswal/amenitypj/blob/main/static/images/sample_web_1.gif?raw=true)
 
 # How To Install
 Installation Steps can be found [here](https://github.com/impratikjaiswal/pythonHelpers/blob/main/HOW_TO_INSTALL_PYTHON_APPS.md).
