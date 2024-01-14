@@ -1,7 +1,6 @@
 <h1 align="center">
     amenitypj
 </h1>
-
 <div align="center">
     <strong>
         Source code of [https://amenitypj.in/](https://amenitypj.in/)
@@ -23,7 +22,7 @@
 [![Website](https://img.shields.io/website?url=https://amenitypj.in&label=website%20status)](https://amenitypj.in/)
 </div>
 
-
+#
 # Screen Shot(s) of Web App [![Static Badge](https://img.shields.io/badge/amenitypj.in-a)](https://amenitypj.in/) 
 [![Sample 1](https://github.com/impratikjaiswal/amenitypj/blob/main/static/images/sample_web_1.gif?raw=true)](https://amenitypj.in/)
 
