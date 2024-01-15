@@ -29,6 +29,13 @@ There are various ways to Get Started:
     - Code can be directly run from ```amenitypj/amenity_pj/app.py``` using any IDE
     - Local Web server can be started by running ```/scripts/server_amenity_pj_start_debug.bat```
 
+# Help
+Issue tracker can be found [here](CONTRIBUTING.md#issue-tracker).
+
+# Contributing
+ - Code of Conduct can be found [here](CODE_OF_CONDUCT.md).
+ - Contributing Guidelines can be found [here](CONTRIBUTING.md).
+
 # References &amp; Statistics
 1. [Amenity Pj](https://impratikjaiswal.github.io/amenitypj)
 
@@ -95,7 +102,7 @@ There are various ways to Get Started:
     [![Static Badge](https://img.shields.io/badge/impratikjaiswal.github.io/excelPlay-a?label=gihub%20website%20url)](https://impratikjaiswal.github.io/excelPlay)
     [![Website](https://img.shields.io/website?url=https://amenitypj.in/excelPlay&label=website%20status)](https://impratikjaiswal.github.io/excelPlay)
 
-6. Python Helpers
+6. [Python Helpers](https://impratikjaiswal.github.io/pythonHelpers/)
 
     ![GitHub License](https://img.shields.io/github/license/impratikjaiswal/pythonHelpers)
 
