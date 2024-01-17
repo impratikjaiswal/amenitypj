@@ -32,4 +32,10 @@
             <option value="{{colour}}">{{colour}}</option>
         {% endfor %}
     </select>
+    <h3>Sample 5: Live Search </h3>
+    <select name= colours class="selectpicker" data-live-search="true">
+        {% for colour in colours %}
+            <option value= "{{colour}}">{{colour}}</option>"
+        {% endfor %}
+    </select>
 {% endblock %}

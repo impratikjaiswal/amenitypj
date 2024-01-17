@@ -133,11 +133,6 @@ def button_samples():
     return render_template('button_samples.html')
 
 
-@app.route('/drop_down_live_search')
-def drop_down_live_search():
-    return render_template('drop_down_live_search.html')
-
-
 @app.route('/drop_down_samples')
 def drop_down_samples():
     colours = ['Red', 'Blue', 'Black', 'Orange']

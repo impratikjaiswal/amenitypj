@@ -2,14 +2,24 @@
 
 {% block content %}
     <h1>{% block title %} Welcome to FlaskBlog {% endblock %}</h1>
-    <a href="{{ url_for('blog_create') }}">
-            <h3>blog_create</h3>
-    </a>
-    <a href="{{ url_for('blog_view_only') }}">
-            <h3>blog_view_only</h3>
-    </a>
+    <div class="container-fluid">
+        <div class="row">
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+                <div class="sidebar-sticky pt-3">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('blog_create') }}">blog_create</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('blog_view_only') }}">blog_view_only</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
     {% for post in posts %}
-		<!-- <a href="#"> -->
+        <!-- <a href="#"> -->
         <a href="{{ url_for('blog_post', post_id=post['id']) }}">
             <h2>{{ post['title'] }}</h2>
         </a>
