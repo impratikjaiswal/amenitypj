@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Welcome to FlaskBlog {% endblock %}</h1>
+    <a href="{{ url_for('blog_create') }}">
+            <h3>blog_create</h3>
+    </a>
+    <a href="{{ url_for('blog_view_only') }}">
+            <h3>blog_view_only</h3>
+    </a>
+    {% for post in posts %}
+		<!-- <a href="#"> -->
+        <a href="{{ url_for('blog_post', post_id=post['id']) }}">
+            <h2>{{ post['title'] }}</h2>
+        </a>
+        <span class="badge badge-primary">{{ post['created'] }}</span>
+        <a href="{{ url_for('blog_edit', id=post['id']) }}">
+            <span class="badge badge-warning">blog_edit</span>
+        </a>
+        <a href="{{ url_for('blog_edit_wo_delete', id=post['id']) }}">
+            <span class="badge badge-warning">edit_wo_delete</span>
+        </a>
+        <a href="{{ url_for('blog_delete', id=post['id']) }}">
+            <span class="badge badge-warning">blog_delete</span>
+        </a>
+        <hr>
+    {% endfor %}
+{% endblock %}

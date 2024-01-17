@@ -10,14 +10,6 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'Pj Test'
 
 
-@app.route('/')
-def index():
-    conn = get_db_connection()
-    posts = conn.execute('SELECT * FROM posts').fetchall()
-    conn.close()
-    return render_template('index.html', posts=posts)
-
-
 def get_db_connection():
     # conn = sqlite3.connect(r'database.db')
     path = os.sep.join([os.path.dirname(os.path.realpath(__file__)), 'db', 'database.db'])
@@ -45,40 +37,18 @@ def get_delete(post_id):
     flash('"{}" was successfully deleted!'.format(post['title']))
 
 
-@app.route('/static')
-def index_static():
-    return render_template('index_static.html')
+###################################
+
+@app.route('/blog')
+def blog():
+    conn = get_db_connection()
+    posts = conn.execute('SELECT * FROM posts').fetchall()
+    conn.close()
+    return render_template('blog.html', posts=posts)
 
 
-@app.route('/span_samples')
-def span_samples():
-    return render_template('span_samples.html')
-
-
-@app.route('/drop_down_samples')
-def drop_down_samples():
-    colours = ['Red', 'Blue', 'Black', 'Orange']
-    return render_template('drop_down_samples.html', colours=colours, default_colour='Black')
-
-
-@app.route('/button_samples')
-def button_samples():
-    return render_template('button_samples.html')
-
-
-@app.route('/template')
-def index_template():
-    return render_template('index_plain_template.html')
-
-
-@app.route('/<int:post_id>')
-def post(post_id):
-    post = get_post(post_id)
-    return render_template('post.html', post=post)
-
-
-@app.route('/create', methods=('GET', 'POST'))
-def create():
+@app.route('/blog_create', methods=('GET', 'POST'))
+def blog_create():
     if request.method == 'POST':
         title = request.form['title']
         content = request.form['content']
@@ -91,12 +61,21 @@ def create():
                          (title, content))
             conn.commit()
             conn.close()
-            return redirect(url_for('index'))
-    return render_template('create.html')
+            return redirect(url_for('blog'))
+    return render_template('blog_create.html')
 
 
-@app.route('/<int:id>/edit', methods=('GET', 'POST'))
-def edit(id):
+@app.route('/<int:id>/blog_delete', methods=('GET', 'POST'))
+def blog_delete(id):
+    post = get_post(id)
+    if request.method == 'POST':
+        get_delete(id)
+        return redirect(url_for('blog'))
+    return render_template('blog_delete.html', post=post)
+
+
+@app.route('/<int:id>/blog_edit', methods=('GET', 'POST'))
+def blog_edit(id):
     post = get_post(id)
     if request.method == 'POST':
         title = request.form['title']
@@ -111,33 +90,78 @@ def edit(id):
                          (title, content, id))
             conn.commit()
             conn.close()
-            return redirect(url_for('index'))
-    return render_template('edit.html', post=post)
+            return redirect(url_for('blog'))
+    return render_template('blog_edit.html', post=post)
 
 
-@app.route('/<int:id>/delete', methods=('GET', 'POST'))
-def delete(id):
+@app.route('/<int:id>/blog_edit_wo_delete', methods=('GET', 'POST'))
+def blog_edit_wo_delete(id):
     post = get_post(id)
     if request.method == 'POST':
-        get_delete(id)
-        return redirect(url_for('index'))
-    return render_template('delete.html', post=post)
+        title = request.form['title']
+        content = request.form['content']
+
+        if not title:
+            flash('Title is required!')
+        else:
+            conn = get_db_connection()
+            conn.execute('UPDATE posts SET title = ?, content = ?'
+                         ' WHERE id = ?',
+                         (title, content, id))
+            conn.commit()
+            conn.close()
+            return redirect(url_for('blog'))
+    return render_template('blog_edit_wo_delete.html', post=post)
 
 
-@app.route('/<int:id>/delete_w_edit', methods=('POST',))
-def delete_w_edit(id):
-    get_delete(id)
-    return redirect(url_for('index'))
+@app.route('/<int:post_id>')
+def blog_post(post_id):
+    post = get_post(post_id)
+    return render_template('blog_post.html', post=post)
 
 
-@app.route('/segno_sample')
-def segno_sample():
+@app.route('/blog_view_only')
+def blog_view_only():
+    conn = get_db_connection()
+    posts = conn.execute('SELECT * FROM posts').fetchall()
+    conn.close()
+    return render_template('blog_view_only.html', posts=posts)
+
+
+@app.route('/button_samples')
+def button_samples():
+    return render_template('button_samples.html')
+
+
+@app.route('/drop_down_live_search')
+def drop_down_live_search():
+    return render_template('drop_down_live_search.html')
+
+
+@app.route('/drop_down_samples')
+def drop_down_samples():
+    colours = ['Red', 'Blue', 'Black', 'Orange']
+    return render_template('drop_down_samples.html', colours=colours, default_colour='Black')
+
+
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+
+@app.route('/index_static')
+def index_static():
+    return render_template('index_static.html')
+
+
+@app.route('/segno_samples')
+def segno_samples():
     qr = segno.make('The Continuing Story of Bungalow Bill')
-    return render_template('segno_sample.html', qr=qr)
+    return render_template('segno_samples.html', qr=qr)
 
 
-@app.route('/qr-svg/')
-def qrcode_svg():
+@app.route('/segno_qrcode_svg/')
+def segno_qrcode_svg():
     data = request.args.get('data')
     if data not in ('Savoy Truffle', 'Rocky Raccoon'):
         return abort(404)
@@ -147,8 +171,8 @@ def qrcode_svg():
     return send_file(buff, mimetype='image/svg+xml')
 
 
-@app.route('/qr-png/')
-def qrcode_png():
+@app.route('/segno_qr-png/')
+def segno_qrcode_png():
     data = request.args.get('data')
     if data not in ('Savoy Truffle', 'Rocky Raccoon'):
         return abort(404)
@@ -158,3 +182,8 @@ def qrcode_png():
               light='#efefef')
     buff.seek(0)
     return send_file(buff, mimetype='image/png')
+
+
+@app.route('/span_samples')
+def span_samples():
+    return render_template('span_samples.html')

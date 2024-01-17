@@ -4,7 +4,7 @@
     <h1>{% block title %} Welcome to FlaskBlog {% endblock %}</h1>
     {% for post in posts %}
 		<!-- <a href="#"> -->
-        <a href="{{ url_for('post', post_id=post['id']) }}">
+        <a href="{{ url_for('blog_post', post_id=post['id']) }}">
             <h2>{{ post['title'] }}</h2>
         </a>
         <span class="badge badge-primary">{{ post['created'] }}</span>
