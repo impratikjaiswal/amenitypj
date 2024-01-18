@@ -20,7 +20,7 @@
         </div>
         <div class="form-group">
             <label for="input_format">Input Format</label>
-            <select name="input_format" class="form-control" placeholder="Input Format">
+            <select name="input_format" class="form-control selectpicker" data-live-search="true" placeholder="Input Format">
                 {% for input_format in input_formats %}
                     {% if input_format == selected_input_format %}
                         <option value="{{input_format}}" SELECTED>{{input_format}}</option>
@@ -32,7 +32,7 @@
         </div>
         <div class="form-group">
             <label for="output_format">Output Format</label>
-            <select name="output_format" class="form-control" placeholder="Output Format">
+            <select name="output_format" class="form-control selectpicker" data-live-search="true" placeholder="Output Format">
                 {% for output_format in output_formats %}
                     {% if output_format == selected_output_format %}
                         <option value="{{output_format}}" SELECTED>{{output_format}}</option>
@@ -54,7 +54,7 @@
         </div>
         <div class="form-group">
             <label for="asn1_schema">Asn1 Schema</label>
-            <select name="asn1_schema" id="asn1_schema" class="form-control" placeholder="Asn1 Schema">
+            <select name="asn1_schema" id="asn1_schema" class="form-control selectpicker" data-live-search="true" placeholder="Asn1 Schema">
                 {% for asn1_schema in asn1_schemas %}
                     <option value="{{asn1_schema}}" {{ is_selected_asn1_schema(asn1_schema, selected_asn1_schema) }}>{{asn1_schema}}</option>
                 {% endfor %}
@@ -62,7 +62,7 @@
         </div>
         <div class="form-group">
             <label for="asn1_object">Asn1 Object</label>
-            <select name="asn1_object" id="asn1_object" class="form-control" placeholder="Asn1 Object">
+            <select name="asn1_object" id="asn1_object" class="form-control selectpicker" data-live-search="true" placeholder="Asn1 Object">
                 {% for asn1_object in asn1_objects %}
                     <option value="{{asn1_object}}" {{ is_selected_asn1_object(asn1_object, selected_asn1_object) }}>{{asn1_object}}</option>
                 {% endfor %}
