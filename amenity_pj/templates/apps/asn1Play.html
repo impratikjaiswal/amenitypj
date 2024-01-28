@@ -22,11 +22,7 @@
             <label for="input_format">Input Format</label>
             <select name="input_format" class="form-control selectpicker" data-live-search="true" placeholder="Input Format">
                 {% for input_format in input_formats %}
-                    {% if input_format == selected_input_format %}
-                        <option value="{{input_format}}" SELECTED>{{input_format}}</option>
-                    {% else %}
-                        <option value="{{input_format}}">{{input_format}}</option>
-                    {% endif %}
+                    <option value="{{input_format}}" {{ is_selected_input_format(input_format, selected_input_format) }}>{{input_format}}</option>
                 {% endfor %}
             </select>
         </div>
@@ -34,11 +30,7 @@
             <label for="output_format">Output Format</label>
             <select name="output_format" class="form-control selectpicker" data-live-search="true" placeholder="Output Format">
                 {% for output_format in output_formats %}
-                    {% if output_format == selected_output_format %}
-                        <option value="{{output_format}}" SELECTED>{{output_format}}</option>
-                    {% else %}
-                        <option value="{{output_format}}">{{output_format}}</option>
-                    {% endif %}
+                    <option value="{{output_format}}" {{ is_selected_output_format(output_format, selected_output_format) }}>{{output_format}}</option>
                 {% endfor %}
             </select>
         </div>
@@ -64,7 +56,11 @@
             <label for="asn1_object">Asn1 Object</label>
             <select name="asn1_object" id="asn1_object" class="form-control selectpicker" data-live-search="true" placeholder="Asn1 Object">
                 {% for asn1_object in asn1_objects %}
-                    <option value="{{asn1_object}}" {{ is_selected_asn1_object(asn1_object, selected_asn1_object) }}>{{asn1_object}}</option>
+                    {% if asn1_object == selected_asn1_object %}
+                        <option value="{{asn1_object}}" SELECTED>{{asn1_object}}</option>
+                    {% else %}
+                        <option value="{{asn1_object}}">{{asn1_object}}</option>
+                    {% endif %}
                 {% endfor %}
             </select>
         </div>

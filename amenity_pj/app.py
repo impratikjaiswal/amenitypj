@@ -34,6 +34,10 @@ def get_post(post_id):
     return post
 
 
+def is_selected(item, selected_item):
+    return 'SELECTED' if item == selected_item else ''
+
+
 # @sitemap.register_generator
 # def index():
 # This function is Not needed if you set SITEMAP_INCLUDE_RULES_WITHOUT_PARAMS=True
@@ -52,24 +56,26 @@ def utility_processor():
 
 @app.context_processor
 def utility_processor_asn1_play_1():
-    def is_selected_asn1_schema(asn1_schema, selected_asn1_schema):
-        if asn1_schema == selected_asn1_schema:
-            return 'SELECTED'
-        else:
-            return ''
+    def is_selected_input_format(input_format, selected_input_format):
+        return is_selected(input_format, selected_input_format)
 
-    return dict(is_selected_asn1_schema=is_selected_asn1_schema)
+    return dict(is_selected_input_format=is_selected_input_format)
 
 
 @app.context_processor
 def utility_processor_asn1_play_2():
-    def is_selected_asn1_object(asn1_object, selected_asn1_object):
-        if asn1_object == selected_asn1_object:
-            return 'SELECTED'
-        else:
-            return ''
+    def is_selected_output_format(output_format, selected_output_format):
+        return is_selected(output_format, selected_output_format)
 
-    return dict(is_selected_asn1_object=is_selected_asn1_object)
+    return dict(is_selected_output_format=is_selected_output_format)
+
+
+@app.context_processor
+def utility_processor_asn1_play_3():
+    def is_selected_asn1_schema(asn1_schema, selected_asn1_schema):
+        return is_selected(asn1_schema, selected_asn1_schema)
+
+    return dict(is_selected_asn1_schema=is_selected_asn1_schema)
 
 
 @app.route(Const.URL_SITEMAP)

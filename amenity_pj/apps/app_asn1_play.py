@@ -256,10 +256,15 @@ def handle_asn1_objects():
     :return:
     """
     selected_asn1_schema_js = request.args.get('selected_asn1_schema_js', type=str)
+    selected_asn1_object_js = request.args.get('selected_asn1_object_js', type=str)
+    print(f'selected_asn1_schema_js: {selected_asn1_schema_js}')
+    print(f'selected_asn1_object_js: {selected_asn1_object_js}')
     updated_values = get_asn1_objects_list(selected_asn1_schema_js)
     html_string_selected = ''
     for entry in updated_values:
-        html_string_selected += '<option value="{}">{}</option>'.format(entry, entry)
-    print(f'selected_asn1_schema_js: {selected_asn1_schema_js}')
+        if entry == selected_asn1_object_js:
+            html_string_selected += '<option value="{}" SELECTED>{}</option>'.format(entry, entry)
+        else:
+            html_string_selected += '<option value="{}">{}</option>'.format(entry, entry)
     print(f'html_string_selected: {html_string_selected}')
     return jsonify(html_string_selected=html_string_selected)
