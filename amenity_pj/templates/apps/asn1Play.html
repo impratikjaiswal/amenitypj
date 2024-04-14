@@ -20,15 +20,18 @@
         </div>
         <div class="form-group">
             <label for="input_format">Input Format</label>
-            <select name="input_format" class="form-control selectpicker" data-live-search="true" placeholder="Input Format">
+            <select name="input_format" class="form-control selectpicker" data-live-search="true" placeholder="Input Format" id="input_format">
                 {% for input_format in input_formats %}
                     <option value="{{input_format}}" {{ is_selected_input_format(input_format, selected_input_format) }}>{{input_format}}</option>
                 {% endfor %}
             </select>
         </div>
+        <div class="form-group center">
+            <a href="#" id="swap_input_output_format">Swap Input &amp; Output Formats</a>
+        </div>
         <div class="form-group">
             <label for="output_format">Output Format</label>
-            <select name="output_format" class="form-control selectpicker" data-live-search="true" placeholder="Output Format">
+            <select name="output_format" class="form-control selectpicker" data-live-search="true" placeholder="Output Format" id="output_format">
                 {% for output_format in output_formats %}
                     <option value="{{output_format}}" {{ is_selected_output_format(output_format, selected_output_format) }}>{{output_format}}</option>
                 {% endfor %}
@@ -64,9 +67,9 @@
                 {% endfor %}
             </select>
         </div>
-        <div class="form-group">
+        <div class="form-group center">
             <!-- TODO: Font Size can be reduced -->
-            <i><B>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pro Tip:</B> If above drop down list is empty (dynamic list population fails) or required object is not listed, try below field !!!</i><BR>
+            <i><B>Pro Tip:</B> If above drop down list is empty (dynamic list population did not find any data) or required object is not listed, try below field !!!</i><BR>
         </div>
         <div class="form-group">
             <label for="asn1_object_alternate">Asn1 Object Alternate</label>

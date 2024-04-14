@@ -7,6 +7,10 @@ copy_button.addEventListener("click", copyToClipboard, false);
 //copy_button.addEventListener("mouseenter", logEvent);
 //copy_button.addEventListener("mouseleave", logEvent);
 
+function alertMsg() {
+    alert("Hello! I am an alert box!!");
+}
+
 function copyToClipboard(event) {
     event.preventDefault();
     let msg = "";
@@ -33,11 +37,6 @@ function copyToClipboard(event) {
 //  var tooltip = document.getElementById("copy_clipboard_tool_tip");
 //  tooltip.innerHTML = "Copy to clipboard";
 //}
-
-function alertMsg() {
-    alert("Hello! I am an alert box!!");
-}
-
 
 //const copyToClipboard = async () => {
 //  try {
