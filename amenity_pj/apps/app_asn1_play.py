@@ -1,4 +1,3 @@
-from asn1_play.generated_code.asn1.GSMA.SGP_22 import asn1_mapping
 from asn1_play.generated_code.asn1.asn1 import Asn1
 from asn1_play.generated_code.asn1.asn1_versions import Asn1Versions
 from asn1_play.main.data_type.data_type_master import DataTypeMaster
@@ -12,6 +11,7 @@ from python_helpers.ph_modes_error_handling import PhErrorHandlingModes
 from python_helpers.ph_util import PhUtil
 
 from amenity_pj.helper.constants import Const
+from amenity_pj.helper.util import Util
 
 
 def get_sample_data(key):
@@ -129,7 +129,8 @@ def handle_requests():
         'app_title': Const.TITLE_ASN1_PLAY,
         'app_description': Const.DESCRIPTION_ASN1_PLAY,
         'app_version': Const.VERSION_ASN1_PLAY,
-        'app_github_url': Const.GITHUB_URL_ASN1_PLAY,
+        'app_github_url': Util.get_github_url(github_repo=Const.GITHUB_REPO_ASN1_PLAY, github_pages=False),
+        'app_github_pages_url': Util.get_github_url(github_repo=Const.GITHUB_REPO_ASN1_PLAY, github_pages=True),
         PhKeys.RAW_DATA: PhConstants.STR_EMPTY,
         'input_formats': input_formats,
         'output_formats': output_formats,
@@ -219,7 +220,7 @@ def handle_requests():
             if 'output_format' in requested_data_dict:
                 default_data.update({'selected_output_format': requested_data_dict['output_format']})
             if 'asn1_schema' in requested_data_dict:
-                selected_asn1_schema =  requested_data_dict['asn1_schema']
+                selected_asn1_schema = requested_data_dict['asn1_schema']
                 default_data.update({'selected_asn1_schema': selected_asn1_schema})
                 default_data.update({'asn1_objects': get_asn1_objects_list(selected_asn1_schema)})
             if 'asn1_object' in requested_data_dict:

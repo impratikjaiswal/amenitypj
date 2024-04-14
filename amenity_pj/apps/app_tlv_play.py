@@ -7,6 +7,7 @@ from tlv_play.main.data_type.data_type_master import DataTypeMaster
 from tlv_play.main.helper.defaults import Defaults
 
 from amenity_pj.helper.constants import Const
+from amenity_pj.helper.util import Util
 
 
 def get_sample_data(key):
@@ -71,7 +72,8 @@ def handle_requests():
         'app_title': Const.TITLE_TLV_PLAY,
         'app_description': Const.DESCRIPTION_TLV_PLAY,
         'app_version': Const.VERSION_TLV_PLAY,
-        'app_github_url': Const.GITHUB_URL_TLV_PLAY,
+        'app_github_url': Util.get_github_url(github_repo=Const.GITHUB_REPO_TLV_PLAY, github_pages=False),
+        'app_github_pages_url': Util.get_github_url(github_repo=Const.GITHUB_REPO_TLV_PLAY, github_pages=True),
         PhKeys.RAW_DATA: PhConstants.STR_EMPTY,
         'length_in_decimal': Defaults.LENGTH_IN_DECIMAL,
         'value_in_ascii': Defaults.VALUE_IN_ASCII,

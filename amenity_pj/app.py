@@ -7,6 +7,7 @@ from werkzeug.exceptions import abort
 
 from amenity_pj.apps import app_qr_play, app_tlv_play, app_asn1_play
 from amenity_pj.helper.constants import Const
+from amenity_pj.helper.util import Util
 
 app = Flask(__name__)
 
@@ -90,7 +91,8 @@ def index():
         'app_title': Const.TITLE_AMENITY_PJ,
         'app_description': Const.DESCRIPTION_AMENITY_PJ,
         'app_version': Const.VERSION_AMENITY_PJ,
-        'app_github_url': Const.GITHUB_URL_AMENITY_PJ,
+        'app_github_url': Util.get_github_url(github_repo=Const.GITHUB_REPO_AMENITY_PJ, github_pages=False),
+        'app_github_pages_url': Util.get_github_url(github_repo=Const.GITHUB_REPO_AMENITY_PJ, github_pages=True),
     }
     return render_template(Const.TEMPLATE_AMENITY_PJ, **default_data)
 
@@ -125,7 +127,8 @@ def excel_play():
         'app_title': Const.TITLE_EXCEL_PLAY,
         'app_description': Const.DESCRIPTION_EXCEL_PLAY,
         'app_version': Const.VERSION_EXCEL_PLAY,
-        'app_github_url': Const.GITHUB_URL_EXCEL_PLAY,
+        'app_github_url': Util.get_github_url(github_repo=Const.GITHUB_REPO_EXCEL_PLAY, github_pages=False),
+        'app_github_pages_url': Util.get_github_url(github_repo=Const.GITHUB_REPO_EXCEL_PLAY, github_pages=True),
     }
     return render_template(Const.TEMPLATE_EXCEL_PLAY, **default_data)
 
@@ -137,7 +140,8 @@ def sponsorship():
         'app_title': Const.TITLE_SPONSORSHIP,
         'app_description': Const.DESCRIPTION_SPONSORSHIP,
         'app_version': Const.VERSION_SPONSORSHIP,
-        'app_github_url': Const.GITHUB_URL_SPONSORSHIP,
+        'app_github_url': Util.get_github_url(github_repo=Const.GITHUB_REPO_SPONSORSHIP, github_pages=False),
+        'app_github_pages_url': Util.get_github_url(github_repo=Const.GITHUB_REPO_SPONSORSHIP, github_pages=True),
     }
     return render_template(Const.TEMPLATE_SPONSORSHIP, **default_data)
 
@@ -149,7 +153,8 @@ def about_us():
         'app_title': Const.TITLE_ABOUT_US,
         'app_description': Const.DESCRIPTION_ABOUT_US,
         'app_version': Const.VERSION_ABOUT_US,
-        'app_github_url': Const.GITHUB_URL_ABOUT_US,
+        'app_github_url': Util.get_github_url(github_repo=Const.GITHUB_REPO_ABOUT_US, github_pages=False),
+        'app_github_pages_url': Util.get_github_url(github_repo=Const.GITHUB_REPO_ABOUT_US, github_pages=True),
     }
     return render_template(Const.TEMPLATE_ABOUT_US, **default_data)
 
@@ -161,7 +166,8 @@ def testimonials():
         'app_title': Const.TITLE_TESTIMONIALS,
         'app_description': Const.DESCRIPTION_TESTIMONIALS,
         'app_version': Const.VERSION_TESTIMONIALS,
-        'app_github_url': Const.GITHUB_URL_TESTIMONIALS,
+        'app_github_url': Util.get_github_url(github_repo=Const.GITHUB_REPO_TESTIMONIAL, github_pages=False),
+        'app_github_pages_url': Util.get_github_url(github_repo=Const.GITHUB_REPO_TESTIMONIAL, github_pages=True),
     }
     if request.method == 'GET':
         conn = get_db_connection()

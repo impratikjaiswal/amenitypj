@@ -8,6 +8,7 @@ from qr_play.main.helper.defaults import Defaults
 from qr_play.main.helper.formats import Formats
 
 from amenity_pj.helper.constants import Const
+from amenity_pj.helper.util import Util
 
 
 def get_sample_data(key):
@@ -61,7 +62,8 @@ def handle_requests():
         'app_title': Const.TITLE_QR_PLAY,
         'app_description': Const.DESCRIPTION_QR_PLAY,
         'app_version': Const.VERSION_QR_PLAY,
-        'app_github_url': Const.GITHUB_URL_QR_PLAY,
+        'app_github_url': Util.get_github_url(github_repo=Const.GITHUB_REPO_QR_PLAY, github_pages=False),
+        'app_github_pages_url': Util.get_github_url(github_repo=Const.GITHUB_REPO_QR_PLAY, github_pages=True),
         PhKeys.QR_CODE_VERSIONS: list(range(40, 0, -1)),
         PhKeys.SELECTED_QR_CODE_VERSION: Defaults.QR_CODE_VERSION,
         PhKeys.SPLIT_QRS: Defaults.SPLIT_QRS,

@@ -5,7 +5,7 @@
 <!-- Page Specific Content -->
 {% block content %}
     <h1>Welcome to {{app_title}} {{app_version}}</h1>
-    <a href="{{app_github_url}}" rel="noopener noreferrer" target="_blank">
+    <a href="{{app_github_pages_url}}" rel="noopener noreferrer" target="_blank">
         <span class="badge badge-success">@Github</span>
     </a>
     <BR>
@@ -28,4 +28,43 @@
                rel="noopener noreferrer">Excel Play</a>
         </li>
     </ul>
+    <BR>
+    <BR>
+    <BR>
+    <hr/>
+    <div class="row">
+        <div class="col">
+            <hr>
+        </div>
+        <div class="col-auto">
+            <a data-toggle="collapse" href="#developerModeCollapse" role="button" aria-expanded="false" aria-controls="developerModeCollapse">
+                Developer Mode
+            </a>
+        </div>
+        <div class="col">
+            <hr>
+        </div>
+    </div>
+    <div class="collapse" id="developerModeCollapse">
+        <div class="card card-body">
+            Thanks for helping us with our future releases of {{app_title}}!
+            <BR>
+            <BR>
+            <p class="text-danger">
+                WARNING: These software(s) has passed our basic testing, but likely has many bugs. Do not use it on important data unless you have a backup!
+            </p>
+            <a href="{{app_github_url}}/issues" rel="noopener noreferrer" target="_blank">Let us know if you find problems.</a>
+            <ul>
+                <li class="nav-item">
+                    <a class="nav-link text-danger" href="https://beta.amenitypj.in/" target="_blank"
+                    rel="noopener noreferrer">Beta Release</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-danger" href="https://alpha.amenitypj.in/" target="_blank"
+                       rel="noopener noreferrer">Alpha Release</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <hr/>
 {% endblock %}
