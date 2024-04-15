@@ -57,7 +57,7 @@
         </div>
         <div class="form-group">
             <label for="asn1_object">Asn1 Object</label>
-            <select name="asn1_object" id="asn1_object" class="form-control selectpicker" data-live-search="true" placeholder="Asn1 Object">
+            <select name="asn1_object" id="asn1_object" class="form-control" placeholder="Asn1 Object">
                 {% for asn1_object in asn1_objects %}
                     {% if asn1_object == selected_asn1_object %}
                         <option value="{{asn1_object}}" SELECTED>{{asn1_object}}</option>
