@@ -89,6 +89,14 @@ def get_sample_data(key):
             'asn1_schema': Asn1Versions.GSMA_SGP_22_v3_1.get_name(),
             PhKeys.FETCH_ASN1_OBJECTS_LIST: True
         },
+        'sample_3_3': {
+            PhKeys.REMARKS_LIST: 'GSMA_SGP_32_v1_0_1; Der to Asn1; EimConfigurationData',
+            PhKeys.RAW_DATA: '301180087465737465696d3182010387020780',
+            'asn1_schema': Asn1Versions.GSMA_SGP_32_v1_0_1.get_name(),
+            'asn1_object': 'EimConfigurationData',
+            'input_format': Formats.DER,
+            'output_format': Formats.ASN1,
+        },
         PhKeys.SAMPLE_4: {
             PhKeys.REMARKS_LIST: 'Der(Hex) to Base 64',
             PhKeys.RAW_DATA: 'BF25335A0A989209012143658709F591095350204E616D652031921A4F7065726174696F6E616C2050726F66696C65204E616D652031',

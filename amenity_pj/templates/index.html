@@ -35,17 +35,17 @@
             <hr>
         </div>
         <div class="col-auto">
-            <a data-toggle="collapse" href="#developerModeCollapse" role="button" aria-expanded="false" aria-controls="developerModeCollapse">
-                Developer Mode
+            <a data-toggle="collapse" href="#upcomingReleaseCollapse" role="button" aria-expanded="false" aria-controls="upcomingReleaseCollapse">
+                Upcoming Release
             </a>
         </div>
         <div class="col">
             <hr>
         </div>
     </div>
-    <div class="collapse" id="developerModeCollapse">
+    <div class="collapse" id="upcomingReleaseCollapse">
         <div class="card card-body">
-            Thanks for helping us with our future releases of {{app_title}}!
+            Thanks for helping us with our future release of {{app_title}}!
             <BR>
             <BR>
             <p class="text-danger">
@@ -57,9 +57,43 @@
                     <a class="nav-link text-danger" href="https://beta.amenitypj.in/" target="_blank"
                     rel="noopener noreferrer">Beta Release</a>
                 </li>
+            </ul>
+            <BR>
+            <p class="text-success">
+                INFO: You can always switch back to Stable Release version!
+            </p>
+            <ul>
+                <li class="nav-item">
+                    <a class="nav-link text-success" href="https://amenitypj.in/" target="_blank"
+                    rel="noopener noreferrer">Production Release</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+	<hr/>
+    <div class="row">
+        <div class="col">
+            <hr>
+        </div>
+        <div class="col-auto">
+            <a data-toggle="collapse" href="#previousReleaseCollapse" role="button" aria-expanded="false" aria-controls="previousReleaseCollapse">
+                Previous Release
+            </a>
+        </div>
+        <div class="col">
+            <hr>
+        </div>
+    </div>
+    <div class="collapse" id="previousReleaseCollapse">
+        <div class="card card-body">
+            Got an issue with current release? Switch back to previous release of {{app_title}}!
+            <BR>
+            <BR>
+            <a href="{{app_github_url}}/issues" rel="noopener noreferrer" target="_blank">Let us know if you find problems.</a>
+            <ul>
                 <li class="nav-item">
                     <a class="nav-link text-danger" href="https://alpha.amenitypj.in/" target="_blank"
-                       rel="noopener noreferrer">Alpha Release</a>
+                       rel="noopener noreferrer">Previous Release</a>
                 </li>
             </ul>
             <BR>
