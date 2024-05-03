@@ -1,12 +1,14 @@
 from asn1_play.main.helper.constants_config import ConfigConst as asn1_play_config
 from qr_play.main.helper.constants_config import ConfigConst as qr_play_config
 from tlv_play.main.helper.constants_config import ConfigConst as tlv_play_config
+from cert_play.main.helper.constants_config import ConfigConst as cert_play_config
 
 from amenity_pj.helper.constants_config import ConfigConst as amenity_pj_config
 
 
 class Const:
     DEPLOYMENT_DATE = '2023-11-11'
+    DEPLOYMENT_DATE_CERT_PLAY = '2024-05-03'
     URL_SITEMAP = '/sitemap.xml'
     TEMPLATE_WIP = 'wip.html'
     TEMPLATE_POST = 'post.html'
@@ -62,6 +64,14 @@ class Const:
     TEMPLATE_QR_PLAY = '/apps/qrPlay.html'
     GITHUB_REPO_QR_PLAY = 'qrPlay'
 
+    TITLE_CERT_PLAY = 'Cert Play'
+    DESCRIPTION_CERT_PLAY = 'OpenSSL based Cert Parser. Will parse any TLS cert.'
+    VERSION_CERT_PLAY = f'v{cert_play_config.TOOL_VERSION}'
+    END_POINT_CERT_PLAY = 'cert_play'
+    URL_CERT_PLAY = '/certPlay'
+    TEMPLATE_CERT_PLAY = '/apps/certPlay.html'
+    GITHUB_REPO_CERT_PLAY = 'certPlay'
+
     TITLE_TESTIMONIALS = 'Testimonials'
     DESCRIPTION_TESTIMONIALS = 'Read What others feel about us'
     VERSION_TESTIMONIALS = VERSION_DEFAULT
@@ -98,4 +108,5 @@ class Const:
         END_POINT_ASN1_PLAY: TITLE_ASN1_PLAY,
         END_POINT_TLV_PLAY: TITLE_TLV_PLAY,
         END_POINT_QR_PLAY: TITLE_QR_PLAY,
+        END_POINT_CERT_PLAY: TITLE_CERT_PLAY,
     }

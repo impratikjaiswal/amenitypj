@@ -5,7 +5,7 @@ from flask import Flask, render_template, request, url_for, flash, redirect
 from flask_sitemapper import Sitemapper
 from werkzeug.exceptions import abort
 
-from amenity_pj.apps import app_qr_play, app_tlv_play, app_asn1_play
+from amenity_pj.apps import app_qr_play, app_tlv_play, app_asn1_play, app_cert_play
 from amenity_pj.helper.constants import Const
 from amenity_pj.helper.util import Util
 
@@ -106,6 +106,12 @@ def asn1_play():
 @app.route(Const.URL_ASN1_PLAY_ASN1_OBJECTS)
 def asn1_play_asn1_objects():
     return app_asn1_play.handle_asn1_objects()
+
+
+@sitemapper.include(lastmod=Const.DEPLOYMENT_DATE_CERT_PLAY)
+@app.route(Const.URL_CERT_PLAY, methods=('GET', 'POST'))
+def cert_play():
+    return app_cert_play.handle_requests()
 
 
 @sitemapper.include(lastmod=Const.DEPLOYMENT_DATE)

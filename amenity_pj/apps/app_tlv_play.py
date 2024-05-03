@@ -78,8 +78,8 @@ def handle_requests():
         'length_in_decimal': Defaults.LENGTH_IN_DECIMAL,
         'value_in_ascii': Defaults.VALUE_IN_ASCII,
         'one_liner': Defaults.ONE_LINER,
-        'sample_processing': 'load_only',
-        'output_data': PhConstants.STR_EMPTY,
+        PhKeys.SAMPLE_PROCESSING: PhKeys.SAMPLE_LOAD_ONLY,
+        PhKeys.OUTPUT_DATA: PhConstants.STR_EMPTY,
     }
     if request.method == PhKeys.GET:
         return render_template(Const.TEMPLATE_TLV_PLAY, **default_data)

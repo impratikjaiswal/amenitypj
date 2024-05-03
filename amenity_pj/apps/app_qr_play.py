@@ -69,7 +69,7 @@ def handle_requests():
         PhKeys.SPLIT_QRS: Defaults.SPLIT_QRS,
         PhKeys.SCALE: Defaults.SCALE,
         PhKeys.SAMPLE_PROCESSING: PhKeys.SAMPLE_LOAD_ONLY,
-        PhKeys.OUTPUT_DATA: '',
+        PhKeys.OUTPUT_DATA: PhConstants.STR_EMPTY,
     }
     if request.method == PhKeys.GET:
         return render_template(Const.TEMPLATE_QR_PLAY, **default_data)
