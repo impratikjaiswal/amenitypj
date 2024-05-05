@@ -1,40 +1,51 @@
 <!-- Common Content -->
 {% extends 'base.html' %}
-{% block description %}{{app_description}}{% endblock %}
-{% block title %}{{app_title}}{% endblock %}
+{% block description %}{{ app_description }}{% endblock %}
+{% block title %}{{ app_title }}{% endblock %}
 <!-- Page Specific Content -->
 {% block content %}
-    <h1>Welcome to {{app_title}} {{app_version}}</h1>
-    <a href="{{app_github_pages_url}}" rel="noopener noreferrer" target="_blank">
+    <h1>Welcome to {{ app_title }} {{ app_version }}</h1>
+    <div class="very-small">
+        <a data-toggle="collapse" href="#upcomingReleaseCollapse" role="button" aria-expanded="false"
+           aria-controls="gitInfoCollapse">
+            Git Info
+        </a>
+        <div class="collapse" id="upcomingReleaseCollapse">
+            <div>{{ app_git_summary }}</div>
+        </div>
+    </div>
+    <a href="{{ app_github_pages_url }}" rel="noopener noreferrer" target="_blank">
         <span class="badge badge-success">@Github</span>
     </a>
     <a href="#samples_section" rel="noopener noreferrer">
         <span class="badge badge-info">Jump To Samples</span>
     </a>
     <BR>
-    <h6>{{app_description}}</h6>
+    <h6>{{ app_description }}</h6>
     <form method="post">
         <div class="form-group">
             <label for="raw_data">Raw Data</label>
-            <textarea name="raw_data" placeholder="Raw Data" class="form-control">{{raw_data}}</textarea>
+            <textarea name="raw_data" placeholder="Raw Data" class="form-control">{{ raw_data }}</textarea>
         </div>
         <div class="form-row">
             <div class="form-group col">
                 <label for="input_format">Input Format</label>
-                <select name="input_format" class="form-control selectpicker" data-live-search="true" placeholder="Input Format" id="input_format">
+                <select name="input_format" class="form-control selectpicker" data-live-search="true"
+                        placeholder="Input Format" id="input_format">
                     {% for input_format in input_formats %}
-                        <option value="{{input_format}}" {{ is_selected_input_format(input_format, selected_input_format) }}>{{input_format}}</option>
+                        <option value="{{ input_format }}" {{ is_selected_input_format(input_format, selected_input_format) }}>{{ input_format }}</option>
                     {% endfor %}
                 </select>
-                </div>
+            </div>
             <div class="form-group col center">
                 <a href="#" id="swap_input_output_format">Swap Input & Output Formats</a>
             </div>
             <div class="form-group col">
                 <label for="output_format">Output Format</label>
-                <select name="output_format" class="form-control selectpicker" data-live-search="true" placeholder="Output Format" id="output_format">
+                <select name="output_format" class="form-control selectpicker" data-live-search="true"
+                        placeholder="Output Format" id="output_format">
                     {% for output_format in output_formats %}
-                        <option value="{{output_format}}" {{ is_selected_output_format(output_format, selected_output_format) }}>{{output_format}}</option>
+                        <option value="{{ output_format }}" {{ is_selected_output_format(output_format, selected_output_format) }}>{{ output_format }}</option>
                     {% endfor %}
                 </select>
             </div>
@@ -43,10 +54,10 @@
             <div class="form-check">
                 {% if tlv_parsing_of_output %}
                     <input type="checkbox" name="tlv_parsing_of_output" class="form-check-input"
-                        value="{{tlv_parsing_of_output}}" checked>
+                           value="{{ tlv_parsing_of_output }}" checked>
                 {% else %}
                     <input type="checkbox" name="tlv_parsing_of_output" class="form-check-input"
-                        value="{{tlv_parsing_of_output}}">
+                           value="{{ tlv_parsing_of_output }}">
                 {% endif %}
                 <!-- TLV Parsed Output (if possible) -->
                 <label for="tlv_parsing_of_output" class="form-check-label">TLV Parsing of Output (if possible)</label>
@@ -55,20 +66,22 @@
         <div class="form-row">
             <div class="form-group col">
                 <label for="asn1_schema">Asn1 Schema</label>
-                <select name="asn1_schema" id="asn1_schema" class="form-control selectpicker" data-live-search="true" placeholder="Asn1 Schema">
+                <select name="asn1_schema" id="asn1_schema" class="form-control selectpicker" data-live-search="true"
+                        placeholder="Asn1 Schema">
                     {% for asn1_schema in asn1_schemas %}
-                        <option value="{{asn1_schema}}" {{ is_selected_asn1_schema(asn1_schema, selected_asn1_schema) }}>{{asn1_schema}}</option>
+                        <option value="{{ asn1_schema }}" {{ is_selected_asn1_schema(asn1_schema, selected_asn1_schema) }}>{{ asn1_schema }}</option>
                     {% endfor %}
                 </select>
             </div>
             <div class="form-group col">
                 <label for="asn1_object">Asn1 Object</label>
-                <select name="asn1_object" id="asn1_object" class="form-control selectpicker" data-live-search="true" placeholder="Asn1 Object">
+                <select name="asn1_object" id="asn1_object" class="form-control selectpicker" data-live-search="true"
+                        placeholder="Asn1 Object">
                     {% for asn1_object in asn1_objects %}
                         {% if asn1_object == selected_asn1_object %}
-                            <option value="{{asn1_object}}" SELECTED>{{asn1_object}}</option>
+                            <option value="{{ asn1_object }}" SELECTED>{{ asn1_object }}</option>
                         {% else %}
-                            <option value="{{asn1_object}}">{{asn1_object}}</option>
+                            <option value="{{ asn1_object }}">{{ asn1_object }}</option>
                         {% endif %}
                     {% endfor %}
                 </select>
@@ -76,37 +89,46 @@
             <div class="form-group col">
                 <label for="asn1_object_alternate">Asn1 Object Alternate</label>
                 <input type="text" name="asn1_object_alternate" placeholder="Alternate Object" class="form-control"
-                    value="{{asn1_object_alternate}}">
+                       value="{{ asn1_object_alternate }}">
             </div>
         </div>
         <div class="form-group right">
             <!-- TODO: Font Size can be reduced -->
-            <i><B>Tip:</B> If "Asn1 Object" drop down list is empty or required object is not listed, try "Asn1 Object Alternate" !!!</i><BR>
+            <i><B>Tip:</B> If "Asn1 Object" drop down list is empty or required object is not listed, try "Asn1 Object
+                Alternate" !!!</i><BR>
         </div>
         <div class="form-group">
             <div class="form-check">
                 <!-- TODO: Tool Tip: Use this field to fetch the (static) list for selected Asn1 Schema !!! -->
                 {% if fetch_asn1_objects_list %}
                     <input type="checkbox" name="fetch_asn1_objects_list" class="form-check-input"
-                        value="{{fetch_asn1_objects_list}}" checked>
+                           value="{{ fetch_asn1_objects_list }}" checked>
                 {% else %}
                     <input type="checkbox" name="fetch_asn1_objects_list" class="form-check-input"
-                        value="{{fetch_asn1_objects_list}}">
+                           value="{{ fetch_asn1_objects_list }}">
                 {% endif %}
                 <label for="fetch_asn1_objects_list" class="form-check-label">Fetch Asn1 Objects List</label>
             </div>
         </div>
         <div class="form-group">
             <label for="remarks_list">Remarks</label>
-            <input type="text" name="remarks_list" placeholder="Remarks" class="form-control" value="{{remarks_list}}">
+            <input type="text" name="remarks_list" placeholder="Remarks" class="form-control"
+                   value="{{ remarks_list }}">
         </div>
         <div class="form-group">
             <button type="submit" id="process_input" name="process_input" class="btn btn-primary">Submit</button>
-            <button type="submit" id="process_reset" name="process_reset" class="btn btn-primary" disabled>Reset</button>
+            <button type="submit" id="process_reset" name="process_reset" class="btn btn-primary" disabled>Reset
+            </button>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button type="submit" id="process_copy_clipboard" name="process_copy_clipboard" class="btn btn-secondary">Copy Output</button>
-            <button type="submit" id="process_download_output" name="process_download_output" class="btn btn-secondary" disabled>Download Output</button>
-            <button type="submit" id="process_download_yml" name="process_download_yml" class="btn btn-secondary" disabled>Download Yml</button>
+            <button type="submit" id="process_copy_clipboard" name="process_copy_clipboard" class="btn btn-secondary">
+                Copy Output
+            </button>
+            <button type="submit" id="process_download_output" name="process_download_output" class="btn btn-secondary"
+                    disabled>Download Output
+            </button>
+            <button type="submit" id="process_download_yml" name="process_download_yml" class="btn btn-secondary"
+                    disabled>Download Yml
+            </button>
         </div>
         <a href="#samples_section" rel="noopener noreferrer">
             <span class="badge badge-info">Jump To Samples</span>
@@ -114,7 +136,7 @@
         <div id="output_data">
             <label for="output_data">Output Data</label>
             <div id="output_statement">
-                <pre>{{output_data}}</pre>
+                <pre>{{ output_data }}</pre>
             </div>
         </div>
         <div id="debug_data">
@@ -133,7 +155,8 @@
                 <BR>&nbsp;&nbsp;&nbsp;
                 <input type="radio" name="sample_processing" value="load_only" checked>&nbsp;&nbsp;Load Only</input>
             {% else %}
-                <input type="radio" name="sample_processing" value="load_and_submit" checked>&nbsp;&nbsp;Load & Submit</input>
+                <input type="radio" name="sample_processing" value="load_and_submit" checked>&nbsp;&nbsp;Load & Submit
+                </input>
                 <BR>&nbsp;&nbsp;&nbsp;
                 <input type="radio" name="sample_processing" value="load_only">&nbsp;&nbsp;Load Only</input>
             {% endif %}
@@ -147,7 +170,8 @@
             <button type="submit" name="sample_3" class="btn btn-success">TCA; Asn1 to Der</button>
             <button type="submit" name="sample_3_1" class="btn btn-success">Certificate</button>
             <button type="submit" name="sample_3_2" class="btn btn-success">Asn1 Objects Static List; v3_1</button>
-            <button type="submit" name="sample_3_3" class="btn btn-success">EimConfigurationData; Der to Asn1; v1_0_0</button>
+            <button type="submit" name="sample_3_3" class="btn btn-success">EimConfigurationData; Der to Asn1; v1_0_0
+            </button>
             <BR>
             <button type="submit" name="sample_4" class="btn btn-success">Der to Base64</button>
             <button type="submit" name="sample_5" class="btn btn-success">Ascii to Hex</button>
@@ -157,5 +181,5 @@
 {% endblock %}
 <!-- Page Specific Script -->
 {% block page_specific_script %}
-        <script src="{{ url_for('static', filename='/js/custom_asn1Play.js') }}"></script>
+    <script src="{{ url_for('static', filename='/js/custom_asn1Play.js') }}"></script>
 {% endblock %}

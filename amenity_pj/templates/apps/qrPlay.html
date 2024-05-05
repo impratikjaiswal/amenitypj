@@ -1,60 +1,77 @@
 <!-- Common Content -->
 {% extends 'base.html' %}
-{% block description %}{{app_description}}{% endblock %}
-{% block title %}{{app_title}}{% endblock %}
+{% block description %}{{ app_description }}{% endblock %}
+{% block title %}{{ app_title }}{% endblock %}
 <!-- Page Specific Content -->
 {% block content %}
-    <h1>Welcome to {{app_title}} {{app_version}}</h1>
-    <a href="{{app_github_pages_url}}" rel="noopener noreferrer" target="_blank">
+    <h1> Welcome to {{ app_title }} {{ app_version }} </h1>
+    <div class="very-small">
+        <a data-toggle="collapse" href="#upcomingReleaseCollapse" role="button" aria-expanded="false"
+           aria-controls="gitInfoCollapse">
+            Git Info
+        </a>
+        <div class="collapse" id="upcomingReleaseCollapse">
+            <div>{{ app_git_summary }}</div>
+        </div>
+    </div>
+    <a href="{{ app_github_pages_url }}" rel="noopener noreferrer" target="_blank">
         <span class="badge badge-success">@Github</span>
     </a>
     <a href="#samples_section" rel="noopener noreferrer">
         <span class="badge badge-info">Jump To Samples</span>
     </a>
     <BR>
-    <h6>{{app_description}}</h6>
+    <h6>{{ app_description }}</h6>
     <form method="post">
         <div class="form-group">
             <label for="raw_data">Raw Data</label>
-        <textarea name="raw_data" placeholder="Raw Data" class="form-control" rows="3">{{raw_data}}</textarea>
+            <textarea name="raw_data" placeholder="Raw Data" class="form-control" rows="3">{{ raw_data }}</textarea>
         </div>
         <div class="form-group">
-        <label for="split_qrs">Auto Split Message Across Multiple Qrs</label>
+            <label for="split_qrs">Auto Split Message Across Multiple Qrs</label>
             {% if split_qrs %}
-                <input type="checkbox" name="split_qrs" class="form-check-inline" value="{{split_qrs}}"
-               checked>
+                <input type="checkbox" name="split_qrs" class="form-check-inline" value="{{ split_qrs }}"
+                       checked>
             {% else %}
-                <input type="checkbox" name="split_qrs" class="form-check-inline" value="{{split_qrs}}">
+                <input type="checkbox" name="split_qrs" class="form-check-inline" value="{{ split_qrs }}">
             {% endif %}
         </div>
         <div class="form-group">
             <label for="qr_code_version">Qr Code Version</label>
-            <select name="qr_code_version" class="form-control selectpicker" data-live-search="true" placeholder="Input Format">
+            <select name="qr_code_version" class="form-control selectpicker" data-live-search="true"
+                    placeholder="Input Format">
                 {% for qr_code_version in qr_code_versions %}
                     {% if qr_code_version == selected_qr_code_version %}
-                        <option value="{{qr_code_version}}" SELECTED>{{qr_code_version}}</option>
+                        <option value="{{ qr_code_version }}" SELECTED>{{ qr_code_version }}</option>
                     {% else %}
-                        <option value="{{qr_code_version}}">{{qr_code_version}}</option>
+                        <option value="{{ qr_code_version }}">{{ qr_code_version }}</option>
                     {% endif %}
                 {% endfor %}
             </select>
         </div>
         <div class="form-group">
             <label for="scale">Scale</label>
-            <input type="text" name="scale" placeholder="Scale" class="form-control" value="{{scale}}">
+            <input type="text" name="scale" placeholder="Scale" class="form-control" value="{{ scale }}">
         </div>
         <div class="form-group">
             <label for="remarks_list">Remarks</label>
             <input type="text" name="remarks_list" placeholder="Remarks" class="form-control"
-                value="{{remarks_list}}">
+                   value="{{ remarks_list }}">
         </div>
         <div class="form-group">
             <button type="submit" id="process_input" name="process_input" class="btn btn-primary">Submit</button>
-            <button type="submit" id="process_reset" name="process_reset" class="btn btn-primary" disabled>Reset</button>
+            <button type="submit" id="process_reset" name="process_reset" class="btn btn-primary" disabled>Reset
+            </button>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button type="submit" id="process_copy_clipboard" name="process_copy_clipboard" class="btn btn-secondary">Copy Output</button>
-            <button type="submit" id="process_download_output" name="process_download_output" class="btn btn-secondary" disabled>Download Output</button>
-            <button type="submit" id="process_download_yml" name="process_download_yml" class="btn btn-secondary" disabled>Download Yml</button>
+            <button type="submit" id="process_copy_clipboard" name="process_copy_clipboard" class="btn btn-secondary">
+                Copy Output
+            </button>
+            <button type="submit" id="process_download_output" name="process_download_output" class="btn btn-secondary"
+                    disabled>Download Output
+            </button>
+            <button type="submit" id="process_download_yml" name="process_download_yml" class="btn btn-secondary"
+                    disabled>Download Yml
+            </button>
         </div>
         <a href="#samples_section" rel="noopener noreferrer">
             <span class="badge badge-info">Jump To Samples</span>
@@ -62,7 +79,7 @@
         <div id="output_data">
             <label for="output_data">Output Data</label>
             <div id="output_statement">
-                <pre>{{output_data}}</pre>
+                <pre>{{ output_data }}</pre>
             </div>
         </div>
         <div id="output_data_images">
@@ -89,7 +106,8 @@
                 <BR>&nbsp;&nbsp;&nbsp;
                 <input type="radio" name="sample_processing" value="load_only" checked>&nbsp;&nbsp;Load Only</input>
             {% else %}
-                <input type="radio" name="sample_processing" value="load_and_submit" checked>&nbsp;&nbsp;Load & Submit</input>
+                <input type="radio" name="sample_processing" value="load_and_submit" checked>&nbsp;&nbsp;Load & Submit
+                </input>
                 <BR>&nbsp;&nbsp;&nbsp;
                 <input type="radio" name="sample_processing" value="load_only">&nbsp;&nbsp;Load Only</input>
             {% endif %}

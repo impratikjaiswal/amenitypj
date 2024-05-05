@@ -1,34 +1,34 @@
 <!-- Common Content -->
 {% extends 'base.html' %}
-{% block description %}{{app_description}}{% endblock %}
-{% block title %}{{app_title}}{% endblock %}
+{% block description %}{{ app_description }}{% endblock %}
+{% block title %}{{ app_title }}{% endblock %}
 <!-- Page Specific Content -->
 {% block content %}
-    <h1>Welcome to {{app_title}} {{app_version}}</h1>
-    <a href="{{app_github_pages_url}}" rel="noopener noreferrer" target="_blank">
+    <h1>Welcome to {{ app_title }} {{ app_version }}</h1>
+    <a href="{{ app_github_pages_url }}" rel="noopener noreferrer" target="_blank">
         <span class="badge badge-success">@Github</span>
     </a>
     <BR>
-    <h6>{{app_description}}</h6>
+    <h6>{{ app_description }}</h6>
     <ul>
         <li class="nav-item">
-            <a class="nav-link" href="{{url_for('asn1_play')}}" target="_blank"
+            <a class="nav-link" href="{{ url_for('asn1_play') }}" target="_blank"
                rel="noopener noreferrer">ASN1 Play</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{{url_for('tlv_play')}}" target="_blank"
+            <a class="nav-link" href="{{ url_for('tlv_play') }}" target="_blank"
                rel="noopener noreferrer">TLV Play</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{{url_for('qr_play')}}" target="_blank"
+            <a class="nav-link" href="{{ url_for('qr_play') }}" target="_blank"
                rel="noopener noreferrer">QR Play</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{{url_for('excel_play')}}" target="_blank"
+            <a class="nav-link" href="{{ url_for('excel_play') }}" target="_blank"
                rel="noopener noreferrer">Excel Play</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{{url_for('cert_play')}}" target="_blank"
+            <a class="nav-link" href="{{ url_for('cert_play') }}" target="_blank"
                rel="noopener noreferrer">Cert Play</a>
         </li>
     </ul>
@@ -39,7 +39,8 @@
             <hr>
         </div>
         <div class="col-auto">
-            <a data-toggle="collapse" href="#upcomingReleaseCollapse" role="button" aria-expanded="false" aria-controls="upcomingReleaseCollapse">
+            <a data-toggle="collapse" href="#upcomingReleaseCollapse" role="button" aria-expanded="false"
+               aria-controls="upcomingReleaseCollapse">
                 Upcoming Release
             </a>
         </div>
@@ -49,17 +50,19 @@
     </div>
     <div class="collapse" id="upcomingReleaseCollapse">
         <div class="card card-body">
-            Thanks for helping us with our future release of {{app_title}}!
+            Thanks for helping us with our future release of {{ app_title }}!
             <BR>
             <BR>
             <p class="text-danger">
-                WARNING: These software(s) has passed our basic testing, but likely has many bugs. Do not use it on important data unless you have a backup!
+                WARNING: These software(s) has passed our basic testing, but likely has many bugs. Do not use it on
+                important data unless you have a backup!
             </p>
-            <a href="{{app_github_url}}/issues" rel="noopener noreferrer" target="_blank">Let us know if you find problems.</a>
+            <a href="{{ app_github_url }}/issues" rel="noopener noreferrer" target="_blank">Let us know if you find
+                problems.</a>
             <ul>
                 <li class="nav-item">
                     <a class="nav-link text-danger" href="https://beta.amenitypj.in/" target="_blank"
-                    rel="noopener noreferrer">Beta Release</a>
+                       rel="noopener noreferrer">Beta Release</a>
                 </li>
             </ul>
             <BR>
@@ -69,18 +72,19 @@
             <ul>
                 <li class="nav-item">
                     <a class="nav-link text-success" href="https://amenitypj.in/" target="_blank"
-                    rel="noopener noreferrer">Production Release</a>
+                       rel="noopener noreferrer">Production Release</a>
                 </li>
             </ul>
         </div>
     </div>
-	<hr/>
+    <hr/>
     <div class="row">
         <div class="col">
             <hr>
         </div>
         <div class="col-auto">
-            <a data-toggle="collapse" href="#previousReleaseCollapse" role="button" aria-expanded="false" aria-controls="previousReleaseCollapse">
+            <a data-toggle="collapse" href="#previousReleaseCollapse" role="button" aria-expanded="false"
+               aria-controls="previousReleaseCollapse">
                 Previous Release
             </a>
         </div>
@@ -90,10 +94,11 @@
     </div>
     <div class="collapse" id="previousReleaseCollapse">
         <div class="card card-body">
-            Got an issue with current release? Switch back to previous release of {{app_title}}!
+            Got an issue with current release? Switch back to previous release of {{ app_title }}!
             <BR>
             <BR>
-            <a href="{{app_github_url}}/issues" rel="noopener noreferrer" target="_blank">Let us know if you find problems.</a>
+            <a href="{{ app_github_url }}/issues" rel="noopener noreferrer" target="_blank">Let us know if you find
+                problems.</a>
             <ul>
                 <li class="nav-item">
                     <a class="nav-link text-danger" href="https://alpha.amenitypj.in/" target="_blank"
@@ -107,7 +112,7 @@
             <ul>
                 <li class="nav-item">
                     <a class="nav-link text-success" href="https://amenitypj.in/" target="_blank"
-                    rel="noopener noreferrer">Production Release</a>
+                       rel="noopener noreferrer">Production Release</a>
                 </li>
             </ul>
         </div>

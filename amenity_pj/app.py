@@ -111,7 +111,12 @@ def asn1_play_asn1_objects():
 @sitemapper.include(lastmod=Const.DEPLOYMENT_DATE_CERT_PLAY)
 @app.route(Const.URL_CERT_PLAY, methods=('GET', 'POST'))
 def cert_play():
-    return app_cert_play.handle_requests()
+    return app_cert_play.handle_requests(api=False)
+
+
+@app.route(Const.URL_API_CERT_PLAY, methods=('GET', 'POST'))
+def cert_play_api():
+    return app_cert_play.handle_requests(api=True)
 
 
 @sitemapper.include(lastmod=Const.DEPLOYMENT_DATE)

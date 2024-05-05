@@ -1,9 +1,11 @@
-from flask import render_template, request
+from flask import render_template, request, jsonify
+from python_helpers.ph_constants import PhConstants
 from python_helpers.ph_keys import PhKeys
 from python_helpers.ph_modes_error_handling import PhErrorHandlingModes
 from python_helpers.ph_util import PhUtil
 from qr_play.main.data_type.any_data import small_data, bulk_data_1, bulk_data_2
 from qr_play.main.data_type.data_type_master import DataTypeMaster
+from qr_play.main.helper.constants_config import GIT_SUMMARY
 from qr_play.main.helper.defaults import Defaults
 from qr_play.main.helper.formats import Formats
 
@@ -52,7 +54,7 @@ def get_sample_data(key):
     return sample_data.get(key, None)
 
 
-def handle_requests():
+def handle_requests(api=False):
     """
 
     :return:
@@ -64,6 +66,7 @@ def handle_requests():
         'app_version': Const.VERSION_QR_PLAY,
         'app_github_url': Util.get_github_url(github_repo=Const.GITHUB_REPO_QR_PLAY, github_pages=False),
         'app_github_pages_url': Util.get_github_url(github_repo=Const.GITHUB_REPO_QR_PLAY, github_pages=True),
+        'app_git_summary': GIT_SUMMARY,
         PhKeys.QR_CODE_VERSIONS: list(range(40, 0, -1)),
         PhKeys.SELECTED_QR_CODE_VERSION: Defaults.QR_CODE_VERSION,
         PhKeys.SPLIT_QRS: Defaults.SPLIT_QRS,
@@ -71,18 +74,19 @@ def handle_requests():
         PhKeys.SAMPLE_PROCESSING: PhKeys.SAMPLE_LOAD_ONLY,
         PhKeys.OUTPUT_DATA: PhConstants.STR_EMPTY,
     }
+    log_req = f'{Const.TEMPLATE_QR_PLAY}; {request.method}; {"API" if api else "Form"} Request'
+    PhUtil.print_separator(main_text=f'{log_req} Received!!!')
+    requested_data_dict = request.get_json() if api else request.form.to_dict()
+    PhUtil.print_iter(requested_data_dict, header='Inputs')
     if request.method == PhKeys.GET:
-        return render_template(Const.TEMPLATE_QR_PLAY, **default_data)
+        pass
     if request.method == PhKeys.POST:
-        PhUtil.print_separator(main_text=f'{Const.TEMPLATE_QR_PLAY} Post Request Started')
-        PhUtil.print_iter(request.form, header='Request Input')
-        requested_data_dict = request.form.to_dict()
-        sample_processing = requested_data_dict[PhKeys.SAMPLE_PROCESSING]
+        sample_processing = requested_data_dict.get(PhKeys.SAMPLE_PROCESSING, False)
         # When submitting an HTML form,
         # 1) unchecked checkboxes do not send any data, however checked checkboxes do send False (may send True as well)
         requested_data_dict.update({PhKeys.SPLIT_QRS: True if PhKeys.SPLIT_QRS in requested_data_dict else False})
-        # 2) Everything is converted to String; below should be integer
-        # XXX: This should be handled in parse_config
+        # 2) Everything is converted to String; below needs to be typecasted
+        # XXX: This should be handled in parse_config; integer
         requested_data_dict.update({PhKeys.QR_CODE_VERSION: int(requested_data_dict.get(PhKeys.QR_CODE_VERSION))})
         sample_data_dict = None
         for key in requested_data_dict.keys():
@@ -97,17 +101,14 @@ def handle_requests():
             pass
         else:
             # Data Processing is needed in all other cases
-            # Filter All Sample Keys
-            # if sample_data_dict:
-            #     PhUtil.print_iter(sample_data_dict, header='Request Input for sample_data_dict')
-            # else:
-            #     PhUtil.print_iter(requested_data_dict, header='Request Input for requested_data_dict')
-            dic_to_process = {k: v for k, v in
-                              (sample_data_dict if sample_data_dict else requested_data_dict).items() if
+            dic_received = sample_data_dict if sample_data_dict else requested_data_dict
+            # PhUtil.print_iter(dic_received, header='dic_received')
+            # Filter All Processing Related Keys
+            dic_to_process = {k: v for k, v in dic_received.items() if
                               not (k.startswith(PhKeys.SAMPLE) or k.startswith('process'))}
             dic_to_process.update({PhKeys.IMAGE_FORMAT: Formats.PNG_URI})
             dic_to_process.update({PhKeys.PRINT_INPUT: True})
-            PhUtil.print_iter(dic_to_process, header='Request to Process')
+            PhUtil.print_iter(dic_to_process, header='dic_to_process')
             data_type = DataTypeMaster()
             data_type.set_data_pool(data_pool=dic_to_process)
             data_type.parse_safe(PhErrorHandlingModes.CONTINUE_ON_ERROR)
@@ -119,7 +120,6 @@ def handle_requests():
                 temp_output_data.append(output_data)
             default_data.update({PhKeys.OUTPUT_DATA: temp_output_data})
         if sample_data_dict:
-            # PhUtil.print_iter(sample_data_dict, header='Request Output for sample_data_dict')
             if PhKeys.RAW_DATA in sample_data_dict:
                 default_data.update({PhKeys.RAW_DATA: sample_data_dict.get(PhKeys.RAW_DATA)})
             if PhKeys.SPLIT_QRS in sample_data_dict:
@@ -131,7 +131,6 @@ def handle_requests():
             if PhKeys.REMARKS_LIST in sample_data_dict:
                 default_data.update({PhKeys.REMARKS_LIST: sample_data_dict.get(PhKeys.REMARKS_LIST)})
         else:
-            # PhUtil.print_iter(requested_data_dict, header='Request Output for requested_data_dict')
             if PhKeys.RAW_DATA in requested_data_dict:
                 default_data.update({PhKeys.RAW_DATA: requested_data_dict[PhKeys.RAW_DATA]})
             if PhKeys.SPLIT_QRS in requested_data_dict:
@@ -143,7 +142,6 @@ def handle_requests():
             if PhKeys.REMARKS_LIST in requested_data_dict:
                 default_data.update({PhKeys.REMARKS_LIST: requested_data_dict[PhKeys.REMARKS_LIST]})
         default_data.update({PhKeys.SAMPLE_PROCESSING: sample_processing})
-        PhUtil.print_iter(default_data, header='Request Output')
-        PhUtil.print_separator(main_text=f'{Const.TEMPLATE_QR_PLAY} Post Request Completed')
-        return render_template(Const.TEMPLATE_QR_PLAY, **default_data)
-    return render_template(Const.TEMPLATE_QR_PLAY, **default_data)
+        PhUtil.print_iter(default_data, header='Outputs')
+    PhUtil.print_separator(main_text=f'{log_req} Completed!!!')
+    return jsonify(**default_data) if api else render_template(Const.TEMPLATE_QR_PLAY, **default_data)

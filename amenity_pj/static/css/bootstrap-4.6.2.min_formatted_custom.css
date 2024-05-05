@@ -1,25 +1,29 @@
 /* add margin for buttons */
+/* .btn-success, .btn-primary, .btn-secondary */
 .btn {
-/* .btn-success, .btn-primary, .btn-secondary { */
-    margin-bottom:.2rem;
+    margin-bottom: .2rem;
 }
 
 /* increase size of check box */
 .form-check-inline {
-    width: 30px; 
+    width: 30px;
     height: 30px;
-    margin-left:.75rem;
+    margin-left: .75rem;
 }
 
 /* Text In Center */
 .center {
-  text-align: center;
+    text-align: center;
 }
-
 
 /* Text In Right */
 .right {
-  text-align: right;
+    text-align: right;
+}
+
+/* Very small Text */
+.very-small {
+    font-size: 14px;
 }
 
 /* New Stuff - Experimental*/

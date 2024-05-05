@@ -16,15 +16,11 @@ https://code.jquery.com/jquery-1.12.4.js" = jquery-3.5.1.min_formatted.js
 """
 import os
 
-# flask sqlalchemy
-
-from flask_sqlalchemy import SQLAlchemy
-import sqlalchemy
-
-# app.py
-
 from flask import Flask, render_template, request, jsonify
-import json
+from flask_sqlalchemy import SQLAlchemy
+
+# flask sqlalchemy
+# app.py
 
 # Initialize the Flask application
 app = Flask(__name__)

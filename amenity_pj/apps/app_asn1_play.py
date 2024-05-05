@@ -1,6 +1,7 @@
 from asn1_play.generated_code.asn1.asn1 import Asn1
 from asn1_play.generated_code.asn1.asn1_versions import Asn1Versions
 from asn1_play.main.data_type.data_type_master import DataTypeMaster
+from asn1_play.main.helper.constants_config import GIT_SUMMARY
 from asn1_play.main.helper.defaults import Defaults
 from asn1_play.main.helper.formats import Formats
 from asn1_play.main.helper.formats_group import FormatsGroup
@@ -122,7 +123,7 @@ def get_sample_data(key):
     return sample_data.get(key, None)
 
 
-def handle_requests():
+def handle_requests(api=False):
     """
 
     :return:
@@ -139,6 +140,7 @@ def handle_requests():
         'app_version': Const.VERSION_ASN1_PLAY,
         'app_github_url': Util.get_github_url(github_repo=Const.GITHUB_REPO_ASN1_PLAY, github_pages=False),
         'app_github_pages_url': Util.get_github_url(github_repo=Const.GITHUB_REPO_ASN1_PLAY, github_pages=True),
+        'app_git_summary': GIT_SUMMARY,
         PhKeys.RAW_DATA: PhConstants.STR_EMPTY,
         'input_formats': input_formats,
         'output_formats': output_formats,
@@ -151,24 +153,27 @@ def handle_requests():
         'selected_asn1_schema': default_selected_asn1_schema,
         'selected_asn1_object': PhConstants.STR_EMPTY,
         PhKeys.FETCH_ASN1_OBJECTS_LIST: False,
-        'sample_processing': 'load_only',
-        'output_data': PhConstants.STR_EMPTY,
+        PhKeys.SAMPLE_PROCESSING: PhKeys.SAMPLE_LOAD_ONLY,
+        PhKeys.OUTPUT_DATA: PhConstants.STR_EMPTY,
     }
+    log_req = f'{Const.TEMPLATE_ASN1_PLAY}; {request.method}; {"API" if api else "Form"} Request'
+    PhUtil.print_separator(main_text=f'{log_req} Received!!!')
+    requested_data_dict = request.get_json() if api else request.form.to_dict()
+    PhUtil.print_iter(requested_data_dict, header='Inputs')
     if request.method == PhKeys.GET:
-        return render_template(Const.TEMPLATE_ASN1_PLAY, **default_data)
+        pass
     if request.method == PhKeys.POST:
-        PhUtil.print_separator(main_text=f'{Const.TEMPLATE_QR_PLAY} Post Request Started')
-        PhUtil.print_iter(request.form, header='Request Input')
-        requested_data_dict = request.form.to_dict()
         # if not requested_data_dict[PhKeys.RAW_DATA]:
         #     flash('raw_data is required!')
-        sample_processing = requested_data_dict[PhKeys.SAMPLE_PROCESSING]
+        sample_processing = requested_data_dict.get(PhKeys.SAMPLE_PROCESSING, False)
         # When submitting an HTML form,
         # 1) unchecked checkboxes do not send any data, however checked checkboxes do send False (may send True as well)
         requested_data_dict.update(
             {'tlv_parsing_of_output': True if 'tlv_parsing_of_output' in requested_data_dict else False})
         requested_data_dict.update(
             {PhKeys.FETCH_ASN1_OBJECTS_LIST: True if PhKeys.FETCH_ASN1_OBJECTS_LIST in requested_data_dict else False})
+        # 2) Everything is converted to String; below needs to be typecasted
+        pass
         sample_data_dict = None
         for key in requested_data_dict.keys():
             if not key.startswith(PhKeys.SAMPLE):
@@ -182,22 +187,18 @@ def handle_requests():
             pass
         else:
             # Data Processing is needed in all other cases
-            # Filter All Sample Keys
-            # if sample_data_dict:
-            #     PhUtil.print_iter(sample_data_dict, header='Request Input for sample_data_dict')
-            # else:
-            #     PhUtil.print_iter(requested_data_dict, header='Request Input for requested_data_dict')
-            dic_to_process = {k: v for k, v in
-                              (sample_data_dict if sample_data_dict else requested_data_dict).items() if
+            dic_received = sample_data_dict if sample_data_dict else requested_data_dict
+            # PhUtil.print_iter(dic_received, header='dic_received')
+            # Filter All Processing Related Keys
+            dic_to_process = {k: v for k, v in dic_received.items() if
                               not (k.startswith(PhKeys.SAMPLE) or k.startswith('process'))}
-            PhUtil.print_iter(dic_to_process, header='Request to Process')
+            PhUtil.print_iter(dic_to_process, header='dic_to_process')
             data_type = DataTypeMaster()
             data_type.set_data_pool(data_pool=dic_to_process)
             data_type.parse_safe(PhErrorHandlingModes.CONTINUE_ON_ERROR)
             output_data = data_type.get_output_data()
             default_data.update({PhKeys.OUTPUT_DATA: output_data})
         if sample_data_dict:
-            # PhUtil.print_iter(sample_data_dict, header='Request Output for sample_data_dict')
             if PhKeys.RAW_DATA in sample_data_dict:
                 default_data.update({PhKeys.RAW_DATA: sample_data_dict.get(PhKeys.RAW_DATA)})
             if 'input_format' in sample_data_dict:
@@ -220,7 +221,6 @@ def handle_requests():
             if PhKeys.REMARKS_LIST in sample_data_dict:
                 default_data.update({PhKeys.REMARKS_LIST: sample_data_dict.get(PhKeys.REMARKS_LIST)})
         else:
-            # PhUtil.print_iter(requested_data_dict, header='Request Output for requested_data_dict')
             if PhKeys.RAW_DATA in requested_data_dict:
                 default_data.update({PhKeys.RAW_DATA: requested_data_dict[PhKeys.RAW_DATA]})
             if 'input_format' in requested_data_dict:
@@ -243,10 +243,9 @@ def handle_requests():
             if PhKeys.REMARKS_LIST in requested_data_dict:
                 default_data.update({PhKeys.REMARKS_LIST: requested_data_dict[PhKeys.REMARKS_LIST]})
         default_data.update({PhKeys.SAMPLE_PROCESSING: sample_processing})
-        PhUtil.print_iter(default_data, header='Request Output')
-        PhUtil.print_separator(main_text=f'{Const.TEMPLATE_ASN1_PLAY} Post Request Completed')
-        return render_template(Const.TEMPLATE_ASN1_PLAY, **default_data)
-    return render_template(Const.TEMPLATE_ASN1_PLAY, **default_data)
+        PhUtil.print_iter(default_data, header='Outputs')
+    PhUtil.print_separator(main_text=f'{log_req} Completed!!!')
+    return jsonify(**default_data) if api else render_template(Const.TEMPLATE_ASN1_PLAY, **default_data)
 
 
 def get_asn1_objects_list(asn1_schema_str):

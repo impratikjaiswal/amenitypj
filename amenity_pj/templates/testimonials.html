@@ -1,15 +1,15 @@
 <!-- Common Content -->
 {% extends 'base.html' %}
-{% block description %}{{app_description}}{% endblock %}
-{% block title %}{{app_title}}{% endblock %}
+{% block description %}{{ app_description }}{% endblock %}
+{% block title %}{{ app_title }}{% endblock %}
 <!-- Page Specific Content -->
 {% block content %}
-    <h1>{{app_title}} {{app_version}}</h1>
-    <a href="{{app_github_pages_url}}" rel="noopener noreferrer" target="_blank">
+    <h1>{{ app_title }} {{ app_version }}</h1>
+    <a href="{{ app_github_pages_url }}" rel="noopener noreferrer" target="_blank">
         <span class="badge badge-success">@Github</span>
     </a>
     <BR>
-    <h6>{{app_description}}</h6>
+    <h6>{{ app_description }}</h6>
     {% for post in posts %}
         <!-- <a href="#"> -->
         <a href="{{ url_for('post', post_id=post['id']) }}">

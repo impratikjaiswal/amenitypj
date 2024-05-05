@@ -1,7 +1,7 @@
 from asn1_play.main.helper.constants_config import ConfigConst as asn1_play_config
+from cert_play.main.helper.constants_config import ConfigConst as cert_play_config
 from qr_play.main.helper.constants_config import ConfigConst as qr_play_config
 from tlv_play.main.helper.constants_config import ConfigConst as tlv_play_config
-from cert_play.main.helper.constants_config import ConfigConst as cert_play_config
 
 from amenity_pj.helper.constants_config import ConfigConst as amenity_pj_config
 
@@ -34,6 +34,7 @@ class Const:
     VERSION_ASN1_PLAY = f'v{asn1_play_config.TOOL_VERSION}'
     END_POINT_ASN1_PLAY = 'asn1_play'
     URL_ASN1_PLAY = '/asn1Play'
+    URL_API_ASN1_PLAY = '/api/asn1Play'
     URL_ASN1_PLAY_ASN1_OBJECTS = '/asn1Play/asn1Objects'
     TEMPLATE_ASN1_PLAY = '/apps/asn1Play.html'
     GITHUB_REPO_ASN1_PLAY = 'asn1Play'
@@ -44,6 +45,7 @@ class Const:
     VERSION_EXCEL_PLAY = VERSION_DEFAULT
     END_POINT_EXCEL_PLAY = 'excel_play'
     URL_EXCEL_PLAY = '/excelPlay'
+    URL_API_EXCEL_PLAY = '/api/excelPlay'
     # TEMPLATE_EXCEL_PLAY = 'excelPlay.html'
     TEMPLATE_EXCEL_PLAY = TEMPLATE_WIP
     GITHUB_REPO_EXCEL_PLAY = 'excelPlay'
@@ -53,6 +55,7 @@ class Const:
     VERSION_TLV_PLAY = f'v{tlv_play_config.TOOL_VERSION}'
     END_POINT_TLV_PLAY = 'tlv_play'
     URL_TLV_PLAY = '/tlvPlay'
+    URL_API_TLV_PLAY = '/api/tlvPlay'
     TEMPLATE_TLV_PLAY = '/apps/tlvPlay.html'
     GITHUB_REPO_TLV_PLAY = 'tlvPlay'
 
@@ -61,6 +64,7 @@ class Const:
     VERSION_QR_PLAY = f'v{qr_play_config.TOOL_VERSION}'
     END_POINT_QR_PLAY = 'qr_play'
     URL_QR_PLAY = '/qrPlay'
+    URL_API_QR_PLAY = '/api/qrPlay'
     TEMPLATE_QR_PLAY = '/apps/qrPlay.html'
     GITHUB_REPO_QR_PLAY = 'qrPlay'
 
@@ -69,6 +73,7 @@ class Const:
     VERSION_CERT_PLAY = f'v{cert_play_config.TOOL_VERSION}'
     END_POINT_CERT_PLAY = 'cert_play'
     URL_CERT_PLAY = '/certPlay'
+    URL_API_CERT_PLAY = '/api/certPlay'
     TEMPLATE_CERT_PLAY = '/apps/certPlay.html'
     GITHUB_REPO_CERT_PLAY = 'certPlay'
 
