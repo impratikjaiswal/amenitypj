@@ -5,7 +5,7 @@ from flask import Flask, render_template, request, url_for, flash, redirect
 from flask_sitemapper import Sitemapper
 from werkzeug.exceptions import abort
 
-from amenity_pj.apps import app_qr_play, app_tlv_play, app_asn1_play, app_cert_play
+from amenity_pj.apps import app_qr_play, app_tlv_play, app_asn1_play, app_cert_play, app_excel_play
 from amenity_pj.helper.constants import Const
 from amenity_pj.helper.util import Util
 
@@ -97,15 +97,20 @@ def index():
     return render_template(Const.TEMPLATE_AMENITY_PJ, **default_data)
 
 
-@sitemapper.include(lastmod=Const.DEPLOYMENT_DATE)
-@app.route(Const.URL_ASN1_PLAY, methods=('GET', 'POST'))
-def asn1_play():
-    return app_asn1_play.handle_requests()
-
-
 @app.route(Const.URL_ASN1_PLAY_ASN1_OBJECTS)
 def asn1_play_asn1_objects():
     return app_asn1_play.handle_asn1_objects()
+
+
+@sitemapper.include(lastmod=Const.DEPLOYMENT_DATE)
+@app.route(Const.URL_ASN1_PLAY, methods=('GET', 'POST'))
+def asn1_play():
+    return app_asn1_play.handle_requests(api=False)
+
+
+@app.route(Const.URL_API_ASN1_PLAY, methods=('GET', 'POST'))
+def asn1_play_api():
+    return app_asn1_play.handle_requests(api=True)
 
 
 @sitemapper.include(lastmod=Const.DEPLOYMENT_DATE_CERT_PLAY)
@@ -122,26 +127,34 @@ def cert_play_api():
 @sitemapper.include(lastmod=Const.DEPLOYMENT_DATE)
 @app.route(Const.URL_TLV_PLAY, methods=('GET', 'POST'))
 def tlv_play():
-    return app_tlv_play.handle_requests()
+    return app_tlv_play.handle_requests(api=False)
+
+
+@app.route(Const.URL_API_TLV_PLAY, methods=('GET', 'POST'))
+def tlv_play_api():
+    return app_tlv_play.handle_requests(api=True)
 
 
 @sitemapper.include(lastmod=Const.DEPLOYMENT_DATE)
 @app.route(Const.URL_QR_PLAY, methods=('GET', 'POST'))
 def qr_play():
-    return app_qr_play.handle_requests()
+    return app_qr_play.handle_requests(api=False)
+
+
+@app.route(Const.URL_API_QR_PLAY, methods=('GET', 'POST'))
+def qr_play_api():
+    return app_qr_play.handle_requests(api=True)
 
 
 @sitemapper.include(lastmod=Const.DEPLOYMENT_DATE)
 @app.route(Const.URL_EXCEL_PLAY, methods=('GET', 'POST'))
 def excel_play():
-    default_data = {
-        'app_title': Const.TITLE_EXCEL_PLAY,
-        'app_description': Const.DESCRIPTION_EXCEL_PLAY,
-        'app_version': Const.VERSION_EXCEL_PLAY,
-        'app_github_url': Util.get_github_url(github_repo=Const.GITHUB_REPO_EXCEL_PLAY, github_pages=False),
-        'app_github_pages_url': Util.get_github_url(github_repo=Const.GITHUB_REPO_EXCEL_PLAY, github_pages=True),
-    }
-    return render_template(Const.TEMPLATE_EXCEL_PLAY, **default_data)
+    return app_excel_play.handle_requests(api=False)
+
+
+@app.route(Const.URL_API_EXCEL_PLAY, methods=('GET', 'POST'))
+def excel_play_api():
+    return app_excel_play.handle_requests(api=True)
 
 
 @sitemapper.include(lastmod=Const.DEPLOYMENT_DATE)
