@@ -59,7 +59,7 @@ def handle_requests(api=False):
     }
     log_req = f'{Const.TEMPLATE_CERT_PLAY}; {request.method}; {"API" if api else "Form"} Request'
     PhUtil.print_separator(main_text=f'{log_req} Received!!!')
-    requested_data_dict = request.get_json() if api else request.form.to_dict()
+    requested_data_dict = request.get_json() if request.is_json else request.form.to_dict()
     PhUtil.print_iter(requested_data_dict, header='Inputs')
     if request.method == PhKeys.GET:
         pass
