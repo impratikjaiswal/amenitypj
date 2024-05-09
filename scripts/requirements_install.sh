@@ -1,4 +1,4 @@
-bash activate_vir_env.sh
-echo Installing requirements
-pip3 install -r ../requirements.txt
-bash deactivate_vir_env.sh
+source activate_vir_env.sh
+echo "Installing requirements"
+pip install -r ../requirements.txt
+source deactivate_vir_env.sh
