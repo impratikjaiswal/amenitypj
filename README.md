@@ -17,7 +17,7 @@ Source code of [https://amenitypj.in/](https://amenitypj.in/)
 # Url(s) of AmenityPj 
 
 ## Primary Url(s) of AmenityPj 
-1. [![Static Badge](https://img.shields.io/badge/amenitypj.in-a?label=primary%20url)](https://amenitypj.in/)
+1. <a href="https://amenitypj.in/">https://amenitypj.in</a> [![Static Badge](https://img.shields.io/badge/amenitypj.in-a?label=primary%20url)](https://amenitypj.in/)
 [![Website](https://img.shields.io/website?url=https://amenitypj.in&label=website%20status)](https://amenitypj.in/)
 
 ## Secondary Url(s) of AmenityPj 
