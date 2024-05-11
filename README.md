@@ -14,10 +14,11 @@ Source code of [https://amenitypj.in/](https://amenitypj.in/)
 [![Static Badge](https://img.shields.io/badge/impratikjaiswal.github.io-a?label=gihub%20website%20url)](https://impratikjaiswal.github.io/)
 [![Website](https://img.shields.io/website?url=https://amenitypj.in&label=website%20status)](https://impratikjaiswal.github.io/)
 
-# Url(s) of AmenityPj 
+# Primary Url(s) of AmenityPj 
 1. <a href="https://amenitypj.in/">https://amenitypj.in</a>
 
-<BR>If above url did not work for you, try these:
+# Secondry Url(s) of AmenityPj 
+If Primary Url(s) did not work for you, try these:
 1. <a href="http://amenitypj.in/">http://amenitypj.in</a>
 1. <a href="https://ec2-3-141-211-207.us-east-2.compute.amazonaws.com">https://ec2-3-141-211-207.us-east-2.compute.amazonaws.com</a>
 1. <a href="https://3.141.211.207">https://3.141.211.207</a>
