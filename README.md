@@ -17,11 +17,11 @@ Source code of [https://amenitypj.in/](https://amenitypj.in/)
 # Primary Url(s) of AmenityPj 
 1. <a href="https://amenitypj.in/">https://amenitypj.in</a>
 
-# Secondry Url(s) of AmenityPj 
+# Secondary Url(s) of AmenityPj 
 If Primary Url(s) did not work for you, try these:
-1. <a href="http://amenitypj.in/">http://amenitypj.in</a>
 1. <a href="https://ec2-3-141-211-207.us-east-2.compute.amazonaws.com">https://ec2-3-141-211-207.us-east-2.compute.amazonaws.com</a>
 1. <a href="https://3.141.211.207">https://3.141.211.207</a>
+1. <a href="http://amenitypj.in/">http://amenitypj.in</a>
 
 # Screen Shot(s) of Web App [![Static Badge](https://img.shields.io/badge/amenitypj.in-a)](https://amenitypj.in/) 
 ![sample_web_1](https://github.com/impratikjaiswal/amenitypj/blob/main/static/images/sample_web_1.gif?raw=true)
