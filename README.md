@@ -12,13 +12,16 @@ Source code of [https://amenitypj.in/](https://amenitypj.in/)
 [![Website](https://img.shields.io/website?url=https://amenitypj.in&label=website%20status)](https://amenitypj.in/)
 
 [![Static Badge](https://img.shields.io/badge/impratikjaiswal.github.io-a?label=gihub%20website%20url)](https://impratikjaiswal.github.io/)
-[![Website](https://img.shields.io/website?url=https://amenitypj.in&label=website%20status)](https://impratikjaiswal.github.io/)
+[![Website](https://img.shields.io/website?url=https://impratikjaiswal.github.io&label=website%20status)](https://impratikjaiswal.github.io/)
 
-# Primary Url(s) of AmenityPj 
-1. <a href="https://amenitypj.in/">https://amenitypj.in</a>
+# Url(s) of AmenityPj 
 
-# Secondary Url(s) of AmenityPj 
-If Primary Url(s) did not work for you, try these:
+## Primary Url(s) of AmenityPj 
+1. [![Static Badge](https://img.shields.io/badge/amenitypj.in-a?label=primary%20url)](https://amenitypj.in/)
+[![Website](https://img.shields.io/website?url=https://amenitypj.in&label=website%20status)](https://amenitypj.in/)
+
+## Secondary Url(s) of AmenityPj 
+If Primary Url(s) did not work for you (or its down), try these:
 1. <a href="https://ec2-3-141-211-207.us-east-2.compute.amazonaws.com">https://ec2-3-141-211-207.us-east-2.compute.amazonaws.com</a>
 1. <a href="https://3.141.211.207">https://3.141.211.207</a>
 1. <a href="http://amenitypj.in/">http://amenitypj.in</a>
