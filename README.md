@@ -1,6 +1,6 @@
 # amenitypj
 Source code of [https://amenitypj.in/](https://amenitypj.in/)
-<BR>Amenity Pj offers a playground for various open source tools (amenities) such as ASN1 Play, TLV Play, QR Play, Excel Play which are crafted with the purpose of enhancing productivity.
+<BR>Amenity Pj offers a playground for various open source tools (amenities) such as ASN1 Play, TLV Play, QR Play, Excel Play, Cert Play which are crafted with the purpose of enhancing productivity.
 
 [![GitHub License](https://img.shields.io/github/license/impratikjaiswal/amenitypj)](LICENSE)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CONDUCT.md)
@@ -13,6 +13,14 @@ Source code of [https://amenitypj.in/](https://amenitypj.in/)
 
 [![Static Badge](https://img.shields.io/badge/impratikjaiswal.github.io-a?label=gihub%20website%20url)](https://impratikjaiswal.github.io/)
 [![Website](https://img.shields.io/website?url=https://amenitypj.in&label=website%20status)](https://impratikjaiswal.github.io/)
+
+# Url(s) of Web App 
+1. <a href="https://amenitypj.in/">https://amenitypj.in</a>
+
+<BR>If above url did not work for you, try these:
+1. <a href="http://amenitypj.in/">http://amenitypj.in</a>
+1. <a href="https://ec2-3-141-211-207.us-east-2.compute.amazonaws.com">https://ec2-3-141-211-207.us-east-2.compute.amazonaws.com</a>
+1. <a href="https://3.141.211.207">https://3.141.211.207</a>
 
 # Screen Shot(s) of Web App [![Static Badge](https://img.shields.io/badge/amenitypj.in-a)](https://amenitypj.in/) 
 ![sample_web_1](https://github.com/impratikjaiswal/amenitypj/blob/main/static/images/sample_web_1.gif?raw=true)
@@ -102,7 +110,20 @@ Issue tracker can be found [here](CONTRIBUTING.md#issue-tracker).
     [![Static Badge](https://img.shields.io/badge/impratikjaiswal.github.io/excelPlay-a?label=gihub%20website%20url)](https://impratikjaiswal.github.io/excelPlay)
     [![Website](https://img.shields.io/website?url=https://amenitypj.in/excelPlay&label=website%20status)](https://impratikjaiswal.github.io/excelPlay)
 
-6. [Python Helpers](https://impratikjaiswal.github.io/pythonHelpers/)
+6. [Cert Play](https://impratikjaiswal.github.io/certPlay/)
+
+    ![GitHub License](https://img.shields.io/github/license/impratikjaiswal/certPlay)
+
+    [![GitHub Release](https://img.shields.io/github/v/release/impratikjaiswal/certPlay)](https://github.com/impratikjaiswal/certPlay/releases/latest)
+    [![GitHub commits since latest release](https://img.shields.io/github/commits-since/impratikjaiswal/certPlay/latest)](https://github.com/impratikjaiswal/certPlay/commits/main/)
+    
+    [![Static Badge](https://img.shields.io/badge/amenitypj.in/certPlay-a?label=website%20url)](https://amenitypj.in/certPlay)
+    [![Website](https://img.shields.io/website?url=https://amenitypj.in/certPlay&label=website%20status)](https://amenitypj.in/certPlay)
+    
+    [![Static Badge](https://img.shields.io/badge/impratikjaiswal.github.io/certPlay-a?label=gihub%20website%20url)](https://impratikjaiswal.github.io/certPlay)
+    [![Website](https://img.shields.io/website?url=https://amenitypj.in/certPlay&label=website%20status)](https://impratikjaiswal.github.io/certPlay)
+
+7. [Python Helpers](https://impratikjaiswal.github.io/pythonHelpers/)
 
     ![GitHub License](https://img.shields.io/github/license/impratikjaiswal/pythonHelpers)
 
