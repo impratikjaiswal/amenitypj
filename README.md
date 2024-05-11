@@ -14,7 +14,7 @@ Source code of [https://amenitypj.in/](https://amenitypj.in/)
 [![Static Badge](https://img.shields.io/badge/impratikjaiswal.github.io-a?label=gihub%20website%20url)](https://impratikjaiswal.github.io/)
 [![Website](https://img.shields.io/website?url=https://amenitypj.in&label=website%20status)](https://impratikjaiswal.github.io/)
 
-# Url(s) of Web App 
+# Url(s) of AmenityPj 
 1. <a href="https://amenitypj.in/">https://amenitypj.in</a>
 
 <BR>If above url did not work for you, try these:
