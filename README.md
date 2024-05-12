@@ -60,7 +60,7 @@ Issue tracker can be found [here](CONTRIBUTING.md#issue-tracker).
     [![Website](https://img.shields.io/website?url=https://amenitypj.in&label=website%20status)](https://amenitypj.in)
     
     [![Static Badge](https://img.shields.io/badge/impratikjaiswal.github.io-a?label=gihub%20website%20url)](https://impratikjaiswal.github.io/)
-    [![Website](https://img.shields.io/website?url=https://amenitypj.in&label=website%20status)](https://impratikjaiswal.github.io/)
+    [![Website](https://img.shields.io/website?url=https://impratikjaiswal.github.io&label=website%20status)](https://impratikjaiswal.github.io/)
 
 2. [ASN1 Play](https://impratikjaiswal.github.io/asn1Play/)
 
@@ -73,7 +73,7 @@ Issue tracker can be found [here](CONTRIBUTING.md#issue-tracker).
     [![Website](https://img.shields.io/website?url=https://amenitypj.in/asn1Play&label=website%20status)](https://amenitypj.in/asn1Play)
     
     [![Static Badge](https://img.shields.io/badge/impratikjaiswal.github.io/asn1Play-a?label=gihub%20website%20url)](https://impratikjaiswal.github.io/asn1Play)
-    [![Website](https://img.shields.io/website?url=https://amenitypj.in/asn1Play&label=website%20status)](https://impratikjaiswal.github.io/asn1Play)
+    [![Website](https://img.shields.io/website?url=https://impratikjaiswal.github.io/asn1Play&label=website%20status)](https://impratikjaiswal.github.io/asn1Play)
 
 3. [TLV Play](https://impratikjaiswal.github.io/tlvPlay/)
 
@@ -86,7 +86,7 @@ Issue tracker can be found [here](CONTRIBUTING.md#issue-tracker).
     [![Website](https://img.shields.io/website?url=https://amenitypj.in/tlvPlay&label=website%20status)](https://amenitypj.in/tlvPlay)
 
     [![Static Badge](https://img.shields.io/badge/impratikjaiswal.github.io/tlvPlay-a?label=gihub%20website%20url)](https://impratikjaiswal.github.io/tlvPlay)
-    [![Website](https://img.shields.io/website?url=https://amenitypj.in/tlvPlay&label=website%20status)](https://impratikjaiswal.github.io/tlvPlay)
+    [![Website](https://img.shields.io/website?url=https://impratikjaiswal.github.io/tlvPlay&label=website%20status)](https://impratikjaiswal.github.io/tlvPlay)
 
 4. [QR Play](https://impratikjaiswal.github.io/qrPlay/)
 
@@ -99,7 +99,7 @@ Issue tracker can be found [here](CONTRIBUTING.md#issue-tracker).
     [![Website](https://img.shields.io/website?url=https://amenitypj.in/qrPlay&label=website%20status)](https://amenitypj.in/qrPlay)
     
     [![Static Badge](https://img.shields.io/badge/impratikjaiswal.github.io/qrPlay-a?label=gihub%20website%20url)](https://impratikjaiswal.github.io/qrPlay)
-    [![Website](https://img.shields.io/website?url=https://amenitypj.in/qrPlay&label=website%20status)](https://impratikjaiswal.github.io/qrPlay)
+    [![Website](https://img.shields.io/website?url=https://impratikjaiswal.github.io/qrPlay&label=website%20status)](https://impratikjaiswal.github.io/qrPlay)
 
 5. [Excel Play](https://impratikjaiswal.github.io/excelPlay/)
 
@@ -112,7 +112,7 @@ Issue tracker can be found [here](CONTRIBUTING.md#issue-tracker).
     [![Website](https://img.shields.io/website?url=https://amenitypj.in/excelPlay&label=website%20status)](https://amenitypj.in/excelPlay)
     
     [![Static Badge](https://img.shields.io/badge/impratikjaiswal.github.io/excelPlay-a?label=gihub%20website%20url)](https://impratikjaiswal.github.io/excelPlay)
-    [![Website](https://img.shields.io/website?url=https://amenitypj.in/excelPlay&label=website%20status)](https://impratikjaiswal.github.io/excelPlay)
+    [![Website](https://img.shields.io/website?url=https://impratikjaiswal.github.io/excelPlay&label=website%20status)](https://impratikjaiswal.github.io/excelPlay)
 
 6. [Cert Play](https://impratikjaiswal.github.io/certPlay/)
 
@@ -125,7 +125,7 @@ Issue tracker can be found [here](CONTRIBUTING.md#issue-tracker).
     [![Website](https://img.shields.io/website?url=https://amenitypj.in/certPlay&label=website%20status)](https://amenitypj.in/certPlay)
     
     [![Static Badge](https://img.shields.io/badge/impratikjaiswal.github.io/certPlay-a?label=gihub%20website%20url)](https://impratikjaiswal.github.io/certPlay)
-    [![Website](https://img.shields.io/website?url=https://amenitypj.in/certPlay&label=website%20status)](https://impratikjaiswal.github.io/certPlay)
+    [![Website](https://img.shields.io/website?url=https://impratikjaiswal.github.io/certPlay&label=website%20status)](https://impratikjaiswal.github.io/certPlay)
 
 7. [Python Helpers](https://impratikjaiswal.github.io/pythonHelpers/)
 
@@ -138,4 +138,4 @@ Issue tracker can be found [here](CONTRIBUTING.md#issue-tracker).
     [![Website](https://img.shields.io/website?url=https://amenitypj.in&label=website%20status)](https://amenitypj.in)
     
     [![Static Badge](https://img.shields.io/badge/impratikjaiswal.github.io/pythonHelpers-a?label=gihub%20website%20url)](https://impratikjaiswal.github.io/pythonHelpers)
-    [![Website](https://img.shields.io/website?url=https://amenitypj.in/pythonHelpers&label=website%20status)](https://impratikjaiswal.github.io/pythonHelpers)
+    [![Website](https://img.shields.io/website?url=https://impratikjaiswal.github.io/pythonHelpers&label=website%20status)](https://impratikjaiswal.github.io/pythonHelpers)
