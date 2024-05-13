@@ -3,7 +3,7 @@
 ##################################################
 
 # certPlay Tool From Specific Tag (Remove @ String for Main Branch); Public Repo
-git+https://github.com/impratikjaiswal/certPlay@v1.0.5
+git+https://github.com/impratikjaiswal/certPlay@v1.0.4
 
 # certPlay Tool From Local Path
 # D:\Other\Github_Self\certPlay
@@ -27,7 +27,7 @@ git+https://github.com/impratikjaiswal/qrPlay@v2.4.1
 # D:\Other\Github_Self\qrPlay
 
 # asn1Play Tool From Specific Tag (Remove @ String for Main Branch); Public Repo
-git+https://github.com/impratikjaiswal/asn1play@v6.2.0
+git+https://github.com/impratikjaiswal/asn1play@v7.0.0
 
 # asn1Play Tool From Local Path
 # D:\Other\Github_Self\asn1Play

@@ -129,8 +129,8 @@ def handle_requests(api=False):
     :return:
     """
 
-    input_formats = PhUtil.generalise_list(FormatsGroup.INPUT_FORMATS)
-    output_formats = PhUtil.generalise_list(FormatsGroup.ALL_FORMATS)
+    input_formats = PhUtil.generalise_list(FormatsGroup.INPUT_FORMATS_SUPPORTED)
+    output_formats = PhUtil.generalise_list(FormatsGroup.OUTPUT_FORMATS_SUPPORTED)
     asn1_schemas = PhUtil.generalise_list(Asn1Versions._get_list_of_supported_versions())
     default_selected_asn1_schema = Defaults.ASN1_SCHEMA.get_name()
     asn1_objects = get_asn1_objects_list(default_selected_asn1_schema)
