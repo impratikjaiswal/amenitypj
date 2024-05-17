@@ -24,68 +24,83 @@
     <h6>{{ app_description }}</h6>
     <form method="post">
         <div class="form-group">
-            <label for="raw_data">Website Url</label>
+            <label for="raw_data">Raw Data</label>
             <textarea name="raw_data" placeholder="Raw Data" class="form-control">{{ raw_data }}</textarea>
-        </div>
-        <div class="form-group">
-            <label for="remarks_list">Remarks</label>
-            <input type="text" name="remarks_list" placeholder="Remarks" class="form-control"
-                   value="{{ remarks_list }}">
-        </div>
-        <div class="form-group">
-            <button type="submit" id="process_input" name="process_input" class="btn btn-primary">Submit</button>
-            <button type="submit" id="process_reset" name="process_reset" class="btn btn-primary" disabled>Reset
-            </button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button type="submit" id="process_copy_clipboard" name="process_copy_clipboard" class="btn btn-secondary">
-                Copy Output
-            </button>
-            <button type="submit" id="process_download_output" name="process_download_output" class="btn btn-secondary"
-                    disabled>Download Output
-            </button>
-            <button type="submit" id="process_download_yml" name="process_download_yml" class="btn btn-secondary"
-                    disabled>Download Yml
-            </button>
-        </div>
-        <a href="#samples_section" rel="noopener noreferrer">
-            <span class="badge badge-info">Jump To Samples</span>
-        </a>
-        <div id="output_data">
-            <label for="output_data">Output Data</label>
-            <div id="output_statement">
-                <pre>{{ output_data }}</pre>
+            <div class="form-group">
+                <label for="input_format">Input Format</label>
+                <select name="input_format" class="form-control selectpicker" data-live-search="true"
+                        placeholder="Input Format" id="input_format">
+                    {% for input_format in input_formats %}
+                        <option value="{{ input_format }}" {{ is_selected_input_format(input_format, selected_input_format) }}>{{ input_format }}</option>
+                    {% endfor %}
+                </select>
             </div>
-        </div>
-        <div id="debug_data">
-        </div>
-        <BR>
-        <a href="#" rel="noopener noreferrer">
-            <span class="badge badge-info">Jump To Input</span>
-        </a>
-        <h2>Not Sure How To Proceed? Try Below Samples.</h2>
-        <div class="form-group" id="samples_section">
-            <label for="sample_processing">How the Sample should be processed?</label>
-            <BR>&nbsp;&nbsp;&nbsp;
-            <!-- TODO: Try alternates of "class="form-control", Manual Spaces needs to be removed -->
-            {% if sample_processing == 'load_only' %}
-                <input type="radio" name="sample_processing" value="load_and_submit">&nbsp;&nbsp;Load & Submit</input>
-                <BR>&nbsp;&nbsp;&nbsp;
-                <input type="radio" name="sample_processing" value="load_only" checked>&nbsp;&nbsp;Load Only</input>
-            {% else %}
-                <input type="radio" name="sample_processing" value="load_and_submit" checked>&nbsp;&nbsp;Load & Submit
-                </input>
-                <BR>&nbsp;&nbsp;&nbsp;
-                <input type="radio" name="sample_processing" value="load_only">&nbsp;&nbsp;Load Only</input>
-            {% endif %}
-        </div>
-        <div class="form-group">
-            <button type="submit" name="sample_1" class="btn btn-success">AmenityPj; Home Page</button>
-            <button type="submit" name="sample_2" class="btn btn-success">AmenityPj; www; https</button>
-            <button type="submit" name="sample_3" class="btn btn-success">AmenityPj; Sub Domain</button>
+            <div class="form-group">
+                <label for="remarks_list">Remarks</label>
+                <input type="text" name="remarks_list" placeholder="Remarks" class="form-control"
+                       value="{{ remarks_list }}">
+            </div>
+            <div class="form-group">
+                <button type="submit" id="process_input" name="process_input" class="btn btn-primary">Submit</button>
+                <button type="submit" id="process_reset" name="process_reset" class="btn btn-primary" disabled>Reset
+                </button>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <button type="submit" id="process_copy_clipboard" name="process_copy_clipboard"
+                        class="btn btn-secondary">
+                    Copy Output
+                </button>
+                <button type="submit" id="process_download_output" name="process_download_output"
+                        class="btn btn-secondary"
+                        disabled>Download Output
+                </button>
+                <button type="submit" id="process_download_yml" name="process_download_yml" class="btn btn-secondary"
+                        disabled>Download Yml
+                </button>
+            </div>
+            <a href="#samples_section" rel="noopener noreferrer">
+                <span class="badge badge-info">Jump To Samples</span>
+            </a>
+            <div id="output_data">
+                <label for="output_data">Output Data</label>
+                <div id="output_statement">
+                    <pre>{{ output_data }}</pre>
+                </div>
+            </div>
+            <div id="debug_data">
+            </div>
             <BR>
-            <button type="submit" name="sample_4" class="btn btn-success">Google</button>
-            <button type="submit" name="sample_5" class="btn btn-success">Google; https; www</button>
-            <button type="submit" name="sample_6" class="btn btn-success">WikiPedia; Sub Pages</button>
+            <a href="#" rel="noopener noreferrer">
+                <span class="badge badge-info">Jump To Input</span>
+            </a>
+            <h2>Not Sure How To Proceed? Try Below Samples.</h2>
+            <div class="form-group" id="samples_section">
+                <label for="sample_processing">How the Sample should be processed?</label>
+                <BR>&nbsp;&nbsp;&nbsp;
+                <!-- TODO: Try alternates of "class="form-control", Manual Spaces needs to be removed -->
+                {% if sample_processing == 'load_only' %}
+                    <input type="radio" name="sample_processing" value="load_and_submit">&nbsp;&nbsp;Load & Submit
+                    </input>
+                    <BR>&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="sample_processing" value="load_only" checked>&nbsp;&nbsp;Load Only</input>
+                {% else %}
+                    <input type="radio" name="sample_processing" value="load_and_submit" checked>&nbsp;&nbsp;Load &
+                    Submit
+                    </input>
+                    <BR>&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="sample_processing" value="load_only">&nbsp;&nbsp;Load Only</input>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <button type="submit" name="sample_1" class="btn btn-success">Url; AmenityPj; Home Page</button>
+                <button type="submit" name="sample_2" class="btn btn-success">Url; AmenityPj; www; https</button>
+                <button type="submit" name="sample_3" class="btn btn-success">Url; AmenityPj; Sub Domain</button>
+                <BR>
+                <button type="submit" name="sample_4" class="btn btn-success">Url; Google</button>
+                <button type="submit" name="sample_5" class="btn btn-success">Url; Google; https; www</button>
+                <button type="submit" name="sample_6" class="btn btn-success">Url; WikiPedia; Sub Pages</button>
+                <BR>
+                <button type="submit" name="sample_7" class="btn btn-success">Der; AmenityPj</button>
+            </div>
         </div>
     </form>
 {% endblock %}
