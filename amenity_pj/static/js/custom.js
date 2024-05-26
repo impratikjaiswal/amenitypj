@@ -7,8 +7,48 @@ copy_button.addEventListener("click", copyToClipboard, false);
 //copy_button.addEventListener("mouseenter", logEvent);
 //copy_button.addEventListener("mouseleave", logEvent);
 
+$(document).ready(function () {
+    // debugData("DOM is ready: custom.js");
+    pageLoad();
+    $('#raw_data').on('input', function () {
+        // Attach an "input" event listener to raw_data
+        characterCounterInputData();
+    });
+    // debugData("Done custom.js");
+});
+
+function pageLoad() {
+    // debugData("pageLoad: custom.js");
+    characterCounterInputData();
+    characterCounterOutputData();
+}
+
+function characterCounterInputData() {
+    $("#raw_data_char_count").text($("#raw_data").val().length);
+}
+
+function characterCounterOutputData() {
+    const length_of_output_statement_initial_text = 30
+    $("#output_data_char_count").text(($("#output_statement").text().length - length_of_output_statement_initial_text));
+}
+
 function alertMsg() {
     alert("Hello! I am an alert box!!");
+}
+
+function debugData(msg, alert_user = true, clear_previous = true) {
+    let msg_label = "Debugging...";
+    let previous = document.getElementById("debug_data").innerHTML
+    if (clear_previous) {
+        previous = "";
+    }
+    let debug_msg_alert = [previous, msg].join("\n");
+    let debug_msg_div = [previous, msg].join("<BR>");
+    document.getElementById("debug_data").innerHTML = debug_msg_div;
+    document.getElementById("debug_data_label").innerHTML = msg_label;
+    if (alert_user) {
+        alert(debug_msg_alert);
+    }
 }
 
 function copyToClipboard(event) {

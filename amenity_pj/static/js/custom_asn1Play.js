@@ -1,10 +1,6 @@
 $(document).ready(function () {
-    // debugData("DOM is ready");
-    pageLoad();
-    $('#raw_data').on('input', function () {
-        // Attach an "input" event listener to raw_data
-        characterCounterInputData();
-    });
+    // debugData("DOM is ready: custom_asn1Play.js");
+    pageLoad_asn1Play();
     $('#asn1_schema').change(function () {
         // debugData("asn1_schema has been changed.");
         $.getJSON('/asn1Play/asn1Objects', {
@@ -24,20 +20,11 @@ $(document).ready(function () {
         swapInputOutputFormat();
         $("#raw_data").val($('#output_statement').text());
     });
+    // debugData("Done custom_asn1Play.js");
 });
 
-function pageLoad() {
-    characterCounterInputData();
-    characterCounterOutputData();
-}
-
-function characterCounterInputData() {
-    $("#raw_data_char_count").text($("#raw_data").val().length);
-}
-
-function characterCounterOutputData() {
-    const length_of_output_statement_initial_text = 30
-    $("#output_data_char_count").text(($("#output_statement").text().length - length_of_output_statement_initial_text));
+function pageLoad_asn1Play() {
+    // debugData("pageLoad: custom_asn1Play.js");
 }
 
 function swapInputOutputFormat() {
@@ -48,19 +35,4 @@ function swapInputOutputFormat() {
     $("#output_format").val(selected_input_format_js);
     $('#input_format').selectpicker('refresh');
     $('#output_format').selectpicker('refresh');
-}
-
-function debugData(msg, alert_user = true, clear_previous = true) {
-    let msg_label = "Debugging...";
-    let previous = document.getElementById("debug_data").innerHTML
-    if (clear_previous) {
-        previous = "";
-    }
-    let debug_msg_alert = [previous, msg].join("\n");
-    let debug_msg_div = [previous, msg].join("<BR>");
-    document.getElementById("debug_data").innerHTML = debug_msg_div;
-    document.getElementById("debug_data_label").innerHTML = msg_label;
-    if (alert_user) {
-        alert(debug_msg_alert);
-    }
 }
