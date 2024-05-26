@@ -1,9 +1,14 @@
 $(document).ready(function () {
     // debugData("DOM is ready");
+    pageLoad();
+    $('#raw_data').on('input', function () {
+        // Attach an "input" event listener to raw_data
+        characterCounterInputData();
+    });
     $('#asn1_schema').change(function () {
         // debugData("asn1_schema has been changed.");
         $.getJSON('/asn1Play/asn1Objects', {
-            selected_asn1_schema_js: $('#asn1_schema').val(),
+            selected_asn1_schema_js: $(this).val(),
             selected_asn1_object_js: $('#asn1_object').val(),
         }).done(function (data) {
             $('#asn1_object').html(data.html_string_selected);
@@ -20,6 +25,20 @@ $(document).ready(function () {
         $("#raw_data").val($('#output_statement').text());
     });
 });
+
+function pageLoad() {
+    characterCounterInputData();
+    characterCounterOutputData();
+}
+
+function characterCounterInputData() {
+    $("#raw_data_char_count").text($("#raw_data").val().length);
+}
+
+function characterCounterOutputData() {
+    const length_of_output_statement_initial_text = 30
+    $("#output_data_char_count").text(($("#output_statement").text().length - length_of_output_statement_initial_text));
+}
 
 function swapInputOutputFormat() {
     const selected_input_format_js = $('#input_format').val()
