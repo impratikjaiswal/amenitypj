@@ -4,7 +4,7 @@
 {% block title %}{{ app_title }}{% endblock %}
 <!-- Page Specific Content -->
 {% block content %}
-    <h1>Welcome to {{ app_title }} {{ app_version }}</h1>
+    <h1> Welcome to {{ app_title }} {{ app_version }} </h1>
     <div class="very-small">
         <a data-toggle="collapse" href="#upcomingReleaseCollapse" role="button" aria-expanded="false"
            aria-controls="gitInfoCollapse">
@@ -24,38 +24,46 @@
     <h6>{{ app_description }}</h6>
     <form method="post">
         <div class="form-group">
-            <label for="raw_data">Raw Data</label>
-            <textarea name="raw_data" placeholder="Raw Data" class="form-control">{{ raw_data }}</textarea>
+            <label for="raw_data">Input Data</label>
+            <textarea name="raw_data" placeholder="Input Data" class="form-control"
+                      id="raw_data">{{ raw_data }}</textarea>
+            <div class="badge float-right">
+                Length: <span id="raw_data_char_count">0</span>
+            </div>
         </div>
         <div class="form-group">
-            <label for="length_in_decimal">Length In Decimal</label>
-            {% if length_in_decimal %}
-                <input type="checkbox" name="length_in_decimal" class="form-check-inline"
-                       value="{{ length_in_decimal }}" checked>
-            {% else %}
-                <input type="checkbox" name="length_in_decimal" class="form-check-inline"
-                       value="{{ length_in_decimal }}">
-            {% endif %}
+            <div class="form-check">
+                {% if length_in_decimal %}
+                    <input type="checkbox" name="length_in_decimal" class="form-check-input"
+                           value="{{ length_in_decimal }}" checked>
+                {% else %}
+                    <input type="checkbox" name="length_in_decimal" class="form-check-input"
+                           value="{{ length_in_decimal }}">
+                {% endif %}
+                <label for="length_in_decimal" class="form-check-label">Length In Decimal</label>
+            </div>
         </div>
         <div class="form-group">
-            <label for="value_in_ascii">Value In Ascii</label>
-            {% if value_in_ascii %}
-                <input type="checkbox" name="value_in_ascii" class="form-check-inline"
-                       value="{{ value_in_ascii }}" checked>
-            {% else %}
-                <input type="checkbox" name="value_in_ascii" class="form-check-inline"
-                       value="{{ value_in_ascii }}">
-            {% endif %}
+            <div class="form-check">
+                {% if value_in_ascii %}
+                    <input type="checkbox" name="value_in_ascii" class="form-check-input"
+                           value="{{ value_in_ascii }}" checked>
+                {% else %}
+                    <input type="checkbox" name="value_in_ascii" class="form-check-input"
+                           value="{{ value_in_ascii }}">
+                {% endif %}
+                <label for="value_in_ascii" class="form-check-label">Value In Ascii</label>
+            </div>
         </div>
         <div class="form-group">
-            <label for="one_liner">One Liner</label>
-            {% if one_liner %}
-                <input type="checkbox" name="one_liner" class="form-check-inline"
-                       value="{{ one_liner }}" checked>
-            {% else %}
-                <input type="checkbox" name="one_liner" class="form-check-inline"
-                       value="{{ one_liner }}">
-            {% endif %}
+            <div class="form-check">
+                {% if one_liner %}
+                    <input type="checkbox" name="one_liner" class="form-check-input" value="{{ one_liner }}" checked>
+                {% else %}
+                    <input type="checkbox" name="one_liner" class="form-check-input" value="{{ one_liner }}">
+                {% endif %}
+                <label for="one_liner" class="form-check-label">One Liner</label>
+            </div>
         </div>
         <div class="form-group">
             <label for="remarks_list">Remarks</label>
@@ -82,9 +90,14 @@
         </a>
         <div id="output_data">
             <label for="output_data">Output Data</label>
+            <div class="badge float-right">
+                Length: <span id="output_data_char_count">0</span>
+            </div>
             <div id="output_statement">
                 <pre>{{ output_data }}</pre>
             </div>
+        </div>
+        <div id="debug_data_label">
         </div>
         <div id="debug_data">
         </div>

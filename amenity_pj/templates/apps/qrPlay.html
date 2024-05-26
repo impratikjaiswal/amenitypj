@@ -24,17 +24,22 @@
     <h6>{{ app_description }}</h6>
     <form method="post">
         <div class="form-group">
-            <label for="raw_data">Raw Data</label>
-            <textarea name="raw_data" placeholder="Raw Data" class="form-control" rows="3">{{ raw_data }}</textarea>
+            <label for="raw_data">Input Data</label>
+            <textarea name="raw_data" placeholder="Input Data" class="form-control"
+                      id="raw_data" rows="3">{{ raw_data }}</textarea>
+            <div class="badge float-right">
+                Length: <span id="raw_data_char_count">0</span>
+            </div>
         </div>
         <div class="form-group">
-            <label for="split_qrs">Auto Split Message Across Multiple Qrs</label>
-            {% if split_qrs %}
-                <input type="checkbox" name="split_qrs" class="form-check-inline" value="{{ split_qrs }}"
-                       checked>
-            {% else %}
-                <input type="checkbox" name="split_qrs" class="form-check-inline" value="{{ split_qrs }}">
-            {% endif %}
+            <div class="form-check">
+                {% if split_qrs %}
+                    <input type="checkbox" name="split_qrs" class="form-check-input" value="{{ split_qrs }}" checked>
+                {% else %}
+                    <input type="checkbox" name="split_qrs" class="form-check-input" value="{{ split_qrs }}">
+                {% endif %}
+                <label for="split_qrs" class="form-check-label">Auto Split Message Across Multiple Qrs</label>
+            </div>
         </div>
         <div class="form-group">
             <label for="qr_code_version">Qr Code Version</label>
@@ -78,6 +83,9 @@
         </a>
         <div id="output_data">
             <label for="output_data">Output Data</label>
+            <div class="badge float-right">
+                Length: <span id="output_data_char_count">0</span>
+            </div>
             <div id="output_statement">
                 <pre>{{ output_data }}</pre>
             </div>
@@ -89,6 +97,8 @@
                     <img src="{{ qr_image }}"><br>
                 {% endfor %}
             </div>
+        </div>
+        <div id="debug_data_label">
         </div>
         <div id="debug_data">
         </div>
