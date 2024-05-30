@@ -27,3 +27,23 @@
 }
 
 /* New Stuff - Experimental*/
+
+/* Rotate Button - Initial */
+.btn-rotate-initial{
+    border: none;
+    cursor: pointer;
+    appearance: none;
+    background-color: inherit;
+    transition: transform .7s ease-in-out;
+    margin-left:10px;
+}
+
+/* Rotate Button - Transfrom */
+.btn-rotate-transform{
+    transform: rotate(360deg);
+}
+
+.btn-rotate-img{
+    width: 35px;
+    height: 35px;
+}

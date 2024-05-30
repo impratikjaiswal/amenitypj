@@ -41,10 +41,14 @@
                     {% endfor %}
                 </select>
             </div>
-            <div class="form-group col center">
+            &nbsp;&nbsp;&nbsp;
+            <div class="form-group">
                 <BR>
-                <a href="#" id="swap_input_output_format">Swap Input & Output Formats</a>
+                {#                <a href="#" id="swap_input_output_format">Swap Input & Output Formats</a>#}
+                <a href="#"><img id="swap_input_output_format" class="btn-rotate-initial"
+                                 src={{ url_for('static', filename='/images/swap-left-right_24.png') }}></a>
             </div>
+            &nbsp;&nbsp;&nbsp;
             <div class="form-group col">
                 <label for="output_format">Output Format</label>
                 <select name="output_format" class="form-control selectpicker" data-live-search="true"
@@ -54,18 +58,21 @@
                     {% endfor %}
                 </select>
             </div>
-        </div>
-        <div class="form-group">
-            <div class="form-check">
-                {% if tlv_parsing_of_output %}
-                    <input type="checkbox" name="tlv_parsing_of_output" class="form-check-input"
-                           value="{{ tlv_parsing_of_output }}" checked>
-                {% else %}
-                    <input type="checkbox" name="tlv_parsing_of_output" class="form-check-input"
-                           value="{{ tlv_parsing_of_output }}">
-                {% endif %}
-                <!-- TLV Parsed Output (if possible) -->
-                <label for="tlv_parsing_of_output" class="form-check-label">TLV Parsing of Output (if possible)</label>
+            &nbsp;&nbsp;&nbsp;
+            <div class="form-group col">
+                <br>
+                <div class="form-check">
+                    {% if tlv_parsing_of_output %}
+                        <input type="checkbox" name="tlv_parsing_of_output" class="form-check-input"
+                               value="{{ tlv_parsing_of_output }}" checked>
+                    {% else %}
+                        <input type="checkbox" name="tlv_parsing_of_output" class="form-check-input"
+                               value="{{ tlv_parsing_of_output }}">
+                    {% endif %}
+                    <!-- TLV Parsed Output (if possible) -->
+                    <label for="tlv_parsing_of_output" class="form-check-label">TLV Parsing of Output (if
+                        possible)</label>
+                </div>
             </div>
         </div>
         <div class="form-row">
