@@ -4,16 +4,11 @@
 {% block title %}{{ app_title }}{% endblock %}
 <!-- Page Specific Content -->
 {% block content %}
-    <h1> Welcome to {{ app_title }} {{ app_version }} </h1>
-    <div class="very-small">
-        <a data-toggle="collapse" href="#gitInfoCollapse" role="button" aria-expanded="false"
-           aria-controls="gitInfoCollapse">
-            Git Info
-        </a>
-        <div class="collapse" id="gitInfoCollapse">
-            <div>{{ app_git_summary }}</div>
-        </div>
-    </div>
+    <h1 class="display-inline"> Welcome to {{ app_title }} {{ app_version }} </h1>
+    <a class="very-small" data-toggle="collapse" href="#gitInfoCollapse" role="button" aria-expanded="false"
+       aria-controls="gitInfoCollapse">Git Info</a>
+    <BR>
+    <div class="collapse very-small" id="gitInfoCollapse">{{ app_git_summary }}</div>
     <a href="{{ app_github_pages_url }}" rel="noopener noreferrer" target="_blank">
         <span class="badge badge-success">@Github</span>
     </a>
@@ -26,7 +21,7 @@
         <div class="form-group">
             <label for="raw_data">Input Data</label>
             <textarea name="raw_data" placeholder="Input Data" class="form-control"
-                      id="raw_data">{{ raw_data }}</textarea>
+                      id="raw_data" rows="3">{{ raw_data }}</textarea>
             <div class="badge float-right">
                 Length: <span id="raw_data_char_count">0</span>
             </div>

@@ -26,6 +26,11 @@
     font-size: 14px;
 }
 
+/* Very small Text */
+.display-inline {
+    display: inline;
+}
+
 /* New Stuff - Experimental*/
 
 /* Rotate Button - Initial */
