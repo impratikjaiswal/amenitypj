@@ -5,6 +5,7 @@ from flask import Flask, render_template, request, url_for, flash, redirect
 from flask_sitemapper import Sitemapper
 from werkzeug.exceptions import abort
 
+from amenity_pj._git_info import GIT_SUMMARY
 from amenity_pj.apps import app_qr_play, app_tlv_play, app_asn1_play, app_cert_play, app_excel_play
 from amenity_pj.helper.constants import Const
 from amenity_pj.helper.util import Util
@@ -93,6 +94,7 @@ def index():
         'app_version': Const.VERSION_AMENITY_PJ,
         'app_github_url': Util.get_github_url(github_repo=Const.GITHUB_REPO_AMENITY_PJ, github_pages=False),
         'app_github_pages_url': Util.get_github_url(github_repo=Const.GITHUB_REPO_AMENITY_PJ, github_pages=True),
+        'app_git_summary': GIT_SUMMARY,
     }
     return render_template(Const.TEMPLATE_AMENITY_PJ, **default_data)
 
@@ -181,6 +183,19 @@ def about_us():
         'app_github_pages_url': Util.get_github_url(github_repo=Const.GITHUB_REPO_ABOUT_US, github_pages=True),
     }
     return render_template(Const.TEMPLATE_ABOUT_US, **default_data)
+
+
+@sitemapper.include(lastmod=Const.DEPLOYMENT_DATE_CREDITS)
+@app.route(Const.URL_CREDITS, methods=('GET', 'POST'))
+def credits():
+    default_data = {
+        'app_title': Const.TITLE_CREDITS,
+        'app_description': Const.DESCRIPTION_CREDITS,
+        'app_version': Const.VERSION_CREDITS,
+        'app_github_url': Util.get_github_url(github_repo=Const.GITHUB_REPO_CREDITS, github_pages=False),
+        'app_github_pages_url': Util.get_github_url(github_repo=Const.GITHUB_REPO_CREDITS, github_pages=True),
+    }
+    return render_template(Const.TEMPLATE_CREDITS, **default_data)
 
 
 @sitemapper.include(lastmod=Const.DEPLOYMENT_DATE)

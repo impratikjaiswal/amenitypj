@@ -6,11 +6,11 @@
 {% block content %}
     <h1> Welcome to {{ app_title }} {{ app_version }} </h1>
     <div class="very-small">
-        <a data-toggle="collapse" href="#upcomingReleaseCollapse" role="button" aria-expanded="false"
+        <a data-toggle="collapse" href="#gitInfoCollapse" role="button" aria-expanded="false"
            aria-controls="gitInfoCollapse">
             Git Info
         </a>
-        <div class="collapse" id="upcomingReleaseCollapse">
+        <div class="collapse" id="gitInfoCollapse">
             <div>{{ app_git_summary }}</div>
         </div>
     </div>

@@ -1,0 +1,32 @@
+<!-- Common Content -->
+{% extends 'base.html' %}
+{% block description %}{{ app_description }}{% endblock %}
+{% block title %}{{ app_title }}{% endblock %}
+<!-- Page Specific Content -->
+{% block content %}
+    <h1>{{ app_title }} {{ app_version }}</h1>
+    <a href="{{ app_github_pages_url }}" rel="noopener noreferrer" target="_blank">
+        <span class="badge badge-success">@Github</span>
+    </a>
+    <BR>
+    <h6>{{ app_description }}</h6>
+    Follow us on:
+    <ul>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ app_github_url }}" target="_blank"
+               rel="noopener noreferrer">Github</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ app_github_pages_url }}" target="_blank"
+               rel="noopener noreferrer">JetBrains Open Source</a>
+        </li>
+        <li class="nav-item">
+		    <a class="nav-link" href="https://www.flaticon.com/free-icons/swap" title="swap icons" target="_blank"
+               rel="noopener noreferrer">Swap icons created by vectaicon - Flaticon</a>
+        </li>
+        <li class="nav-item">
+		    <a class="nav-link" href="https://www.flaticon.com/free-icons/open-source" title="open source icons" target="_blank"
+               rel="noopener noreferrer">Open source icons created by Smashicons - Flaticon</a>
+        </li>
+    </ul>
+{% endblock %}

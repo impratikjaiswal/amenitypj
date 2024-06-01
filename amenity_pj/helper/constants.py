@@ -9,6 +9,7 @@ from amenity_pj.helper.constants_config import ConfigConst as amenity_pj_config
 class Const:
     DEPLOYMENT_DATE = '2023-11-11'
     DEPLOYMENT_DATE_CERT_PLAY = '2024-05-03'
+    DEPLOYMENT_DATE_CREDITS = '2024-06-01'
     URL_SITEMAP = '/sitemap.xml'
     TEMPLATE_WIP = 'wip.html'
     TEMPLATE_POST = 'post.html'
@@ -96,6 +97,14 @@ class Const:
     TEMPLATE_ABOUT_US = 'aboutus.html'
     GITHUB_REPO_ABOUT_US = None
 
+    TITLE_CREDITS = 'Credits'
+    DESCRIPTION_CREDITS = 'AmenityPj is Thankful to  multiple '
+    VERSION_CREDITS = VERSION_DEFAULT
+    END_POINT_CREDITS = 'credits'
+    URL_CREDITS = '/credits'
+    TEMPLATE_CREDITS = 'credits.html'
+    GITHUB_REPO_CREDITS = None
+
     TITLE_SPONSORSHIP = 'Sponsorship'
     DESCRIPTION_SPONSORSHIP = DESCRIPTION_DEFAULT
     VERSION_SPONSORSHIP = VERSION_DEFAULT
@@ -108,6 +117,7 @@ class Const:
         END_POINT_AMENITY_PJ: TITLE_AMENITY_PJ,
         END_POINT_TESTIMONIALS: TITLE_TESTIMONIALS,
         END_POINT_ABOUT_US: TITLE_ABOUT_US,
+        END_POINT_CREDITS: TITLE_CREDITS,
         END_POINT_SPONSORSHIP: TITLE_SPONSORSHIP,
         END_POINT_EXCEL_PLAY: TITLE_EXCEL_PLAY,
         END_POINT_ASN1_PLAY: TITLE_ASN1_PLAY,
