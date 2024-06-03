@@ -1,5 +1,5 @@
 from cert_play.main.data_type.data_type_master import DataTypeMaster
-from cert_play.main.data_type.sample_data import SampleData
+from cert_play.main.data_type.sample import Sample
 from cert_play.main.helper.constants_config import GIT_SUMMARY
 from cert_play.main.helper.defaults import Defaults
 from cert_play.main.helper.formats import Formats
@@ -98,7 +98,7 @@ def handle_requests(api=False):
     :return:
     """
 
-    samples_dic = SampleData().get_sample_data_pool_for_web()
+    samples_dic = Sample().get_sample_data_pool_for_web()
     samples_list = PhUtil.generalise_list(list(samples_dic.keys()), sort=False)
     input_formats = PhUtil.generalise_list(FormatsGroup.INPUT_FORMATS_SUPPORTED)
     default_data = {
