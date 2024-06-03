@@ -80,6 +80,14 @@ def utility_processor_asn1_play_3():
     return dict(is_selected_asn1_schema=is_selected_asn1_schema)
 
 
+@app.context_processor
+def utility_processor_asn1_play_4():
+    def is_selected_sample(sample, selected_sample):
+        return is_selected(sample, selected_sample)
+
+    return dict(is_selected_sample=is_selected_sample)
+
+
 @app.route(Const.URL_SITEMAP)
 def sitemap():
     return sitemapper.generate()

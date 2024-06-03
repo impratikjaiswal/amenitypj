@@ -76,20 +76,33 @@
             <span class="badge badge-info">Jump To Input</span>
         </a>
         <h2>Not Sure How To Proceed? Try Below Samples.</h2>
-        <div class="form-group" id="samples_section">
-            <label for="sample_processing">How the Sample should be processed?</label>
-            <BR>&nbsp;&nbsp;&nbsp;
-            <!-- TODO: Try alternates of "class="form-control", Manual Spaces needs to be removed -->
-            {% if sample_processing == 'load_only' %}
-                <input type="radio" name="sample_processing" value="load_and_submit">&nbsp;&nbsp;Load & Submit</input>
+        <div class="form-row" id="samples_section">
+            <div class="form-group col">
+                <label for="sample_data">Samples</label>
+                <select name="sample_data" class="form-control selectpicker" data-live-search="true" placeholder="Sample Data" id="sample">
+                    {% for sample_ in samples %}
+                        <option value="{{ sample_ }}" {{ is_selected_sample(sample_, selected_sample) }}>{{ sample_ }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group col">
+                <label for="sample_processing">How the Sample should be processed?</label>
                 <BR>&nbsp;&nbsp;&nbsp;
-                <input type="radio" name="sample_processing" value="load_only" checked>&nbsp;&nbsp;Load Only</input>
-            {% else %}
-                <input type="radio" name="sample_processing" value="load_and_submit" checked>&nbsp;&nbsp;Load & Submit
-                </input>
-                <BR>&nbsp;&nbsp;&nbsp;
-                <input type="radio" name="sample_processing" value="load_only">&nbsp;&nbsp;Load Only</input>
-            {% endif %}
+                <!-- TODO: Try alternates of "class="form-control", Manual Spaces needs to be removed -->
+                {% if sample_processing == 'load_only' %}
+                    <input type="radio" name="sample_processing" value="load_and_submit">&nbsp;&nbsp;Load & Submit</input>
+                    <BR>&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="sample_processing" value="load_only" checked>&nbsp;&nbsp;Load Only</input>
+                {% else %}
+                    <input type="radio" name="sample_processing" value="load_and_submit" checked>&nbsp;&nbsp;Load & Submit
+                    </input>
+                    <BR>&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="sample_processing" value="load_only">&nbsp;&nbsp;Load Only</input>
+                {% endif %}
+            </div>
+            <div class="form-group col">
+                <button type="submit" name="sample_select" class="btn btn-success" disabled>Process Sample</button>
+            </div>
         </div>
         <div class="form-group">
             <button type="submit" name="sample_1" class="btn btn-success">Url; AmenityPj; Home Page</button>
@@ -102,6 +115,7 @@
             <BR>
             <button type="submit" name="sample_7" class="btn btn-success">Der; AmenityPj</button>
             <button type="submit" name="sample_8" class="btn btn-success">Der (Hex); AmenityPj</button>
+            <button type="submit" name="sample_9" class="btn btn-success">Der (Hex); GSMA NIST CI Cert (SGP.26_v1.x)</button>
         </div>
     </form>
 {% endblock %}

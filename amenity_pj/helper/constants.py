@@ -88,7 +88,7 @@ class Const:
 
     TITLE_ABOUT_US = 'About Us'
     DESCRIPTION_ABOUT_US = ('As the word Amenity refers to an additional feature or service that elevates convenience '
-                            'and comfort. Amenity Pj also intends to offer some day to day tools which can elevates '
+                            'and comfort. Amenity Pj also intends to offer various day to day tools which may elevates '
                             'productivity.')
 
     VERSION_ABOUT_US = VERSION_DEFAULT
@@ -98,7 +98,7 @@ class Const:
     GITHUB_REPO_ABOUT_US = None
 
     TITLE_CREDITS = 'Credits'
-    DESCRIPTION_CREDITS = 'AmenityPj is Thankful to  multiple '
+    DESCRIPTION_CREDITS = 'AmenityPj is Thankful to: '
     VERSION_CREDITS = VERSION_DEFAULT
     END_POINT_CREDITS = 'credits'
     URL_CREDITS = '/credits'
