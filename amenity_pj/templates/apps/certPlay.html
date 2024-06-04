@@ -78,44 +78,26 @@
         <h2>Not Sure How To Proceed? Try Below Samples.</h2>
         <div class="form-row" id="samples_section">
             <div class="form-group col">
-                <label for="sample_data">Samples</label>
-                <select name="sample_data" class="form-control selectpicker" data-live-search="true" placeholder="Sample Data" id="sample">
-                    {% for sample_ in samples %}
-                        <option value="{{ sample_ }}" {{ is_selected_sample(sample_, selected_sample) }}>{{ sample_ }}</option>
+                <label for="sample_data">Select A Sample</label>
+                <select name="sample_data" class="form-control selectpicker" data-live-search="true" id="sample_data">
+                    {% for sample in samples %}
+                        <option value="{{ sample }}" {{ is_selected_sample(sample, selected_sample) }}>{{ sample }}</option>
                     {% endfor %}
                 </select>
             </div>
             <div class="form-group col">
-                <label for="sample_processing">How the Sample should be processed?</label>
-                <BR>&nbsp;&nbsp;&nbsp;
-                <!-- TODO: Try alternates of "class="form-control", Manual Spaces needs to be removed -->
-                {% if sample_processing == 'load_only' %}
-                    <input type="radio" name="sample_processing" value="load_and_submit">&nbsp;&nbsp;Load & Submit</input>
-                    <BR>&nbsp;&nbsp;&nbsp;
-                    <input type="radio" name="sample_processing" value="load_only" checked>&nbsp;&nbsp;Load Only</input>
-                {% else %}
-                    <input type="radio" name="sample_processing" value="load_and_submit" checked>&nbsp;&nbsp;Load & Submit
-                    </input>
-                    <BR>&nbsp;&nbsp;&nbsp;
-                    <input type="radio" name="sample_processing" value="load_only">&nbsp;&nbsp;Load Only</input>
-                {% endif %}
+                <label for="sample_option">How the Sample should be processed ?</label>
+                <select name="sample_option" class="form-control selectpicker" data-live-search="true"
+                        id="sample_option">
+                    {% for sample_option in sample_options %}
+                        <option value="{{ sample_option }}" {{ is_selected_sample_option(sample_option, selected_sample_option) }}>{{ sample_option }}</option>
+                    {% endfor %}
+                </select>
             </div>
             <div class="form-group col">
-                <button type="submit" name="sample_select" class="btn btn-success" disabled>Process Sample</button>
+                <BR>
+                <button type="submit" name="sample_process" class="btn btn-success">Process Sample</button>
             </div>
-        </div>
-        <div class="form-group">
-            <button type="submit" name="sample_1" class="btn btn-success">Url; AmenityPj; Home Page</button>
-            <button type="submit" name="sample_2" class="btn btn-success">Url; AmenityPj; www; https</button>
-            <button type="submit" name="sample_3" class="btn btn-success">Url; AmenityPj; Sub Domain</button>
-            <BR>
-            <button type="submit" name="sample_4" class="btn btn-success">Url; Google</button>
-            <button type="submit" name="sample_5" class="btn btn-success">Url; Google; https; www</button>
-            <button type="submit" name="sample_6" class="btn btn-success">Url; WikiPedia; Sub Pages</button>
-            <BR>
-            <button type="submit" name="sample_7" class="btn btn-success">Der; AmenityPj</button>
-            <button type="submit" name="sample_8" class="btn btn-success">Der (Hex); AmenityPj</button>
-            <button type="submit" name="sample_9" class="btn btn-success">Der (Hex); GSMA NIST CI Cert (SGP.26_v1.x)</button>
         </div>
     </form>
 {% endblock %}

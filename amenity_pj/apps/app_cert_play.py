@@ -98,9 +98,12 @@ def handle_requests(api=False):
     :return:
     """
 
+    SAMPLE_LOAD_ONLY = 'Load Only'
+    SAMPLE_LOAD_AND_SUBMIT = 'Load & Submit'
     samples_dic = Sample().get_sample_data_pool_for_web()
     samples_list = PhUtil.generalise_list(list(samples_dic.keys()), sort=False)
     input_formats = PhUtil.generalise_list(FormatsGroup.INPUT_FORMATS_SUPPORTED)
+    sample_options = PhUtil.generalise_list([SAMPLE_LOAD_ONLY, SAMPLE_LOAD_AND_SUBMIT], sort=False)
     default_data = {
         'app_title': Const.TITLE_CERT_PLAY,
         'app_description': Const.DESCRIPTION_CERT_PLAY,
@@ -113,31 +116,33 @@ def handle_requests(api=False):
         'selected_input_format': Defaults.INPUT_FORMAT,
         'samples': samples_list,
         'selected_sample': samples_list[1] if len(samples_list) > 1 else None,
-        PhKeys.SAMPLE_PROCESSING: PhKeys.SAMPLE_LOAD_ONLY,
+        'sample_options': sample_options,
+        'selected_sample_option': sample_options[1] if len(sample_options) > 1 else None,
         PhKeys.OUTPUT_DATA: PhConstants.STR_EMPTY,
     }
     log_req = f'{Const.TEMPLATE_CERT_PLAY}; {request.method}; {"API" if api else "Form"} Request'
     PhUtil.print_separator(main_text=f'{log_req} Received!!!')
     requested_data_dict = request.get_json() if request.is_json else request.form.to_dict()
     PhUtil.print_iter(requested_data_dict, header='Inputs')
+    print()
     if request.method == PhKeys.GET:
         pass
     if request.method == PhKeys.POST:
-        sample_processing = requested_data_dict.get(PhKeys.SAMPLE_PROCESSING, False)
+        sample_processing = True if 'sample_process' in requested_data_dict else False
         # When submitting an HTML form,
         # 1) unchecked checkboxes do not send any data, however checked checkboxes do send False (may send True as well)
         pass
         # 2) Everything is converted to String; below needs to be typecasted
         pass
         sample_data_dict = None
-        for key in requested_data_dict.keys():
-            if not key.startswith(PhKeys.SAMPLE):
-                continue
-            sample_data_dict = get_sample_data(key)
+        if sample_processing is True:
+            print('sample_processing is needed')
+            sample_option = requested_data_dict.get('sample_option', None)
+            sample_data = requested_data_dict.get('sample_data', None)
+            sample_data_dict = samples_dic.get(sample_data)
             if sample_data_dict:
                 print('sample_data_dict is available')
-                break
-        if sample_data_dict and sample_processing == PhKeys.SAMPLE_LOAD_ONLY:
+        if sample_data_dict and sample_option == SAMPLE_LOAD_ONLY:
             # Data Processing is not needed
             pass
         else:
@@ -145,9 +150,9 @@ def handle_requests(api=False):
             dic_received = sample_data_dict if sample_data_dict else requested_data_dict
             # PhUtil.print_iter(dic_received, header='dic_received')
             # Filter All Processing Related Keys
-            dic_to_process = {k: v for k, v in dic_received.items() if
-                              not (k.startswith(PhKeys.SAMPLE) or k.startswith('process'))}
+            dic_to_process = {k: v for k, v in dic_received.items() if not (k.startswith(PhKeys.SAMPLE))}
             PhUtil.print_iter(dic_to_process, header='dic_to_process')
+            print()
             data_type = DataTypeMaster()
             data_type.set_data_pool(data_pool=dic_to_process)
             data_type.parse_safe(PhErrorHandlingModes.CONTINUE_ON_ERROR)
@@ -167,7 +172,11 @@ def handle_requests(api=False):
                 default_data.update({'selected_input_format': requested_data_dict['input_format']})
             if PhKeys.REMARKS_LIST in requested_data_dict:
                 default_data.update({PhKeys.REMARKS_LIST: requested_data_dict[PhKeys.REMARKS_LIST]})
-        default_data.update({PhKeys.SAMPLE_PROCESSING: sample_processing})
+        if 'sample_option' in requested_data_dict:
+            default_data.update({'selected_sample_option': sample_option})
+        if 'sample_data' in requested_data_dict:
+            default_data.update({'selected_sample': sample_data})
         PhUtil.print_iter(default_data, header='Outputs')
+        print()
     PhUtil.print_separator(main_text=f'{log_req} Completed!!!')
     return jsonify(**default_data) if api else render_template(Const.TEMPLATE_CERT_PLAY, **default_data)
