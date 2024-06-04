@@ -88,6 +88,14 @@ def utility_processor_asn1_play_4():
     return dict(is_selected_sample=is_selected_sample)
 
 
+@app.context_processor
+def utility_processor_asn1_play_5():
+    def is_selected_sample_option(sample_option, selected_sample_option):
+        return is_selected(sample_option, selected_sample_option)
+
+    return dict(is_selected_sample_option=is_selected_sample_option)
+
+
 @app.route(Const.URL_SITEMAP)
 def sitemap():
     return sitemapper.generate()
