@@ -92,6 +92,11 @@ rYhF
     return sample_data.get(key, None)
 
 
+# TODO: Ph
+def filter_processing_related_keys(data_dic):
+    return {k: v for k, v in data_dic.items() if not (k.startswith(PhKeys.SAMPLE) or k.startswith(PhKeys.PROCESS))}
+
+
 def handle_requests(api=False):
     """
 
@@ -105,6 +110,7 @@ def handle_requests(api=False):
     input_formats = PhUtil.generalise_list(FormatsGroup.INPUT_FORMATS_SUPPORTED)
     sample_options = PhUtil.generalise_list([SAMPLE_LOAD_ONLY, SAMPLE_LOAD_AND_SUBMIT], sort=False)
     default_data = {
+	# TODO: Ph
         'app_title': Const.TITLE_CERT_PLAY,
         'app_description': Const.DESCRIPTION_CERT_PLAY,
         'app_version': Const.VERSION_CERT_PLAY,
@@ -124,7 +130,6 @@ def handle_requests(api=False):
     PhUtil.print_separator(main_text=f'{log_req} Received!!!')
     requested_data_dict = request.get_json() if request.is_json else request.form.to_dict()
     PhUtil.print_iter(requested_data_dict, header='Inputs')
-    print()
     if request.method == PhKeys.GET:
         pass
     if request.method == PhKeys.POST:
@@ -150,9 +155,8 @@ def handle_requests(api=False):
             dic_received = sample_data_dict if sample_data_dict else requested_data_dict
             # PhUtil.print_iter(dic_received, header='dic_received')
             # Filter All Processing Related Keys
-            dic_to_process = {k: v for k, v in dic_received.items() if not (k.startswith(PhKeys.SAMPLE))}
+            dic_to_process = filter_processing_related_keys(dic_received)
             PhUtil.print_iter(dic_to_process, header='dic_to_process')
-            print()
             data_type = DataTypeMaster()
             data_type.set_data_pool(data_pool=dic_to_process)
             data_type.parse_safe(PhErrorHandlingModes.CONTINUE_ON_ERROR)
@@ -172,11 +176,9 @@ def handle_requests(api=False):
                 default_data.update({'selected_input_format': requested_data_dict['input_format']})
             if PhKeys.REMARKS_LIST in requested_data_dict:
                 default_data.update({PhKeys.REMARKS_LIST: requested_data_dict[PhKeys.REMARKS_LIST]})
-        if 'sample_option' in requested_data_dict:
+        if sample_processing is True:
             default_data.update({'selected_sample_option': sample_option})
-        if 'sample_data' in requested_data_dict:
             default_data.update({'selected_sample': sample_data})
         PhUtil.print_iter(default_data, header='Outputs')
-        print()
     PhUtil.print_separator(main_text=f'{log_req} Completed!!!')
     return jsonify(**default_data) if api else render_template(Const.TEMPLATE_CERT_PLAY, **default_data)
