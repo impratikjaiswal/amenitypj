@@ -19,12 +19,12 @@
     <h6>{{ app_description }}</h6>
     <form method="post">
         <div class="form-group">
-            <label for="raw_data">Input Data</label>
-            <textarea name="raw_data" placeholder="Input Data" class="form-control"
-                      id="raw_data" rows="3">{{ raw_data }}</textarea>
+            <label for="input_data">Input Data</label>
             <div class="badge float-right">
-                Length: <span id="raw_data_char_count">0</span>
+                Length: <span id="input_data_char_count">0</span>
             </div>
+            <textarea name="input_data" placeholder="Input Data" class="form-control" rows="3"
+                      id="input_data">{{ input_data }}</textarea>
         </div>
         <div class="form-group">
             <div class="form-check">
@@ -81,42 +81,19 @@
             <div class="badge float-right">
                 Length: <span id="output_data_char_count">0</span>
             </div>
-            <div id="output_statement">
+            <div id="output_statement" class="div-output">
                 <pre>{{ output_data }}</pre>
             </div>
         </div>
         <div id="output_data_images">
             <label for="output_data_images">QrCode Images</label>
-            <div id="output_statement_2">
+            <div id="output_statement_2" class="div-output">
                 {% for qr_image in output_data %}
                     <img src="{{ qr_image }}"><br>
                 {% endfor %}
             </div>
         </div>
-        <div id="debug_data_label">
-        </div>
-        <div id="debug_data">
-        </div>
-        <BR>
-        <a href="#" rel="noopener noreferrer">
-            <span class="badge badge-info">Jump To Input</span>
-        </a>
-        <h2>Not Sure How To Proceed? Try Below Samples.</h2>
-        <div class="form-group" id="samples_section">
-            <label for="sample_processing">How the Sample should be processed?</label>
-            <BR>&nbsp;&nbsp;&nbsp;
-            <!-- TODO: Try alternates of "class="form-control", Manual Spaces needs to be removed -->
-            {% if sample_processing == 'load_only' %}
-                <input type="radio" name="sample_processing" value="load_and_submit">&nbsp;&nbsp;Load & Submit</input>
-                <BR>&nbsp;&nbsp;&nbsp;
-                <input type="radio" name="sample_processing" value="load_only" checked>&nbsp;&nbsp;Load Only</input>
-            {% else %}
-                <input type="radio" name="sample_processing" value="load_and_submit" checked>&nbsp;&nbsp;Load & Submit
-                </input>
-                <BR>&nbsp;&nbsp;&nbsp;
-                <input type="radio" name="sample_processing" value="load_only">&nbsp;&nbsp;Load Only</input>
-            {% endif %}
-        </div>
+        {% include 'sample.html' %}
         <div class="form-group">
             <button type="submit" name="sample_4" class="btn btn-success">Simple Qr (LPA)</button>
             <button type="submit" name="sample_5" class="btn btn-success">Simple Qr (Google Pay/GPay)</button>

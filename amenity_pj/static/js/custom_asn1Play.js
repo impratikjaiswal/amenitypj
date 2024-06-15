@@ -19,7 +19,7 @@ $(document).ready(function () {
     $('#process_re_parse_output').bind('click', function () {
         // debugData("process_re_parse_output is pressed.");
         swapInputOutputFormat();
-        $("#raw_data").val($('#output_statement').text());
+        $("#input_data").val($('#output_statement').text());
     });
     // debugData("Done custom_asn1Play.js");
 });

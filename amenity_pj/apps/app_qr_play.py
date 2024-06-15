@@ -17,35 +17,35 @@ def get_sample_data(key):
     sample_data = {
         PhKeys.SAMPLE_1: {
             PhKeys.REMARKS_LIST: 'Simple Qr',
-            PhKeys.RAW_DATA: small_data,
+            PhKeys.INPUT_DATA: small_data,
             PhKeys.SCALE: 8,
             PhKeys.SPLIT_QRS: False,
             PhKeys.QR_CODE_VERSION: 33
         },
         PhKeys.SAMPLE_2: {
             PhKeys.REMARKS_LIST: 'Bulk Data Single Qr',
-            PhKeys.RAW_DATA: bulk_data_1,
+            PhKeys.INPUT_DATA: bulk_data_1,
             PhKeys.SCALE: Defaults.SCALE,
             PhKeys.SPLIT_QRS: False,
             PhKeys.QR_CODE_VERSION: 40
         },
         PhKeys.SAMPLE_3: {
             PhKeys.REMARKS_LIST: 'Bulk Data Split Qrs',
-            PhKeys.RAW_DATA: bulk_data_2,
+            PhKeys.INPUT_DATA: bulk_data_2,
             PhKeys.SCALE: Defaults.SCALE,
             PhKeys.SPLIT_QRS: True,
             PhKeys.QR_CODE_VERSION: 40
         },
         PhKeys.SAMPLE_4: {
             PhKeys.REMARKS_LIST: 'Simple Qr (LPA)',
-            PhKeys.RAW_DATA: 'LPA:1$SMDP.EXAMPLE.COM$04386-AGYFT-A74Y8-3F815',
+            PhKeys.INPUT_DATA: 'LPA:1$SMDP.EXAMPLE.COM$04386-AGYFT-A74Y8-3F815',
             PhKeys.SCALE: Defaults.SCALE,
             PhKeys.SPLIT_QRS: False,
             PhKeys.QR_CODE_VERSION: Defaults.QR_CODE_VERSION
         },
         PhKeys.SAMPLE_5: {
             PhKeys.REMARKS_LIST: 'Simple Qr (Google Pay/GPay)',
-            PhKeys.RAW_DATA: 'upi://pay?pa=impratikjaiswal@okicici&pn=Pratik%20Jaiswal&aid=uGICAgICw6tuJBw',
+            PhKeys.INPUT_DATA: 'upi://pay?pa=impratikjaiswal@okicici&pn=Pratik%20Jaiswal&aid=uGICAgICw6tuJBw',
             PhKeys.SCALE: Defaults.SCALE,
             PhKeys.SPLIT_QRS: False,
             PhKeys.QR_CODE_VERSION: Defaults.QR_CODE_VERSION
@@ -120,8 +120,8 @@ def handle_requests(api=False):
                 temp_output_data.append(output_data)
             default_data.update({PhKeys.OUTPUT_DATA: temp_output_data})
         if sample_data_dict:
-            if PhKeys.RAW_DATA in sample_data_dict:
-                default_data.update({PhKeys.RAW_DATA: sample_data_dict.get(PhKeys.RAW_DATA)})
+            if PhKeys.INPUT_DATA in sample_data_dict:
+                default_data.update({PhKeys.INPUT_DATA: sample_data_dict.get(PhKeys.INPUT_DATA)})
             if PhKeys.SPLIT_QRS in sample_data_dict:
                 default_data.update({PhKeys.SPLIT_QRS: sample_data_dict.get(PhKeys.SPLIT_QRS)})
             if PhKeys.QR_CODE_VERSION in sample_data_dict:
@@ -131,8 +131,8 @@ def handle_requests(api=False):
             if PhKeys.REMARKS_LIST in sample_data_dict:
                 default_data.update({PhKeys.REMARKS_LIST: sample_data_dict.get(PhKeys.REMARKS_LIST)})
         else:
-            if PhKeys.RAW_DATA in requested_data_dict:
-                default_data.update({PhKeys.RAW_DATA: requested_data_dict[PhKeys.RAW_DATA]})
+            if PhKeys.INPUT_DATA in requested_data_dict:
+                default_data.update({PhKeys.INPUT_DATA: requested_data_dict[PhKeys.INPUT_DATA]})
             if PhKeys.SPLIT_QRS in requested_data_dict:
                 default_data.update({PhKeys.SPLIT_QRS: requested_data_dict[PhKeys.SPLIT_QRS]})
             if PhKeys.QR_CODE_VERSION in requested_data_dict:

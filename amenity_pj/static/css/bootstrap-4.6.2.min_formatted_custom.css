@@ -31,24 +31,42 @@
     display: inline;
 }
 
-/* New Stuff - Experimental*/
-
 /* Rotate Button - Initial */
-.btn-rotate-initial{
+.btn-rotate-initial {
     border: none;
     cursor: pointer;
     appearance: none;
     background-color: inherit;
     transition: transform .7s ease-in-out;
-    margin-left:10px;
+    margin-left: 10px;
 }
 
-/* Rotate Button - Transfrom */
-.btn-rotate-transform{
+/* Rotate Button - Transform */
+.btn-rotate-transform {
     transform: rotate(360deg);
 }
 
-.btn-rotate-img{
-    width: 35px;
-    height: 35px;
+/* Copied from form-control */
+.div-output {
+    /* 2 values: top_bottom left_right */
+    /* padding: .375rem .75rem; */
+    /* 4 values: top, right, bottom, and left */
+    padding: .375rem .75rem .0rem .75rem;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out
 }
+
+/* Not working as of now */
+.div-output:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 .2rem rgba(0, 123, 255, .25)
+}
+
+/* New Stuff - Experimental*/

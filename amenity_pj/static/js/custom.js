@@ -10,12 +10,16 @@ copy_button.addEventListener("click", copyToClipboard, false);
 $(document).ready(function () {
     // debugData("DOM is ready: custom.js");
     pageLoad();
-    $('#raw_data').on('input', function () {
-        // Attach an "input" event listener to raw_data
+    $('#input_data').on('input', function () {
+        // Attach an "input" event listener to input_data
         characterCounterInputData();
     });
     // debugData("Done custom.js");
 });
+
+function htmlToJs(vars){
+    debugData(vars)
+}
 
 function pageLoad() {
     // debugData("pageLoad: custom.js");
@@ -24,7 +28,7 @@ function pageLoad() {
 }
 
 function characterCounterInputData() {
-    $("#raw_data_char_count").text($("#raw_data").val().length);
+    $("#input_data_char_count").text($("#input_data").val().length);
 }
 
 function characterCounterOutputData() {

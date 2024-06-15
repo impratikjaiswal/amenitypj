@@ -49,7 +49,7 @@ def is_selected(item, selected_item):
 
 
 @app.context_processor
-def utility_processor():
+def utility_processor_title_for():
     def title_for(end_point=None):
         return Const.END_POINT_AND_TITLE_MAPPING.get(end_point, Const.TITLE_AMENITY_PJ)
 
@@ -57,7 +57,7 @@ def utility_processor():
 
 
 @app.context_processor
-def utility_processor_asn1_play_1():
+def utility_processor_selected_input_format():
     def is_selected_input_format(input_format, selected_input_format):
         return is_selected(input_format, selected_input_format)
 
@@ -65,7 +65,7 @@ def utility_processor_asn1_play_1():
 
 
 @app.context_processor
-def utility_processor_asn1_play_2():
+def utility_processor_selected_output_format():
     def is_selected_output_format(output_format, selected_output_format):
         return is_selected(output_format, selected_output_format)
 
@@ -73,7 +73,7 @@ def utility_processor_asn1_play_2():
 
 
 @app.context_processor
-def utility_processor_asn1_play_3():
+def utility_processor_selected_asn1_schema():
     def is_selected_asn1_schema(asn1_schema, selected_asn1_schema):
         return is_selected(asn1_schema, selected_asn1_schema)
 
@@ -81,19 +81,11 @@ def utility_processor_asn1_play_3():
 
 
 @app.context_processor
-def utility_processor_asn1_play_4():
+def utility_processor_selected_sample():
     def is_selected_sample(sample, selected_sample):
         return is_selected(sample, selected_sample)
 
     return dict(is_selected_sample=is_selected_sample)
-
-
-@app.context_processor
-def utility_processor_asn1_play_5():
-    def is_selected_sample_option(sample_option, selected_sample_option):
-        return is_selected(sample_option, selected_sample_option)
-
-    return dict(is_selected_sample_option=is_selected_sample_option)
 
 
 @app.route(Const.URL_SITEMAP)

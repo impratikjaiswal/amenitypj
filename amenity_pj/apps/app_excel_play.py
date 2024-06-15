@@ -73,8 +73,8 @@ def handle_requests(api=False):
             # output_data = data_type.get_output_data()
             # default_data.update({PhKeys.OUTPUT_DATA: output_data})
         # if sample_data_dict:
-        #     if PhKeys.RAW_DATA in sample_data_dict:
-        #         default_data.update({PhKeys.RAW_DATA: sample_data_dict.get(PhKeys.RAW_DATA)})
+        #     if PhKeys.INPUT_DATA in sample_data_dict:
+        #         default_data.update({PhKeys.INPUT_DATA: sample_data_dict.get(PhKeys.INPUT_DATA)})
         #     if 'length_in_decimal' in sample_data_dict:
         #         default_data.update({'length_in_decimal': sample_data_dict.get('length_in_decimal')})
         #     if 'value_in_ascii' in sample_data_dict:
@@ -84,8 +84,8 @@ def handle_requests(api=False):
         #     if PhKeys.REMARKS_LIST in sample_data_dict:
         #         default_data.update({PhKeys.REMARKS_LIST: sample_data_dict.get(PhKeys.REMARKS_LIST)})
         # else:
-        #     if PhKeys.RAW_DATA in requested_data_dict:
-        #         default_data.update({PhKeys.RAW_DATA: requested_data_dict[PhKeys.RAW_DATA]})
+        #     if PhKeys.INPUT_DATA in requested_data_dict:
+        #         default_data.update({PhKeys.INPUT_DATA: requested_data_dict[PhKeys.INPUT_DATA]})
         #     if 'length_in_decimal' in requested_data_dict:
         #         default_data.update({'length_in_decimal': requested_data_dict['length_in_decimal']})
         #     if 'value_in_ascii' in requested_data_dict:
