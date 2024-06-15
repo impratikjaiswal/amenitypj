@@ -26,12 +26,12 @@ def handle_requests(api=False):
     """
 
     default_data = {
-        'app_title': Const.TITLE_EXCEL_PLAY,
-        'app_description': Const.DESCRIPTION_EXCEL_PLAY,
-        'app_version': Const.VERSION_EXCEL_PLAY,
-        'app_github_url': Util.get_github_url(github_repo=Const.GITHUB_REPO_EXCEL_PLAY, github_pages=False),
-        'app_github_pages_url': Util.get_github_url(github_repo=Const.GITHUB_REPO_EXCEL_PLAY, github_pages=True),
-        'app_git_summary': GIT_SUMMARY,
+        PhKeys.APP_TITLE: Const.TITLE_EXCEL_PLAY,
+        PhKeys.APP_DESCRIPTION: Const.DESCRIPTION_EXCEL_PLAY,
+        PhKeys.APP_VERSION: Const.VERSION_EXCEL_PLAY,
+        PhKeys.APP_GITHUB_URL: Util.get_github_url(github_repo=Const.GITHUB_REPO_EXCEL_PLAY, github_pages=False),
+        PhKeys.APP_GITHUB_PAGES_URL: Util.get_github_url(github_repo=Const.GITHUB_REPO_EXCEL_PLAY, github_pages=True),
+        PhKeys.APP_GIT_SUMMARY: GIT_SUMMARY,
         PhKeys.SAMPLE_PROCESSING: PhKeys.SAMPLE_LOAD_ONLY,
         PhKeys.OUTPUT_DATA: PhConstants.STR_EMPTY,
     }

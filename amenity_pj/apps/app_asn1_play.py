@@ -128,33 +128,37 @@ def handle_requests(api=False):
 
     :return:
     """
-
+    samples_dic = Sample().get_sample_data_pool_for_web()
+    samples_list = PhUtil.generalise_list(list(samples_dic.keys()), sort=False)
     input_formats = PhUtil.generalise_list(FormatsGroup.INPUT_FORMATS_SUPPORTED)
     output_formats = PhUtil.generalise_list(FormatsGroup.OUTPUT_FORMATS_SUPPORTED)
     asn1_schemas = PhUtil.generalise_list(Asn1Versions._get_list_of_supported_versions())
     default_selected_asn1_schema = Defaults.ASN1_SCHEMA.get_name()
     asn1_objects = get_asn1_objects_list(default_selected_asn1_schema)
+
     default_data = {
-        'app_title': Const.TITLE_ASN1_PLAY,
-        'app_description': Const.DESCRIPTION_ASN1_PLAY,
-        'app_version': Const.VERSION_ASN1_PLAY,
-        'app_github_url': Util.get_github_url(github_repo=Const.GITHUB_REPO_ASN1_PLAY, github_pages=False),
-        'app_github_pages_url': Util.get_github_url(github_repo=Const.GITHUB_REPO_ASN1_PLAY, github_pages=True),
-        'app_git_summary': GIT_SUMMARY,
+        PhKeys.APP_TITLE: Const.TITLE_ASN1_PLAY,
+        PhKeys.APP_DESCRIPTION: Const.DESCRIPTION_ASN1_PLAY,
+        PhKeys.APP_VERSION: Const.VERSION_ASN1_PLAY,
+        PhKeys.APP_GITHUB_URL: Util.get_github_url(github_repo=Const.GITHUB_REPO_ASN1_PLAY, github_pages=False),
+        PhKeys.APP_GITHUB_PAGES_URL: Util.get_github_url(github_repo=Const.GITHUB_REPO_ASN1_PLAY, github_pages=True),
+        PhKeys.APP_GIT_SUMMARY: GIT_SUMMARY,
         PhKeys.RAW_DATA: PhConstants.STR_EMPTY,
-        'input_formats': input_formats,
-        'output_formats': output_formats,
-        'tlv_parsing_of_output': False,
-        'asn1_schemas': asn1_schemas,
-        'asn1_objects': asn1_objects,
-        'asn1_object_alternate': PhConstants.STR_EMPTY,
-        'selected_input_format': Defaults.FORMAT_INPUT,
-        'selected_output_format': Defaults.FORMAT_OUTPUT,
-        'selected_asn1_schema': default_selected_asn1_schema,
-        'selected_asn1_object': PhConstants.STR_EMPTY,
-        PhKeys.FETCH_ASN1_OBJECTS_LIST: False,
-        PhKeys.SAMPLE_PROCESSING: PhKeys.SAMPLE_LOAD_ONLY,
         PhKeys.OUTPUT_DATA: PhConstants.STR_EMPTY,
+        PhKeys.INPUT_FORMATS: input_formats,
+        PhKeys.INPUT_FORMAT_SELECTED: Defaults.FORMAT_INPUT,
+        PhKeys.OUTPUT_FORMATS: output_formats,
+        PhKeys.OUTPUT_FORMAT_SELECTED: Defaults.FORMAT_OUTPUT,
+        PhKeys.ASN1_SCHEMAS: asn1_schemas,
+        PhKeys.ASN1_SCHEMA_SELECTED: default_selected_asn1_schema,
+        PhKeys.ASN1_OBJECTS: asn1_objects,
+        PhKeys.ASN1_OBJECT_SELECTED: PhConstants.STR_EMPTY,
+        PhKeys.FETCH_ASN1_OBJECTS_LIST: False,
+        'tlv_parsing_of_output': False,
+
+        PhKeys.SAMPLE_PROCESSING: PhKeys.SAMPLE_LOAD_ONLY,
+		# Delete
+	    'asn1_object_alternate': PhConstants.STR_EMPTY,
     }
     log_req = f'{Const.TEMPLATE_ASN1_PLAY}; {request.method}; {"API" if api else "Form"} Request'
     PhUtil.print_separator(main_text=f'{log_req} Received!!!')
@@ -190,8 +194,7 @@ def handle_requests(api=False):
             dic_received = sample_data_dict if sample_data_dict else requested_data_dict
             # PhUtil.print_iter(dic_received, header='dic_received')
             # Filter All Processing Related Keys
-            dic_to_process = {k: v for k, v in dic_received.items() if
-                              not (k.startswith(PhKeys.SAMPLE) or k.startswith('process'))}
+            dic_to_process = PhUtil.filter_processing_related_keys(dic_received)
             PhUtil.print_iter(dic_to_process, header='dic_to_process')
             data_type = DataTypeMaster()
             data_type.set_data_pool(data_pool=dic_to_process)
@@ -202,9 +205,9 @@ def handle_requests(api=False):
             if PhKeys.RAW_DATA in sample_data_dict:
                 default_data.update({PhKeys.RAW_DATA: sample_data_dict.get(PhKeys.RAW_DATA)})
             if 'input_format' in sample_data_dict:
-                default_data.update({'selected_input_format': sample_data_dict.get('input_format')})
+                default_data.update({PhKeys.INPUT_FORMAT_SELECTED: sample_data_dict.get('input_format')})
             if 'output_format' in sample_data_dict:
-                default_data.update({'selected_output_format': sample_data_dict.get('output_format')})
+                default_data.update({PhKeys.OUTPUT_FORMAT_SELECTED: sample_data_dict.get('output_format')})
             if 'asn1_schema' in sample_data_dict:
                 selected_asn1_schema = sample_data_dict.get('asn1_schema')
                 default_data.update({'selected_asn1_schema': selected_asn1_schema})
@@ -224,9 +227,9 @@ def handle_requests(api=False):
             if PhKeys.RAW_DATA in requested_data_dict:
                 default_data.update({PhKeys.RAW_DATA: requested_data_dict[PhKeys.RAW_DATA]})
             if 'input_format' in requested_data_dict:
-                default_data.update({'selected_input_format': requested_data_dict['input_format']})
+                default_data.update({PhKeys.INPUT_FORMAT_SELECTED: requested_data_dict['input_format']})
             if 'output_format' in requested_data_dict:
-                default_data.update({'selected_output_format': requested_data_dict['output_format']})
+                default_data.update({PhKeys.OUTPUT_FORMAT_SELECTED: requested_data_dict['output_format']})
             if 'asn1_schema' in requested_data_dict:
                 selected_asn1_schema = requested_data_dict['asn1_schema']
                 default_data.update({'selected_asn1_schema': selected_asn1_schema})

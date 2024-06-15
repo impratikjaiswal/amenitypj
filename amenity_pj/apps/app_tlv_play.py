@@ -70,16 +70,16 @@ def handle_requests(api=False):
     """
 
     default_data = {
-        'app_title': Const.TITLE_TLV_PLAY,
-        'app_description': Const.DESCRIPTION_TLV_PLAY,
-        'app_version': Const.VERSION_TLV_PLAY,
-        'app_github_url': Util.get_github_url(github_repo=Const.GITHUB_REPO_TLV_PLAY, github_pages=False),
-        'app_github_pages_url': Util.get_github_url(github_repo=Const.GITHUB_REPO_TLV_PLAY, github_pages=True),
-        'app_git_summary': GIT_SUMMARY,
+        PhKeys.APP_TITLE: Const.TITLE_TLV_PLAY,
+        PhKeys.APP_DESCRIPTION: Const.DESCRIPTION_TLV_PLAY,
+        PhKeys.APP_VERSION: Const.VERSION_TLV_PLAY,
+        PhKeys.APP_GITHUB_URL: Util.get_github_url(github_repo=Const.GITHUB_REPO_TLV_PLAY, github_pages=False),
+        PhKeys.APP_GITHUB_PAGES_URL: Util.get_github_url(github_repo=Const.GITHUB_REPO_TLV_PLAY, github_pages=True),
+        PhKeys.APP_GIT_SUMMARY: GIT_SUMMARY,
         PhKeys.RAW_DATA: PhConstants.STR_EMPTY,
-        'length_in_decimal': Defaults.LENGTH_IN_DECIMAL,
-        'value_in_ascii': Defaults.VALUE_IN_ASCII,
-        'one_liner': Defaults.ONE_LINER,
+        PhKeys.LENGTH_IN_DECIMAL: Defaults.LENGTH_IN_DECIMAL,
+        PhKeys.VALUE_IN_ASCII: Defaults.VALUE_IN_ASCII,
+        PhKeys.ONE_LINER: Defaults.ONE_LINER,
         PhKeys.SAMPLE_PROCESSING: PhKeys.SAMPLE_LOAD_ONLY,
         PhKeys.OUTPUT_DATA: PhConstants.STR_EMPTY,
     }
