@@ -4,63 +4,12 @@ from python_helpers.ph_keys import PhKeys
 from python_helpers.ph_modes_error_handling import PhErrorHandlingModes
 from python_helpers.ph_util import PhUtil
 from tlv_play.main.data_type.data_type_master import DataTypeMaster
+from tlv_play.main.data_type.sample import Sample
 from tlv_play.main.helper.constants_config import GIT_SUMMARY
 from tlv_play.main.helper.defaults import Defaults
 
 from amenity_pj.helper.constants import Const
 from amenity_pj.helper.util import Util
-
-
-def get_sample_data(key):
-    sample_data = {
-        PhKeys.SAMPLE_1: {
-            PhKeys.REMARKS_LIST: 'Simple TLV',
-            PhKeys.INPUT_DATA: '86020102',
-        },
-        PhKeys.SAMPLE_2: {
-            PhKeys.REMARKS_LIST: 'Parallel Simple TLVs',
-            PhKeys.INPUT_DATA: '81020105820106830209AB',
-        },
-        PhKeys.SAMPLE_3: {
-            PhKeys.REMARKS_LIST: 'Multi Byte Tag; EID',
-            PhKeys.INPUT_DATA: 'BF3E125A1089049032123451234512345678901235',
-        },
-        PhKeys.SAMPLE_4: {
-            PhKeys.REMARKS_LIST: 'Nested BER TLV; without One Liner',
-            PhKeys.INPUT_DATA: '064B21220D2048656C6C6F2C204275792031204742204461746120666F7220302E3520555344210F0D0D41726520596F7520537572653F151431107777772E66616365626F6F6B2E636F6D0500',
-            'one_liner': False,
-        },
-        'sample_4_1': {
-            PhKeys.REMARKS_LIST: 'Nested BER TLV; One Liner',
-            PhKeys.INPUT_DATA: '064B21220D2048656C6C6F2C204275792031204742204461746120666F7220302E3520555344210F0D0D41726520596F7520537572653F151431107777772E66616365626F6F6B2E636F6D0500',
-            'one_liner': True,
-        },
-        'sample_4_2': {
-            PhKeys.REMARKS_LIST: 'Nested BER TLV; Length In Decimal',
-            PhKeys.INPUT_DATA: '064B21220D2048656C6C6F2C204275792031204742204461746120666F7220302E3520555344210F0D0D41726520596F7520537572653F151431107777772E66616365626F6F6B2E636F6D0500',
-            'length_in_decimal': True,
-        },
-        'sample_4_3': {
-            PhKeys.REMARKS_LIST: 'Nested BER TLV; Value In Ascii',
-            PhKeys.INPUT_DATA: '064B21220D2048656C6C6F2C204275792031204742204461746120666F7220302E3520555344210F0D0D41726520596F7520537572653F151431107777772E66616365626F6F6B2E636F6D0500',
-            'value_in_ascii': True,
-        },
-        'sample_4_4': {
-            PhKeys.REMARKS_LIST: 'Nested BER TLV; Length In Decimal; Value in Ascii; One Liner',
-            PhKeys.INPUT_DATA: '064B21220D2048656C6C6F2C204275792031204742204461746120666F7220302E3520555344210F0D0D41726520596F7520537572653F151431107777772E66616365626F6F6B2E636F6D0500',
-            'length_in_decimal': True,
-            'value_in_ascii': True,
-            'one_liner': True,
-        },
-        PhKeys.SAMPLE_5: {
-            PhKeys.REMARKS_LIST: 'Complex Nested Ber TLVs; ESIM Profile',
-            PhKeys.INPUT_DATA: 'A042800102810101821447534D412050726F66696C65205061636B616765830A8929901012345678905FA506810084008B00A610060667810F010201060667810F010204B08201F8A0058000810101810667810F010201A207A105C60301020AA305A1038B010FA40C830A989209012143658709F5A527A109820442210026800198831A61184F10A0000000871002FF33FF01890000010050045553494DA682019EA10A8204422100258002022B831B8001019000800102A406830101950108800158A40683010A95010882010A8316800101A40683010195010880015AA40683010A95010882010F830B80015BA40683010A95010882011A830A800101900080015A970082011B8316800103A406830101950108800158A40683010A95010882010F8316800111A40683010195010880014AA40683010A95010882010F8321800103A406830101950108800158A40683010A950108840132A4068301019501088201048321800101A406830101950108800102A406830181950108800158A40683010A950108820104831B800101900080011AA406830101950108800140A40683010A95010882010A8310800101900080015AA40683010A95010882011583158001019000800118A40683010A95010880014297008201108310800101A40683010195010880015A97008201158316800113A406830101950108800148A40683010A95010882010F830B80015EA40683010A95010882011A83258001019000800102A010A406830101950108A406830102950108800158A40683010A950108A33FA0058000810102A13630118001018108303030303030303082020099300D800102810831323334353637383012800200818108393239343536373882020088A244A0058000810103A13BA0393013800101810831323334FFFFFFFF8201018301063010800102810830303030FFFFFFFF820102301080010A810835363738FFFFFFFF830101B381C3A0058000810104810667810F010204A21DA11B83027FF18410A0000000871002FF33FF018900000100C60301810AA30B8309082999181132547698A406A104C7022F06A80F830D0A2E148CE73204000000000000AB45A10D82044221003483026F428001688334534D53433120FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF1FFFFFFFFFFFFFFFFFFFFFFFF07916427417900F4FFFFFFFFFFFFFFAD1383110247534D41206555494343FFFFFFFFFFFFAE03830100B20483020040B606830419F1FF01A225A0058000810105A11CA01A301880020081810839323338FFFFFFFF82020081830101840122A43AA0058000810106A131A12F8001018101018210000102030405060708090A0B0C0D0E0F83100102030405060708090A0B0C0D0E0F008603010203A681BBA0058000810107A1444F07A00000015153504F08A0000001515350414F08A000000151000000820382DC0083010FC90A810280008201F08701F0EA11800F0100000100000002011203B2010000A26C302295013882010183010130173015800180861066778899AABBCCDD1122334455EEFF103022950134820102830101301730158001808610112233445566778899AABBCCDDEEFF1030229501C882010383010130173015800180861099AABBCCDDEEFF101122334455667788A681C0A0058000810108A1494F07A00000015153504F08A0000001515350414F10A00000055910100102736456616C7565820380800083010FC907810280008201F0EA11800F01000001000000020112036C756500A26C30229501388201018301013017301580018086101122334455667788112233445566778830229501348201028301013017301580018086101122334455667788112233445566778830229501C882010383010130173015800180861011223344556677881122334455667788A720A00381010B4F09A00000055910100001A0050403B00000810112040100040100A740A00381010C4F09A00000055910100002A0050403B00020810112040100040100301E8010A0000000871002FF33FF018900000100810402000100820402000100AA07A0058000810163',
-            'value_in_ascii': True,
-            'length_in_decimal': True,
-            'one_liner': True,
-        },
-    }
-    return sample_data.get(key, None)
 
 
 def handle_requests(api=False):
@@ -69,6 +18,28 @@ def handle_requests(api=False):
     :return:
     """
 
+    def update_default_data(source_key, target_key=None):
+        """
+
+        :param source_key:
+        :param target_key:
+        :return:
+        """
+        target_key = source_key if target_key is None else target_key
+        source_dict = sample_dict if sample_dict else requested_data_dict
+        if source_key in source_dict:
+            default_data.update({target_key: source_dict.get(source_key)})
+
+    def update_checked_item(target_key):
+        """
+
+        :param target_key:
+        :return:
+        """
+        requested_data_dict.update({target_key: True if target_key in requested_data_dict else False})
+
+    samples_dict = Sample().get_sample_data_pool_for_web()
+    samples_list = PhUtil.generalise_list(list(samples_dict.keys()), sort=False)
     default_data = {
         PhKeys.APP_TITLE: Const.TITLE_TLV_PLAY,
         PhKeys.APP_DESCRIPTION: Const.DESCRIPTION_TLV_PLAY,
@@ -76,12 +47,14 @@ def handle_requests(api=False):
         PhKeys.APP_GITHUB_URL: Util.get_github_url(github_repo=Const.GITHUB_REPO_TLV_PLAY, github_pages=False),
         PhKeys.APP_GITHUB_PAGES_URL: Util.get_github_url(github_repo=Const.GITHUB_REPO_TLV_PLAY, github_pages=True),
         PhKeys.APP_GIT_SUMMARY: GIT_SUMMARY,
+        PhKeys.SAMPLES: samples_list,
+        PhKeys.SAMPLE_SELECTED: samples_list[1] if len(samples_list) > 1 else None,
+        PhKeys.SAMPLE_OPTION: PhKeys.SAMPLE_LOAD_ONLY,
         PhKeys.INPUT_DATA: PhConstants.STR_EMPTY,
+        PhKeys.OUTPUT_DATA: PhConstants.STR_EMPTY,
         PhKeys.LENGTH_IN_DECIMAL: Defaults.LENGTH_IN_DECIMAL,
         PhKeys.VALUE_IN_ASCII: Defaults.VALUE_IN_ASCII,
         PhKeys.ONE_LINER: Defaults.ONE_LINER,
-        PhKeys.SAMPLE_PROCESSING: PhKeys.SAMPLE_LOAD_ONLY,
-        PhKeys.OUTPUT_DATA: PhConstants.STR_EMPTY,
     }
     log_req = f'{Const.TEMPLATE_TLV_PLAY}; {request.method}; {"API" if api else "Form"} Request'
     PhUtil.print_separator(main_text=f'{log_req} Received!!!')
@@ -90,61 +63,46 @@ def handle_requests(api=False):
     if request.method == PhKeys.GET:
         pass
     if request.method == PhKeys.POST:
-        sample_processing = requested_data_dict.get(PhKeys.SAMPLE_PROCESSING, False)
+        process_sample = True if PhKeys.PROCESS_SAMPLE in requested_data_dict else None
+        sample_option = requested_data_dict.get(PhKeys.SAMPLE_OPTION, None)
+        sample_name = requested_data_dict.get(PhKeys.SAMPLE, None)
+        sample_dict = None
         # When submitting an HTML form,
         # 1) unchecked checkboxes do not send any data, however checked checkboxes do send False (may send True as well)
-        requested_data_dict.update({'length_in_decimal': True if 'length_in_decimal' in requested_data_dict else False})
-        requested_data_dict.update({'value_in_ascii': True if 'value_in_ascii' in requested_data_dict else False})
-        requested_data_dict.update({'one_liner': True if 'one_liner' in requested_data_dict else False})
+        update_checked_item(PhKeys.LENGTH_IN_DECIMAL)
+        update_checked_item(PhKeys.VALUE_IN_ASCII)
+        update_checked_item(PhKeys.ONE_LINER)
         # 2) Everything is converted to String; below needs to be typecasted
         pass
-        sample_data_dict = None
-        for key in requested_data_dict.keys():
-            if not key.startswith(PhKeys.SAMPLE):
-                continue
-            sample_data_dict = get_sample_data(key)
-            if sample_data_dict:
-                print('sample_data_dict is available')
-                break
-        if sample_data_dict and sample_processing == PhKeys.SAMPLE_LOAD_ONLY:
+        print(f'process_sample is {process_sample}')
+        if process_sample:
+            sample_dict = samples_dict.get(sample_name, None)
+            if sample_dict:
+                print('sample_dict is available')
+        if sample_dict and sample_option == PhKeys.SAMPLE_LOAD_ONLY:
             # Data Processing is not needed
             pass
         else:
             # Data Processing is needed in all other cases
-            dic_received = sample_data_dict if sample_data_dict else requested_data_dict
+            dic_received = sample_dict if sample_dict else requested_data_dict
             # PhUtil.print_iter(dic_received, header='dic_received')
             # Filter All Processing Related Keys
-            dic_to_process = {k: v for k, v in dic_received.items() if
-                              not (k.startswith(PhKeys.SAMPLE) or k.startswith('process'))}
+            dic_to_process = PhUtil.filter_processing_related_keys(dic_received)
             PhUtil.print_iter(dic_to_process, header='dic_to_process')
             data_type = DataTypeMaster()
             data_type.set_data_pool(data_pool=dic_to_process)
             data_type.parse_safe(PhErrorHandlingModes.CONTINUE_ON_ERROR)
             output_data = data_type.get_output_data()
             default_data.update({PhKeys.OUTPUT_DATA: output_data})
-        if sample_data_dict:
-            if PhKeys.INPUT_DATA in sample_data_dict:
-                default_data.update({PhKeys.INPUT_DATA: sample_data_dict.get(PhKeys.INPUT_DATA)})
-            if 'length_in_decimal' in sample_data_dict:
-                default_data.update({'length_in_decimal': sample_data_dict.get('length_in_decimal')})
-            if 'value_in_ascii' in sample_data_dict:
-                default_data.update({'value_in_ascii': sample_data_dict.get('value_in_ascii')})
-            if 'one_liner' in sample_data_dict:
-                default_data.update({'one_liner': sample_data_dict.get('one_liner')})
-            if PhKeys.REMARKS_LIST in sample_data_dict:
-                default_data.update({PhKeys.REMARKS_LIST: sample_data_dict.get(PhKeys.REMARKS_LIST)})
-        else:
-            if PhKeys.INPUT_DATA in requested_data_dict:
-                default_data.update({PhKeys.INPUT_DATA: requested_data_dict[PhKeys.INPUT_DATA]})
-            if 'length_in_decimal' in requested_data_dict:
-                default_data.update({'length_in_decimal': requested_data_dict['length_in_decimal']})
-            if 'value_in_ascii' in requested_data_dict:
-                default_data.update({'value_in_ascii': requested_data_dict['value_in_ascii']})
-            if 'one_liner' in requested_data_dict:
-                default_data.update({'one_liner': requested_data_dict['one_liner']})
-            if PhKeys.REMARKS_LIST in requested_data_dict:
-                default_data.update({PhKeys.REMARKS_LIST: requested_data_dict[PhKeys.REMARKS_LIST]})
-        default_data.update({PhKeys.SAMPLE_PROCESSING: sample_processing})
+        # Conditional Updates
+        update_default_data(PhKeys.INPUT_DATA)
+        update_default_data(PhKeys.LENGTH_IN_DECIMAL)
+        update_default_data(PhKeys.VALUE_IN_ASCII)
+        update_default_data(PhKeys.ONE_LINER)
+        update_default_data(PhKeys.REMARKS)
+        # Fixed Updates
+        default_data.update({PhKeys.SAMPLE_SELECTED: sample_name})
+        default_data.update({PhKeys.SAMPLE_OPTION: sample_option})
         PhUtil.print_iter(default_data, header='Outputs')
     PhUtil.print_separator(main_text=f'{log_req} Completed!!!')
     return jsonify(**default_data) if api else render_template(Const.TEMPLATE_TLV_PLAY, **default_data)

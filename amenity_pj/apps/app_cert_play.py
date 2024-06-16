@@ -31,6 +31,14 @@ def handle_requests(api=False):
         if source_key in source_dict:
             default_data.update({target_key: source_dict.get(source_key)})
 
+    def update_checked_item(target_key):
+        """
+
+        :param target_key:
+        :return:
+        """
+        requested_data_dict.update({target_key: True if target_key in requested_data_dict else False})
+
     samples_dict = Sample().get_sample_data_pool_for_web()
     samples_list = PhUtil.generalise_list(list(samples_dict.keys()), sort=False)
     input_formats = PhUtil.generalise_list(FormatsGroup.INPUT_FORMATS_SUPPORTED)
@@ -42,6 +50,9 @@ def handle_requests(api=False):
         PhKeys.APP_GITHUB_URL: Util.get_github_url(github_repo=Const.GITHUB_REPO_CERT_PLAY, github_pages=False),
         PhKeys.APP_GITHUB_PAGES_URL: Util.get_github_url(github_repo=Const.GITHUB_REPO_CERT_PLAY, github_pages=True),
         PhKeys.APP_GIT_SUMMARY: GIT_SUMMARY,
+        PhKeys.SAMPLES: samples_list,
+        PhKeys.SAMPLE_SELECTED: samples_list[1] if len(samples_list) > 1 else None,
+        PhKeys.SAMPLE_OPTION: PhKeys.SAMPLE_LOAD_ONLY,
         PhKeys.INPUT_DATA: PhConstants.STR_EMPTY,
         PhKeys.OUTPUT_DATA: PhConstants.STR_EMPTY,
         PhKeys.INPUT_FORMATS: input_formats,
@@ -49,9 +60,6 @@ def handle_requests(api=False):
         PhKeys.URL_TIME_OUTS: utl_time_outs,
         PhKeys.URL_TIME_OUT_SELECTED: Defaults.URL_TIME_OUT,
         PhKeys.URL_PRE_ACCESS: Defaults.URL_PRE_ACCESS,
-        PhKeys.SAMPLES: samples_list,
-        PhKeys.SAMPLE_SELECTED: samples_list[1] if len(samples_list) > 1 else None,
-        PhKeys.SAMPLE_OPTION: PhKeys.SAMPLE_LOAD_ONLY,
     }
     log_req = f'{Const.TEMPLATE_CERT_PLAY}; {request.method}; {"API" if api else "Form"} Request'
     PhUtil.print_separator(main_text=f'{log_req} Received!!!')
@@ -66,8 +74,7 @@ def handle_requests(api=False):
         sample_dict = None
         # When submitting an HTML form,
         # 1) unchecked checkboxes do not send any data, however checked checkboxes do send False (may send True as well)
-        requested_data_dict.update(
-            {PhKeys.URL_PRE_ACCESS: True if PhKeys.URL_PRE_ACCESS in requested_data_dict else False})
+        update_checked_item(PhKeys.URL_PRE_ACCESS)
         # 2) Everything is converted to String; below needs to be typecasted
         pass
         print(f'process_sample is {process_sample}')
@@ -93,7 +100,7 @@ def handle_requests(api=False):
         # Conditional Updates
         update_default_data(PhKeys.INPUT_DATA)
         update_default_data(PhKeys.INPUT_FORMAT, PhKeys.INPUT_FORMAT_SELECTED)
-        update_default_data(PhKeys.URL_PRE_ACCESS, PhKeys.URL_PRE_ACCESS)
+        update_default_data(PhKeys.URL_PRE_ACCESS)
         update_default_data(PhKeys.URL_TIME_OUT, PhKeys.URL_TIME_OUT_SELECTED)
         update_default_data(PhKeys.REMARKS)
         # Fixed Updates
