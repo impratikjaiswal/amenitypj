@@ -40,6 +40,14 @@ def handle_requests(api=False):
         """
         requested_data_dict.update({target_key: True if target_key in requested_data_dict else False})
 
+    def update_integer_item(target_key):
+        """
+
+        :param target_key:
+        :return:
+        """
+        requested_data_dict.update({target_key: int(requested_data_dict.get(target_key))})
+
     samples_dict = Sample().get_sample_data_pool_for_web()
     samples_list = PhUtil.generalise_list(list(samples_dict.keys()), sort=False)
     qr_code_versions = PhUtil.generalise_list(FormatsGroup.QR_CODE_VERSIONS_SUPPORTED)
@@ -76,7 +84,7 @@ def handle_requests(api=False):
         update_checked_item(PhKeys.SPLIT_QRS)
         # 2) Everything is converted to String; below needs to be typecasted
         # XXX: This should be handled in parse_config; integer
-        requested_data_dict.update({PhKeys.QR_CODE_VERSION: int(requested_data_dict.get(PhKeys.QR_CODE_VERSION))})
+        update_integer_item(PhKeys.QR_CODE_VERSION)
         print(f'process_sample is {process_sample}')
         if process_sample:
             sample_dict = samples_dict.get(sample_name, None)
@@ -92,7 +100,8 @@ def handle_requests(api=False):
             # Filter All Processing Related Keys
             dic_to_process = PhUtil.filter_processing_related_keys(dic_received)
             dic_to_process.update({PhKeys.IMAGE_FORMAT: Formats.PNG_URI})
-            dic_to_process.update({PhKeys.PRINT_INPUT: True})
+            # TODO: For On going Bug
+            # dic_to_process.update({PhKeys.PRINT_INPUT: True})
             PhUtil.print_iter(dic_to_process, header='dic_to_process')
             data_type = DataTypeMaster()
             data_type.set_data_pool(data_pool=dic_to_process)
