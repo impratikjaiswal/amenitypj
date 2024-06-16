@@ -88,6 +88,22 @@ def utility_processor_selected_sample():
     return dict(is_selected_sample=is_selected_sample)
 
 
+@app.context_processor
+def utility_processor_selected_qr_code_version():
+    def is_selected_qr_code_version(sample, selected_qr_code_version):
+        return is_selected(sample, selected_qr_code_version)
+
+    return dict(is_selected_qr_code_version=is_selected_qr_code_version)
+
+
+@app.context_processor
+def utility_processor_selected_url_time_out():
+    def is_selected_url_time_out(sample, selected_url_time_out):
+        return is_selected(sample, selected_url_time_out)
+
+    return dict(is_selected_url_time_out=is_selected_url_time_out)
+
+
 @app.route(Const.URL_SITEMAP)
 def sitemap():
     return sitemapper.generate()

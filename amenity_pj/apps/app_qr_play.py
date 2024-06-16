@@ -68,7 +68,7 @@ def handle_requests(api=False):
         PhKeys.APP_GITHUB_PAGES_URL: Util.get_github_url(github_repo=Const.GITHUB_REPO_QR_PLAY, github_pages=True),
         PhKeys.APP_GIT_SUMMARY: GIT_SUMMARY,
         PhKeys.QR_CODE_VERSIONS: list(range(40, 0, -1)),
-        PhKeys.SELECTED_QR_CODE_VERSION: Defaults.QR_CODE_VERSION,
+        PhKeys.QR_CODE_VERSION_SELECTED: Defaults.QR_CODE_VERSION,
         PhKeys.SPLIT_QRS: Defaults.SPLIT_QRS,
         PhKeys.SCALE: Defaults.SCALE,
         PhKeys.SAMPLE_PROCESSING: PhKeys.SAMPLE_LOAD_ONLY,
@@ -125,7 +125,7 @@ def handle_requests(api=False):
             if PhKeys.SPLIT_QRS in sample_data_dict:
                 default_data.update({PhKeys.SPLIT_QRS: sample_data_dict.get(PhKeys.SPLIT_QRS)})
             if PhKeys.QR_CODE_VERSION in sample_data_dict:
-                default_data.update({PhKeys.SELECTED_QR_CODE_VERSION: sample_data_dict.get(PhKeys.QR_CODE_VERSION)})
+                default_data.update({PhKeys.QR_CODE_VERSION_SELECTED: sample_data_dict.get(PhKeys.QR_CODE_VERSION)})
             if PhKeys.SCALE in sample_data_dict:
                 default_data.update({PhKeys.SCALE: sample_data_dict.get(PhKeys.SCALE)})
             if PhKeys.REMARKS_LIST in sample_data_dict:
@@ -136,7 +136,7 @@ def handle_requests(api=False):
             if PhKeys.SPLIT_QRS in requested_data_dict:
                 default_data.update({PhKeys.SPLIT_QRS: requested_data_dict[PhKeys.SPLIT_QRS]})
             if PhKeys.QR_CODE_VERSION in requested_data_dict:
-                default_data.update({PhKeys.SELECTED_QR_CODE_VERSION: requested_data_dict[PhKeys.QR_CODE_VERSION]})
+                default_data.update({PhKeys.QR_CODE_VERSION_SELECTED: requested_data_dict[PhKeys.QR_CODE_VERSION]})
             if PhKeys.SCALE in requested_data_dict:
                 default_data.update({PhKeys.SCALE: requested_data_dict[PhKeys.SCALE]})
             if PhKeys.REMARKS_LIST in requested_data_dict:

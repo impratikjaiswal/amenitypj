@@ -23,41 +23,47 @@
             <div class="badge float-right">
                 Length: <span id="input_data_char_count">0</span>
             </div>
-            <textarea name="input_data" placeholder="Input Data" class="form-control"
+            <textarea name="input_data" placeholder="Input Data" class="form-control" rows="3"
                       id="input_data">{{ input_data }}</textarea>
         </div>
-        <div class="form-group">
-            <div class="form-check">
-                {% if length_in_decimal %}
-                    <input type="checkbox" name="length_in_decimal" class="form-check-input"
-                           value="{{ length_in_decimal }}" checked>
-                {% else %}
-                    <input type="checkbox" name="length_in_decimal" class="form-check-input"
-                           value="{{ length_in_decimal }}">
-                {% endif %}
-                <label for="length_in_decimal" class="form-check-label">Length In Decimal</label>
+        <div class="form-row">
+            <div class="form-group col">
+                <BR>			
+                <div class="form-check">
+                    {% if length_in_decimal %}
+                        <input type="checkbox" name="length_in_decimal" class="form-check-input"
+                               value="{{ length_in_decimal }}" checked>
+                    {% else %}
+                        <input type="checkbox" name="length_in_decimal" class="form-check-input"
+                               value="{{ length_in_decimal }}">
+                    {% endif %}
+                    <label for="length_in_decimal" class="form-check-label">Length In Decimal</label>
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            <div class="form-check">
-                {% if value_in_ascii %}
-                    <input type="checkbox" name="value_in_ascii" class="form-check-input"
-                           value="{{ value_in_ascii }}" checked>
-                {% else %}
-                    <input type="checkbox" name="value_in_ascii" class="form-check-input"
-                           value="{{ value_in_ascii }}">
-                {% endif %}
-                <label for="value_in_ascii" class="form-check-label">Value In Ascii</label>
+            <div class="form-group col">
+                <BR>
+                <div class="form-check">
+                    {% if value_in_ascii %}
+                        <input type="checkbox" name="value_in_ascii" class="form-check-input"
+                               value="{{ value_in_ascii }}" checked>
+                    {% else %}
+                        <input type="checkbox" name="value_in_ascii" class="form-check-input"
+                               value="{{ value_in_ascii }}">
+                    {% endif %}
+                    <label for="value_in_ascii" class="form-check-label">Value In Ascii</label>
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            <div class="form-check">
-                {% if one_liner %}
-                    <input type="checkbox" name="one_liner" class="form-check-input" value="{{ one_liner }}" checked>
-                {% else %}
-                    <input type="checkbox" name="one_liner" class="form-check-input" value="{{ one_liner }}">
-                {% endif %}
-                <label for="one_liner" class="form-check-label">One Liner</label>
+            <div class="form-group col">
+                <BR>
+                <div class="form-check">
+                    {% if one_liner %}
+                        <input type="checkbox" name="one_liner" class="form-check-input" value="{{ one_liner }}"
+                               checked>
+                    {% else %}
+                        <input type="checkbox" name="one_liner" class="form-check-input" value="{{ one_liner }}">
+                    {% endif %}
+                    <label for="one_liner" class="form-check-label">One Liner</label>
+                </div>
             </div>
         </div>
         <div class="form-group">

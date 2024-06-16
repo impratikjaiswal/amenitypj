@@ -128,8 +128,8 @@ def handle_requests(api=False):
 
     :return:
     """
-    samples_dic = Sample().get_sample_data_pool_for_web()
-    samples_list = PhUtil.generalise_list(list(samples_dic.keys()), sort=False)
+    # samples_dic = Sample().get_sample_data_pool_for_web()
+    # samples_list = PhUtil.generalise_list(list(samples_dic.keys()), sort=False)
     input_formats = PhUtil.generalise_list(FormatsGroup.INPUT_FORMATS_SUPPORTED)
     output_formats = PhUtil.generalise_list(FormatsGroup.OUTPUT_FORMATS_SUPPORTED)
     asn1_schemas = PhUtil.generalise_list(Asn1Versions._get_list_of_supported_versions())

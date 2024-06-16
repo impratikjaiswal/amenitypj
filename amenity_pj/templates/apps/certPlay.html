@@ -26,14 +26,37 @@
             <textarea name="input_data" placeholder="Input Data" class="form-control" rows="3"
                       id="input_data">{{ input_data }}</textarea>
         </div>
-        <div class="form-group">
-            <label for="input_format">Input Format</label>
-            <select name="input_format" class="form-control selectpicker" data-live-search="true"
-                    placeholder="Input Format" id="input_format">
-                {% for input_format in input_formats %}
-                    <option value="{{ input_format }}" {{ is_selected_input_format(input_format, input_format_selected) }}>{{ input_format }}</option>
-                {% endfor %}
-            </select>
+        <div class="form-row">
+            <div class="form-group col">
+                <label for="input_format">Input Format</label>
+                <select name="input_format" class="form-control selectpicker" data-live-search="true"
+                        placeholder="Input Format" id="input_format">
+                    {% for input_format in input_formats %}
+                        <option value="{{ input_format }}" {{ is_selected_input_format(input_format, input_format_selected) }}>{{ input_format }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group col">
+                <label for="url_time_out">URL Time Out</label>
+                <select name="url_time_out" class="form-control selectpicker" data-live-search="true"
+                        placeholder="Input Format" id="url_time_out">
+                    {% for url_time_out in url_time_outs %}
+                        <option value="{{ url_time_out }}" {{ is_selected_url_time_out(url_time_out, url_time_out_selected) }}>{{ url_time_out }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group col">
+                <BR>
+                <div class="form-check">
+                    {% if url_pre_access %}
+                        <input type="checkbox" name="url_pre_access" class="form-check-input" value="{{ url_pre_access }}"
+                               checked>
+                    {% else %}
+                        <input type="checkbox" name="url_pre_access" class="form-check-input" value="{{ url_pre_access }}">
+                    {% endif %}
+                    <label for="url_pre_access" class="form-check-label">URL Pre Access Validation</label>
+                </div>
+            </div>
         </div>
         <div class="form-group">
             <label for="remarks_list">Remarks</label>

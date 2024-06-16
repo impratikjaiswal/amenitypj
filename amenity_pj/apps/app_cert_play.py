@@ -34,6 +34,7 @@ def handle_requests(api=False):
     samples_dict = Sample().get_sample_data_pool_for_web()
     samples_list = PhUtil.generalise_list(list(samples_dict.keys()), sort=False)
     input_formats = PhUtil.generalise_list(FormatsGroup.INPUT_FORMATS_SUPPORTED)
+    utl_time_outs = PhUtil.generalise_list(FormatsGroup.URL_TIME_OUT_SUPPORTED)
     default_data = {
         PhKeys.APP_TITLE: Const.TITLE_CERT_PLAY,
         PhKeys.APP_DESCRIPTION: Const.DESCRIPTION_CERT_PLAY,
@@ -45,6 +46,9 @@ def handle_requests(api=False):
         PhKeys.OUTPUT_DATA: PhConstants.STR_EMPTY,
         PhKeys.INPUT_FORMATS: input_formats,
         PhKeys.INPUT_FORMAT_SELECTED: Defaults.FORMAT_INPUT,
+        PhKeys.URL_TIME_OUTS: utl_time_outs,
+        PhKeys.URL_TIME_OUT_SELECTED: Defaults.URL_TIME_OUT,
+        PhKeys.URL_PRE_ACCESS: Defaults.URL_PRE_ACCESS,
         PhKeys.SAMPLES: samples_list,
         PhKeys.SAMPLE_SELECTED: samples_list[1] if len(samples_list) > 1 else None,
         PhKeys.SAMPLE_OPTION: PhKeys.SAMPLE_LOAD_ONLY,
@@ -62,7 +66,8 @@ def handle_requests(api=False):
         sample_dict = None
         # When submitting an HTML form,
         # 1) unchecked checkboxes do not send any data, however checked checkboxes do send False (may send True as well)
-        pass
+        requested_data_dict.update(
+            {PhKeys.URL_PRE_ACCESS: True if PhKeys.URL_PRE_ACCESS in requested_data_dict else False})
         # 2) Everything is converted to String; below needs to be typecasted
         pass
         print(f'process_sample is {process_sample}')
@@ -88,6 +93,8 @@ def handle_requests(api=False):
         # Conditional Updates
         update_default_data(PhKeys.INPUT_DATA)
         update_default_data(PhKeys.INPUT_FORMAT, PhKeys.INPUT_FORMAT_SELECTED)
+        update_default_data(PhKeys.URL_PRE_ACCESS, PhKeys.URL_PRE_ACCESS)
+        update_default_data(PhKeys.URL_TIME_OUT, PhKeys.URL_TIME_OUT_SELECTED)
         update_default_data(PhKeys.REMARKS)
         # Fixed Updates
         default_data.update({PhKeys.SAMPLE_SELECTED: sample_name})

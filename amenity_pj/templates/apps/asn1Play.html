@@ -23,7 +23,7 @@
             <div class="badge float-right">
                 Length: <span id="input_data_char_count">0</span>
             </div>
-            <textarea name="input_data" placeholder="Input Data" class="form-control"
+            <textarea name="input_data" placeholder="Input Data" class="form-control" rows="3"
                       id="input_data">{{ input_data }}</textarea>
         </div>
         <div class="form-row">
@@ -55,7 +55,7 @@
             </div>
             &nbsp;&nbsp;&nbsp;
             <div class="form-group col">
-                <br>
+                <BR>
                 <div class="form-check">
                     {% if tlv_parsing_of_output %}
                         <input type="checkbox" name="tlv_parsing_of_output" class="form-check-input"

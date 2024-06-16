@@ -26,32 +26,33 @@
             <textarea name="input_data" placeholder="Input Data" class="form-control" rows="3"
                       id="input_data">{{ input_data }}</textarea>
         </div>
-        <div class="form-group">
-            <div class="form-check">
-                {% if split_qrs %}
-                    <input type="checkbox" name="split_qrs" class="form-check-input" value="{{ split_qrs }}" checked>
-                {% else %}
-                    <input type="checkbox" name="split_qrs" class="form-check-input" value="{{ split_qrs }}">
-                {% endif %}
-                <label for="split_qrs" class="form-check-label">Auto Split Message Across Multiple Qrs</label>
+        <div class="form-row">
+            <div class="form-group col">
+                <label for="qr_code_version">Qr Code Version</label>
+                <select name="qr_code_version" class="form-control selectpicker" data-live-search="true"
+                        placeholder="Qr Code Version" id="qr_code_version">
+                    {% for qr_code_version in qr_code_versions %}
+                        <option value="{{ qr_code_version }}" {{ is_selected_qr_code_version(qr_code_version, qr_code_version_selected) }}>{{ qr_code_version }}</option>
+                    {% endfor %}
+                </select>
             </div>
-        </div>
-        <div class="form-group">
-            <label for="qr_code_version">Qr Code Version</label>
-            <select name="qr_code_version" class="form-control selectpicker" data-live-search="true"
-                    placeholder="Input Format">
-                {% for qr_code_version in qr_code_versions %}
-                    {% if qr_code_version == selected_qr_code_version %}
-                        <option value="{{ qr_code_version }}" SELECTED>{{ qr_code_version }}</option>
+            <div class="form-group col">
+                <label for="scale">Scale</label>
+                <input type="text" name="scale" placeholder="Scale" class="form-control" value="{{ scale }}">
+            </div>
+            <div class="form-group col">
+                <BR>
+                <div class="form-check">
+                    {% if split_qrs %}
+                        <input type="checkbox" name="split_qrs" class="form-check-input"
+                               value="{{ split_qrs }}" checked>
                     {% else %}
-                        <option value="{{ qr_code_version }}">{{ qr_code_version }}</option>
+                        <input type="checkbox" name="split_qrs" class="form-check-input"
+                               value="{{ split_qrs }}">
                     {% endif %}
-                {% endfor %}
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="scale">Scale</label>
-            <input type="text" name="scale" placeholder="Scale" class="form-control" value="{{ scale }}">
+                    <label for="split_qrs" class="form-check-label">Auto Split Message Across Multiple Qrs</label>
+                </div>
+            </div>
         </div>
         <div class="form-group">
             <label for="remarks_list">Remarks</label>
