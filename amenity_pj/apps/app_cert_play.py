@@ -30,6 +30,7 @@ def handle_requests(api=False):
         source_dict = sample_dict if sample_dict else requested_data_dict
         if source_key in source_dict:
             default_data.update({target_key: source_dict.get(source_key)})
+        return default_data.get(target_key, None)
 
     def update_checked_item(target_key):
         """
@@ -38,6 +39,15 @@ def handle_requests(api=False):
         :return:
         """
         requested_data_dict.update({target_key: True if target_key in requested_data_dict else False})
+
+    def update_integer_item(target_key):
+        """
+
+        :param target_key:
+        :return:
+        """
+        requested_data_dict.update(
+            {target_key: int(requested_data_dict.get(target_key) if target_key in requested_data_dict else -1)})
 
     samples_dict = Sample().get_sample_data_pool_for_web()
     samples_list = PhUtil.generalise_list(list(samples_dict.keys()), sort=False)
@@ -76,7 +86,8 @@ def handle_requests(api=False):
         # 1) unchecked checkboxes do not send any data, however checked checkboxes do send False (may send True as well)
         update_checked_item(PhKeys.URL_PRE_ACCESS)
         # 2) Everything is converted to String; below needs to be typecasted
-        pass
+        # XXX: This should be handled in parse_config; integer
+        update_integer_item(PhKeys.URL_TIME_OUT)
         print(f'process_sample is {process_sample}')
         if process_sample:
             sample_dict = samples_dict.get(sample_name, None)

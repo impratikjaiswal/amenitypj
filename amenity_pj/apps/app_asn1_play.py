@@ -42,6 +42,15 @@ def handle_requests(api=False):
         """
         requested_data_dict.update({target_key: True if target_key in requested_data_dict else False})
 
+    def update_integer_item(target_key):
+        """
+
+        :param target_key:
+        :return:
+        """
+        requested_data_dict.update(
+            {target_key: int(requested_data_dict.get(target_key) if target_key in requested_data_dict else -1)})
+
     samples_dict = Sample().get_sample_data_pool_for_web()
     samples_list = PhUtil.generalise_list(list(samples_dict.keys()), sort=False)
     input_formats = PhUtil.generalise_list(FormatsGroup.INPUT_FORMATS_SUPPORTED)
