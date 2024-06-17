@@ -104,6 +104,14 @@ def utility_processor_selected_url_time_out():
     return dict(is_selected_url_time_out=is_selected_url_time_out)
 
 
+@app.context_processor
+def utility_processor_selected_image_format():
+    def is_selected_image_format(sample, selected_image_format):
+        return is_selected(sample, selected_image_format)
+
+    return dict(is_selected_image_format=is_selected_image_format)
+
+
 @app.route(Const.URL_SITEMAP)
 def sitemap():
     return sitemapper.generate()

@@ -51,6 +51,7 @@ def handle_requests(api=False):
     samples_dict = Sample().get_sample_data_pool_for_web()
     samples_list = PhUtil.generalise_list(list(samples_dict.keys()), sort=False)
     qr_code_versions = PhUtil.generalise_list(FormatsGroup.QR_CODE_VERSIONS_SUPPORTED)
+    image_formats = PhUtil.generalise_list(FormatsGroup.IMAGE_FORMATS_SUPPORTED)
     default_data = {
         PhKeys.APP_TITLE: Const.TITLE_QR_PLAY,
         PhKeys.APP_DESCRIPTION: Const.DESCRIPTION_QR_PLAY,
@@ -65,6 +66,8 @@ def handle_requests(api=False):
         PhKeys.OUTPUT_DATA: PhConstants.STR_EMPTY,
         PhKeys.QR_CODE_VERSIONS: qr_code_versions,
         PhKeys.QR_CODE_VERSION_SELECTED: Defaults.QR_CODE_VERSION,
+        PhKeys.IMAGE_FORMATS: image_formats,
+        PhKeys.IMAGE_FORMAT_SELECTED: Defaults.IMAGE_FORMAT,
         PhKeys.SPLIT_QRS: Defaults.SPLIT_QRS,
         PhKeys.SCALE: Defaults.SCALE,
     }
@@ -85,6 +88,7 @@ def handle_requests(api=False):
         # 2) Everything is converted to String; below needs to be typecasted
         # XXX: This should be handled in parse_config; integer
         update_integer_item(PhKeys.QR_CODE_VERSION)
+        update_integer_item(PhKeys.SCALE)
         print(f'process_sample is {process_sample}')
         if process_sample:
             sample_dict = samples_dict.get(sample_name, None)
@@ -99,9 +103,6 @@ def handle_requests(api=False):
             # PhUtil.print_iter(dic_received, header='dic_received')
             # Filter All Processing Related Keys
             dic_to_process = PhUtil.filter_processing_related_keys(dic_received)
-            dic_to_process.update({PhKeys.IMAGE_FORMAT: Formats.PNG_URI})
-            # TODO: For On going Bug
-            # dic_to_process.update({PhKeys.PRINT_INPUT: True})
             PhUtil.print_iter(dic_to_process, header='dic_to_process')
             data_type = DataTypeMaster()
             data_type.set_data_pool(data_pool=dic_to_process)
@@ -117,6 +118,7 @@ def handle_requests(api=False):
         update_default_data(PhKeys.INPUT_DATA)
         update_default_data(PhKeys.SPLIT_QRS)
         update_default_data(PhKeys.QR_CODE_VERSION, PhKeys.QR_CODE_VERSION_SELECTED)
+        update_default_data(PhKeys.IMAGE_FORMAT, PhKeys.IMAGE_FORMAT_SELECTED)
         update_default_data(PhKeys.SCALE)
         update_default_data(PhKeys.REMARKS)
         # Fixed Updates

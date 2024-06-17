@@ -28,6 +28,15 @@
         </div>
         <div class="form-row">
             <div class="form-group col">
+                <label for="image_format">Qr Code Version</label>
+                <select name="image_format" class="form-control selectpicker" data-live-search="true"
+                        placeholder="Qr Code Version" id="image_format">
+                    {% for image_format in image_formats %}
+                        <option value="{{ image_format }}" {{ is_selected_image_format(image_format, image_format_selected) }}>{{ image_format }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group col">
                 <label for="qr_code_version">Qr Code Version</label>
                 <select name="qr_code_version" class="form-control selectpicker" data-live-search="true"
                         placeholder="Qr Code Version" id="qr_code_version">
@@ -50,7 +59,7 @@
                         <input type="checkbox" name="split_qrs" class="form-check-input"
                                value="{{ split_qrs }}">
                     {% endif %}
-                    <label for="split_qrs" class="form-check-label">Auto Split Message Across Multiple Qrs</label>
+                    <label for="split_qrs" class="form-check-label">Auto Split Qrs (if needed)</label>
                 </div>
             </div>
         </div>

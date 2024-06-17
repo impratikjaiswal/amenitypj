@@ -119,7 +119,7 @@ def handle_requests(api=False):
         update_default_data(PhKeys.OUTPUT_FORMAT, PhKeys.OUTPUT_FORMAT_SELECTED)
         selected_asn1_schema = update_default_data(PhKeys.ASN1_SCHEMA, PhKeys.ASN1_SCHEMA_SELECTED)
         if selected_asn1_schema:
-            default_data.update({PhKeys.ASN1_OBJECTS : get_asn1_objects_list(selected_asn1_schema)})
+            default_data.update({PhKeys.ASN1_OBJECTS: get_asn1_objects_list(selected_asn1_schema)})
         update_default_data(PhKeys.ASN1_OBJECT, PhKeys.ASN1_OBJECT_SELECTED)
         update_default_data(PhKeys.ASN1_OBJECT_ALTERNATE)
         update_default_data(PhKeys.TLV_PARSING_OF_OUTPUT)
