@@ -10,7 +10,7 @@
 <h2><i>Need help getting started? Check our samples below!</i></h2>
 <div class="form-row" id="samples_section">
     <div class="form-group col">
-        <label for="sample">Select A Sample</label>
+        <label for="sample">Select Sample</label>
         <select name="sample" class="form-control selectpicker" data-live-search="true" id="sample">
             {% for sample in samples %}
                 <option value="{{ sample }}" {{ is_selected_sample(sample, sample_selected) }}>{{ sample }}</option>

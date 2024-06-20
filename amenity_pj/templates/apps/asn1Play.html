@@ -84,7 +84,7 @@
                 <select name="asn1_object" id="asn1_object" class="form-control selectpicker" data-live-search="true"
                         placeholder="Asn1 Object">
                     {% for asn1_object in asn1_objects %}
-                        {% if asn1_object == selected_asn1_object %}
+                        {% if asn1_object == asn1_object_selected %}
                             <option value="{{ asn1_object }}" SELECTED>{{ asn1_object }}</option>
                         {% else %}
                             <option value="{{ asn1_object }}">{{ asn1_object }}</option>

@@ -58,6 +58,7 @@ def handle_requests(api=False):
     asn1_schemas = PhUtil.generalise_list(Asn1Versions._get_list_of_supported_versions())
     default_selected_asn1_schema = Defaults.ASN1_SCHEMA.get_name()
     asn1_objects = get_asn1_objects_list(default_selected_asn1_schema)
+    template_id = Const.TEMPLATE_ASN1_PLAY
     default_data = {
         PhKeys.APP_TITLE: Const.TITLE_ASN1_PLAY,
         PhKeys.APP_DESCRIPTION: Const.DESCRIPTION_ASN1_PLAY,
@@ -83,7 +84,7 @@ def handle_requests(api=False):
         PhKeys.ASN1_OBJECT_ALTERNATE: PhConstants.STR_EMPTY,
         PhKeys.TLV_PARSING_OF_OUTPUT: False,
     }
-    log_req = f'{Const.TEMPLATE_ASN1_PLAY}; {request.method}; {"API" if api else "Form"} Request'
+    log_req = f'{template_id}; {request.method}; {"API" if api else "Form"} Request'
     PhUtil.print_separator(main_text=f'{log_req} Received!!!')
     requested_data_dict = request.get_json() if request.is_json else request.form.to_dict()
     PhUtil.print_iter(requested_data_dict, header='Inputs')
@@ -100,20 +101,19 @@ def handle_requests(api=False):
         # 1) unchecked checkboxes do not send any data, however checked checkboxes do send False (may send True as well)
         update_checked_item(PhKeys.TLV_PARSING_OF_OUTPUT)
         update_checked_item(PhKeys.FETCH_ASN1_OBJECTS_LIST)
-        # 2) Everything is converted to String; below needs to be typecasted
+        # 2) Everything is converted to String; below needs to be typecast, TODO: should be handled in parse_config; int
         pass
         print(f'process_sample is {process_sample}')
         if process_sample:
             sample_dict = samples_dict.get(sample_name, None)
             if sample_dict:
-                print('sample_dict is available')
+                PhUtil.print_iter(sample_dict, header='sample_dict')
         if sample_dict and sample_option == PhKeys.SAMPLE_LOAD_ONLY:
-            # Data Processing is not needed
+            print('Data Processing is not needed')
             pass
         else:
-            # Data Processing is needed in all other cases
+            print('Data Processing is needed')
             dic_received = sample_dict if sample_dict else requested_data_dict
-            # PhUtil.print_iter(dic_received, header='dic_received')
             # Filter All Processing Related Keys
             dic_to_process = PhUtil.filter_processing_related_keys(dic_received)
             PhUtil.print_iter(dic_to_process, header='dic_to_process')
@@ -139,7 +139,7 @@ def handle_requests(api=False):
         default_data.update({PhKeys.SAMPLE_OPTION: sample_option})
         PhUtil.print_iter(default_data, header='Outputs')
     PhUtil.print_separator(main_text=f'{log_req} Completed!!!')
-    return jsonify(**default_data) if api else render_template(Const.TEMPLATE_ASN1_PLAY, **default_data)
+    return jsonify(**default_data) if api else render_template(template_id, **default_data)
 
 
 def get_asn1_objects_list(asn1_schema_str):
