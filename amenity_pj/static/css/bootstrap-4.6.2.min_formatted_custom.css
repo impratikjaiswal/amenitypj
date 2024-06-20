@@ -21,6 +21,11 @@
     text-align: right;
 }
 
+/* Float In Right */
+.a-float-right {
+    float: right;
+}
+
 /* Very small Text */
 .very-small {
     font-size: 14px;

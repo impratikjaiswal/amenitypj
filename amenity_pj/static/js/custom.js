@@ -32,7 +32,7 @@ function characterCounterInputData() {
 }
 
 function characterCounterOutputData() {
-    const length_of_output_statement_initial_text = 30
+    const length_of_output_statement_initial_text = 14
     $("#output_data_char_count").text(($("#output_statement").text().length - length_of_output_statement_initial_text));
 }
 

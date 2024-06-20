@@ -55,9 +55,11 @@ def handle_requests(api=False):
     utl_time_outs = PhUtil.generalise_list(FormatsGroup.URL_TIME_OUT_SUPPORTED)
     template_id = Const.TEMPLATE_CERT_PLAY
     default_data = {
+        PhKeys.APP_PARENT_TITLE: Const.TITLE_AMENITY_PJ,
+        PhKeys.APP_PARENT_VERSION: Const.VERSION_AMENITY_PJ,
         PhKeys.APP_TITLE: Const.TITLE_CERT_PLAY,
-        PhKeys.APP_DESCRIPTION: Const.DESCRIPTION_CERT_PLAY,
         PhKeys.APP_VERSION: Const.VERSION_CERT_PLAY,
+        PhKeys.APP_DESCRIPTION: Const.DESCRIPTION_CERT_PLAY,
         PhKeys.APP_GITHUB_URL: Util.get_github_url(github_repo=Const.GITHUB_REPO_CERT_PLAY, github_pages=False),
         PhKeys.APP_GITHUB_PAGES_URL: Util.get_github_url(github_repo=Const.GITHUB_REPO_CERT_PLAY, github_pages=True),
         PhKeys.APP_GIT_SUMMARY: GIT_SUMMARY,
@@ -66,6 +68,7 @@ def handle_requests(api=False):
         PhKeys.SAMPLE_OPTION: PhKeys.SAMPLE_LOAD_ONLY,
         PhKeys.INPUT_DATA: PhConstants.STR_EMPTY,
         PhKeys.OUTPUT_DATA: PhConstants.STR_EMPTY,
+        PhKeys.INFO_DATA: PhConstants.STR_EMPTY,
         PhKeys.INPUT_FORMATS: input_formats,
         PhKeys.INPUT_FORMAT_SELECTED: Defaults.FORMAT_INPUT,
         PhKeys.URL_TIME_OUTS: utl_time_outs,
@@ -105,8 +108,9 @@ def handle_requests(api=False):
             data_type = DataTypeMaster()
             data_type.set_data_pool(data_pool=dic_to_process)
             data_type.parse_safe(PhErrorHandlingModes.CONTINUE_ON_ERROR)
-            output_data = data_type.get_output_data()
+            output_data, info_data = data_type.get_output_data(only_output=False)
             default_data.update({PhKeys.OUTPUT_DATA: output_data})
+            default_data.update({PhKeys.INFO_DATA: info_data})
         # Conditional Updates
         update_default_data(PhKeys.INPUT_DATA)
         update_default_data(PhKeys.INPUT_FORMAT, PhKeys.INPUT_FORMAT_SELECTED)

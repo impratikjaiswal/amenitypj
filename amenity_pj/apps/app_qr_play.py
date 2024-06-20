@@ -56,9 +56,11 @@ def handle_requests(api=False):
     image_formats = PhUtil.generalise_list(FormatsGroup.IMAGE_FORMATS_SUPPORTED)
     template_id = Const.TEMPLATE_QR_PLAY
     default_data = {
+        PhKeys.APP_PARENT_TITLE: Const.TITLE_AMENITY_PJ,
+        PhKeys.APP_PARENT_VERSION: Const.VERSION_AMENITY_PJ,
         PhKeys.APP_TITLE: Const.TITLE_QR_PLAY,
-        PhKeys.APP_DESCRIPTION: Const.DESCRIPTION_QR_PLAY,
         PhKeys.APP_VERSION: Const.VERSION_QR_PLAY,
+        PhKeys.APP_DESCRIPTION: Const.DESCRIPTION_QR_PLAY,
         PhKeys.APP_GITHUB_URL: Util.get_github_url(github_repo=Const.GITHUB_REPO_QR_PLAY, github_pages=False),
         PhKeys.APP_GITHUB_PAGES_URL: Util.get_github_url(github_repo=Const.GITHUB_REPO_QR_PLAY, github_pages=True),
         PhKeys.APP_GIT_SUMMARY: GIT_SUMMARY,
@@ -67,6 +69,7 @@ def handle_requests(api=False):
         PhKeys.SAMPLE_OPTION: PhKeys.SAMPLE_LOAD_ONLY,
         PhKeys.INPUT_DATA: PhConstants.STR_EMPTY,
         PhKeys.OUTPUT_DATA: PhConstants.STR_EMPTY,
+        PhKeys.INFO_DATA: PhConstants.STR_EMPTY,
         PhKeys.QR_CODE_VERSIONS: qr_code_versions,
         PhKeys.QR_CODE_VERSION_SELECTED: Defaults.QR_CODE_VERSION,
         PhKeys.IMAGE_FORMATS: image_formats,

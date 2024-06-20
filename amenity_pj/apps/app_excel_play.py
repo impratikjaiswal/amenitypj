@@ -49,15 +49,18 @@ def handle_requests(api=False):
 
     template_id = Const.TEMPLATE_EXCEL_PLAY
     default_data = {
+        PhKeys.APP_PARENT_TITLE: Const.TITLE_AMENITY_PJ,
+        PhKeys.APP_PARENT_VERSION: Const.VERSION_AMENITY_PJ,
         PhKeys.APP_TITLE: Const.TITLE_EXCEL_PLAY,
-        PhKeys.APP_DESCRIPTION: Const.DESCRIPTION_EXCEL_PLAY,
         PhKeys.APP_VERSION: Const.VERSION_EXCEL_PLAY,
+        PhKeys.APP_DESCRIPTION: Const.DESCRIPTION_EXCEL_PLAY,
         PhKeys.APP_GITHUB_URL: Util.get_github_url(github_repo=Const.GITHUB_REPO_EXCEL_PLAY, github_pages=False),
         PhKeys.APP_GITHUB_PAGES_URL: Util.get_github_url(github_repo=Const.GITHUB_REPO_EXCEL_PLAY, github_pages=True),
         PhKeys.APP_GIT_SUMMARY: GIT_SUMMARY,
         PhKeys.SAMPLE_OPTION: PhKeys.SAMPLE_LOAD_ONLY,
         PhKeys.INPUT_DATA: PhConstants.STR_EMPTY,
         PhKeys.OUTPUT_DATA: PhConstants.STR_EMPTY,
+        PhKeys.INFO_DATA: PhConstants.STR_EMPTY,
     }
     log_req = f'{template_id}; {request.method}; {"API" if api else "Form"} Request'
     PhUtil.print_separator(main_text=f'{log_req} Received!!!')

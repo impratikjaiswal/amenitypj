@@ -52,9 +52,11 @@ def handle_requests(api=False):
     samples_list = PhUtil.generalise_list(list(samples_dict.keys()), sort=False)
     template_id = Const.TEMPLATE_TLV_PLAY
     default_data = {
+        PhKeys.APP_PARENT_TITLE: Const.TITLE_AMENITY_PJ,
+        PhKeys.APP_PARENT_VERSION: Const.VERSION_AMENITY_PJ,
         PhKeys.APP_TITLE: Const.TITLE_TLV_PLAY,
-        PhKeys.APP_DESCRIPTION: Const.DESCRIPTION_TLV_PLAY,
         PhKeys.APP_VERSION: Const.VERSION_TLV_PLAY,
+        PhKeys.APP_DESCRIPTION: Const.DESCRIPTION_TLV_PLAY,
         PhKeys.APP_GITHUB_URL: Util.get_github_url(github_repo=Const.GITHUB_REPO_TLV_PLAY, github_pages=False),
         PhKeys.APP_GITHUB_PAGES_URL: Util.get_github_url(github_repo=Const.GITHUB_REPO_TLV_PLAY, github_pages=True),
         PhKeys.APP_GIT_SUMMARY: GIT_SUMMARY,
@@ -63,6 +65,7 @@ def handle_requests(api=False):
         PhKeys.SAMPLE_OPTION: PhKeys.SAMPLE_LOAD_ONLY,
         PhKeys.INPUT_DATA: PhConstants.STR_EMPTY,
         PhKeys.OUTPUT_DATA: PhConstants.STR_EMPTY,
+        PhKeys.INFO_DATA: PhConstants.STR_EMPTY,
         PhKeys.LENGTH_IN_DECIMAL: Defaults.LENGTH_IN_DECIMAL,
         PhKeys.VALUE_IN_ASCII: Defaults.VALUE_IN_ASCII,
         PhKeys.ONE_LINER: Defaults.ONE_LINER,
@@ -102,8 +105,9 @@ def handle_requests(api=False):
             data_type = DataTypeMaster()
             data_type.set_data_pool(data_pool=dic_to_process)
             data_type.parse_safe(PhErrorHandlingModes.CONTINUE_ON_ERROR)
-            output_data = data_type.get_output_data()
+            output_data, info_data = data_type.get_output_data(only_output=False)
             default_data.update({PhKeys.OUTPUT_DATA: output_data})
+            default_data.update({PhKeys.INFO_DATA: info_data})
         # Conditional Updates
         update_default_data(PhKeys.INPUT_DATA)
         update_default_data(PhKeys.LENGTH_IN_DECIMAL)

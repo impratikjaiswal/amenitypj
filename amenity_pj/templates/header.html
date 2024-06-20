@@ -1,0 +1,16 @@
+<div>
+    <h1 class="display-inline"> Welcome to {{ app_title }} {{ app_version }} </h1>
+    <h6 class="display-inline"> {{ app_parent_title }} {{ app_parent_version }} </h6>
+    <a class="very-small a-float-right" data-toggle="collapse" href="#gitInfoCollapse" role="button"
+       aria-expanded="false" aria-controls="gitInfoCollapse">Git Info</a>
+    <BR>
+    <div class="collapse very-small right" id="gitInfoCollapse">{{ app_git_summary }}</div>
+    <a href="{{ app_github_pages_url }}" rel="noopener noreferrer" target="_blank">
+        <span class="badge badge-success">@Github</span>
+    </a>
+    <a href="#samples_section" rel="noopener noreferrer">
+        <span class="badge badge-info">Jump To Samples</span>
+    </a>
+    <BR>
+    <div><h6>{{ app_description }}</h6></div>
+</div>
