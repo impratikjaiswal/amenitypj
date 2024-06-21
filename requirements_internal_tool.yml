@@ -3,7 +3,7 @@
 ##################################################
 
 # certPlay Tool From Specific Tag (Remove @ String for Main Branch); Public Repo
-git+https://github.com/impratikjaiswal/certPlay@v2.0.0
+git+https://github.com/impratikjaiswal/certPlay@v2.0.1
   
   # certPlay Tool From Local Path
   # D:\Other\Github_Self\certPlay
@@ -15,19 +15,19 @@ git+https://github.com/impratikjaiswal/excelPlay@v2.3.1
   # D:\Other\Github_Self\excelPlay
   
   # tlvPlay Tool From Specific Tag (Remove @ String for Main Branch); Public Repo
-git+https://github.com/impratikjaiswal/tlvPlay@v4.0.0
+git+https://github.com/impratikjaiswal/tlvPlay@v4.0.1
   
   # tlvPlay Tool From Local Path
   # D:\Other\Github_Self\tlvPlay
   
   # qrPlay Tool From Specific Tag (Remove @ String for Main Branch); Public Repo
-git+https://github.com/impratikjaiswal/qrPlay@v3.1.1
+git+https://github.com/impratikjaiswal/qrPlay@v3.1.2
   
   # qrPlay Tool From Local Path
   # D:\Other\Github_Self\qrPlay
   
   # asn1Play Tool From Specific Tag (Remove @ String for Main Branch); Public Repo
-git+https://github.com/impratikjaiswal/asn1play@v8.0.0
+git+https://github.com/impratikjaiswal/asn1play@v8.0.1
 
 # asn1Play Tool From Local Path
 # D:\Other\Github_Self\asn1Play

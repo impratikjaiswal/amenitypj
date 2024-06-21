@@ -111,13 +111,14 @@ def handle_requests(api=False):
             data_type = DataTypeMaster()
             data_type.set_data_pool(data_pool=dic_to_process)
             data_type.parse_safe(PhErrorHandlingModes.CONTINUE_ON_ERROR)
-            output_data = data_type.get_output_data()
+            output_data, info_data = data_type.get_output_data(only_output=False)
             temp_output_data = []
             if isinstance(output_data, list):
                 temp_output_data = output_data
             else:
                 temp_output_data.append(output_data)
             default_data.update({PhKeys.OUTPUT_DATA: temp_output_data})
+            default_data.update({PhKeys.INFO_DATA: info_data})
         # Conditional Updates
         update_default_data(PhKeys.INPUT_DATA)
         update_default_data(PhKeys.SPLIT_QRS)
