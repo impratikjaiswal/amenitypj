@@ -16,3 +16,13 @@
         <pre>{{ output_data }}</pre>
     </div>
 </div>
+{% if app_title == 'QR Play' %}
+    <div id="output_data_images">
+        <label for="output_data_images">QrCode Images</label>
+        <div id="output_statement_2" class="div-output">
+            {% for qr_image in output_data %}
+                <img src="{{ qr_image }}"><br>
+            {% endfor %}
+        </div>
+    </div>
+{% endif %}

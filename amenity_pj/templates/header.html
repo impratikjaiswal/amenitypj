@@ -8,9 +8,11 @@
     <a href="{{ app_github_pages_url }}" rel="noopener noreferrer" target="_blank">
         <span class="badge badge-success">@Github</span>
     </a>
-    <a href="#samples_section" rel="noopener noreferrer">
-        <span class="badge badge-info">Jump To Samples</span>
-    </a>
+    {% if samples %}
+        <a href="#samples_section" rel="noopener noreferrer">
+            <span class="badge badge-info">Jump To Samples</span>
+        </a>
+    {% endif %}
     <BR>
     <div><h6>{{ app_description }}</h6></div>
 </div>

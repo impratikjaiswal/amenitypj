@@ -55,30 +55,8 @@
             <label for="remarks">Remarks</label>
             <input type="text" name="remarks" placeholder="Remarks" class="form-control" value="{{ remarks }}">
         </div>
-        <div class="form-group">
-            <button type="submit" id="process_input" name="process_input" class="btn btn-primary">Submit</button>
-            <button type="submit" id="process_reset" name="process_reset" class="btn btn-primary" disabled>Reset
-            </button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button type="submit" id="process_copy_clipboard" name="process_copy_clipboard" class="btn btn-secondary">
-                Copy Output
-            </button>
-            <button type="submit" id="process_download_output" name="process_download_output" class="btn btn-secondary"
-                    disabled>Download Output
-            </button>
-            <button type="submit" id="process_download_yml" name="process_download_yml" class="btn btn-secondary"
-                    disabled>Download Yml
-            </button>
-        </div>
+        {% include 'button.html' %}
         {% include 'output.html' %}
-        <div id="output_data_images">
-            <label for="output_data_images">QrCode Images</label>
-            <div id="output_statement_2" class="div-output">
-                {% for qr_image in output_data %}
-                    <img src="{{ qr_image }}"><br>
-                {% endfor %}
-            </div>
-        </div>
         {% include 'sample.html' %}
     </form>
 {% endblock %}
