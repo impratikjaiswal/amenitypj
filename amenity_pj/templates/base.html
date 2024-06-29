@@ -91,5 +91,12 @@
 <script src="{{ url_for('static', filename='/js/custom.js') }}"></script>
 <!-- Page Specific Script -->
 {% block page_specific_script %} {% endblock %}
+{#
+TODO:
+<!-- Script to send objects to Js-->
+<script type="text/javascript">
+    myVar = htmlToJs({{output_data|tojson}})
+</script>
+#}
 </body>
 </html>

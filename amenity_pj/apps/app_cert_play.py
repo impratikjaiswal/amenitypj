@@ -13,7 +13,7 @@ from amenity_pj.helper.constants import Const
 from amenity_pj.helper.util import Util
 
 
-def handle_requests(api=False):
+def handle_requests(api=False, log=None):
     """
 
     :return:
@@ -76,9 +76,9 @@ def handle_requests(api=False):
         PhKeys.URL_PRE_ACCESS: Defaults.URL_PRE_ACCESS,
     }
     log_req = f'{template_id}; {request.method}; {"API" if api else "Form"} Request'
-    PhUtil.print_separator(main_text=f'{log_req} Received!!!')
+    PhUtil.print_separator(main_text=f'{log_req} Received!!!', log=log)
     requested_data_dict = request.get_json() if request.is_json else request.form.to_dict()
-    PhUtil.print_iter(requested_data_dict, header='Inputs')
+    PhUtil.print_iter(requested_data_dict, header='Inputs', log=log)
     if request.method == PhKeys.GET:
         pass
     if request.method == PhKeys.POST:
@@ -91,20 +91,20 @@ def handle_requests(api=False):
         update_checked_item(PhKeys.URL_PRE_ACCESS)
         # 2) Everything is converted to String; below needs to be typecast, TODO: should be handled in parse_config; int
         update_integer_item(PhKeys.URL_TIME_OUT)
-        print(f'process_sample is {process_sample}')
+        PhUtil.print_(f'process_sample is {process_sample}', log=log)
         if process_sample:
             sample_dict = samples_dict.get(sample_name, None)
             if sample_dict:
-                PhUtil.print_iter(sample_dict, header='sample_dict')
+                PhUtil.print_iter(sample_dict, header='sample_dict', log=log)
         if sample_dict and sample_option == PhKeys.SAMPLE_LOAD_ONLY:
-            print('Data Processing is not needed')
+            PhUtil.print_('Data Processing is not needed', log=log)
             pass
         else:
-            print('Data Processing is needed')
+            PhUtil.print_('Data Processing is needed', log=log)
             dic_received = sample_dict if sample_dict else requested_data_dict
             # Filter All Processing Related Keys
             dic_to_process = PhUtil.filter_processing_related_keys(dic_received)
-            PhUtil.print_iter(dic_to_process, header='dic_to_process')
+            PhUtil.print_iter(dic_to_process, header='dic_to_process', log=log)
             data_type = DataTypeMaster()
             data_type.set_data_pool(data_pool=dic_to_process)
             data_type.parse_safe(PhErrorHandlingModes.CONTINUE_ON_ERROR)
@@ -120,6 +120,6 @@ def handle_requests(api=False):
         # Fixed Updates
         default_data.update({PhKeys.SAMPLE_SELECTED: sample_name})
         default_data.update({PhKeys.SAMPLE_OPTION: sample_option})
-        PhUtil.print_iter(default_data, header='Outputs')
-    PhUtil.print_separator(main_text=f'{log_req} Completed!!!')
+        PhUtil.print_iter(default_data, header='Outputs', log=log)
+    PhUtil.print_separator(main_text=f'{log_req} Completed!!!', log=log)
     return jsonify(**default_data) if api else render_template(template_id, **default_data)

@@ -1,8 +1,12 @@
 import os
 import sqlite3
+import uuid
+from logging.config import dictConfig
 
 from flask import Flask, render_template, request, url_for, flash, redirect
+from flask import session
 from flask_sitemapper import Sitemapper
+from python_helpers.ph_util import PhUtil
 from werkzeug.exceptions import abort
 
 from amenity_pj._git_info import GIT_SUMMARY
@@ -16,6 +20,49 @@ sitemapper = Sitemapper()
 sitemapper.init_app(app)
 
 app.config['SECRET_KEY'] = 'Pj Test'
+
+dictConfig(
+    {
+        "version": 1,
+        "formatters": {
+            "default": {
+                "format": "[%(asctime)s] [%(levelname)s | %(module)s] %(message)s",
+                "datefmt": "%B %d, %Y %H:%M:%S %Z",
+            }
+        },
+        "handlers": {
+            "console": {
+                "class": "logging.StreamHandler",
+                "stream": "ext://sys.stdout",
+                "formatter": "default",
+            },
+            "file": {
+                "class": "logging.FileHandler",
+                "filename": "amenitypj.log",
+                "formatter": "default",
+            },
+            "size-rotate": {
+                "class": "logging.handlers.RotatingFileHandler",
+                "filename": "amenitypj.log",
+                "maxBytes": 1000000,
+                "backupCount": 5,
+                "formatter": "default",
+            },
+            "time-rotate": {
+                "class": "logging.handlers.TimedRotatingFileHandler",
+                "filename": "amenitypj.log",
+                "when": "D",
+                "interval": 10,
+                "backupCount": 5,
+                "formatter": "default",
+            },
+        },
+        # "root": {"level": "INFO", "handlers": ["console"]},
+        # "root": {"level": "INFO", "handlers": ["console", "file"]},
+        "root": {"level": "INFO", "handlers": ["size-rotate"]},
+        # "root": {"level": "INFO", "handlers": ["time-rotate"]},
+    }
+)
 
 
 def get_db_connection():
@@ -128,6 +175,9 @@ def index():
         'app_github_pages_url': Util.get_github_url(github_repo=Const.GITHUB_REPO_AMENITY_PJ, github_pages=True),
         'app_git_summary': GIT_SUMMARY,
     }
+    session["ctx"] = {"request_id": str(uuid.uuid4())}
+    app.logger.info(f'User Visit: {session["ctx"]}; {Const.TEMPLATE_AMENITY_PJ}')
+    PhUtil.print_iter(the_iter=default_data, header='default_data', log=app.logger)
     return render_template(Const.TEMPLATE_AMENITY_PJ, **default_data)
 
 
@@ -139,56 +189,56 @@ def asn1_play_asn1_objects():
 @sitemapper.include(lastmod=Const.DEPLOYMENT_DATE)
 @app.route(Const.URL_ASN1_PLAY, methods=('GET', 'POST'))
 def asn1_play():
-    return app_asn1_play.handle_requests(api=False)
+    return app_asn1_play.handle_requests(api=False, log=app.logger)
 
 
 @app.route(Const.URL_API_ASN1_PLAY, methods=('GET', 'POST'))
 def asn1_play_api():
-    return app_asn1_play.handle_requests(api=True)
+    return app_asn1_play.handle_requests(api=True, log=app.logger)
 
 
 @sitemapper.include(lastmod=Const.DEPLOYMENT_DATE_CERT_PLAY)
 @app.route(Const.URL_CERT_PLAY, methods=('GET', 'POST'))
 def cert_play():
-    return app_cert_play.handle_requests(api=False)
+    return app_cert_play.handle_requests(api=False, log=app.logger)
 
 
 @app.route(Const.URL_API_CERT_PLAY, methods=('GET', 'POST'))
 def cert_play_api():
-    return app_cert_play.handle_requests(api=True)
+    return app_cert_play.handle_requests(api=True, log=app.logger)
 
 
 @sitemapper.include(lastmod=Const.DEPLOYMENT_DATE)
 @app.route(Const.URL_TLV_PLAY, methods=('GET', 'POST'))
 def tlv_play():
-    return app_tlv_play.handle_requests(api=False)
+    return app_tlv_play.handle_requests(api=False, log=app.logger)
 
 
 @app.route(Const.URL_API_TLV_PLAY, methods=('GET', 'POST'))
 def tlv_play_api():
-    return app_tlv_play.handle_requests(api=True)
+    return app_tlv_play.handle_requests(api=True, log=app.logger)
 
 
 @sitemapper.include(lastmod=Const.DEPLOYMENT_DATE)
 @app.route(Const.URL_QR_PLAY, methods=('GET', 'POST'))
 def qr_play():
-    return app_qr_play.handle_requests(api=False)
+    return app_qr_play.handle_requests(api=False, log=app.logger)
 
 
 @app.route(Const.URL_API_QR_PLAY, methods=('GET', 'POST'))
 def qr_play_api():
-    return app_qr_play.handle_requests(api=True)
+    return app_qr_play.handle_requests(api=True, log=app.logger)
 
 
 @sitemapper.include(lastmod=Const.DEPLOYMENT_DATE)
 @app.route(Const.URL_EXCEL_PLAY, methods=('GET', 'POST'))
 def excel_play():
-    return app_excel_play.handle_requests(api=False)
+    return app_excel_play.handle_requests(api=False, log=app.logger)
 
 
 @app.route(Const.URL_API_EXCEL_PLAY, methods=('GET', 'POST'))
 def excel_play_api():
-    return app_excel_play.handle_requests(api=True)
+    return app_excel_play.handle_requests(api=True, log=app.logger)
 
 
 @sitemapper.include(lastmod=Const.DEPLOYMENT_DATE)
