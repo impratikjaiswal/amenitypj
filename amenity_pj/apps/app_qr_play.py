@@ -1,4 +1,4 @@
-from flask import render_template, request, jsonify
+from flask import request
 from python_helpers.ph_constants import PhConstants
 from python_helpers.ph_keys import PhKeys
 from python_helpers.ph_modes_error_handling import PhErrorHandlingModes
@@ -7,7 +7,6 @@ from qr_play.main.data_type.data_type_master import DataTypeMaster
 from qr_play.main.data_type.sample import Sample
 from qr_play.main.helper.constants_config import GIT_SUMMARY
 from qr_play.main.helper.defaults import Defaults
-from qr_play.main.helper.formats import Formats
 from qr_play.main.helper.formats_group import FormatsGroup
 
 from amenity_pj.helper.constants import Const as aConstants
@@ -63,7 +62,8 @@ def handle_requests(api=False, log=None):
         PhKeys.APP_VERSION: aConstants.VERSION_QR_PLAY,
         PhKeys.APP_DESCRIPTION: aConstants.DESCRIPTION_QR_PLAY,
         PhKeys.APP_GITHUB_URL: aUtil.get_github_url(github_repo=aConstants.GITHUB_REPO_QR_PLAY, github_pages=False),
-        PhKeys.APP_GITHUB_PAGES_URL: aUtil.get_github_url(github_repo=aConstants.GITHUB_REPO_QR_PLAY, github_pages=True),
+        PhKeys.APP_GITHUB_PAGES_URL: aUtil.get_github_url(github_repo=aConstants.GITHUB_REPO_QR_PLAY,
+                                                          github_pages=True),
         PhKeys.APP_GIT_SUMMARY: GIT_SUMMARY,
         PhKeys.SAMPLES: samples_list,
         PhKeys.SAMPLE_SELECTED: samples_list[1] if len(samples_list) > 1 else None,
@@ -78,10 +78,7 @@ def handle_requests(api=False, log=None):
         PhKeys.SPLIT_QRS: Defaults.SPLIT_QRS,
         PhKeys.SCALE: Defaults.SCALE,
     }
-    log_req = f'{template_id}; {request.method}; {"API" if api else "Form"} Request'
-    PhUtil.print_separator(main_text=f'{log_req} Received!!!', log=log)
-    requested_data_dict = request.get_json() if request.is_json else request.form.to_dict()
-    PhUtil.print_iter(requested_data_dict, header='Inputs', log=log)
+    requested_data_dict = aUtil.request_pre(request=request, template_id=template_id, api=api, log=log)
     if request.method == PhKeys.GET:
         pass
     if request.method == PhKeys.POST:
@@ -130,6 +127,4 @@ def handle_requests(api=False, log=None):
         # Fixed Updates
         default_data.update({PhKeys.SAMPLE_SELECTED: sample_name})
         default_data.update({PhKeys.SAMPLE_OPTION: sample_option})
-        PhUtil.print_iter(default_data, header='Outputs', log=log)
-    PhUtil.print_separator(main_text=f'{log_req} Completed!!!', log=log)
-    return jsonify(**default_data) if api else render_template(template_id, **default_data)
+    return aUtil.request_post(default_data=default_data, request=request, template_id=template_id, api=api, log=log)

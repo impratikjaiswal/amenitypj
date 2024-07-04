@@ -3,7 +3,7 @@ from cert_play.main.data_type.sample import Sample
 from cert_play.main.helper.constants_config import GIT_SUMMARY
 from cert_play.main.helper.defaults import Defaults
 from cert_play.main.helper.formats_group import FormatsGroup
-from flask import render_template, request, jsonify
+from flask import request
 from python_helpers.ph_constants import PhConstants
 from python_helpers.ph_keys import PhKeys
 from python_helpers.ph_modes_error_handling import PhErrorHandlingModes
@@ -77,10 +77,7 @@ def handle_requests(api=False, log=None):
         PhKeys.URL_TIME_OUT_SELECTED: Defaults.URL_TIME_OUT,
         PhKeys.URL_PRE_ACCESS: Defaults.URL_PRE_ACCESS,
     }
-    log_req = f'{template_id}; {request.method}; {"API" if api else "Form"} Request'
-    PhUtil.print_separator(main_text=f'{log_req} Received!!!', log=log)
-    requested_data_dict = request.get_json() if request.is_json else request.form.to_dict()
-    PhUtil.print_iter(requested_data_dict, header='Inputs', log=log)
+    requested_data_dict = aUtil.request_pre(request=request, template_id=template_id, api=api, log=log)
     if request.method == PhKeys.GET:
         pass
     if request.method == PhKeys.POST:
@@ -122,6 +119,4 @@ def handle_requests(api=False, log=None):
         # Fixed Updates
         default_data.update({PhKeys.SAMPLE_SELECTED: sample_name})
         default_data.update({PhKeys.SAMPLE_OPTION: sample_option})
-        PhUtil.print_iter(default_data, header='Outputs', log=log)
-    PhUtil.print_separator(main_text=f'{log_req} Completed!!!', log=log)
-    return jsonify(**default_data) if api else render_template(template_id, **default_data)
+    return aUtil.request_post(default_data=default_data, request=request, template_id=template_id, api=api, log=log)
