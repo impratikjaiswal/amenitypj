@@ -11,8 +11,9 @@ from python_helpers.ph_keys import PhKeys
 from python_helpers.ph_modes_error_handling import PhErrorHandlingModes
 from python_helpers.ph_util import PhUtil
 
-from amenity_pj.helper.constants import Const
-from amenity_pj.helper.util import Util
+from amenity_pj.helper.constants import Const as aConstants
+from amenity_pj.helper.defaults import Defaults as aDefaults
+from amenity_pj.helper.util import Util as aUtil
 
 
 def handle_requests(api=False, log=None):
@@ -58,19 +59,21 @@ def handle_requests(api=False, log=None):
     asn1_schemas = PhUtil.generalise_list(Asn1Versions._get_list_of_supported_versions())
     default_selected_asn1_schema = Defaults.ASN1_SCHEMA.get_name()
     asn1_objects = get_asn1_objects_list(default_selected_asn1_schema)
-    template_id = Const.TEMPLATE_ASN1_PLAY
+    template_id = aConstants.TEMPLATE_ASN1_PLAY
     default_data = {
-        PhKeys.APP_PARENT_TITLE: Const.TITLE_AMENITY_PJ,
-        PhKeys.APP_PARENT_VERSION: Const.VERSION_AMENITY_PJ,
-        PhKeys.APP_TITLE: Const.TITLE_ASN1_PLAY,
-        PhKeys.APP_VERSION: Const.VERSION_ASN1_PLAY,
-        PhKeys.APP_DESCRIPTION: Const.DESCRIPTION_ASN1_PLAY,
-        PhKeys.APP_GITHUB_URL: Util.get_github_url(github_repo=Const.GITHUB_REPO_ASN1_PLAY, github_pages=False),
-        PhKeys.APP_GITHUB_PAGES_URL: Util.get_github_url(github_repo=Const.GITHUB_REPO_ASN1_PLAY, github_pages=True),
+        # TODO Implement dic in const
+        PhKeys.APP_PARENT_TITLE: aConstants.TITLE_AMENITY_PJ,
+        PhKeys.APP_PARENT_VERSION: aConstants.VERSION_AMENITY_PJ,
+        PhKeys.APP_TITLE: aConstants.TITLE_ASN1_PLAY,
+        PhKeys.APP_VERSION: aConstants.VERSION_ASN1_PLAY,
+        PhKeys.APP_DESCRIPTION: aConstants.DESCRIPTION_ASN1_PLAY,
+        PhKeys.APP_GITHUB_URL: aUtil.get_github_url(github_repo=aConstants.GITHUB_REPO_ASN1_PLAY, github_pages=False),
+        PhKeys.APP_GITHUB_PAGES_URL: aUtil.get_github_url(github_repo=aConstants.GITHUB_REPO_ASN1_PLAY,
+                                                          github_pages=True),
         PhKeys.APP_GIT_SUMMARY: GIT_SUMMARY,
         PhKeys.SAMPLES: samples_list,
         PhKeys.SAMPLE_SELECTED: samples_list[1] if len(samples_list) > 1 else None,
-        PhKeys.SAMPLE_OPTION: PhKeys.SAMPLE_LOAD_ONLY,
+        PhKeys.SAMPLE_OPTION: aDefaults.SAMPLE_OPTION,
         PhKeys.INPUT_DATA: PhConstants.STR_EMPTY,
         PhKeys.OUTPUT_DATA: PhConstants.STR_EMPTY,
         PhKeys.INFO_DATA: PhConstants.STR_EMPTY,
@@ -83,7 +86,7 @@ def handle_requests(api=False, log=None):
         PhKeys.ASN1_OBJECTS: asn1_objects,
         PhKeys.ASN1_OBJECT_SELECTED: PhConstants.STR_EMPTY,
         PhKeys.FETCH_ASN1_OBJECTS_LIST: False,
-        # Delete
+        # Delete?
         PhKeys.ASN1_OBJECT_ALTERNATE: PhConstants.STR_EMPTY,
         PhKeys.TLV_PARSING_OF_OUTPUT: False,
     }

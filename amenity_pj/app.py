@@ -5,6 +5,7 @@ from logging.config import dictConfig
 
 from flask import Flask, render_template, request, url_for, flash, redirect
 from flask_sitemapper import Sitemapper
+from python_helpers.ph_keys import PhKeys
 from python_helpers.ph_util import PhUtil
 from werkzeug.exceptions import abort
 
@@ -260,12 +261,12 @@ def user_visit(url=None):
 def index():
     user_visit()
     default_data = {
-        'app_title': Const.TITLE_AMENITY_PJ,
-        'app_description': Const.DESCRIPTION_AMENITY_PJ,
-        'app_version': Const.VERSION_AMENITY_PJ,
-        'app_github_url': Util.get_github_url(github_repo=Const.GITHUB_REPO_AMENITY_PJ, github_pages=False),
-        'app_github_pages_url': Util.get_github_url(github_repo=Const.GITHUB_REPO_AMENITY_PJ, github_pages=True),
-        'app_git_summary': GIT_SUMMARY,
+        PhKeys.APP_TITLE: Const.TITLE_AMENITY_PJ,
+        PhKeys.APP_DESCRIPTION: Const.DESCRIPTION_AMENITY_PJ,
+        PhKeys.APP_VERSION: Const.VERSION_AMENITY_PJ,
+        PhKeys.APP_GITHUB_URL: Util.get_github_url(github_repo=Const.GITHUB_REPO_AMENITY_PJ, github_pages=False),
+        PhKeys.APP_GITHUB_PAGES_URL: Util.get_github_url(github_repo=Const.GITHUB_REPO_AMENITY_PJ, github_pages=True),
+        PhKeys.APP_GIT_SUMMARY: GIT_SUMMARY,
     }
     PhUtil.print_iter(the_iter=default_data, header='default_data', log=app.logger)
     return render_template(Const.TEMPLATE_AMENITY_PJ, **default_data)
@@ -322,11 +323,11 @@ def excel_play(_api):
 def sponsorship():
     user_visit()
     default_data = {
-        'app_title': Const.TITLE_SPONSORSHIP,
-        'app_description': Const.DESCRIPTION_SPONSORSHIP,
-        'app_version': Const.VERSION_SPONSORSHIP,
-        'app_github_url': Util.get_github_url(github_repo=Const.GITHUB_REPO_SPONSORSHIP, github_pages=False),
-        'app_github_pages_url': Util.get_github_url(github_repo=Const.GITHUB_REPO_SPONSORSHIP, github_pages=True),
+        PhKeys.APP_TITLE: Const.TITLE_SPONSORSHIP,
+        PhKeys.APP_DESCRIPTION: Const.DESCRIPTION_SPONSORSHIP,
+        PhKeys.APP_VERSION: Const.VERSION_SPONSORSHIP,
+        PhKeys.APP_GITHUB_URL: Util.get_github_url(github_repo=Const.GITHUB_REPO_SPONSORSHIP, github_pages=False),
+        PhKeys.APP_GITHUB_PAGES_URL: Util.get_github_url(github_repo=Const.GITHUB_REPO_SPONSORSHIP, github_pages=True),
     }
     return render_template(Const.TEMPLATE_SPONSORSHIP, **default_data)
 
@@ -336,11 +337,11 @@ def sponsorship():
 def about_us():
     user_visit()
     default_data = {
-        'app_title': Const.TITLE_ABOUT_US,
-        'app_description': Const.DESCRIPTION_ABOUT_US,
-        'app_version': Const.VERSION_ABOUT_US,
-        'app_github_url': Util.get_github_url(github_repo=Const.GITHUB_REPO_ABOUT_US, github_pages=False),
-        'app_github_pages_url': Util.get_github_url(github_repo=Const.GITHUB_REPO_ABOUT_US, github_pages=True),
+        PhKeys.APP_TITLE: Const.TITLE_ABOUT_US,
+        PhKeys.APP_DESCRIPTION: Const.DESCRIPTION_ABOUT_US,
+        PhKeys.APP_VERSION: Const.VERSION_ABOUT_US,
+        PhKeys.APP_GITHUB_URL: Util.get_github_url(github_repo=Const.GITHUB_REPO_ABOUT_US, github_pages=False),
+        PhKeys.APP_GITHUB_PAGES_URL: Util.get_github_url(github_repo=Const.GITHUB_REPO_ABOUT_US, github_pages=True),
     }
     return render_template(Const.TEMPLATE_ABOUT_US, **default_data)
 
@@ -350,11 +351,11 @@ def about_us():
 def credits():
     user_visit()
     default_data = {
-        'app_title': Const.TITLE_CREDITS,
-        'app_description': Const.DESCRIPTION_CREDITS,
-        'app_version': Const.VERSION_CREDITS,
-        'app_github_url': Util.get_github_url(github_repo=Const.GITHUB_REPO_CREDITS, github_pages=False),
-        'app_github_pages_url': Util.get_github_url(github_repo=Const.GITHUB_REPO_CREDITS, github_pages=True),
+        PhKeys.APP_TITLE: Const.TITLE_CREDITS,
+        PhKeys.APP_DESCRIPTION: Const.DESCRIPTION_CREDITS,
+        PhKeys.APP_VERSION: Const.VERSION_CREDITS,
+        PhKeys.APP_GITHUB_URL: Util.get_github_url(github_repo=Const.GITHUB_REPO_CREDITS, github_pages=False),
+        PhKeys.APP_GITHUB_PAGES_URL: Util.get_github_url(github_repo=Const.GITHUB_REPO_CREDITS, github_pages=True),
     }
     return render_template(Const.TEMPLATE_CREDITS, **default_data)
 
@@ -364,11 +365,11 @@ def credits():
 def testimonials():
     user_visit()
     default_data = {
-        'app_title': Const.TITLE_TESTIMONIALS,
-        'app_description': Const.DESCRIPTION_TESTIMONIALS,
-        'app_version': Const.VERSION_TESTIMONIALS,
-        'app_github_url': Util.get_github_url(github_repo=Const.GITHUB_REPO_TESTIMONIAL, github_pages=False),
-        'app_github_pages_url': Util.get_github_url(github_repo=Const.GITHUB_REPO_TESTIMONIAL, github_pages=True),
+        PhKeys.APP_TITLE: Const.TITLE_TESTIMONIALS,
+        PhKeys.APP_DESCRIPTION: Const.DESCRIPTION_TESTIMONIALS,
+        PhKeys.APP_VERSION: Const.VERSION_TESTIMONIALS,
+        PhKeys.APP_GITHUB_URL: Util.get_github_url(github_repo=Const.GITHUB_REPO_TESTIMONIAL, github_pages=False),
+        PhKeys.APP_GITHUB_PAGES_URL: Util.get_github_url(github_repo=Const.GITHUB_REPO_TESTIMONIAL, github_pages=True),
     }
     if request.method == 'GET':
         conn = get_db_connection()
@@ -392,7 +393,7 @@ def testimonials():
     return render_template(Const.TEMPLATE_TESTIMONIALS, **default_data)
 
 
-@app.route('/<int:post_id>')
+@app.route(Const.URL_TESTIMONIALS_ID)
 def post(post_id):
     post = get_post(post_id)
     return render_template(Const.TEMPLATE_POST, post=post)

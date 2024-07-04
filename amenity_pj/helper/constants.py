@@ -83,6 +83,7 @@ class Const:
     VERSION_TESTIMONIALS = VERSION_DEFAULT
     END_POINT_TESTIMONIALS = 'testimonials'
     URL_TESTIMONIALS = '/testimonials'
+    URL_TESTIMONIALS_ID = '/testimonials/<int:post_id>'
     TEMPLATE_TESTIMONIALS = 'testimonials.html'
     GITHUB_REPO_TESTIMONIAL = None
 
@@ -112,6 +113,8 @@ class Const:
     URL_SPONSORSHIP = '/sponsorship'
     TEMPLATE_SPONSORSHIP = TEMPLATE_WIP
     GITHUB_REPO_SPONSORSHIP = None
+
+    URL_API_SERVER_DETAILS = '/api/serverDetails'
 
     END_POINT_AND_TITLE_MAPPING = {
         END_POINT_AMENITY_PJ: TITLE_AMENITY_PJ,

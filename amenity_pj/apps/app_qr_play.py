@@ -10,8 +10,9 @@ from qr_play.main.helper.defaults import Defaults
 from qr_play.main.helper.formats import Formats
 from qr_play.main.helper.formats_group import FormatsGroup
 
-from amenity_pj.helper.constants import Const
-from amenity_pj.helper.util import Util
+from amenity_pj.helper.constants import Const as aConstants
+from amenity_pj.helper.defaults import Defaults as aDefaults
+from amenity_pj.helper.util import Util as aUtil
 
 
 def handle_requests(api=False, log=None):
@@ -54,19 +55,19 @@ def handle_requests(api=False, log=None):
     samples_list = PhUtil.generalise_list(list(samples_dict.keys()), sort=False)
     qr_code_versions = PhUtil.generalise_list(FormatsGroup.QR_CODE_VERSIONS_SUPPORTED)
     image_formats = PhUtil.generalise_list(FormatsGroup.IMAGE_FORMATS_SUPPORTED)
-    template_id = Const.TEMPLATE_QR_PLAY
+    template_id = aConstants.TEMPLATE_QR_PLAY
     default_data = {
-        PhKeys.APP_PARENT_TITLE: Const.TITLE_AMENITY_PJ,
-        PhKeys.APP_PARENT_VERSION: Const.VERSION_AMENITY_PJ,
-        PhKeys.APP_TITLE: Const.TITLE_QR_PLAY,
-        PhKeys.APP_VERSION: Const.VERSION_QR_PLAY,
-        PhKeys.APP_DESCRIPTION: Const.DESCRIPTION_QR_PLAY,
-        PhKeys.APP_GITHUB_URL: Util.get_github_url(github_repo=Const.GITHUB_REPO_QR_PLAY, github_pages=False),
-        PhKeys.APP_GITHUB_PAGES_URL: Util.get_github_url(github_repo=Const.GITHUB_REPO_QR_PLAY, github_pages=True),
+        PhKeys.APP_PARENT_TITLE: aConstants.TITLE_AMENITY_PJ,
+        PhKeys.APP_PARENT_VERSION: aConstants.VERSION_AMENITY_PJ,
+        PhKeys.APP_TITLE: aConstants.TITLE_QR_PLAY,
+        PhKeys.APP_VERSION: aConstants.VERSION_QR_PLAY,
+        PhKeys.APP_DESCRIPTION: aConstants.DESCRIPTION_QR_PLAY,
+        PhKeys.APP_GITHUB_URL: aUtil.get_github_url(github_repo=aConstants.GITHUB_REPO_QR_PLAY, github_pages=False),
+        PhKeys.APP_GITHUB_PAGES_URL: aUtil.get_github_url(github_repo=aConstants.GITHUB_REPO_QR_PLAY, github_pages=True),
         PhKeys.APP_GIT_SUMMARY: GIT_SUMMARY,
         PhKeys.SAMPLES: samples_list,
         PhKeys.SAMPLE_SELECTED: samples_list[1] if len(samples_list) > 1 else None,
-        PhKeys.SAMPLE_OPTION: PhKeys.SAMPLE_LOAD_ONLY,
+        PhKeys.SAMPLE_OPTION: aDefaults.SAMPLE_OPTION,
         PhKeys.INPUT_DATA: PhConstants.STR_EMPTY,
         PhKeys.OUTPUT_DATA: PhConstants.STR_EMPTY,
         PhKeys.INFO_DATA: PhConstants.STR_EMPTY,

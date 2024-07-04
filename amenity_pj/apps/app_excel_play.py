@@ -7,8 +7,9 @@ from python_helpers.ph_constants import PhConstants
 from python_helpers.ph_keys import PhKeys
 from python_helpers.ph_util import PhUtil
 
-from amenity_pj.helper.constants import Const
-from amenity_pj.helper.util import Util
+from amenity_pj.helper.constants import Const as aConstants
+from amenity_pj.helper.defaults import Defaults as aDefaults
+from amenity_pj.helper.util import Util as aUtil
 
 
 def handle_requests(api=False, log=None):
@@ -47,17 +48,18 @@ def handle_requests(api=False, log=None):
         requested_data_dict.update(
             {target_key: int(requested_data_dict.get(target_key) if target_key in requested_data_dict else -1)})
 
-    template_id = Const.TEMPLATE_EXCEL_PLAY
+    template_id = aConstants.TEMPLATE_EXCEL_PLAY
     default_data = {
-        PhKeys.APP_PARENT_TITLE: Const.TITLE_AMENITY_PJ,
-        PhKeys.APP_PARENT_VERSION: Const.VERSION_AMENITY_PJ,
-        PhKeys.APP_TITLE: Const.TITLE_EXCEL_PLAY,
-        PhKeys.APP_VERSION: Const.VERSION_EXCEL_PLAY,
-        PhKeys.APP_DESCRIPTION: Const.DESCRIPTION_EXCEL_PLAY,
-        PhKeys.APP_GITHUB_URL: Util.get_github_url(github_repo=Const.GITHUB_REPO_EXCEL_PLAY, github_pages=False),
-        PhKeys.APP_GITHUB_PAGES_URL: Util.get_github_url(github_repo=Const.GITHUB_REPO_EXCEL_PLAY, github_pages=True),
+        PhKeys.APP_PARENT_TITLE: aConstants.TITLE_AMENITY_PJ,
+        PhKeys.APP_PARENT_VERSION: aConstants.VERSION_AMENITY_PJ,
+        PhKeys.APP_TITLE: aConstants.TITLE_EXCEL_PLAY,
+        PhKeys.APP_VERSION: aConstants.VERSION_EXCEL_PLAY,
+        PhKeys.APP_DESCRIPTION: aConstants.DESCRIPTION_EXCEL_PLAY,
+        PhKeys.APP_GITHUB_URL: aUtil.get_github_url(github_repo=aConstants.GITHUB_REPO_EXCEL_PLAY, github_pages=False),
+        PhKeys.APP_GITHUB_PAGES_URL: aUtil.get_github_url(github_repo=aConstants.GITHUB_REPO_EXCEL_PLAY,
+                                                          github_pages=True),
         PhKeys.APP_GIT_SUMMARY: GIT_SUMMARY,
-        PhKeys.SAMPLE_OPTION: PhKeys.SAMPLE_LOAD_ONLY,
+        PhKeys.SAMPLE_OPTION: aDefaults.SAMPLE_OPTION,
         PhKeys.INPUT_DATA: PhConstants.STR_EMPTY,
         PhKeys.OUTPUT_DATA: PhConstants.STR_EMPTY,
         PhKeys.INFO_DATA: PhConstants.STR_EMPTY,

@@ -1,4 +1,4 @@
-from flask import render_template, request, jsonify
+from flask import request
 from python_helpers.ph_constants import PhConstants
 from python_helpers.ph_keys import PhKeys
 from python_helpers.ph_modes_error_handling import PhErrorHandlingModes
@@ -8,8 +8,9 @@ from tlv_play.main.data_type.sample import Sample
 from tlv_play.main.helper.constants_config import GIT_SUMMARY
 from tlv_play.main.helper.defaults import Defaults
 
-from amenity_pj.helper.constants import Const
-from amenity_pj.helper.util import Util
+from amenity_pj.helper.constants import Const as aConstants
+from amenity_pj.helper.defaults import Defaults as aDefaults
+from amenity_pj.helper.util import Util as aUtil
 
 
 def handle_requests(api=False, log=None):
@@ -50,19 +51,20 @@ def handle_requests(api=False, log=None):
 
     samples_dict = Sample().get_sample_data_pool_for_web()
     samples_list = PhUtil.generalise_list(list(samples_dict.keys()), sort=False)
-    template_id = Const.TEMPLATE_TLV_PLAY
+    template_id = aConstants.TEMPLATE_TLV_PLAY
     default_data = {
-        PhKeys.APP_PARENT_TITLE: Const.TITLE_AMENITY_PJ,
-        PhKeys.APP_PARENT_VERSION: Const.VERSION_AMENITY_PJ,
-        PhKeys.APP_TITLE: Const.TITLE_TLV_PLAY,
-        PhKeys.APP_VERSION: Const.VERSION_TLV_PLAY,
-        PhKeys.APP_DESCRIPTION: Const.DESCRIPTION_TLV_PLAY,
-        PhKeys.APP_GITHUB_URL: Util.get_github_url(github_repo=Const.GITHUB_REPO_TLV_PLAY, github_pages=False),
-        PhKeys.APP_GITHUB_PAGES_URL: Util.get_github_url(github_repo=Const.GITHUB_REPO_TLV_PLAY, github_pages=True),
+        PhKeys.APP_PARENT_TITLE: aConstants.TITLE_AMENITY_PJ,
+        PhKeys.APP_PARENT_VERSION: aConstants.VERSION_AMENITY_PJ,
+        PhKeys.APP_TITLE: aConstants.TITLE_TLV_PLAY,
+        PhKeys.APP_VERSION: aConstants.VERSION_TLV_PLAY,
+        PhKeys.APP_DESCRIPTION: aConstants.DESCRIPTION_TLV_PLAY,
+        PhKeys.APP_GITHUB_URL: aUtil.get_github_url(github_repo=aConstants.GITHUB_REPO_TLV_PLAY, github_pages=False),
+        PhKeys.APP_GITHUB_PAGES_URL: aUtil.get_github_url(github_repo=aConstants.GITHUB_REPO_TLV_PLAY,
+                                                          github_pages=True),
         PhKeys.APP_GIT_SUMMARY: GIT_SUMMARY,
         PhKeys.SAMPLES: samples_list,
         PhKeys.SAMPLE_SELECTED: samples_list[1] if len(samples_list) > 1 else None,
-        PhKeys.SAMPLE_OPTION: PhKeys.SAMPLE_LOAD_ONLY,
+        PhKeys.SAMPLE_OPTION: aDefaults.SAMPLE_OPTION,
         PhKeys.INPUT_DATA: PhConstants.STR_EMPTY,
         PhKeys.OUTPUT_DATA: PhConstants.STR_EMPTY,
         PhKeys.INFO_DATA: PhConstants.STR_EMPTY,
@@ -70,10 +72,7 @@ def handle_requests(api=False, log=None):
         PhKeys.VALUE_IN_ASCII: Defaults.VALUE_IN_ASCII,
         PhKeys.ONE_LINER: Defaults.ONE_LINER,
     }
-    log_req = f'{template_id}; {request.method}; {"API" if api else "Form"} Request'
-    PhUtil.print_separator(main_text=f'{log_req} Received!!!', log=log)
-    requested_data_dict = request.get_json() if request.is_json else request.form.to_dict()
-    PhUtil.print_iter(requested_data_dict, header='Inputs', log=log)
+    requested_data_dict = aUtil.request_pre(request=request, template_id=template_id, api=api, log=log)
     if request.method == PhKeys.GET:
         pass
     if request.method == PhKeys.POST:
@@ -117,6 +116,4 @@ def handle_requests(api=False, log=None):
         # Fixed Updates
         default_data.update({PhKeys.SAMPLE_SELECTED: sample_name})
         default_data.update({PhKeys.SAMPLE_OPTION: sample_option})
-        PhUtil.print_iter(default_data, header='Outputs', log=log)
-    PhUtil.print_separator(main_text=f'{log_req} Completed!!!', log=log)
-    return jsonify(**default_data) if api else render_template(template_id, **default_data)
+    return aUtil.request_post(default_data=default_data, request=request, template_id=template_id, api=api, log=log)
