@@ -1,0 +1,19 @@
+<!-- Common Content -->
+{% extends 'base.html' %}
+{% block description %}{{ app_description }}{% endblock %}
+{% block title %}{{ app_title }}{% endblock %}
+<!-- Page Specific Content -->
+{% block content %}
+    <h1>Looks like you got lost... Or we trying to confuse you...</h1>
+    <BR>
+    <BR>
+    <BR>
+    <div class="div-404">
+        <h1>404</h1>
+        <p>{{ app_description }}</p>
+        <p>That can happen when you follow a link to something that has since been deleted. Or the link was incorrect to
+            begin with.</p>
+        <p>Sorry about that. We've logged the error for review, in case it's our fault.</p>
+        <a href="/">Let us bring you at home</a>
+    </div>
+{% endblock %}

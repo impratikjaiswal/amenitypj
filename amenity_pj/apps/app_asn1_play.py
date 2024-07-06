@@ -2,7 +2,6 @@ from asn1_play.generated_code.asn1.asn1 import Asn1
 from asn1_play.generated_code.asn1.asn1_versions import Asn1Versions
 from asn1_play.main.data_type.data_type_master import DataTypeMaster
 from asn1_play.main.data_type.sample import Sample
-from asn1_play.main.helper.constants_config import GIT_SUMMARY
 from asn1_play.main.helper.defaults import Defaults
 from asn1_play.main.helper.formats_group import FormatsGroup
 from flask import request, jsonify
@@ -11,18 +10,16 @@ from python_helpers.ph_keys import PhKeys
 from python_helpers.ph_modes_error_handling import PhErrorHandlingModes
 from python_helpers.ph_util import PhUtil
 
-from amenity_pj.helper.constants import Const as aConstants
-from amenity_pj.helper.defaults import Defaults as aDefaults
-from amenity_pj.helper.util import Util as aUtil
+from amenity_pj.helper.util import Util
 
 
-def handle_requests(api=False, log=None):
+def handle_requests(end_point, api, log, default_data, **kwargs):
     """
 
     :return:
     """
 
-    def update_default_data(source_key, target_key=None):
+    def update_app_data(source_key, target_key=None):
         """
 
         :param source_key:
@@ -32,8 +29,8 @@ def handle_requests(api=False, log=None):
         target_key = source_key if target_key is None else target_key
         source_dict = sample_dict if sample_dict else requested_data_dict
         if source_key in source_dict:
-            default_data.update({target_key: source_dict.get(source_key)})
-        return default_data.get(target_key, None)
+            app_data.update({target_key: source_dict.get(source_key)})
+        return app_data.get(target_key, None)
 
     def update_checked_item(target_key):
         """
@@ -59,24 +56,9 @@ def handle_requests(api=False, log=None):
     asn1_schemas = PhUtil.generalise_list(Asn1Versions._get_list_of_supported_versions())
     default_selected_asn1_schema = Defaults.ASN1_SCHEMA.get_name()
     asn1_objects = get_asn1_objects_list(default_selected_asn1_schema)
-    template_id = aConstants.TEMPLATE_ASN1_PLAY
-    default_data = {
-        # TODO Implement dic in const
-        PhKeys.APP_PARENT_TITLE: aConstants.TITLE_AMENITY_PJ,
-        PhKeys.APP_PARENT_VERSION: aConstants.VERSION_AMENITY_PJ,
-        PhKeys.APP_TITLE: aConstants.TITLE_ASN1_PLAY,
-        PhKeys.APP_VERSION: aConstants.VERSION_ASN1_PLAY,
-        PhKeys.APP_DESCRIPTION: aConstants.DESCRIPTION_ASN1_PLAY,
-        PhKeys.APP_GITHUB_URL: aUtil.get_github_url(github_repo=aConstants.GITHUB_REPO_ASN1_PLAY, github_pages=False),
-        PhKeys.APP_GITHUB_PAGES_URL: aUtil.get_github_url(github_repo=aConstants.GITHUB_REPO_ASN1_PLAY,
-                                                          github_pages=True),
-        PhKeys.APP_GIT_SUMMARY: GIT_SUMMARY,
+    default_data_app = {
         PhKeys.SAMPLES: samples_list,
         PhKeys.SAMPLE_SELECTED: samples_list[1] if len(samples_list) > 1 else None,
-        PhKeys.SAMPLE_OPTION: aDefaults.SAMPLE_OPTION,
-        PhKeys.INPUT_DATA: PhConstants.STR_EMPTY,
-        PhKeys.OUTPUT_DATA: PhConstants.STR_EMPTY,
-        PhKeys.INFO_DATA: PhConstants.STR_EMPTY,
         PhKeys.INPUT_FORMATS: input_formats,
         PhKeys.INPUT_FORMAT_SELECTED: Defaults.FORMAT_INPUT,
         PhKeys.OUTPUT_FORMATS: output_formats,
@@ -86,11 +68,12 @@ def handle_requests(api=False, log=None):
         PhKeys.ASN1_OBJECTS: asn1_objects,
         PhKeys.ASN1_OBJECT_SELECTED: PhConstants.STR_EMPTY,
         PhKeys.FETCH_ASN1_OBJECTS_LIST: False,
-        # Delete?
+        # Delete ?
         PhKeys.ASN1_OBJECT_ALTERNATE: PhConstants.STR_EMPTY,
         PhKeys.TLV_PARSING_OF_OUTPUT: False,
     }
-    requested_data_dict = aUtil.request_pre(request=request, template_id=template_id, api=api, log=log)
+    app_data = PhUtil.dict_merge(default_data, default_data_app)
+    requested_data_dict = Util.request_pre(request=request, end_point=end_point, api=api, log=log)
     if request.method == PhKeys.GET:
         pass
     if request.method == PhKeys.POST:
@@ -124,24 +107,24 @@ def handle_requests(api=False, log=None):
             data_type.set_data_pool(data_pool=dic_to_process)
             data_type.parse_safe(PhErrorHandlingModes.CONTINUE_ON_ERROR)
             output_data, info_data = data_type.get_output_data(only_output=False)
-            default_data.update({PhKeys.OUTPUT_DATA: output_data})
-            default_data.update({PhKeys.INFO_DATA: info_data})
+            app_data.update({PhKeys.OUTPUT_DATA: output_data})
+            app_data.update({PhKeys.INFO_DATA: info_data})
         # Conditional Updates
-        update_default_data(PhKeys.INPUT_DATA)
-        update_default_data(PhKeys.INPUT_FORMAT, PhKeys.INPUT_FORMAT_SELECTED)
-        update_default_data(PhKeys.OUTPUT_FORMAT, PhKeys.OUTPUT_FORMAT_SELECTED)
-        selected_asn1_schema = update_default_data(PhKeys.ASN1_SCHEMA, PhKeys.ASN1_SCHEMA_SELECTED)
+        update_app_data(PhKeys.INPUT_DATA)
+        update_app_data(PhKeys.INPUT_FORMAT, PhKeys.INPUT_FORMAT_SELECTED)
+        update_app_data(PhKeys.OUTPUT_FORMAT, PhKeys.OUTPUT_FORMAT_SELECTED)
+        selected_asn1_schema = update_app_data(PhKeys.ASN1_SCHEMA, PhKeys.ASN1_SCHEMA_SELECTED)
         if selected_asn1_schema:
-            default_data.update({PhKeys.ASN1_OBJECTS: get_asn1_objects_list(selected_asn1_schema)})
-        update_default_data(PhKeys.ASN1_OBJECT, PhKeys.ASN1_OBJECT_SELECTED)
-        update_default_data(PhKeys.ASN1_OBJECT_ALTERNATE)
-        update_default_data(PhKeys.TLV_PARSING_OF_OUTPUT)
-        update_default_data(PhKeys.FETCH_ASN1_OBJECTS_LIST)
-        update_default_data(PhKeys.REMARKS)
+            app_data.update({PhKeys.ASN1_OBJECTS: get_asn1_objects_list(selected_asn1_schema)})
+        update_app_data(PhKeys.ASN1_OBJECT, PhKeys.ASN1_OBJECT_SELECTED)
+        update_app_data(PhKeys.ASN1_OBJECT_ALTERNATE)
+        update_app_data(PhKeys.TLV_PARSING_OF_OUTPUT)
+        update_app_data(PhKeys.FETCH_ASN1_OBJECTS_LIST)
+        update_app_data(PhKeys.REMARKS)
         # Fixed Updates
-        default_data.update({PhKeys.SAMPLE_SELECTED: sample_name})
-        default_data.update({PhKeys.SAMPLE_OPTION: sample_option})
-    return aUtil.request_post(default_data=default_data, request=request, template_id=template_id, api=api, log=log)
+        app_data.update({PhKeys.SAMPLE_SELECTED: sample_name})
+        app_data.update({PhKeys.SAMPLE_OPTION: sample_option})
+    return Util.request_post(request=request, end_point=end_point, api=api, log=log, output_data=app_data)
 
 
 def get_asn1_objects_list(asn1_schema_str):
@@ -154,7 +137,7 @@ def get_asn1_objects_list(asn1_schema_str):
     return asn1_objects_list
 
 
-def handle_asn1_objects():
+def handle_asn1_objects(**kwargs):
     """
 
     :return:

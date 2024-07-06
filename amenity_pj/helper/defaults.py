@@ -7,3 +7,8 @@ class Defaults:
     PRINT_OUTPUT = True
     QUITE_MODE = False
     SAMPLE_OPTION = PhKeys.SAMPLE_LOAD_AND_SUBMIT
+    VERSION = ''
+    DESCRIPTION = ''
+    GITHUB_REPO = None
+    API = False
+    LOG = None

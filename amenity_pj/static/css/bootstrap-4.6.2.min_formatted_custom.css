@@ -51,6 +51,19 @@
     transform: rotate(360deg);
 }
 
+.div-404 {
+    box-sizing: border-box;
+    max-width: 350px;
+    font: 110%/1.5 system-ui, sans-serif;
+    background: white;
+    color: #131417;
+    margin: auto;
+    display: grid;
+    place-items: center;
+    text-align: justify;
+    padding: 2rem;
+}
+
 /* Copied from form-control */
 .div-output {
     /* 2 values: top_bottom left_right */

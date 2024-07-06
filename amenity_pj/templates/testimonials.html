@@ -10,13 +10,13 @@
     </a>
     <BR>
     <h6>{{ app_description }}</h6>
-    {% for post in posts %}
+    {% for testimonial_post in testimonial_posts %}
         <!-- <a href="#"> -->
-        <a href="{{ url_for('post', post_id=post['id']) }}">
-            <h2>{{ post['title'] }}</h2>
+        <a href="{{ url_for('testimonials_post', testimonial_post_id=testimonial_post['id']) }}">
+            <h2>{{ testimonial_post['title'] }}</h2>
         </a>
-        <span class="badge badge-primary">{{ post['created'] }}</span>
-        <span class="badge badge-warning">{{ post['publisher'] }}</span>
+        <span class="badge badge-primary">{{ testimonial_post['created'] }}</span>
+        <span class="badge badge-warning">{{ testimonial_post['publisher'] }}</span>
         <hr>
     {% endfor %}
     <BR>
