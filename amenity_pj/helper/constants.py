@@ -95,6 +95,7 @@ class Const:
                 PhKeys.APP_GITHUB_URL: 'amenitypj',
                 PhKeys.APP_GIT_SUMMARY: ConfigConst_AmenityPj.TOOL_GIT_SUMMARY,
                 PhKeys.APP_URL: '/',
+                PhKeys.APP_URL_ALT: '/index.html',
                 PhKeys.APP_TEMPLATE: 'index.html',
                 PhKeys.APP_END_POINT: END_POINT_AMENITY_PJ,
             },

@@ -98,7 +98,7 @@ def is_selected(item, selected_item):
 @app.context_processor
 def utility_processor_title_for():
     def title_for(end_point=None):
-        return Const.END_POINT_AND_TITLE_MAPPING.get(end_point, Const.TITLE_AMENITY_PJ)
+        return Util.get_apj_data(apj_id=None, specific_key=PhKeys.APP_TITLE, end_point=end_point)
 
     return dict(title_for=title_for)
 
@@ -106,7 +106,7 @@ def utility_processor_title_for():
 @app.context_processor
 def utility_processor_selected_input_format():
     def is_selected_input_format(input_format, selected_input_format):
-        return is_selected(input_format, selected_input_format)
+        return Util.is_selected(input_format, selected_input_format)
 
     return dict(is_selected_input_format=is_selected_input_format)
 
@@ -114,7 +114,7 @@ def utility_processor_selected_input_format():
 @app.context_processor
 def utility_processor_selected_output_format():
     def is_selected_output_format(output_format, selected_output_format):
-        return is_selected(output_format, selected_output_format)
+        return Util.is_selected(output_format, selected_output_format)
 
     return dict(is_selected_output_format=is_selected_output_format)
 
@@ -122,7 +122,7 @@ def utility_processor_selected_output_format():
 @app.context_processor
 def utility_processor_selected_asn1_schema():
     def is_selected_asn1_schema(asn1_schema, selected_asn1_schema):
-        return is_selected(asn1_schema, selected_asn1_schema)
+        return Util.is_selected(asn1_schema, selected_asn1_schema)
 
     return dict(is_selected_asn1_schema=is_selected_asn1_schema)
 
@@ -130,7 +130,7 @@ def utility_processor_selected_asn1_schema():
 @app.context_processor
 def utility_processor_selected_sample():
     def is_selected_sample(sample, selected_sample):
-        return is_selected(sample, selected_sample)
+        return Util.is_selected(sample, selected_sample)
 
     return dict(is_selected_sample=is_selected_sample)
 
@@ -138,7 +138,7 @@ def utility_processor_selected_sample():
 @app.context_processor
 def utility_processor_selected_qr_code_version():
     def is_selected_qr_code_version(sample, selected_qr_code_version):
-        return is_selected(sample, selected_qr_code_version)
+        return Util.is_selected(sample, selected_qr_code_version)
 
     return dict(is_selected_qr_code_version=is_selected_qr_code_version)
 
@@ -146,7 +146,7 @@ def utility_processor_selected_qr_code_version():
 @app.context_processor
 def utility_processor_selected_url_time_out():
     def is_selected_url_time_out(sample, selected_url_time_out):
-        return is_selected(sample, selected_url_time_out)
+        return Util.is_selected(sample, selected_url_time_out)
 
     return dict(is_selected_url_time_out=is_selected_url_time_out)
 
@@ -154,7 +154,7 @@ def utility_processor_selected_url_time_out():
 @app.context_processor
 def utility_processor_selected_image_format():
     def is_selected_image_format(sample, selected_image_format):
-        return is_selected(sample, selected_image_format)
+        return Util.is_selected(sample, selected_image_format)
 
     return dict(is_selected_image_format=is_selected_image_format)
 

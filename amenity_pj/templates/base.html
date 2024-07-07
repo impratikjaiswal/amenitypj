@@ -16,7 +16,7 @@
     <title>{% block title %} {% endblock %}</title>
     <link rel="shortcut icon" href="{{ url_for('static', filename='/images/favicon.ico') }}">
 </head>
-<body>
+<body class="{% if app_parent_title %}body-navbar-2{% else %}body-navbar-1{% endif %}">
 <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
     <a class="navbar-brand" href="{{ url_for('index') }}">{{ title_for('index') }}</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
