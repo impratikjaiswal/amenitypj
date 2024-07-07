@@ -12,8 +12,8 @@ from amenity_pj.helper.defaults import Defaults
 class Util:
 
     @classmethod
-    def get_common_data(cls, end_point, specific_key=None, fail_safe=False):
-        data = Const.COMMON_DATA_MAPPING.get(end_point, None)
+    def get_apj_data(cls, apj_id, specific_key=None, fail_safe=False):
+        data = Const.COMMON_DATA_MAPPING.get(apj_id, None)
         if fail_safe:
             data = PhUtil.set_if_not_none(current_value=data, new_value=PhConstants.DICT_EMPTY)
         if specific_key is None:
@@ -33,8 +33,8 @@ class Util:
         return f'{template_id}; {request.method}; {"API" if api else "Form"} Request'
 
     @classmethod
-    def request_pre(cls, request, end_point, api=Defaults.API, log=Defaults.LOG):
-        template_id = cls.get_common_data(end_point=end_point, specific_key=PhKeys.APP_TEMPLATE)
+    def request_pre(cls, request, apj_id, api=Defaults.API, log=Defaults.LOG):
+        template_id = cls.get_apj_data(apj_id=apj_id, specific_key=PhKeys.APP_TEMPLATE)
         PhUtil.print_separator(
             main_text=f'{cls.get_request_info(request=request, template_id=template_id, api=api)} Received!!!', log=log)
         requested_data_dict = request.get_json() if request.is_json else request.form.to_dict()
@@ -42,8 +42,8 @@ class Util:
         return requested_data_dict
 
     @classmethod
-    def request_post(cls, request, end_point, api=Defaults.API, log=Defaults.LOG, output_data=PhConstants.DICT_EMPTY):
-        template_id = cls.get_common_data(end_point=end_point, specific_key=PhKeys.APP_TEMPLATE)
+    def request_post(cls, request, apj_id, api=Defaults.API, log=Defaults.LOG, output_data=PhConstants.DICT_EMPTY):
+        template_id = cls.get_apj_data(apj_id=apj_id, specific_key=PhKeys.APP_TEMPLATE)
         PhUtil.print_iter(output_data, header='Outputs', log=log)
         PhUtil.print_separator(
             main_text=f'{cls.get_request_info(request=request, template_id=template_id, api=api)} Completed!!!',

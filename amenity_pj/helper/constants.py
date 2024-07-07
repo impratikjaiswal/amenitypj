@@ -1,130 +1,226 @@
-from asn1_play.main.helper.constants_config import ConfigConst as asn1_play_config
-from cert_play.main.helper.constants_config import ConfigConst as cert_play_config
-from qr_play.main.helper.constants_config import ConfigConst as qr_play_config
-from tlv_play.main.helper.constants_config import ConfigConst as tlv_play_config
+from asn1_play.main.helper.constants_config import ConfigConst as ConfigConst_Asn1Play
+from cert_play.main.helper.constants_config import ConfigConst as ConfigConst_CertPlay
+from excel_play.main.helper.constants_config import ConfigConst as ConfigConst_ExcelPlay
+from python_helpers.ph_constants import PhConstants
+from python_helpers.ph_keys import PhKeys
+from qr_play.main.helper.constants_config import ConfigConst as ConfigConst_QrPlay
+from tlv_play.main.helper.constants_config import ConfigConst as ConfigConst_TlvPlay
 
-from amenity_pj.helper.constants_config import ConfigConst as amenity_pj_config
+from amenity_pj.helper.constants_config import ConfigConst as ConfigConst_AmenityPj
+from amenity_pj.helper.defaults import Defaults
 
 
 class Const:
+    """
+
+    """
+    ####################
+    # Deployment Dates
+    ####################
     DEPLOYMENT_DATE = '2023-11-11'
     DEPLOYMENT_DATE_CERT_PLAY = '2024-05-03'
     DEPLOYMENT_DATE_CREDITS = '2024-06-01'
-    URL_SITEMAP = '/sitemap.xml'
-    TEMPLATE_WIP = 'wip.html'
-    TEMPLATE_POST = 'post.html'
+    DEPLOYMENT_DATE_API = '2024-07-06'
 
+    ####################
+    # IDs
+    ####################
+    APJ_ID_AMENITY_PJ = 10
+    APJ_ID_TESTIMONIALS = 20
+    APJ_ID_TESTIMONIALS_ID = 21
+    APJ_ID_ABOUT_US = 30
+    APJ_ID_CREDITS = 40
+    APJ_ID_SPONSORSHIP = 50
+    APJ_ID_SITEMAP = 60
+    APJ_ID_SERVER_DETAILS = 70
+    APJ_ID_404 = 80
+    APJ_ID_ASN1_PLAY = 200
+    APJ_ID_ASN1_PLAY_ASN1_OBJECTS = 201
+    APJ_ID_TLV_PLAY = 210
+    APJ_ID_QR_PLAY = 220
+    APJ_ID_EXCEL_PLAY = 230
+    APJ_ID_CERT_PLAY = 240
+
+    ####################
+    # External URLs
+    ####################
     GITHUB_PAGES = 'https://impratikjaiswal.github.io'
     GITHUB_REPO = 'https://github.com/impratikjaiswal'
+    HOST_ADDRESS = '.amenitypj.in'
 
-    VERSION_DEFAULT = ''
-    DESCRIPTION_DEFAULT = ''
+    ####################
+    # Common or without end points Constants
+    ####################
+    TITLE_AMENITY_PJ = ConfigConst_AmenityPj.TOOL_TITLE
+    VERSION_AMENITY_PJ = ConfigConst_AmenityPj.TOOL_VERSION_DETAILED
+    TEMPLATE_WIP = 'wip.html'
 
-    TITLE_AMENITY_PJ = amenity_pj_config.TOOL_TITLE
-    DESCRIPTION_AMENITY_PJ = ('Amenity Pj offers a playground for various open source tools (amenities) such as ASN1 '
-                              'Play, TLV Play, QR Play, Excel Play which are crafted with the purpose of enhancing '
-                              'productivity.')
-    VERSION_AMENITY_PJ = f'v{amenity_pj_config.TOOL_VERSION}'
-    END_POINT_AMENITY_PJ = 'index'
-    URL_AMENITY_PJ = '/'
-    TEMPLATE_AMENITY_PJ = 'index.html'
-    GITHUB_REPO_AMENITY_PJ = 'amenitypj'
+    ####################
+    # Common Data APPS
+    ####################
+    COMMON_DATA_APPS = {
+        PhKeys.APP_PARENT_TITLE: TITLE_AMENITY_PJ,
+        PhKeys.APP_PARENT_VERSION: VERSION_AMENITY_PJ,
+        PhKeys.SAMPLE_OPTION: Defaults.SAMPLE_OPTION,
+        PhKeys.INPUT_DATA: PhConstants.STR_EMPTY,
+        PhKeys.OUTPUT_DATA: PhConstants.STR_EMPTY,
+        PhKeys.INFO_DATA: PhConstants.STR_EMPTY,
+    }
 
-    TITLE_ASN1_PLAY = 'ASN1 Play'
-    DESCRIPTION_ASN1_PLAY = 'ASN1 Encoder & Decoder based on pycrate.'
-    VERSION_ASN1_PLAY = f'v{asn1_play_config.TOOL_VERSION}'
-    END_POINT_ASN1_PLAY = 'asn1_play'
-    URL_ASN1_PLAY = '/asn1Play'
-    URL_API_ASN1_PLAY = '/api/asn1Play'
-    URL_ASN1_PLAY_ASN1_OBJECTS = '/asn1Play/asn1Objects'
-    TEMPLATE_ASN1_PLAY = '/apps/asn1Play.html'
-    GITHUB_REPO_ASN1_PLAY = 'asn1Play'
-
-    TITLE_EXCEL_PLAY = 'Excel Play'
-    DESCRIPTION_EXCEL_PLAY = 'Export one or more Excel file(s) with single or multiple sheets to several files each containing one sheet.'
-    # VERSION_EXCEL_PLAY = f'v{excel_play_config.TOOL_VERSION}'
-    VERSION_EXCEL_PLAY = VERSION_DEFAULT
-    END_POINT_EXCEL_PLAY = 'excel_play'
-    URL_EXCEL_PLAY = '/excelPlay'
-    URL_API_EXCEL_PLAY = '/api/excelPlay'
-    # TEMPLATE_EXCEL_PLAY = 'excelPlay.html'
-    TEMPLATE_EXCEL_PLAY = TEMPLATE_WIP
-    GITHUB_REPO_EXCEL_PLAY = 'excelPlay'
-
-    TITLE_TLV_PLAY = 'TLV Play'
-    DESCRIPTION_TLV_PLAY = 'Generic TLV Parser. Will parse any TLV upto nth Level.'
-    VERSION_TLV_PLAY = f'v{tlv_play_config.TOOL_VERSION}'
-    END_POINT_TLV_PLAY = 'tlv_play'
-    URL_TLV_PLAY = '/tlvPlay'
-    URL_API_TLV_PLAY = '/api/tlvPlay'
-    TEMPLATE_TLV_PLAY = '/apps/tlvPlay.html'
-    GITHUB_REPO_TLV_PLAY = 'tlvPlay'
-
-    TITLE_QR_PLAY = 'QR Play'
-    DESCRIPTION_QR_PLAY = 'Qr Code Generator based on Segno. Can Generate Single as well as Multiple Qr codes.'
-    VERSION_QR_PLAY = f'v{qr_play_config.TOOL_VERSION}'
-    END_POINT_QR_PLAY = 'qr_play'
-    URL_QR_PLAY = '/qrPlay'
-    URL_API_QR_PLAY = '/api/qrPlay'
-    TEMPLATE_QR_PLAY = '/apps/qrPlay.html'
-    GITHUB_REPO_QR_PLAY = 'qrPlay'
-
-    TITLE_CERT_PLAY = 'Cert Play'
-    DESCRIPTION_CERT_PLAY = 'OpenSSL based Cert Parser. Will parse any TLS cert.'
-    VERSION_CERT_PLAY = f'v{cert_play_config.TOOL_VERSION}'
-    END_POINT_CERT_PLAY = 'cert_play'
-    URL_CERT_PLAY = '/certPlay'
-    URL_API_CERT_PLAY = '/api/certPlay'
-    TEMPLATE_CERT_PLAY = '/apps/certPlay.html'
-    GITHUB_REPO_CERT_PLAY = 'certPlay'
-
-    TITLE_TESTIMONIALS = 'Testimonials'
-    DESCRIPTION_TESTIMONIALS = 'Read What others feel about us'
-    VERSION_TESTIMONIALS = VERSION_DEFAULT
-    END_POINT_TESTIMONIALS = 'testimonials'
-    URL_TESTIMONIALS = '/testimonials'
-    URL_TESTIMONIALS_ID = '/testimonials/<int:post_id>'
-    TEMPLATE_TESTIMONIALS = 'testimonials.html'
-    GITHUB_REPO_TESTIMONIAL = None
-
-    TITLE_ABOUT_US = 'About Us'
-    DESCRIPTION_ABOUT_US = ('As the word Amenity refers to an additional feature or service that elevates convenience '
-                            'and comfort. Amenity Pj also intends to offer various day to day tools which may elevates '
-                            'productivity.')
-
-    VERSION_ABOUT_US = VERSION_DEFAULT
-    END_POINT_ABOUT_US = 'about_us'
-    URL_ABOUT_US = '/aboutUs'
-    TEMPLATE_ABOUT_US = 'aboutus.html'
-    GITHUB_REPO_ABOUT_US = None
-
-    TITLE_CREDITS = 'Credits'
-    DESCRIPTION_CREDITS = 'AmenityPj is Thankful to: '
-    VERSION_CREDITS = VERSION_DEFAULT
-    END_POINT_CREDITS = 'credits'
-    URL_CREDITS = '/credits'
-    TEMPLATE_CREDITS = 'credits.html'
-    GITHUB_REPO_CREDITS = None
-
-    TITLE_SPONSORSHIP = 'Sponsorship'
-    DESCRIPTION_SPONSORSHIP = DESCRIPTION_DEFAULT
-    VERSION_SPONSORSHIP = VERSION_DEFAULT
-    END_POINT_SPONSORSHIP = 'sponsorship'
-    URL_SPONSORSHIP = '/sponsorship'
-    TEMPLATE_SPONSORSHIP = TEMPLATE_WIP
-    GITHUB_REPO_SPONSORSHIP = None
-
-    URL_API_SERVER_DETAILS = '/api/serverDetails'
-
-    END_POINT_AND_TITLE_MAPPING = {
-        END_POINT_AMENITY_PJ: TITLE_AMENITY_PJ,
-        END_POINT_TESTIMONIALS: TITLE_TESTIMONIALS,
-        END_POINT_ABOUT_US: TITLE_ABOUT_US,
-        END_POINT_CREDITS: TITLE_CREDITS,
-        END_POINT_SPONSORSHIP: TITLE_SPONSORSHIP,
-        END_POINT_EXCEL_PLAY: TITLE_EXCEL_PLAY,
-        END_POINT_ASN1_PLAY: TITLE_ASN1_PLAY,
-        END_POINT_TLV_PLAY: TITLE_TLV_PLAY,
-        END_POINT_QR_PLAY: TITLE_QR_PLAY,
-        END_POINT_CERT_PLAY: TITLE_CERT_PLAY,
+    ####################
+    # Common Data All
+    ####################
+    COMMON_DATA_MAPPING = {
+        #
+        APJ_ID_AMENITY_PJ:
+            {
+                PhKeys.APP_TITLE: TITLE_AMENITY_PJ,
+                PhKeys.APP_DESCRIPTION: f'{TITLE_AMENITY_PJ} offers a playground for various open source tools (amenities) such as ASN1 '
+                                        'Play, TLV Play, QR Play, Excel Play which are crafted with the purpose of enhancing productivity.',
+                PhKeys.APP_VERSION: VERSION_AMENITY_PJ,
+                PhKeys.APP_GITHUB_URL: 'amenitypj',
+                PhKeys.APP_GIT_SUMMARY: ConfigConst_AmenityPj.TOOL_GIT_SUMMARY,
+                PhKeys.APP_URL: '/',
+                PhKeys.APP_TEMPLATE: 'index.html',
+                PhKeys.APP_END_POINT: 'index',
+            },
+        #
+        APJ_ID_TESTIMONIALS:
+            {
+                PhKeys.APP_TITLE: 'Testimonials',
+                PhKeys.APP_DESCRIPTION: 'Read What others feel about us',
+                PhKeys.APP_URL: '/testimonials',
+                PhKeys.APP_TEMPLATE: 'testimonials.html',
+                PhKeys.APP_END_POINT: 'testimonials',
+            },
+        #
+        APJ_ID_TESTIMONIALS_ID:
+            {
+                PhKeys.APP_URL: '/testimonials/<int:testimonial_post_id>',
+                PhKeys.APP_TEMPLATE: 'testimonialPost.html',
+                PhKeys.APP_END_POINT: 'testimonials_id',
+            },
+        #
+        APJ_ID_ABOUT_US:
+            {
+                PhKeys.APP_TITLE: 'About Us',
+                PhKeys.APP_DESCRIPTION: f'As the word Amenity refers to an additional feature or service that elevates convenience '
+                                        'and comfort. {TITLE_AMENITY_PJ} also intends to offer various day to day tools which may elevates '
+                                        'productivity.',
+                PhKeys.APP_URL: '/aboutUs',
+                PhKeys.APP_TEMPLATE: 'aboutus.html',
+                PhKeys.APP_END_POINT: 'about_us',
+            },
+        #
+        APJ_ID_CREDITS:
+            {
+                PhKeys.APP_TITLE: 'Credits',
+                PhKeys.APP_DESCRIPTION: f'{TITLE_AMENITY_PJ} is Thankful to: ',
+                PhKeys.APP_URL: '/credits',
+                PhKeys.APP_TEMPLATE: 'credits.html',
+                PhKeys.APP_END_POINT: 'credits_',
+            },
+        #
+        APJ_ID_SPONSORSHIP:
+            {
+                PhKeys.APP_TITLE: 'Sponsorship',
+                PhKeys.APP_DESCRIPTION: Defaults.DESCRIPTION,
+                PhKeys.APP_URL: '/sponsorship',
+                PhKeys.APP_TEMPLATE: TEMPLATE_WIP,
+                PhKeys.APP_END_POINT: 'sponsorship',
+            },
+        #
+        APJ_ID_SITEMAP:
+            {
+                PhKeys.APP_URL: '/sitemap.xml',
+                PhKeys.APP_END_POINT: 'sitemap',
+            },
+        #
+        APJ_ID_SERVER_DETAILS:
+            {
+                PhKeys.APP_URL: '/api/serverDetails',
+                # TODO: Needed ?
+                PhKeys.APP_END_POINT: 'server_details',
+            },
+        #
+        APJ_ID_404:
+            {
+                PhKeys.APP_TITLE: '404',
+                PhKeys.APP_DESCRIPTION: f"I'm afraid you've found a page that doesn't exist on {TITLE_AMENITY_PJ}.",
+                PhKeys.APP_CODE: 404,
+                PhKeys.APP_TEMPLATE: '404.html',
+            },
+        #
+        APJ_ID_ASN1_PLAY:
+            {
+                PhKeys.APP_TITLE: 'ASN1 Play',
+                PhKeys.APP_VERSION: ConfigConst_Asn1Play.TOOL_VERSION_DETAILED,
+                PhKeys.APP_DESCRIPTION: 'ASN1 Encoder & Decoder based on pycrate.',
+                PhKeys.APP_GITHUB_URL: 'asn1Play',
+                PhKeys.APP_GIT_SUMMARY: ConfigConst_Asn1Play.TOOL_GIT_SUMMARY,
+                PhKeys.APP_URL: '/asn1Play',
+                PhKeys.APP_URL_API: '/api/asn1Play',
+                PhKeys.APP_TEMPLATE: '/apps/asn1Play.html',
+                PhKeys.APP_END_POINT: 'asn1_play',
+            },
+        #
+        APJ_ID_ASN1_PLAY_ASN1_OBJECTS:
+            {
+                PhKeys.APP_URL: '/asn1Play/asn1Objects',
+                # TODO: Needed ?
+                PhKeys.APP_END_POINT: 'asn1_objects',
+            },
+        #
+        APJ_ID_TLV_PLAY:
+            {
+                PhKeys.APP_TITLE: 'TLV Play',
+                PhKeys.APP_VERSION: ConfigConst_TlvPlay.TOOL_VERSION,
+                PhKeys.APP_DESCRIPTION: 'Generic TLV Parser. Will parse any TLV upto nth Level.',
+                PhKeys.APP_GITHUB_URL: 'tlvPlay',
+                PhKeys.APP_GIT_SUMMARY: ConfigConst_TlvPlay.TOOL_GIT_SUMMARY,
+                PhKeys.APP_URL: '/tlvPlay',
+                PhKeys.APP_URL_API: '/api/tlvPlay',
+                PhKeys.APP_TEMPLATE: '/apps/tlvPlay.html',
+                PhKeys.APP_END_POINT: 'tlv_play',
+            },
+        #
+        APJ_ID_QR_PLAY:
+            {
+                PhKeys.APP_TITLE: 'QR Play',
+                PhKeys.APP_VERSION: ConfigConst_QrPlay.TOOL_VERSION_DETAILED,
+                PhKeys.APP_DESCRIPTION: 'Qr Code Generator based on Segno. Can Generate Single as well as Multiple Qr codes.',
+                PhKeys.APP_GITHUB_URL: 'qrPlay',
+                PhKeys.APP_GIT_SUMMARY: ConfigConst_QrPlay.TOOL_GIT_SUMMARY,
+                PhKeys.APP_URL: '/qrPlay',
+                PhKeys.APP_URL_API: '/api/qrPlay',
+                PhKeys.APP_TEMPLATE: '/apps/qrPlay.html',
+                PhKeys.APP_END_POINT: 'qr_play',
+            },
+        #
+        APJ_ID_EXCEL_PLAY:
+            {
+                PhKeys.APP_TITLE: 'Excel Play',
+                PhKeys.APP_VERSION: ConfigConst_ExcelPlay.TOOL_VERSION_DETAILED,
+                PhKeys.APP_DESCRIPTION: 'Export one or more Excel file(s) with single or multiple sheets to several files each containing one sheet.',
+                PhKeys.APP_GITHUB_URL: 'excelPlay',
+                PhKeys.APP_GIT_SUMMARY: ConfigConst_ExcelPlay.TOOL_GIT_SUMMARY,
+                PhKeys.APP_URL: '/excelPlay',
+                PhKeys.APP_URL_API: '/api/excelPlay',
+                # PhKeys.APP_TEMPLATE:  'excelPlay.html',
+                PhKeys.APP_TEMPLATE: TEMPLATE_WIP,
+                PhKeys.APP_END_POINT: 'excel_play',
+            },
+        #
+        APJ_ID_CERT_PLAY:
+            {
+                PhKeys.APP_TITLE: 'Cert Play',
+                PhKeys.APP_VERSION: ConfigConst_CertPlay.TOOL_VERSION_DETAILED,
+                PhKeys.APP_DESCRIPTION: 'OpenSSL based Cert Parser. Will parse any TLS cert.',
+                PhKeys.APP_GITHUB_URL: 'certPlay',
+                PhKeys.APP_GIT_SUMMARY: ConfigConst_CertPlay.TOOL_GIT_SUMMARY,
+                PhKeys.APP_URL: '/certPlay',
+                PhKeys.APP_URL_API: '/api/certPlay',
+                PhKeys.APP_TEMPLATE: '/apps/certPlay.html',
+                PhKeys.APP_END_POINT: 'cert_play',
+            },
     }

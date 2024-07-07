@@ -10,7 +10,7 @@ from python_helpers.ph_util import PhUtil
 from amenity_pj.helper.util import Util
 
 
-def handle_requests(end_point, api, log, default_data, **kwargs):
+def handle_requests(apj_id, api, log, default_data, **kwargs):
     """
 
     :return:
@@ -60,7 +60,7 @@ def handle_requests(end_point, api, log, default_data, **kwargs):
         PhKeys.URL_PRE_ACCESS: Defaults.URL_PRE_ACCESS,
     }
     app_data = PhUtil.dict_merge(default_data, default_data_app)
-    requested_data_dict = Util.request_pre(request=request, end_point=end_point, api=api, log=log)
+    requested_data_dict = Util.request_pre(request=request, apj_id=apj_id, api=api, log=log)
     if request.method == PhKeys.GET:
         pass
     if request.method == PhKeys.POST:
@@ -102,4 +102,4 @@ def handle_requests(end_point, api, log, default_data, **kwargs):
         # Fixed Updates
         app_data.update({PhKeys.SAMPLE_SELECTED: sample_name})
         app_data.update({PhKeys.SAMPLE_OPTION: sample_option})
-    return Util.request_post(request=request, end_point=end_point, api=api, log=log, output_data=app_data)
+    return Util.request_post(request=request, apj_id=apj_id, api=api, log=log, output_data=app_data)
