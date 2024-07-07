@@ -60,7 +60,41 @@ class Const:
     ####################
     GITHUB_PAGES = 'https://impratikjaiswal.github.io'
     GITHUB_REPO = 'https://github.com/impratikjaiswal'
-    HOST_ADDRESS = '.amenitypj.in'
+    HOST_ADDRESS_PROD = 'https://amenitypj.in'
+    HOST_ADDRESS_BETA = 'https://beta.amenitypj.in'
+    HOST_ADDRESS_ALPHA = 'https://alpha.amenitypj.in'
+    HOST_ADDRESS_PAST = 'https://past.amenitypj.in'
+
+    NAV_ITEMS_MAPPING = {
+        'beta':
+            [
+                {'text': 'Prod Release', 'url': HOST_ADDRESS_PROD},
+                {'text': 'Past Release', 'url': HOST_ADDRESS_PAST},
+            ],
+        'alpha':
+            [
+                {'text': 'Beta Release', 'url': HOST_ADDRESS_BETA},
+                {'text': 'Prod Release', 'url': HOST_ADDRESS_PROD},
+                {'text': 'Past Release', 'url': HOST_ADDRESS_PAST},
+            ],
+        'past':
+            [
+                {'text': 'Prod Release', 'url': HOST_ADDRESS_PROD},
+                {'text': 'Beta Release', 'url': HOST_ADDRESS_BETA},
+            ],
+        'prod':
+            [
+                {'text': 'Beta Release', 'url': HOST_ADDRESS_BETA},
+                {'text': 'Past Release', 'url': HOST_ADDRESS_PAST},
+            ],
+        'local':
+            [
+                {'text': 'Prod Release', 'url': HOST_ADDRESS_PROD},
+                {'text': 'Alpha Release', 'url': HOST_ADDRESS_ALPHA},
+                {'text': 'Beta Release', 'url': HOST_ADDRESS_BETA},
+                {'text': 'Past Release', 'url': HOST_ADDRESS_PAST},
+            ],
+    }
 
     ####################
     # Common or without end points Constants

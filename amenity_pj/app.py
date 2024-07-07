@@ -1,3 +1,5 @@
+from logging.config import dictConfig
+
 from flask import Flask, request
 from flask_sitemapper import Sitemapper
 from python_helpers.ph_keys import PhKeys
@@ -11,7 +13,7 @@ from amenity_pj.helper.util import Util
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = 'Pj Test'
-log = app.logger
+
 
 sitemapper = Sitemapper()
 sitemapper.init_app(app)
@@ -25,7 +27,6 @@ host_name = None
 # yield Const.END_POINT_INDEX, {}
 # yield Const.END_POINT_INDEX, {}, Const.DEPLOYMENT_DATE, 'monthly'
 
-from logging.config import dictConfig
 
 dictConfig(
     {
@@ -70,7 +71,7 @@ dictConfig(
     }
 )
 
-
+log = app.logger
 @app.context_processor
 def utility_processor_title_for():
     def title_for(end_point=None):
