@@ -64,6 +64,19 @@
     padding: 2rem;
 }
 
+/* for 2nd Nav Bar (Apps) */
+/* The height of the Navbar is ~56px. */
+/* --------------------------- Start */
+.fixed-top-2 {
+    margin-top: 56px;
+}
+
+/* Needed for 2nd Nav Bar (Apps) */
+body {
+    padding-top: 112px;
+}
+/* --------------------------- End */
+
 /* Copied from form-control */
 .div-output {
     /* 2 values: top_bottom left_right */
