@@ -41,6 +41,7 @@ def handle_requests(apj_id, **kwargs):
     api = kwargs.get(PhKeys.API, Defaults.API)
     log = kwargs.get(PhKeys.LOG, Defaults.LOG)
     internal = kwargs.get(PhKeys.INTERNAL, Defaults.INTERNAL)
+    testimonial_post_id = kwargs.get(PhKeys.TESTIMONIAL_POST_ID, -1)
     #
     if not internal:
         Util.user_visit(request=request, log=log)
@@ -92,9 +93,11 @@ def handle_requests(apj_id, **kwargs):
     if func is not None:
         return func(
             apj_id=apj_id,
+            api=api,
+            log=log,
             default_data=PhUtil.dict_merge(common_data,
                                            Const.COMMON_DATA_APPS) if apj_id in Const.APPS_LIST else common_data,
-            **kwargs
+            testimonial_post_id=testimonial_post_id,
         )
     if apj_id == Const.APJ_ID_SERVER_DETAILS:
         set_server_name()

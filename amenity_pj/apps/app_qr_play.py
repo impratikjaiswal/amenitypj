@@ -10,7 +10,7 @@ from qr_play.main.helper.formats_group import FormatsGroup
 from amenity_pj.helper.util import Util
 
 
-def handle_requests(apj_id, default_data, **kwargs):
+def handle_requests(apj_id, api, log, default_data, **kwargs):
     """
 
     :return:
@@ -46,10 +46,6 @@ def handle_requests(apj_id, default_data, **kwargs):
         requested_data_dict.update(
             {target_key: int(requested_data_dict.get(target_key) if target_key in requested_data_dict else -1)})
 
-    # Handle kwargs
-    api = kwargs.get(PhKeys.API, Defaults.API)
-    log = kwargs.get(PhKeys.LOG, Defaults.LOG)
-    #
     samples_dict = Sample().get_sample_data_pool_for_web()
     samples_list = PhUtil.generalise_list(list(samples_dict.keys()), sort=False)
     qr_code_versions = PhUtil.generalise_list(FormatsGroup.QR_CODE_VERSIONS_SUPPORTED)

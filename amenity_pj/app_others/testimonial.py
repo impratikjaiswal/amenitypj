@@ -7,18 +7,14 @@ from python_helpers.ph_keys import PhKeys
 from python_helpers.ph_util import PhUtil
 
 from amenity_pj.helper.constants import Const
-from amenity_pj.helper.defaults import Defaults
 from amenity_pj.helper.util import Util
 
 
-def handle_requests(apj_id, default_data, **kwargs):
+def handle_requests(apj_id, api, log, default_data, **kwargs):
     """
 
     :return:
     """
-    # Handle kwargs
-    api = kwargs.get(PhKeys.API, Defaults.API)
-    log = kwargs.get(PhKeys.LOG, Defaults.LOG)
     #
     default_data_app = {
         PhKeys.TESTIMONIAL_POSTS: PhConstants.STR_EMPTY,
@@ -49,9 +45,10 @@ def handle_requests(apj_id, default_data, **kwargs):
                                  output_data=app_data)
 
 
-def handle_posts(apj_id, default_data, **kwargs):
+def handle_posts(apj_id, api, log, default_data, testimonial_post_id, **kwargs):
     """
 
+    :param testimonial_post_id:
     :param apj_id:
     :param api:
     :param log:
@@ -59,16 +56,11 @@ def handle_posts(apj_id, default_data, **kwargs):
     :param kwargs:
     :return:
     """
-    # Handle kwargs
-    api = kwargs.get(PhKeys.API, Defaults.API)
-    log = kwargs.get(PhKeys.LOG, Defaults.LOG)
     #
     default_data_app = {
         PhKeys.TESTIMONIAL_POSTS: PhConstants.STR_EMPTY,
     }
     app_data = PhUtil.dict_merge(default_data, default_data_app)
-    # Handle kwargs
-    testimonial_post_id = kwargs.get(PhKeys.TESTIMONIAL_POST_ID, -1)
     post = get_post(testimonial_post_id)
     app_data.update({PhKeys.TESTIMONIAL_POST: post})
     return Util.request_post(request=request, apj_id=apj_id, api=api, log=log, output_data=app_data)
