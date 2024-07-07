@@ -12,7 +12,9 @@ from amenity_pj.helper.defaults import Defaults
 class Util:
 
     @classmethod
-    def get_apj_data(cls, apj_id, specific_key=None, fail_safe=False):
+    def get_apj_data(cls, apj_id, specific_key=None, fail_safe=False, end_point=None):
+        if apj_id is None and end_point:
+            apj_id = Const.END_POINT_APJ_MAPPING.get(end_point, None)
         data = Const.COMMON_DATA_MAPPING.get(apj_id, None)
         if fail_safe:
             data = PhUtil.set_if_not_none(current_value=data, new_value=PhConstants.DICT_EMPTY)

@@ -42,6 +42,20 @@ class Const:
     APJ_ID_CERT_PLAY = 240
 
     ####################
+    # END_POINTS
+    ####################
+    END_POINT_AMENITY_PJ = 'index'
+    END_POINT_TESTIMONIALS = 'testimonials'
+    END_POINT_ABOUT_US = 'about_us'
+    END_POINT_CREDITS = 'credits_'
+    END_POINT_SPONSORSHIP = 'sponsorship'
+    END_POINT_ASN1_PLAY = 'asn1_play'
+    END_POINT_TLV_PLAY = 'tlv_play'
+    END_POINT_QR_PLAY = 'qr_play'
+    END_POINT_EXCEL_PLAY = 'excel_play'
+    END_POINT_CERT_PLAY = 'cert_play'
+
+    ####################
     # External URLs
     ####################
     GITHUB_PAGES = 'https://impratikjaiswal.github.io'
@@ -82,7 +96,7 @@ class Const:
                 PhKeys.APP_GIT_SUMMARY: ConfigConst_AmenityPj.TOOL_GIT_SUMMARY,
                 PhKeys.APP_URL: '/',
                 PhKeys.APP_TEMPLATE: 'index.html',
-                PhKeys.APP_END_POINT: 'index',
+                PhKeys.APP_END_POINT: END_POINT_AMENITY_PJ,
             },
         #
         APJ_ID_TESTIMONIALS:
@@ -91,14 +105,13 @@ class Const:
                 PhKeys.APP_DESCRIPTION: 'Read What others feel about us',
                 PhKeys.APP_URL: '/testimonials',
                 PhKeys.APP_TEMPLATE: 'testimonials.html',
-                PhKeys.APP_END_POINT: 'testimonials',
+                PhKeys.APP_END_POINT: END_POINT_TESTIMONIALS,
             },
         #
         APJ_ID_TESTIMONIALS_ID:
             {
                 PhKeys.APP_URL: '/testimonials/<int:testimonial_post_id>',
                 PhKeys.APP_TEMPLATE: 'testimonialPost.html',
-                PhKeys.APP_END_POINT: 'testimonials_id',
             },
         #
         APJ_ID_ABOUT_US:
@@ -109,7 +122,7 @@ class Const:
                                         'productivity.',
                 PhKeys.APP_URL: '/aboutUs',
                 PhKeys.APP_TEMPLATE: 'aboutus.html',
-                PhKeys.APP_END_POINT: 'about_us',
+                PhKeys.APP_END_POINT: END_POINT_ABOUT_US,
             },
         #
         APJ_ID_CREDITS:
@@ -118,7 +131,7 @@ class Const:
                 PhKeys.APP_DESCRIPTION: f'{TITLE_AMENITY_PJ} is Thankful to: ',
                 PhKeys.APP_URL: '/credits',
                 PhKeys.APP_TEMPLATE: 'credits.html',
-                PhKeys.APP_END_POINT: 'credits_',
+                PhKeys.APP_END_POINT: END_POINT_CREDITS,
             },
         #
         APJ_ID_SPONSORSHIP:
@@ -127,20 +140,17 @@ class Const:
                 PhKeys.APP_DESCRIPTION: Defaults.DESCRIPTION,
                 PhKeys.APP_URL: '/sponsorship',
                 PhKeys.APP_TEMPLATE: TEMPLATE_WIP,
-                PhKeys.APP_END_POINT: 'sponsorship',
+                PhKeys.APP_END_POINT: END_POINT_SPONSORSHIP,
             },
         #
         APJ_ID_SITEMAP:
             {
                 PhKeys.APP_URL: '/sitemap.xml',
-                PhKeys.APP_END_POINT: 'sitemap',
             },
         #
         APJ_ID_SERVER_DETAILS:
             {
                 PhKeys.APP_URL: '/api/serverDetails',
-                # TODO: Needed ?
-                PhKeys.APP_END_POINT: 'server_details',
             },
         #
         APJ_ID_404:
@@ -161,14 +171,12 @@ class Const:
                 PhKeys.APP_URL: '/asn1Play',
                 PhKeys.APP_URL_API: '/api/asn1Play',
                 PhKeys.APP_TEMPLATE: '/apps/asn1Play.html',
-                PhKeys.APP_END_POINT: 'asn1_play',
+                PhKeys.APP_END_POINT: END_POINT_ASN1_PLAY,
             },
         #
         APJ_ID_ASN1_PLAY_ASN1_OBJECTS:
             {
                 PhKeys.APP_URL: '/asn1Play/asn1Objects',
-                # TODO: Needed ?
-                PhKeys.APP_END_POINT: 'asn1_objects',
             },
         #
         APJ_ID_TLV_PLAY:
@@ -181,7 +189,7 @@ class Const:
                 PhKeys.APP_URL: '/tlvPlay',
                 PhKeys.APP_URL_API: '/api/tlvPlay',
                 PhKeys.APP_TEMPLATE: '/apps/tlvPlay.html',
-                PhKeys.APP_END_POINT: 'tlv_play',
+                PhKeys.APP_END_POINT: END_POINT_TLV_PLAY,
             },
         #
         APJ_ID_QR_PLAY:
@@ -194,7 +202,7 @@ class Const:
                 PhKeys.APP_URL: '/qrPlay',
                 PhKeys.APP_URL_API: '/api/qrPlay',
                 PhKeys.APP_TEMPLATE: '/apps/qrPlay.html',
-                PhKeys.APP_END_POINT: 'qr_play',
+                PhKeys.APP_END_POINT: END_POINT_QR_PLAY,
             },
         #
         APJ_ID_EXCEL_PLAY:
@@ -208,7 +216,7 @@ class Const:
                 PhKeys.APP_URL_API: '/api/excelPlay',
                 # PhKeys.APP_TEMPLATE:  'excelPlay.html',
                 PhKeys.APP_TEMPLATE: TEMPLATE_WIP,
-                PhKeys.APP_END_POINT: 'excel_play',
+                PhKeys.APP_END_POINT: END_POINT_EXCEL_PLAY,
             },
         #
         APJ_ID_CERT_PLAY:
@@ -221,6 +229,22 @@ class Const:
                 PhKeys.APP_URL: '/certPlay',
                 PhKeys.APP_URL_API: '/api/certPlay',
                 PhKeys.APP_TEMPLATE: '/apps/certPlay.html',
-                PhKeys.APP_END_POINT: 'cert_play',
+                PhKeys.APP_END_POINT: END_POINT_CERT_PLAY,
             },
+    }
+
+    ####################
+    # END_POINTS, APJ MAPPING; Needed for Calling from HTML pages
+    ####################
+    END_POINT_APJ_MAPPING = {
+        END_POINT_AMENITY_PJ: APJ_ID_AMENITY_PJ,
+        END_POINT_TESTIMONIALS: APJ_ID_TESTIMONIALS,
+        END_POINT_ABOUT_US: APJ_ID_ABOUT_US,
+        END_POINT_CREDITS: APJ_ID_CREDITS,
+        END_POINT_SPONSORSHIP: APJ_ID_SPONSORSHIP,
+        END_POINT_ASN1_PLAY: APJ_ID_ASN1_PLAY,
+        END_POINT_TLV_PLAY: APJ_ID_TLV_PLAY,
+        END_POINT_QR_PLAY: APJ_ID_QR_PLAY,
+        END_POINT_EXCEL_PLAY: APJ_ID_EXCEL_PLAY,
+        END_POINT_CERT_PLAY: APJ_ID_CERT_PLAY,
     }
