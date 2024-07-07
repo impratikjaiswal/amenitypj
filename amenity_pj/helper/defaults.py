@@ -12,3 +12,4 @@ class Defaults:
     GITHUB_REPO = None
     API = False
     LOG = None
+    INTERNAL = False

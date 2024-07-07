@@ -81,6 +81,14 @@ class Const:
         PhKeys.INFO_DATA: PhConstants.STR_EMPTY,
     }
 
+    APPS_LIST = [
+        APJ_ID_ASN1_PLAY,
+        APJ_ID_TLV_PLAY,
+        APJ_ID_QR_PLAY,
+        APJ_ID_EXCEL_PLAY,
+        APJ_ID_CERT_PLAY,
+    ]
+
     ####################
     # Common Data All
     ####################
@@ -89,8 +97,9 @@ class Const:
         APJ_ID_AMENITY_PJ:
             {
                 PhKeys.APP_TITLE: TITLE_AMENITY_PJ,
-                PhKeys.APP_DESCRIPTION: f'{TITLE_AMENITY_PJ} offers a playground for various open source tools (amenities) such as ASN1 '
-                                        'Play, TLV Play, QR Play, Excel Play which are crafted with the purpose of enhancing productivity.',
+                PhKeys.APP_DESCRIPTION: f'{TITLE_AMENITY_PJ} offers a playground for various open source tools ('
+                                        f'amenities) such as ASN1 Play, TLV Play, QR Play, Cert Play, Excel Play '
+                                        f'which are crafted with the purpose of enhancing productivity.',
                 PhKeys.APP_VERSION: VERSION_AMENITY_PJ,
                 PhKeys.APP_GITHUB_URL: 'amenitypj',
                 PhKeys.APP_GIT_SUMMARY: ConfigConst_AmenityPj.TOOL_GIT_SUMMARY,
@@ -118,9 +127,9 @@ class Const:
         APJ_ID_ABOUT_US:
             {
                 PhKeys.APP_TITLE: 'About Us',
-                PhKeys.APP_DESCRIPTION: f'As the word Amenity refers to an additional feature or service that elevates convenience '
-                                        'and comfort. {TITLE_AMENITY_PJ} also intends to offer various day to day tools which may elevates '
-                                        'productivity.',
+                PhKeys.APP_DESCRIPTION: f'As the word Amenity refers to an additional feature or service that '
+                                        f'elevates convenience and comfort. {TITLE_AMENITY_PJ} also intends to offer '
+                                        f'various day to day tools which may elevates productivity.',
                 PhKeys.APP_URL: '/aboutUs',
                 PhKeys.APP_TEMPLATE: 'aboutus.html',
                 PhKeys.APP_END_POINT: END_POINT_ABOUT_US,

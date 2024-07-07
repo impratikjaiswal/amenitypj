@@ -6,10 +6,11 @@ from python_helpers.ph_constants import PhConstants
 from python_helpers.ph_keys import PhKeys
 from python_helpers.ph_util import PhUtil
 
+from amenity_pj.helper.defaults import Defaults
 from amenity_pj.helper.util import Util
 
 
-def handle_requests(apj_id, api, log, default_data, **kwargs):
+def handle_requests(apj_id, default_data, **kwargs):
     """
 
     :return:
@@ -45,6 +46,10 @@ def handle_requests(apj_id, api, log, default_data, **kwargs):
         requested_data_dict.update(
             {target_key: int(requested_data_dict.get(target_key) if target_key in requested_data_dict else -1)})
 
+    # Handle kwargs
+    api = kwargs.get(PhKeys.API, Defaults.API)
+    log = kwargs.get(PhKeys.LOG, Defaults.LOG)
+    #
     samples_dict = PhConstants.DICT_EMPTY
     default_data_app = {
     }
