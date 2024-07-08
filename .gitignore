@@ -273,3 +273,6 @@ backup_*bkp
 #### Project.gitignore
 ##################################################
 
+# Python Rotated logs
+*.log.*
+404.csv
