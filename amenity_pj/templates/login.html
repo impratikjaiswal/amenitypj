@@ -4,16 +4,19 @@
 {% block title %}{{ app_title }}{% endblock %}
 {# Page Specific Content #}
 {% block content %}
-    <h1>{{ app_title }} - Work In Progress</h1>
+    <h1>{{ app_title }} {{ app_version }}</h1>
     <a href="{{ app_github_pages_url }}" rel="noopener noreferrer" target="_blank">
         <span class="badge badge-success">@Github</span>
     </a>
     <BR>
     <h6>{{ app_description }}</h6>
-    <p align="center">
-        <BR>
-        <BR>
-        <BR>
-        <img src="{{ url_for('static', filename='/images/work-98936_640.png') }}"/>
-    </p>
+    <form method=post>
+        <dl>
+            <dt>Username:
+            <dd><input type=text name=username value="{{ request.form.username }}">
+            <dt>Password:
+            <dd><input type=password name=password>
+        </dl>
+        <p><input type=submit value=Login>
+    </form>
 {% endblock %}

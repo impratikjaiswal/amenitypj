@@ -26,6 +26,7 @@ class Const:
     # IDs
     ####################
     APJ_ID_AMENITY_PJ = 10
+    APJ_ID_LOGIN = 11
     APJ_ID_TESTIMONIALS = 20
     APJ_ID_TESTIMONIALS_ID = 21
     APJ_ID_ABOUT_US = 30
@@ -45,6 +46,7 @@ class Const:
     # END_POINTS
     ####################
     END_POINT_AMENITY_PJ = 'index'
+    END_POINT_LOGIN = 'login'
     END_POINT_TESTIMONIALS = 'testimonials'
     END_POINT_ABOUT_US = 'about_us'
     END_POINT_CREDITS = 'credits_'
@@ -187,6 +189,15 @@ class Const:
                 PhKeys.APP_END_POINT: END_POINT_SPONSORSHIP,
             },
         #
+        APJ_ID_LOGIN:
+            {
+                PhKeys.APP_TITLE: 'Login',
+                PhKeys.APP_DESCRIPTION: '!!! Currently only Admin Login is supported !!!',
+                PhKeys.APP_URL: '/login',
+                PhKeys.APP_TEMPLATE: 'login.html',
+                PhKeys.APP_END_POINT: END_POINT_LOGIN,
+            },
+        #
         APJ_ID_SITEMAP:
             {
                 PhKeys.APP_URL: '/sitemap.xml',
@@ -282,6 +293,7 @@ class Const:
     ####################
     END_POINT_APJ_MAPPING = {
         END_POINT_AMENITY_PJ: APJ_ID_AMENITY_PJ,
+        END_POINT_LOGIN: APJ_ID_LOGIN,
         END_POINT_TESTIMONIALS: APJ_ID_TESTIMONIALS,
         END_POINT_ABOUT_US: APJ_ID_ABOUT_US,
         END_POINT_CREDITS: APJ_ID_CREDITS,

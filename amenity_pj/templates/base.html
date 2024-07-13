@@ -62,12 +62,19 @@
                 </li>
             </ul>
         </div>
+        <div class="container">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('login') }}">{{ title_for('login') }}</a>
+                </li>
+            </ul>
+        </div>
     </div>
 </nav>
 <div class="container-fluid">
     <div class="row">
         {% if app_parent_title %}
-            <!-- <nav class="navbar navbar-expand-md navbar-inverse bg-light fixed-top fixed-top-2"> -->
+            {# <nav class="navbar navbar-expand-md navbar-inverse bg-light fixed-top fixed-top-2">#}
             <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
                 <a class="navbar-brand navbar-brand-2" href="{{ url_for(request.endpoint) }}">{{ app_title }}</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavApps"
@@ -89,7 +96,7 @@
                 </div>
             </nav>
         {% endif %}
-        <!-- <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4"> -->
+        {# <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">#}
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 ">
             <div class="container">
                 {% for message in get_flashed_messages() %}
@@ -112,7 +119,7 @@
 <script src="{{ url_for('static', filename='/js/bootstrap-select-1.13.14.min_formatted.js') }}"></script>
 <!-- Custom Script -->
 <script src="{{ url_for('static', filename='/js/custom.js') }}"></script>
-<!-- Page Specific Script -->
+{# Page Specific Script #}
 {% block page_specific_script %} {% endblock %}
 {#
 TODO:

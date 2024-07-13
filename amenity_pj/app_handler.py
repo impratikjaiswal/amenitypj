@@ -5,7 +5,7 @@ from flask import request
 from python_helpers.ph_keys import PhKeys
 from python_helpers.ph_util import PhUtil
 
-from amenity_pj.app_others import testimonial
+from amenity_pj.app_others import testimonial, login
 from amenity_pj.apps import app_asn1_play, app_tlv_play, app_qr_play, app_excel_play, app_cert_play
 from amenity_pj.helper.constants import Const
 from amenity_pj.helper.defaults import Defaults
@@ -107,6 +107,7 @@ def handle_requests(apj_id, **kwargs):
         # #################
         # AmenityPj Apps/APIs
         # #################
+        Const.APJ_ID_LOGIN: login.handle_requests,
         Const.APJ_ID_TESTIMONIALS: testimonial.handle_requests,
         Const.APJ_ID_TESTIMONIALS_ID: testimonial.handle_posts,
     }

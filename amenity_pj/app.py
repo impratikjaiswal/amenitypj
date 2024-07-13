@@ -13,6 +13,7 @@ from amenity_pj.helper.util import Util
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = 'Pj Test'
+# app.config['SECRET_KEY'] = b'_5#y2L"F4Q8z\n\xec]/'
 
 
 sitemapper = Sitemapper()
@@ -72,6 +73,8 @@ dictConfig(
 )
 
 log = app.logger
+
+
 @app.context_processor
 def utility_processor_title_for():
     def title_for(end_point=None):
@@ -172,6 +175,12 @@ def credits_():
 @app.route(Util.get_apj_data(apj_id=Const.APJ_ID_SPONSORSHIP, specific_key=PhKeys.APP_URL), methods=('GET', 'POST'))
 def sponsorship():
     return app_handler.handle_requests(apj_id=Const.APJ_ID_SPONSORSHIP, log=log)
+
+
+@sitemapper.include(lastmod=Const.DEPLOYMENT_DATE_API)
+@app.route(Util.get_apj_data(apj_id=Const.APJ_ID_LOGIN, specific_key=PhKeys.APP_URL), methods=('GET', 'POST'))
+def login():
+    return app_handler.handle_requests(apj_id=Const.APJ_ID_LOGIN, log=log)
 
 
 @app.errorhandler(Util.get_apj_data(apj_id=Const.APJ_ID_404, specific_key=PhKeys.APP_CODE))

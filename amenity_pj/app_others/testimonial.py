@@ -27,7 +27,7 @@ def handle_requests(apj_id, api, log, default_data, **kwargs):
         conn.close()
         app_data.update({PhKeys.TESTIMONIAL_POSTS: posts})
         return Util.request_post(request=request, apj_id=apj_id, api=api, log=log, output_data=app_data)
-    elif request.method == PhKeys.POST:
+    if request.method == PhKeys.POST:
         title = request.form['title']
         content = request.form['content']
         publisher = request.form['publisher']
