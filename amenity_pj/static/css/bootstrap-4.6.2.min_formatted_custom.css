@@ -113,4 +113,28 @@ for 2nd Nav Bar (Apps)
     box-shadow: 0 0 0 .2rem rgba(0, 123, 255, .25)
 }
 
+.img-credits {
+    height: 15%;
+    width: 15%;
+}
+
+.img-credits-github {
+    height: 7%;
+    width: 7%;
+}
+
+.img-credits-lets-encrypt {
+    width: 11%;
+}
+
+.nav-link-page {
+    /* override property of nav-link; display: block; */
+    display: inline-block;
+}
+
+.nav-link-page-image {
+    /* override property of nav-link; display: block; */
+    display: inline;
+}
+
 /* New Stuff - Experimental*/

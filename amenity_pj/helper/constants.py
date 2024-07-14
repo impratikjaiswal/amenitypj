@@ -125,6 +125,11 @@ class Const:
         APJ_ID_CERT_PLAY,
     ]
 
+    WHATS_NEW_LIST = [
+        APJ_ID_AMENITY_PJ,
+        APJ_ID_ASN1_PLAY,
+    ]
+
     ####################
     # Common Data All
     ####################

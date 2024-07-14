@@ -1,7 +1,7 @@
 import copy
 from datetime import datetime
 
-from flask import request
+from flask import request, flash
 from python_helpers.ph_keys import PhKeys
 from python_helpers.ph_util import PhUtil
 
@@ -63,6 +63,8 @@ def handle_requests(apj_id, **kwargs):
         Util.user_visit(request=request, log=log)
     if apj_id == Const.APJ_ID_AMENITY_PJ:
         set_server_name()
+    if apj_id in Const.WHATS_NEW_LIST:
+        whats_new(apj_id)
     common_data = Util.get_apj_data(apj_id=apj_id).copy()
     if common_data:
         github_url = common_data.get(PhKeys.APP_GITHUB_URL, Defaults.GITHUB_REPO)
@@ -78,7 +80,7 @@ def handle_requests(apj_id, **kwargs):
                 for nav_bar_app_item in data:
                     nav_bar_app_item['url'] = nav_bar_app_item['url'] + request_path
                 common_data.update({PhKeys.NAV_BAR_APP_ITEMS: data})
-    # TODO: Migrate to 3.10 or above for Switch Statement
+    # TODO: Migrate to python 3.10 or above for Switch Statement
     # def number_to_string(argument):
     #     match argument:
     #         case 0:
@@ -132,3 +134,7 @@ def handle_requests(apj_id, **kwargs):
     # ######################
     Util.request_pre(request=request, apj_id=apj_id, api=api, log=log)
     return Util.request_post(request=request, apj_id=apj_id, api=api, log=log, output_data=common_data)
+
+
+def whats_new(apj_id):
+    flash('asn1Play now supports SGP32 v1.2')
