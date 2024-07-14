@@ -128,6 +128,7 @@ class Const:
     WHATS_NEW_LIST = [
         APJ_ID_AMENITY_PJ,
         APJ_ID_ASN1_PLAY,
+        APJ_ID_TLV_PLAY,
     ]
 
     ####################

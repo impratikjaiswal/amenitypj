@@ -137,4 +137,11 @@ def handle_requests(apj_id, **kwargs):
 
 
 def whats_new(apj_id):
-    flash('asn1Play now supports SGP32 v1.2')
+    asn1_play_news = 'ASN1 Play now supports SGP32 v1.2'
+    tlv_play_news = 'TLV Play now supports Base 64 data'
+    default_news = asn1_play_news
+    news_mapping = {
+        Const.APJ_ID_AMENITY_PJ: asn1_play_news,
+        Const.APJ_ID_TLV_PLAY: tlv_play_news,
+    }
+    flash(news_mapping.get(apj_id, default_news))
