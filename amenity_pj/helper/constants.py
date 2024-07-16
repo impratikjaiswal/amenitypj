@@ -67,6 +67,10 @@ class Const:
     HOST_ADDRESS_ALPHA = 'https://alpha.amenitypj.in'
     HOST_ADDRESS_PAST = 'https://past.amenitypj.in'
 
+    NAV_ITEMS_MAPPING_URL_FOR = [
+        {'text': 'Get API', 'url': ''}
+    ]
+
     NAV_ITEMS_MAPPING = {
         'beta':
             [
@@ -117,6 +121,10 @@ class Const:
         PhKeys.INFO_DATA: PhConstants.STR_EMPTY,
     }
 
+    INDEX_LIST = [
+        APJ_ID_AMENITY_PJ,
+    ]
+
     APPS_LIST = [
         APJ_ID_ASN1_PLAY,
         APJ_ID_TLV_PLAY,
@@ -124,6 +132,8 @@ class Const:
         APJ_ID_EXCEL_PLAY,
         APJ_ID_CERT_PLAY,
     ]
+
+    APPS_LIST_W_INDEX = INDEX_LIST + APPS_LIST
 
     WHATS_NEW_LIST = [
         APJ_ID_AMENITY_PJ,

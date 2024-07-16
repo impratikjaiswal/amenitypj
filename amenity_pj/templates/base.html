@@ -73,7 +73,7 @@
 </nav>
 <div class="container-fluid">
     <div class="row">
-        {% if app_parent_title %}
+        {% if nav_bar_app_items %}
             {# <nav class="navbar navbar-expand-md navbar-inverse bg-light fixed-top fixed-top-2">#}
             <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
                 <a class="navbar-brand navbar-brand-2" href="{{ url_for(request.endpoint) }}">{{ app_title }}</a>
@@ -83,9 +83,6 @@
                 </button>
                 <div class="sidebar-sticky pt-3" id="navbarNavApps">
                     <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url_for(request.endpoint, api=True) }}">Get API</a>
-                        </li>
                         {% for nav_bar_app_item in nav_bar_app_items %}
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ nav_bar_app_item['url'] }}" target="_blank"

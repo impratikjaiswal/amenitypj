@@ -14,7 +14,7 @@ $(document).ready(function () {
     $('#swap_input_output_format').bind('click', function () {
         // debugData("swap_input_output_format is pressed.");
         swapInputOutputFormat();
-        $(this).toggleClass("btn-rotate-transform")  ;
+        $(this).toggleClass("btn-rotate-transform");
     });
     $('#process_re_parse_output').bind('click', function () {
         // debugData("process_re_parse_output is pressed.");

@@ -1,7 +1,7 @@
 import copy
 from datetime import datetime
 
-from flask import request, flash
+from flask import request, flash, url_for
 from python_helpers.ph_keys import PhKeys
 from python_helpers.ph_util import PhUtil
 
@@ -28,6 +28,7 @@ def set_server_name():
     if 'Host' in request.headers:
         host_name = request.headers['Host']
     else:
+        # TODO: Alternate needs to check
         host_name = ''
     if host_name:
         # TODO: Optimize it
@@ -57,7 +58,10 @@ def handle_requests(apj_id, **kwargs):
     internal = kwargs.get(PhKeys.INTERNAL, Defaults.INTERNAL)
     testimonial_post_id = kwargs.get(PhKeys.TESTIMONIAL_POST_ID, -1)
     #
+    # TODO: Alternate needs to check
     request_path = request.path
+    # TODO: Alternate needs to check
+    request_endpoint = request.endpoint
     #
     if not internal:
         Util.user_visit(request=request, log=log)
@@ -74,12 +78,17 @@ def handle_requests(apj_id, **kwargs):
                 {PhKeys.APP_GITHUB_PAGES_URL: Util.get_github_url(github_repo=github_url, github_pages=True)})
         if host_name:
             common_data.update({PhKeys.APP_HOST: f'({host_name})'})
+            nav_data_url_for = []
             if apj_id in Const.APPS_LIST:
-                # data = nav_bar_app_items.copy()
-                data = copy.deepcopy(nav_bar_app_items)
-                for nav_bar_app_item in data:
+                nav_data_url_for = copy.deepcopy(Const.NAV_ITEMS_MAPPING_URL_FOR)
+                for nav_bar_app_item in nav_data_url_for:
+                    nav_bar_app_item['url'] = url_for(request_endpoint, api=True)
+            nav_data = []
+            if apj_id in Const.APPS_LIST_W_INDEX:
+                nav_data = copy.deepcopy(nav_bar_app_items)
+                for nav_bar_app_item in nav_data:
                     nav_bar_app_item['url'] = nav_bar_app_item['url'] + request_path
-                common_data.update({PhKeys.NAV_BAR_APP_ITEMS: data})
+            common_data.update({PhKeys.NAV_BAR_APP_ITEMS: nav_data_url_for + nav_data})
     # TODO: Migrate to python 3.10 or above for Switch Statement
     # def number_to_string(argument):
     #     match argument:
