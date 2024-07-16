@@ -14,10 +14,12 @@ $(document).ready(function () {
         // Attach an "input" event listener to input_data
         characterCounterInputData();
     });
+    // navChangeActiveLinkOnClick();
+    // navChangeActiveLinkOnScroll();
     // debugData("Done custom.js");
 });
 
-function htmlToJs(vars){
+function htmlToJs(vars) {
     debugData(vars)
 }
 
@@ -93,3 +95,34 @@ function copyToClipboard(event) {
 //    // Optional: Display an error message to the user
 //  }
 //};
+
+function navChangeActiveLinkOnClick() {
+    // TODO: Not Working
+    /* Code for changing active link on clicking */
+    var btns = $("#navbarNav .navbar-nav .nav-item");
+    for (let i = 0; i < btns.length; i++) {
+        btns[i].addEventListener("click", function () {
+            var current = document.getElementsByClassName("active");
+            if (current.length > 0) {
+                current[0].className = current[0].className.replace(" active", "");
+            }
+            this.className += " active";
+        });
+    }
+}
+
+function navChangeActiveLinkOnScroll() {
+    // TODO: To validate
+    /* Code for changing active link on Scrolling */
+    $(window).scroll(function () {
+        var distance = $(window).scrollTop();
+        $('.page-section').each(function (i) {
+            if ($(this).position().top <= distance + 250) {
+                $('.navbar-nav a.active')
+                    .removeClass('active');
+                $('.navbar-nav a').eq(i)
+                    .addClass('active');
+            }
+        });
+    }).scroll();
+}

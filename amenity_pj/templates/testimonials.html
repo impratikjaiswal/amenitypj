@@ -4,12 +4,7 @@
 {% block title %}{{ app_title }}{% endblock %}
 {# Page Specific Content #}
 {% block content %}
-    <h1>{{ app_title }} {{ app_version }}</h1>
-    <a href="{{ app_github_pages_url }}" rel="noopener noreferrer" target="_blank">
-        <span class="badge badge-success">@Github</span>
-    </a>
-    <BR>
-    <h6>{{ app_description }}</h6>
+    {% include 'header.html' %}
     {% for testimonial_post in testimonial_posts %}
         <!-- <a href="#"> -->
         <a href="{{ url_for('testimonials_post', testimonial_post_id=testimonial_post['id']) }}">

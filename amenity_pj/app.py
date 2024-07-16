@@ -28,6 +28,9 @@ host_name = None
 # yield Const.END_POINT_INDEX, {}
 # yield Const.END_POINT_INDEX, {}, Const.DEPLOYMENT_DATE, 'monthly'
 
+log_max_bytes = 1000000
+log_max_backup_count = 1000
+log_file_name = 'amenitypj.log'
 
 dictConfig(
     {
@@ -46,22 +49,22 @@ dictConfig(
             },
             "file": {
                 "class": "logging.FileHandler",
-                "filename": "amenitypj.log",
+                "filename": log_file_name,
                 "formatter": "default",
             },
             "size-rotate": {
                 "class": "logging.handlers.RotatingFileHandler",
-                "filename": "amenitypj.log",
-                "maxBytes": 1000000,
-                "backupCount": 5,
+                "filename": log_file_name,
+                "maxBytes": log_max_bytes,
+                "backupCount": log_max_backup_count,
                 "formatter": "default",
             },
             "time-rotate": {
                 "class": "logging.handlers.TimedRotatingFileHandler",
-                "filename": "amenitypj.log",
+                "filename": log_file_name,
                 "when": "D",
                 "interval": 10,
-                "backupCount": 5,
+                "backupCount": log_max_backup_count,
                 "formatter": "default",
             },
         },

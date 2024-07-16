@@ -28,9 +28,9 @@ def handle_requests(apj_id, api, log, default_data, **kwargs):
         app_data.update({PhKeys.TESTIMONIAL_POSTS: posts})
         return Util.request_post(request=request, apj_id=apj_id, api=api, log=log, output_data=app_data)
     if request.method == PhKeys.POST:
-        title = request.form['title']
-        content = request.form['content']
-        publisher = request.form['publisher']
+        title = request.form['title'] # TODO: TESTIMONIAL_POST_TITLE
+        content = request.form['content'] # TESTIMONIAL_POST_CONTENT
+        publisher = request.form['publisher'] # TESTIMONIAL_POST_PUBLISHER
         if not title:
             flash('Title is required!')
         else:

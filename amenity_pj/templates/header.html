@@ -1,5 +1,5 @@
 <div>
-    <h1 class="display-inline"> Welcome to {{ app_title }} {{ app_version }} </h1>
+    <h1 class="display-inline"> {{ app_title_pre }} {{ app_title }} {{ app_version }} {{ app_title_post }}</h1>
     <h5 class="display-inline"> {{ app_parent_title }} {{ app_parent_version }} </h5>
     <h6 class="display-inline"> {{ app_host }} </h6>
     {% if app_git_summary %}
@@ -8,9 +8,11 @@
         <BR>
         <div class="collapse very-small right" id="gitInfoCollapse">{{ app_git_summary }}</div>
     {% endif %}
-    <a href="{{ app_github_pages_url }}" rel="noopener noreferrer" target="_blank">
-        <span class="badge badge-success">@Github</span>
-    </a>
+    {% if app_github_pages_url %}
+        <a href="{{ app_github_pages_url }}" rel="noopener noreferrer" target="_blank">
+            <span class="badge badge-success">@Github</span>
+        </a>
+    {% endif %}
     {% if samples %}
         <a href="#samples_section" rel="noopener noreferrer">
             <span class="badge badge-info">Jump To Samples</span>
@@ -18,4 +20,5 @@
     {% endif %}
     <BR>
     <div><h6>{{ app_description }}</h6></div>
+    <div><h3>{{ app_description_level_2 }}</h3></div>
 </div>

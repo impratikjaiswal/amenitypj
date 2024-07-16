@@ -138,6 +138,7 @@ class Const:
         #
         APJ_ID_AMENITY_PJ:
             {
+                PhKeys.APP_TITLE_PRE: Defaults.APP_WELCOME,
                 PhKeys.APP_TITLE: TITLE_AMENITY_PJ,
                 PhKeys.APP_DESCRIPTION: f'{TITLE_AMENITY_PJ} offers a playground for various open source tools ('
                                         f'amenities) such as ASN1 Play, TLV Play, QR Play, Cert Play, Excel Play '
@@ -192,6 +193,7 @@ class Const:
                 PhKeys.APP_DESCRIPTION: Defaults.DESCRIPTION,
                 PhKeys.APP_URL: '/sponsorship',
                 PhKeys.APP_TEMPLATE: TEMPLATE_WIP,
+                PhKeys.APP_DESCRIPTION_LEVEL_2: Defaults.DESCRIPTION_WIP,
                 PhKeys.APP_END_POINT: END_POINT_SPONSORSHIP,
             },
         #
@@ -224,6 +226,7 @@ class Const:
         #
         APJ_ID_ASN1_PLAY:
             {
+                PhKeys.APP_TITLE_PRE: Defaults.APP_WELCOME,
                 PhKeys.APP_TITLE: 'ASN1 Play',
                 PhKeys.APP_VERSION: ConfigConst_Asn1Play.TOOL_VERSION_DETAILED,
                 PhKeys.APP_DESCRIPTION: 'ASN1 Encoder & Decoder based on pycrate.',
@@ -242,6 +245,7 @@ class Const:
         #
         APJ_ID_TLV_PLAY:
             {
+                PhKeys.APP_TITLE_PRE: Defaults.APP_WELCOME,
                 PhKeys.APP_TITLE: 'TLV Play',
                 PhKeys.APP_VERSION: ConfigConst_TlvPlay.TOOL_VERSION,
                 PhKeys.APP_DESCRIPTION: 'Generic TLV Parser. Will parse any TLV upto nth Level.',
@@ -255,6 +259,7 @@ class Const:
         #
         APJ_ID_QR_PLAY:
             {
+                PhKeys.APP_TITLE_PRE: Defaults.APP_WELCOME,
                 PhKeys.APP_TITLE: 'QR Play',
                 PhKeys.APP_VERSION: ConfigConst_QrPlay.TOOL_VERSION_DETAILED,
                 PhKeys.APP_DESCRIPTION: 'Qr Code Generator based on Segno. Can Generate Single as well as Multiple Qr codes.',
@@ -268,6 +273,7 @@ class Const:
         #
         APJ_ID_EXCEL_PLAY:
             {
+                # PhKeys.APP_TITLE_PRE: Defaults.APP_WELCOME,
                 PhKeys.APP_TITLE: 'Excel Play',
                 PhKeys.APP_VERSION: ConfigConst_ExcelPlay.TOOL_VERSION_DETAILED,
                 PhKeys.APP_DESCRIPTION: 'Export one or more Excel file(s) with single or multiple sheets to several files each containing one sheet.',
@@ -277,11 +283,13 @@ class Const:
                 PhKeys.APP_URL_API: '/api/excelPlay',
                 # PhKeys.APP_TEMPLATE:  'excelPlay.html',
                 PhKeys.APP_TEMPLATE: TEMPLATE_WIP,
+                PhKeys.APP_DESCRIPTION_LEVEL_2: Defaults.DESCRIPTION_WIP,
                 PhKeys.APP_END_POINT: END_POINT_EXCEL_PLAY,
             },
         #
         APJ_ID_CERT_PLAY:
             {
+                PhKeys.APP_TITLE_PRE: Defaults.APP_WELCOME,
                 PhKeys.APP_TITLE: 'Cert Play',
                 PhKeys.APP_VERSION: ConfigConst_CertPlay.TOOL_VERSION_DETAILED,
                 PhKeys.APP_DESCRIPTION: 'OpenSSL based Cert Parser. Will parse any TLS cert.',
