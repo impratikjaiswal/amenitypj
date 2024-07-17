@@ -52,6 +52,7 @@ class Const:
     END_POINT_CREDITS = 'credits_'
     END_POINT_SPONSORSHIP = 'sponsorship'
     END_POINT_ASN1_PLAY = 'asn1_play'
+    END_POINT_ASN1_PLAY_ASN1_OBJECTS = 'asn1_play_asn1_objects'
     END_POINT_TLV_PLAY = 'tlv_play'
     END_POINT_QR_PLAY = 'qr_play'
     END_POINT_EXCEL_PLAY = 'excel_play'
@@ -67,9 +68,23 @@ class Const:
     HOST_ADDRESS_ALPHA = 'https://alpha.amenitypj.in'
     HOST_ADDRESS_PAST = 'https://past.amenitypj.in'
 
+    ####################
+    # APIs
+    ####################
+    GET_API = 'Get API'
+    GET_ASN1_OBJECTS = 'Get ASN1 Objects'
+    DEFAULT_URL_FOR_API = ''
+
     NAV_ITEMS_MAPPING_URL_FOR = [
-        {'text': 'Get API', 'url': ''}
+        {'text': GET_API, 'url': DEFAULT_URL_FOR_API}
     ]
+
+    NAV_ITEMS_MAPPING_APP_SPECIFIC = {
+        APJ_ID_ASN1_PLAY:
+            [
+                {'text': GET_ASN1_OBJECTS, 'url': DEFAULT_URL_FOR_API},
+            ],
+    }
 
     NAV_ITEMS_MAPPING = {
         'beta':
@@ -103,9 +118,19 @@ class Const:
     }
 
     ####################
-    # Common or without end points Constants
+    # Titles
     ####################
     TITLE_AMENITY_PJ = ConfigConst_AmenityPj.TOOL_TITLE
+    # TODO: Tool Title in every tools config
+    TITLE_ASN1_PLAY = 'ASN1 Play'
+    TITLE_TLV_PLAY = 'TLV Play'
+    TITLE_QR_PLAY = 'QR Play'
+    TITLE_EXCEL_PLAY = 'Excel Play'
+    TITLE_CERT_PLAY = 'Cert Play'
+
+    ####################
+    # Common or without end points Constants
+    ####################
     VERSION_AMENITY_PJ = ConfigConst_AmenityPj.TOOL_VERSION_DETAILED
     TEMPLATE_WIP = 'wip.html'
 
@@ -135,11 +160,7 @@ class Const:
 
     APPS_LIST_W_INDEX = INDEX_LIST + APPS_LIST
 
-    WHATS_NEW_LIST = [
-        APJ_ID_AMENITY_PJ,
-        APJ_ID_ASN1_PLAY,
-        APJ_ID_TLV_PLAY,
-    ]
+    WHATS_NEW_LIST = APPS_LIST_W_INDEX
 
     ####################
     # Common Data All
@@ -237,7 +258,7 @@ class Const:
         APJ_ID_ASN1_PLAY:
             {
                 PhKeys.APP_TITLE_PRE: Defaults.APP_WELCOME,
-                PhKeys.APP_TITLE: 'ASN1 Play',
+                PhKeys.APP_TITLE: TITLE_ASN1_PLAY,
                 PhKeys.APP_VERSION: ConfigConst_Asn1Play.TOOL_VERSION_DETAILED,
                 PhKeys.APP_DESCRIPTION: 'ASN1 Encoder & Decoder based on pycrate.',
                 PhKeys.APP_GITHUB_URL: 'asn1Play',
@@ -251,12 +272,13 @@ class Const:
         APJ_ID_ASN1_PLAY_ASN1_OBJECTS:
             {
                 PhKeys.APP_URL: '/asn1Play/asn1Objects',
+                PhKeys.APP_END_POINT: END_POINT_ASN1_PLAY_ASN1_OBJECTS
             },
         #
         APJ_ID_TLV_PLAY:
             {
                 PhKeys.APP_TITLE_PRE: Defaults.APP_WELCOME,
-                PhKeys.APP_TITLE: 'TLV Play',
+                PhKeys.APP_TITLE: TITLE_TLV_PLAY,
                 PhKeys.APP_VERSION: ConfigConst_TlvPlay.TOOL_VERSION,
                 PhKeys.APP_DESCRIPTION: 'Generic TLV Parser. Will parse any TLV upto nth Level.',
                 PhKeys.APP_GITHUB_URL: 'tlvPlay',
@@ -270,7 +292,7 @@ class Const:
         APJ_ID_QR_PLAY:
             {
                 PhKeys.APP_TITLE_PRE: Defaults.APP_WELCOME,
-                PhKeys.APP_TITLE: 'QR Play',
+                PhKeys.APP_TITLE: TITLE_QR_PLAY,
                 PhKeys.APP_VERSION: ConfigConst_QrPlay.TOOL_VERSION_DETAILED,
                 PhKeys.APP_DESCRIPTION: 'Qr Code Generator based on Segno. Can Generate Single as well as Multiple Qr codes.',
                 PhKeys.APP_GITHUB_URL: 'qrPlay',
@@ -284,7 +306,7 @@ class Const:
         APJ_ID_EXCEL_PLAY:
             {
                 # PhKeys.APP_TITLE_PRE: Defaults.APP_WELCOME,
-                PhKeys.APP_TITLE: 'Excel Play',
+                PhKeys.APP_TITLE: TITLE_EXCEL_PLAY,
                 PhKeys.APP_VERSION: ConfigConst_ExcelPlay.TOOL_VERSION_DETAILED,
                 PhKeys.APP_DESCRIPTION: 'Export one or more Excel file(s) with single or multiple sheets to several files each containing one sheet.',
                 PhKeys.APP_GITHUB_URL: 'excelPlay',
@@ -300,7 +322,7 @@ class Const:
         APJ_ID_CERT_PLAY:
             {
                 PhKeys.APP_TITLE_PRE: Defaults.APP_WELCOME,
-                PhKeys.APP_TITLE: 'Cert Play',
+                PhKeys.APP_TITLE: TITLE_CERT_PLAY,
                 PhKeys.APP_VERSION: ConfigConst_CertPlay.TOOL_VERSION_DETAILED,
                 PhKeys.APP_DESCRIPTION: 'OpenSSL based Cert Parser. Will parse any TLS cert.',
                 PhKeys.APP_GITHUB_URL: 'certPlay',
@@ -323,6 +345,7 @@ class Const:
         END_POINT_CREDITS: APJ_ID_CREDITS,
         END_POINT_SPONSORSHIP: APJ_ID_SPONSORSHIP,
         END_POINT_ASN1_PLAY: APJ_ID_ASN1_PLAY,
+        END_POINT_ASN1_PLAY_ASN1_OBJECTS: APJ_ID_ASN1_PLAY_ASN1_OBJECTS,
         END_POINT_TLV_PLAY: APJ_ID_TLV_PLAY,
         END_POINT_QR_PLAY: APJ_ID_QR_PLAY,
         END_POINT_EXCEL_PLAY: APJ_ID_EXCEL_PLAY,

@@ -1,4 +1,5 @@
 import copy
+import random
 from datetime import datetime
 
 from flask import request, flash, url_for
@@ -78,17 +79,27 @@ def handle_requests(apj_id, **kwargs):
                 {PhKeys.APP_GITHUB_PAGES_URL: Util.get_github_url(github_repo=github_url, github_pages=True)})
         if host_name:
             common_data.update({PhKeys.APP_HOST: f'({host_name})'})
-            nav_data_url_for = []
-            if apj_id in Const.APPS_LIST:
-                nav_data_url_for = copy.deepcopy(Const.NAV_ITEMS_MAPPING_URL_FOR)
-                for nav_bar_app_item in nav_data_url_for:
+        nav_data_url_for = []
+        nav_data = []
+        nav_data_app_specific = []
+        if apj_id in Const.APPS_LIST:
+            nav_data_url_for = copy.deepcopy(Const.NAV_ITEMS_MAPPING_URL_FOR)
+            for nav_bar_app_item in nav_data_url_for:
+                if nav_bar_app_item['text'] == Const.GET_API:
                     nav_bar_app_item['url'] = url_for(request_endpoint, api=True)
-            nav_data = []
-            if apj_id in Const.APPS_LIST_W_INDEX:
-                nav_data = copy.deepcopy(nav_bar_app_items)
-                for nav_bar_app_item in nav_data:
-                    nav_bar_app_item['url'] = nav_bar_app_item['url'] + request_path
-            common_data.update({PhKeys.NAV_BAR_APP_ITEMS: nav_data_url_for + nav_data})
+        if nav_bar_app_items and apj_id in Const.APPS_LIST_W_INDEX:
+            nav_data = copy.deepcopy(nav_bar_app_items)
+            for nav_bar_app_item in nav_data:
+                nav_bar_app_item['url'] = nav_bar_app_item['url'] + request_path
+        if apj_id in Const.APPS_LIST:
+            if mapping_data := Const.NAV_ITEMS_MAPPING_APP_SPECIFIC.get(apj_id, None):
+                nav_data_app_specific = copy.deepcopy(mapping_data)
+                for nav_bar_app_item in nav_data_app_specific:
+                    if nav_bar_app_item['text'] == Const.GET_ASN1_OBJECTS:
+                        nav_bar_app_item['url'] = url_for(
+                            Util.get_apj_data(apj_id=Const.APJ_ID_ASN1_PLAY_ASN1_OBJECTS,
+                                              specific_key=PhKeys.APP_END_POINT))
+        common_data.update({PhKeys.NAV_BAR_APP_ITEMS: nav_data_url_for + nav_data_app_specific + nav_data})
     # TODO: Migrate to python 3.10 or above for Switch Statement
     # def number_to_string(argument):
     #     match argument:
@@ -146,11 +157,52 @@ def handle_requests(apj_id, **kwargs):
 
 
 def whats_new(apj_id):
-    asn1_play_news = 'ASN1 Play now supports SGP32 v1.2'
-    tlv_play_news = 'TLV Play now supports Base 64 data'
-    default_news = asn1_play_news
     news_mapping = {
-        Const.APJ_ID_AMENITY_PJ: asn1_play_news,
-        Const.APJ_ID_TLV_PLAY: tlv_play_news,
+        Const.APJ_ID_ASN1_PLAY:
+            [
+                #
+                f'{Const.TITLE_ASN1_PLAY} now supports SGP32 v1.2',
+                #
+                f'{Const.TITLE_ASN1_PLAY} will auto trim the Quotation marks \"\" or \'\' if present',
+                #
+                f'To convert any APDU in {Const.TITLE_ASN1_PLAY}, please trim the last 2 bytes of SW/Status Word ('
+                f'e.g: 9000)',
+                #
+            ],
+        Const.APJ_ID_TLV_PLAY:
+            [
+                #
+                f'{Const.TITLE_TLV_PLAY} now supports Base 64 data',
+                #
+                f'if "Value is Ascii" is selected, {Const.TITLE_TLV_PLAY} converts hex data to ascii where ever '
+                f'possible.',
+                #
+            ],
+        Const.APJ_ID_QR_PLAY:
+            [
+                #
+                f'if "Auto Split Qrs" is selected, {Const.TITLE_QR_PLAY} breaks data in multiple chunks if data does '
+                f'not fit in one QR',
+                #
+            ],
+        # Const.APJ_ID_EXCEL_PLAY:
+        #     [],
+        Const.APJ_ID_CERT_PLAY:
+            [
+                #
+                f'{Const.TITLE_CERT_PLAY} Automatically takes care of Open SSL format (-----BEGIN CERTIFICATE-----, -----END '
+                f'CERTIFICATE-----)',
+                #
+            ],
     }
-    flash(news_mapping.get(apj_id, default_news))
+    news_data_pool = news_mapping.get(apj_id, None)
+    if news_data_pool is None:
+        # TODO: Util
+        # https://www.geeksforgeeks.org/random-numbers-in-python/
+        apj_id_new = random.choice(Const.WHATS_NEW_LIST)
+        news_data_pool = news_mapping.get(apj_id_new, None)
+    if news_data_pool is None:
+        return
+    news_count = len(news_data_pool)
+    news_index = random.choice(range(news_count))
+    flash(news_data_pool[news_index])

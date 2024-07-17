@@ -146,6 +146,8 @@ def handle_asn1_objects(**kwargs):
     selected_asn1_object_js = request.args.get('selected_asn1_object_js', type=str)
     print(f'selected_asn1_schema_js: {selected_asn1_schema_js}')
     print(f'selected_asn1_object_js: {selected_asn1_object_js}')
+    if not selected_asn1_schema_js:
+        return jsonify(html_string_selected='')
     updated_values = get_asn1_objects_list(selected_asn1_schema_js)
     html_string_selected = ''
     for entry in updated_values:
