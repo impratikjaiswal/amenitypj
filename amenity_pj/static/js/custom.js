@@ -1,10 +1,19 @@
-const btn_copy_output = document.querySelector("#process_copy_output");
-const btn_copy_info = document.querySelector("#process_copy_info");
+const btn_copy_input = document.querySelector("#copy_input_data");
+const btn_copy_output = document.querySelector("#copy_output_data");
+const btn_copy_info = document.querySelector("#copy_info_data");
+
+btn_copy_input.addEventListener("click", copyToClipboard, false);
+btn_copy_input.source_field = "#input_data"
+btn_copy_input.source_type = "textarea"
 
 btn_copy_output.addEventListener("click", copyToClipboard, false);
 btn_copy_output.source_field = "#output_statement"
+btn_copy_output.source_type = "div"
+
 btn_copy_info.addEventListener("click", copyToClipboard, false);
 btn_copy_info.source_field = "#info_statement"
+btn_copy_info.source_type = "div"
+
 //btn_copy_output.addEventListener("mouseout", copyToClipboardToolTip, false);
 //btn_copy_output.addEventListener("mousedown", logEvent);
 //btn_copy_output.addEventListener("mouseup", logEvent);
@@ -68,15 +77,27 @@ function debugData(msg, alert_user = true, clear_previous = true) {
 }
 
 function copyToClipboard(event) {
-    event.preventDefault();
+    $(this).toggleClass("btn-image-rotate-y");
     let msg = "";
     let source_field = event.currentTarget.source_field
-    // ID of the object, working fine with div
-    const element = document.querySelector(source_field);
-    // represents inner tags
-    // let data_text_content = element.textContent
-    // represents exactly how text appears on the page
-    let data_inner_text = element.innerText
+    let source_type = event.currentTarget.source_type
+    let data_inner_text = "";
+    // if (trigger_type == "button") {
+    //     // preventDefault is needed for buttons
+    //     event.preventDefault();
+    // }
+    if (source_type == "div") {
+        // ID of the object
+        const element = document.querySelector(source_field);
+        // represents inner tags
+        // let data_text_content = element.textContent
+        // represents exactly how text appears on the page
+        data_inner_text = element.innerText
+    } else if (source_type == "textarea") {
+        // ID of the object
+        const element = $(source_field);
+        data_inner_text = element.val()
+    }
     navigator.clipboard.writeText(data_inner_text)
 
     //  var tooltip = document.getElementById("copy_clipboard_tool_tip");
@@ -88,7 +109,6 @@ function copyToClipboard(event) {
     //  msg += "data_text_content: " + data_text_content + "<br>";
     //  document.getElementById("debug_data").innerHTML += msg;
 }
-
 
 //function copyToClipboardToolTip() {
 //  var tooltip = document.getElementById("copy_clipboard_tool_tip");
