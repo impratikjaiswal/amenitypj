@@ -36,8 +36,8 @@
     display: inline;
 }
 
-/* Rotate Button - Initial */
-.btn-rotate-initial {
+/* Button Image - Initial */
+.btn-image-initial {
     border: none;
     cursor: pointer;
     appearance: none;
@@ -46,9 +46,19 @@
     margin-left: 10px;
 }
 
-/* Rotate Button - Transform */
-.btn-rotate-transform {
+/* Button Image - Rotate */
+.btn-image-rotate {
     transform: rotate(360deg);
+}
+
+/* Button Image - RotateY */
+.btn-image-rotate-y {
+    transform: rotateY(360deg);
+}
+
+/* Button Image - RotateY */
+.btn-image-rotate-x {
+    transform: rotateX(360deg);
 }
 
 .div-404 {

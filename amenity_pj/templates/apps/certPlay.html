@@ -6,14 +6,7 @@
 {% block content %}
     {% include 'header.html' %}
     <form method="post">
-        <div class="form-group">
-            <label for="input_data">Input Data</label>
-            <div class="badge float-right">
-                Length: <span id="input_data_char_count">0</span>
-            </div>
-            <textarea name="input_data" placeholder="Input Data" class="form-control" rows="3"
-                      id="input_data">{{ input_data }}</textarea>
-        </div>
+		{% include 'input_data.html' %}
         <div class="form-row">
             <div class="form-group col">
                 <label for="input_format">Input Format</label>
