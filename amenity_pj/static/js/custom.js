@@ -30,11 +30,17 @@ function htmlToJs(vars) {
 function pageLoad() {
     // debugData("pageLoad: custom.js");
     characterCounterInputData();
+    characterCounterInfoData();
     characterCounterOutputData();
 }
 
 function characterCounterInputData() {
     $("#input_data_char_count").text($("#input_data").val().length);
+}
+
+function characterCounterInfoData() {
+    const length_of_info_statement_initial_text = 14
+    $("#info_data_char_count").text(($("#info_statement").text().length - length_of_info_statement_initial_text));
 }
 
 function characterCounterOutputData() {
