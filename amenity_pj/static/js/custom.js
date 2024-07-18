@@ -78,14 +78,11 @@ function debugData(msg, alert_user = true, clear_previous = true) {
 
 function copyToClipboard(event) {
     $(this).toggleClass("btn-image-rotate-y");
+    event.preventDefault();
     let msg = "";
     let source_field = event.currentTarget.source_field
     let source_type = event.currentTarget.source_type
     let data_inner_text = "";
-    // if (trigger_type == "button") {
-    //     // preventDefault is needed for buttons
-    //     event.preventDefault();
-    // }
     if (source_type == "div") {
         // ID of the object
         const element = document.querySelector(source_field);
