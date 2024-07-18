@@ -1,11 +1,15 @@
-const copy_button = document.querySelector("#process_copy_clipboard");
+const btn_copy_output = document.querySelector("#process_copy_output");
+const btn_copy_info = document.querySelector("#process_copy_info");
 
-copy_button.addEventListener("click", copyToClipboard, false);
-//copy_button.addEventListener("mouseout", copyToClipboardToolTip, false);
-//copy_button.addEventListener("mousedown", logEvent);
-//copy_button.addEventListener("mouseup", logEvent);
-//copy_button.addEventListener("mouseenter", logEvent);
-//copy_button.addEventListener("mouseleave", logEvent);
+btn_copy_output.addEventListener("click", copyToClipboard, false);
+btn_copy_output.source_field = "#output_statement"
+btn_copy_info.addEventListener("click", copyToClipboard, false);
+btn_copy_info.source_field = "#info_statement"
+//btn_copy_output.addEventListener("mouseout", copyToClipboardToolTip, false);
+//btn_copy_output.addEventListener("mousedown", logEvent);
+//btn_copy_output.addEventListener("mouseup", logEvent);
+//btn_copy_output.addEventListener("mouseenter", logEvent);
+//btn_copy_output.addEventListener("mouseleave", logEvent);
 
 $(document).ready(function () {
     // debugData("DOM is ready: custom.js");
@@ -60,8 +64,9 @@ function debugData(msg, alert_user = true, clear_previous = true) {
 function copyToClipboard(event) {
     event.preventDefault();
     let msg = "";
+    let source_field = event.currentTarget.source_field
     // ID of the object, working fine with div
-    const element = document.querySelector("#output_statement");
+    const element = document.querySelector(source_field);
     // represents inner tags
     // let data_text_content = element.textContent
     // represents exactly how text appears on the page

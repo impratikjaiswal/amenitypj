@@ -351,3 +351,48 @@ class Const:
         END_POINT_EXCEL_PLAY: APJ_ID_EXCEL_PLAY,
         END_POINT_CERT_PLAY: APJ_ID_CERT_PLAY,
     }
+
+    ####################
+    # News Data All
+    ####################
+    NEWS_DATA_MAPPING = {
+        #
+        APJ_ID_ASN1_PLAY:
+            [
+                #
+                f'{TITLE_ASN1_PLAY} now supports GSMA SGP.32 v1.1 & v1.2 (GSMA_SGP_32_v1_1, GSMA_SGP_32_v1_2).',
+                #
+                f'{TITLE_ASN1_PLAY} will auto trim the Quotation marks \"\" or \'\' if present.',
+                #
+                f'To convert any APDU in {TITLE_ASN1_PLAY}, please trim the last 2 bytes of SW/Status Word (e.g: 9000).',
+                #
+            ],
+        #
+        APJ_ID_TLV_PLAY:
+            [
+                #
+                f'{TITLE_TLV_PLAY} now supports Base 64 data.',
+                #
+                f'if "Value is Ascii" is selected, {TITLE_TLV_PLAY} converts hex data to ascii where ever possible.',
+                #
+            ],
+        #
+        APJ_ID_QR_PLAY:
+            [
+                #
+                f'if "Auto Split Qrs" is selected, {TITLE_QR_PLAY} breaks data in multiple chunks if data does not '
+                f'fit in one QR.',
+                #
+            ],
+        #
+        # APJ_ID_EXCEL_PLAY:
+        #     [],
+        #
+        APJ_ID_CERT_PLAY:
+            [
+                #
+                f'{TITLE_CERT_PLAY} Automatically takes care of Open SSL format (-----BEGIN CERTIFICATE-----, '
+                f'-----END CERTIFICATE-----).',
+                #
+            ],
+    }

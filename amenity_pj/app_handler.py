@@ -59,16 +59,18 @@ def handle_requests(apj_id, **kwargs):
     internal = kwargs.get(PhKeys.INTERNAL, Defaults.INTERNAL)
     testimonial_post_id = kwargs.get(PhKeys.TESTIMONIAL_POST_ID, -1)
     #
-    # TODO: Alternate needs to check
+    # TODO: Alternative/Availability needs to check
     request_path = request.path
-    # TODO: Alternate needs to check
+    # TODO: Alternative/Availability needs to check
     request_endpoint = request.endpoint
+    # TODO: Alternative/Availability needs to check
+    request_method = request.method
     #
     if not internal:
         Util.user_visit(request=request, log=log)
     if apj_id == Const.APJ_ID_AMENITY_PJ:
         set_server_name()
-    if apj_id in Const.WHATS_NEW_LIST:
+    if request_method == PhKeys.GET and api == Defaults.API and apj_id in Const.WHATS_NEW_LIST:
         whats_new(apj_id)
     common_data = Util.get_apj_data(apj_id=apj_id).copy()
     if common_data:
@@ -157,50 +159,18 @@ def handle_requests(apj_id, **kwargs):
 
 
 def whats_new(apj_id):
-    news_mapping = {
-        Const.APJ_ID_ASN1_PLAY:
-            [
-                #
-                f'{Const.TITLE_ASN1_PLAY} now supports SGP32 v1.2',
-                #
-                f'{Const.TITLE_ASN1_PLAY} will auto trim the Quotation marks \"\" or \'\' if present',
-                #
-                f'To convert any APDU in {Const.TITLE_ASN1_PLAY}, please trim the last 2 bytes of SW/Status Word ('
-                f'e.g: 9000)',
-                #
-            ],
-        Const.APJ_ID_TLV_PLAY:
-            [
-                #
-                f'{Const.TITLE_TLV_PLAY} now supports Base 64 data',
-                #
-                f'if "Value is Ascii" is selected, {Const.TITLE_TLV_PLAY} converts hex data to ascii where ever '
-                f'possible.',
-                #
-            ],
-        Const.APJ_ID_QR_PLAY:
-            [
-                #
-                f'if "Auto Split Qrs" is selected, {Const.TITLE_QR_PLAY} breaks data in multiple chunks if data does '
-                f'not fit in one QR',
-                #
-            ],
-        # Const.APJ_ID_EXCEL_PLAY:
-        #     [],
-        Const.APJ_ID_CERT_PLAY:
-            [
-                #
-                f'{Const.TITLE_CERT_PLAY} Automatically takes care of Open SSL format (-----BEGIN CERTIFICATE-----, -----END '
-                f'CERTIFICATE-----)',
-                #
-            ],
-    }
-    news_data_pool = news_mapping.get(apj_id, None)
+    """
+
+    :param apj_id:
+    :return:
+    """
+
+    news_data_pool = Const.NEWS_DATA_MAPPING.get(apj_id, None)
     if news_data_pool is None:
         # TODO: Util
         # https://www.geeksforgeeks.org/random-numbers-in-python/
         apj_id_new = random.choice(Const.WHATS_NEW_LIST)
-        news_data_pool = news_mapping.get(apj_id_new, None)
+        news_data_pool = Const.NEWS_DATA_MAPPING.get(apj_id_new, None)
     if news_data_pool is None:
         return
     news_count = len(news_data_pool)
