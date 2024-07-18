@@ -133,8 +133,14 @@ for 2nd Nav Bar (Apps)
     width: 7%;
 }
 
+.img-credits-pixabay {
+    height: 6%;
+    width: 6%;
+}
+
 .img-credits-lets-encrypt {
-    width: 11%;
+    height: 10%;
+    width: 10%;
 }
 
 .nav-link-page {
@@ -145,6 +151,12 @@ for 2nd Nav Bar (Apps)
 .nav-link-page-image {
     /* override property of nav-link; display: block; */
     display: inline;
+}
+
+/* Disabled Hyperlinks */
+a.disabled {
+    pointer-events: none;
+    cursor: default;
 }
 
 /* New Stuff - Experimental*/

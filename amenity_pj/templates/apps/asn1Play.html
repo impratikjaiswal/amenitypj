@@ -22,7 +22,7 @@
                 <BR>
                 {#                <a href="#" id="swap_input_output_format">Swap Input & Output Formats</a>#}
                 <a href="#"><img id="swap_input_output_format" class="btn-image-initial"
-                                 src={{ url_for('static', filename='/images/swap-left-right_24.png') }}></a>
+                                 src={{ url_for('static', filename='/images/swap-left-right-1/24_24.png') }}></a>
             </div>
             &nbsp;&nbsp;&nbsp;
             <div class="form-group col">
@@ -102,8 +102,8 @@
             <input type="text" name="remarks" placeholder="Remarks" class="form-control" value="{{ remarks }}">
         </div>
         {% include 'button.html' %}
-        {% include 'output.html' %}
-        {% include 'sample.html' %}
+        {% include 'output_data.html' %}
+        {% include 'sample_data.html' %}
     </form>
 {% endblock %}
 {# Page Specific Script #}
