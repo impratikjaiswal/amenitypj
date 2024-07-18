@@ -71,7 +71,7 @@ def handle_requests(apj_id, **kwargs):
     if apj_id == Const.APJ_ID_AMENITY_PJ:
         set_server_name()
     if request_method == PhKeys.GET and api == Defaults.API and apj_id in Const.WHATS_NEW_LIST:
-        whats_new(apj_id)
+        whats_new(apj_id=apj_id, log=log)
     common_data = Util.get_apj_data(apj_id=apj_id).copy()
     if common_data:
         github_url = common_data.get(PhKeys.APP_GITHUB_URL, Defaults.GITHUB_REPO)
@@ -158,21 +158,30 @@ def handle_requests(apj_id, **kwargs):
     return Util.request_post(request=request, apj_id=apj_id, api=api, log=log, output_data=common_data)
 
 
-def whats_new(apj_id):
+def whats_new(apj_id, log=None):
     """
 
+    :param log:
     :param apj_id:
     :return:
     """
 
     news_data_pool = Const.NEWS_DATA_MAPPING.get(apj_id, None)
-    if news_data_pool is None:
+    # TODO: Util
+    for attempt in range(3):
+        if news_data_pool and len(news_data_pool) > 1:
+            break
+        PhUtil.print_(f'Flash Data: News Not Found for apj_id: {apj_id}; Checking random #{attempt}', log=log)
         # TODO: Util
         # https://www.geeksforgeeks.org/random-numbers-in-python/
         apj_id_new = random.choice(Const.WHATS_NEW_LIST)
         news_data_pool = Const.NEWS_DATA_MAPPING.get(apj_id_new, None)
-    if news_data_pool is None:
+    if news_data_pool is None or not news_data_pool:
+        # TODO: Util
+        PhUtil.print_(f'Flash Data: News Not Found for apj_id: {apj_id}; Random Attempt Exhaust', log=log)
         return
     news_count = len(news_data_pool)
     news_index = random.choice(range(news_count))
-    flash(news_data_pool[news_index])
+    flash_msg = news_data_pool[news_index]
+    PhUtil.print_(f'Flash Msg: {flash_msg}', log=log)
+    flash(flash_msg)

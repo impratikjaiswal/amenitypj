@@ -385,8 +385,8 @@ class Const:
                 #
             ],
         #
-        # APJ_ID_EXCEL_PLAY:
-        #     [],
+        APJ_ID_EXCEL_PLAY:
+            [],
         #
         APJ_ID_CERT_PLAY:
             [

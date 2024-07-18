@@ -70,8 +70,9 @@ dictConfig(
         },
         # "root": {"level": "INFO", "handlers": ["console"]},
         # "root": {"level": "INFO", "handlers": ["console", "file"]},
+		# "root": {"level": "INFO", "handlers": ["time-rotate"]},
+        # "root": {"level": "INFO", "handlers": ["console", "size-rotate"]},
         "root": {"level": "INFO", "handlers": ["size-rotate"]},
-        # "root": {"level": "INFO", "handlers": ["time-rotate"]},
     }
 )
 
