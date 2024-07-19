@@ -355,6 +355,8 @@ class Const:
     ####################
     # News Data All
     ####################
+    common_news_1 = f'Now you can copy the output / info / input individually.'
+    common_news_2 = f'Now you can download the output.'
     NEWS_DATA_MAPPING = {
         #
         APJ_ID_ASN1_PLAY:
@@ -366,6 +368,10 @@ class Const:
                 #
                 f'To convert any APDU in {TITLE_ASN1_PLAY}, please trim the last 2 bytes of SW/Status Word (e.g: 9000).',
                 #
+                common_news_1,
+                #
+                common_news_2,
+                #
             ],
         #
         APJ_ID_TLV_PLAY:
@@ -375,6 +381,10 @@ class Const:
                 #
                 f'if "Value is Ascii" is selected, {TITLE_TLV_PLAY} converts hex data to ascii where ever possible.',
                 #
+                common_news_1,
+                #
+                common_news_2,
+                #
             ],
         #
         APJ_ID_QR_PLAY:
@@ -383,6 +393,11 @@ class Const:
                 f'if "Auto Split Qrs" is selected, {TITLE_QR_PLAY} breaks data in multiple chunks if data does not '
                 f'fit in one QR.',
                 #
+                common_news_1,
+                #
+                common_news_2,
+                #
+
             ],
         #
         APJ_ID_EXCEL_PLAY:
@@ -393,6 +408,10 @@ class Const:
                 #
                 f'{TITLE_CERT_PLAY} Automatically takes care of Open SSL format (-----BEGIN CERTIFICATE-----, '
                 f'-----END CERTIFICATE-----).',
+                #
+                common_news_1,
+                #
+                common_news_2,
                 #
             ],
     }
