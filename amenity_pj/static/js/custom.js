@@ -1,6 +1,7 @@
 const btn_copy_input = document.querySelector("#copy_input_data");
 const btn_copy_output = document.querySelector("#copy_output_data");
 const btn_copy_info = document.querySelector("#copy_info_data");
+const btn_download_output = document.querySelector("#download_output_data");
 
 btn_copy_input.addEventListener("click", copyToClipboard, false);
 btn_copy_input.source_field = "#input_data"
@@ -9,6 +10,10 @@ btn_copy_input.source_type = "textarea"
 btn_copy_output.addEventListener("click", copyToClipboard, false);
 btn_copy_output.source_field = "#output_statement"
 btn_copy_output.source_type = "div"
+
+btn_download_output.addEventListener("click", downloadData, false);
+btn_download_output.source_field = "#output_statement"
+btn_download_output.source_type = "div"
 
 btn_copy_info.addEventListener("click", copyToClipboard, false);
 btn_copy_info.source_field = "#info_statement"
@@ -80,21 +85,7 @@ function copyToClipboard(event) {
     $(this).toggleClass("btn-image-rotate-y");
     event.preventDefault();
     let msg = "";
-    let source_field = event.currentTarget.source_field
-    let source_type = event.currentTarget.source_type
-    let data_inner_text = "";
-    if (source_type == "div") {
-        // ID of the object
-        const element = document.querySelector(source_field);
-        // represents inner tags
-        // let data_text_content = element.textContent
-        // represents exactly how text appears on the page
-        data_inner_text = element.innerText
-    } else if (source_type == "textarea") {
-        // ID of the object
-        const element = $(source_field);
-        data_inner_text = element.val()
-    }
+    let data_inner_text = getText(event)
     navigator.clipboard.writeText(data_inner_text)
 
     //  var tooltip = document.getElementById("copy_clipboard_tool_tip");
@@ -153,4 +144,58 @@ function navChangeActiveLinkOnScroll() {
             }
         });
     }).scroll();
+}
+
+function getTimeStamp(files_format) {
+    // Target Format: _yyyymmdd_hhmmssfff
+    // Sample:        _20240719_094646667
+    let stringDate = Date();
+    // console.log(stringDate); // "Tue Aug 23 2022 14:47:12 GMT-0700 (Pacific Daylight Time)"
+    let objDate = new Date();
+    // console.log(objectDate); // Tue Aug 23 2022 14:47:12 GMT-0700 (Pacific Daylight Time)
+    const formattedDate = `_${objDate.getFullYear()}${objDate.getMonth()}${objDate.getDate()}_${objDate.getHours()}${objDate.getMinutes()}${objDate.getSeconds()}${objDate.getMilliseconds()}`;
+    console.log(formattedDate);
+    return formattedDate
+}
+
+function getFileName() {
+    let title_name = document.title
+    let time_stamp = getTimeStamp(true)
+    return `${title_name}${time_stamp}`.replace(" ", "_");
+}
+
+function downloadData(event) {
+    $(this).toggleClass("btn-image-rotate-x");
+    event.preventDefault();
+    downloadDataActual(getFileName(), getText(event));
+}
+
+function downloadDataActual(file, text) {
+    // Ref: https://www.geeksforgeeks.org/how-to-trigger-a-file-download-when-clicking-an-html-button-or-javascript/
+    //creating an invisible element
+    let element = document.createElement('a');
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+    element.setAttribute('download', file);
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
+}
+
+function getText(event) {
+    let source_field = event.currentTarget.source_field
+    let source_type = event.currentTarget.source_type
+    let data_inner_text = "";
+    if (source_type == "div") {
+        // ID of the object
+        const element = document.querySelector(source_field);
+        // represents inner tags
+        // let data_text_content = element.textContent
+        // represents exactly how text appears on the page
+        data_inner_text = element.innerText
+    } else if (source_type == "textarea") {
+        // ID of the object
+        const element = $(source_field);
+        data_inner_text = element.val()
+    }
+    return data_inner_text;
 }
