@@ -43,8 +43,14 @@
     appearance: none;
     background-color: inherit;
     transition: transform .7s ease-in-out;
-    margin-left: 10px;
+    margin-left: 3px;
+    margin-bottom: 3px;
 }
+
+.btn-image-with-other-items {
+    margin-top: 43px;
+}
+
 
 /* Button Image - Rotate */
 .btn-image-rotate {

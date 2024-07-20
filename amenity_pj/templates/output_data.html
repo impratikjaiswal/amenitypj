@@ -3,8 +3,10 @@
 </a>
 <div id="info_data" class="form-group">
     <label for="info_data">Info</label>
-    <a href="#"><img id="copy_info_data" class="btn-image-initial"
-                     src={{ url_for('static', filename='/images/copy-2/24_24.png') }}></a>
+    <a href="#" data-toggle="tooltip" data-placement="top" title="Copy to Clipboard">
+        <img id="copy_info_data" class="btn-image-initial" alt="Copy to Clipboard"
+             src={{ url_for('static', filename='/images/copy-2/16_16.png') }}>
+    </a>
     <div class="badge float-right">
         Length: <span id="info_data_char_count">0</span>
     </div>
@@ -14,12 +16,18 @@
 </div>
 <div id="output_data" class="form-group">
     <label for="output_data">Output Data</label>
-    <a href="#"><img id="copy_output_data" class="btn-image-initial"
-                     src={{ url_for('static', filename='/images/copy-2/24_24.png') }}></a>
-    <a href="#"><img id="download_output_data" class="btn-image-initial"
-                     src={{ url_for('static', filename='/images/download-2/24_24.png') }}></a>
-    <a href="#" class="disabled"><img id="compare_output_data" class="btn-image-initial"
-                                      src={{ url_for('static', filename='/images/compare-2/24_24.png') }}></a>
+    <a href="#" data-toggle="tooltip" data-placement="top" title="Copy to Clipboard">
+        <img id="copy_output_data" class="btn-image-initial" alt="Copy to Clipboard"
+             src={{ url_for('static', filename='/images/copy-2/16_16.png') }}>
+    </a>
+    <a href="#" data-toggle="tooltip" data-placement="top" title="Download">
+        <img id="download_output_data" class="btn-image-initial" alt="Download"
+             src={{ url_for('static', filename='/images/download-2/16_16.png') }}>
+    </a>
+    <a href="#" class="disabled" data-toggle="tooltip" data-placement="top" title="Compare">
+        <img id="compare_output_data" class="btn-image-initial" alt="Compare"
+             src={{ url_for('static', filename='/images/compare-2/16_16.png') }}>
+    </a>
     <div class="badge float-right">
         Length: <span id="output_data_char_count">0</span>
     </div>

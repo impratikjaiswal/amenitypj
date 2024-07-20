@@ -1,3 +1,11 @@
+const TIP_BUTTON_SWAP_IO = "Swap I/O Formats"
+const TIP_BUTTON_COPY = "Copy to Clipboard"
+const TIP_BUTTON_DOWNLOAD = "Download"
+const TIP_BUTTON_COPY_SUCCESS = "Copied !!!"
+const TIP_BUTTON_DOWNLOAD_SUCCESS = "Downloading !!!"
+const TIP_BUTTON_COPY_EMPTY = "Nothing to Copy"
+const TIP_BUTTON_DOWNLOAD_EMPTY = "Nothing to Download"
+
 const btn_copy_input = document.querySelector("#copy_input_data");
 const btn_copy_output = document.querySelector("#copy_output_data");
 const btn_copy_info = document.querySelector("#copy_info_data");
@@ -66,30 +74,45 @@ function alertMsg() {
     alert("Hello! I am an alert box!!");
 }
 
-function debugData(msg, alert_user = true, clear_previous = true) {
-    let msg_label = "Debugging...";
+function debugData(msg, heading = "", div_ui = false, alert_user = false, append_mode = false) {
+    const msg_label = "Debugging...";
     let previous = document.getElementById("debug_data").innerHTML
-    if (clear_previous) {
+    if (!append_mode) {
         previous = "";
     }
-    let debug_msg_alert = [previous, msg].join("\n");
-    let debug_msg_div = [previous, msg].join("<BR>");
-    document.getElementById("debug_data").innerHTML = debug_msg_div;
-    document.getElementById("debug_data_label").innerHTML = msg_label;
+    if (heading) {
+        heading = heading + ": "
+    }
+    let content_curr = heading ? (heading + msg) : msg
+    let content_prev = (heading && previous) ? previous.replace(heading, "") : previous
+    let debug_msg_alert = [content_prev, content_curr].join("\n");
+    let debug_msg_div = [content_prev, content_curr].join("<BR>");
+    let console_log = content_curr
+    console.log(console_log)
+    if (div_ui) {
+        document.getElementById("debug_data").innerHTML = debug_msg_div;
+        document.getElementById("debug_data_label").innerHTML = msg_label;
+    }
     if (alert_user) {
         alert(debug_msg_alert);
     }
 }
 
+/**
+ *
+ * @param event
+ */
 function copyToClipboard(event) {
+
     $(this).toggleClass("btn-image-rotate-y");
     event.preventDefault();
     let msg = "";
     let data_inner_text = getText(event)
     navigator.clipboard.writeText(data_inner_text)
 
-    //  var tooltip = document.getElementById("copy_clipboard_tool_tip");
-    //  tooltip.innerHTML = "Text Copied";
+    var tooltip = document.getElementById("copy_clipboard_tool_tip");
+    tooltip.innerHTML = "";
+
 
     // Uncomment for Debugging
     //  msg += "preventDefault()!<br>";
@@ -97,11 +120,6 @@ function copyToClipboard(event) {
     //  msg += "data_text_content: " + data_text_content + "<br>";
     //  document.getElementById("debug_data").innerHTML += msg;
 }
-
-//function copyToClipboardToolTip() {
-//  var tooltip = document.getElementById("copy_clipboard_tool_tip");
-//  tooltip.innerHTML = "Copy to clipboard";
-//}
 
 //const copyToClipboard = async () => {
 //  try {
@@ -146,22 +164,36 @@ function navChangeActiveLinkOnScroll() {
     }).scroll();
 }
 
-function getTimeStamp(files_format) {
-    // Target Format: _yyyymmdd_hhmmssfff
-    // Sample:        _20240719_094646667
-    let stringDate = Date();
-    // console.log(stringDate); // "Tue Aug 23 2022 14:47:12 GMT-0700 (Pacific Daylight Time)"
-    let objDate = new Date();
-    // console.log(objectDate); // Tue Aug 23 2022 14:47:12 GMT-0700 (Pacific Daylight Time)
-    const formattedDate = `_${objDate.getFullYear()}${objDate.getMonth()}${objDate.getDate()}_${objDate.getHours()}${objDate.getMinutes()}${objDate.getSeconds()}${objDate.getMilliseconds()}`;
-    console.log(formattedDate);
-    return formattedDate
+
+/**
+ *
+ * @param files_format
+ * @param native_only
+ * @returns {*|string}
+ */
+function getTimeStamp(files_format = true, native_only = false) {
+    // Target Format: _yyyymmdd_hhmmss_fff
+    // Sample:        _20240719_094646_667
+    if (native_only) {
+        let stringDate = Date();
+        // console.log(stringDate); // "Tue Aug 23 2022 14:47:12 GMT-0700 (Pacific Daylight Time)"
+        let objDate = new Date();
+        // console.log(objectDate); // Tue Aug 23 2022 14:47:12 GMT-0700 (Pacific Daylight Time)
+        const formattedDate = `${objDate.getFullYear()}${objDate.getMonth()}${objDate.getDate()}_${objDate.getHours()}${objDate.getMinutes()}${objDate.getSeconds()}_${objDate.getMilliseconds()}`;
+        return formattedDate
+    } else {
+        const formatNeeded = 'YYYYMMDD_HHmmss_SSS'
+        return dayjs().format(formatNeeded)
+    }
 }
 
 function getFileName() {
     let title_name = document.title
-    let time_stamp = getTimeStamp(true)
-    return `${title_name}${time_stamp}`.replace(" ", "_");
+    let time_stamp_native = getTimeStamp(true, true)
+    let time_stamp = getTimeStamp()
+    // debugData(time_stamp, 'time_stamp')
+    // debugData(time_stamp_native, 'time_stamp_native')
+    return `${title_name}_${time_stamp}`.replace(" ", "_");
 }
 
 function downloadData(event) {
