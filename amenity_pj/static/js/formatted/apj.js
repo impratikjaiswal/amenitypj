@@ -3,29 +3,42 @@ const TIP_BUTTON_COPY = "Copy to Clipboard"
 const TIP_BUTTON_DOWNLOAD = "Download"
 const TIP_BUTTON_COPY_SUCCESS = "Copied !!!"
 const TIP_BUTTON_DOWNLOAD_SUCCESS = "Downloading !!!"
-const TIP_BUTTON_COPY_EMPTY = "Nothing to Copy"
-const TIP_BUTTON_DOWNLOAD_EMPTY = "Nothing to Download"
+const TIP_BUTTON_COPY_EMPTY = "Nothing to Copy for now !!!"
+const TIP_BUTTON_DOWNLOAD_EMPTY = "Nothing to Download for now !!!"
 
 const btn_copy_input = document.querySelector("#copy_input_data");
-const btn_copy_output = document.querySelector("#copy_output_data");
-const btn_copy_info = document.querySelector("#copy_info_data");
-const btn_download_output = document.querySelector("#download_output_data");
-
 btn_copy_input.addEventListener("click", copyToClipboard, false);
 btn_copy_input.source_field = "#input_data"
+btn_copy_input.source_anchor = "#copy_input_data_a"
 btn_copy_input.source_type = "textarea"
 
+const btn_download_input = document.querySelector("#download_input_data");
+btn_download_input.addEventListener("click", downloadData, false);
+btn_download_input.source_field = "#input_data"
+btn_download_input.source_type = "textarea"
+btn_download_input.file_name_keyword = "input_data"
+
+const btn_copy_output = document.querySelector("#copy_output_data");
 btn_copy_output.addEventListener("click", copyToClipboard, false);
 btn_copy_output.source_field = "#output_statement"
 btn_copy_output.source_type = "div"
 
+const btn_download_output = document.querySelector("#download_output_data");
 btn_download_output.addEventListener("click", downloadData, false);
 btn_download_output.source_field = "#output_statement"
 btn_download_output.source_type = "div"
+btn_download_output.file_name_keyword = "output_data"
 
+const btn_copy_info = document.querySelector("#copy_info_data");
 btn_copy_info.addEventListener("click", copyToClipboard, false);
 btn_copy_info.source_field = "#info_statement"
 btn_copy_info.source_type = "div"
+
+const btn_download_info = document.querySelector("#download_info_data");
+btn_download_info.addEventListener("click", downloadData, false);
+btn_download_info.source_field = "#info_statement"
+btn_download_info.source_type = "div"
+btn_download_info.file_name_keyword = "info"
 
 //btn_copy_output.addEventListener("mouseout", copyToClipboardToolTip, false);
 //btn_copy_output.addEventListener("mousedown", logEvent);
@@ -34,7 +47,8 @@ btn_copy_info.source_type = "div"
 //btn_copy_output.addEventListener("mouseleave", logEvent);
 
 $(document).ready(function () {
-    // debugData("DOM is ready: custom.js");
+    // debugData("DOM is ready: apj.js");
+    $('[data-toggle="tooltip"]').tooltip();
     pageLoad();
     $('#input_data').on('input', function () {
         // Attach an "input" event listener to input_data
@@ -42,7 +56,7 @@ $(document).ready(function () {
     });
     // navChangeActiveLinkOnClick();
     // navChangeActiveLinkOnScroll();
-    // debugData("Done custom.js");
+    // debugData("Done apj.js");
 });
 
 function htmlToJs(vars) {
@@ -50,7 +64,7 @@ function htmlToJs(vars) {
 }
 
 function pageLoad() {
-    // debugData("pageLoad: custom.js");
+    // debugData("pageLoad: apj.js");
     characterCounterInputData();
     characterCounterInfoData();
     characterCounterOutputData();
@@ -70,8 +84,8 @@ function characterCounterOutputData() {
     $("#output_data_char_count").text(($("#output_statement").text().length - length_of_output_statement_initial_text));
 }
 
-function alertMsg() {
-    alert("Hello! I am an alert box!!");
+function alertMsg(msg = "Hello! I am an alert box!!") {
+    alert("Amenity Pj: " + msg);
 }
 
 function debugData(msg, heading = "", div_ui = false, alert_user = false, append_mode = false) {
@@ -103,22 +117,38 @@ function debugData(msg, heading = "", div_ui = false, alert_user = false, append
  * @param event
  */
 function copyToClipboard(event) {
-
     $(this).toggleClass("btn-image-rotate-y");
     event.preventDefault();
-    let msg = "";
     let data_inner_text = getText(event)
-    navigator.clipboard.writeText(data_inner_text)
-
-    var tooltip = document.getElementById("copy_clipboard_tool_tip");
-    tooltip.innerHTML = "";
-
-
+    if (data_inner_text) {
+        navigator.clipboard.writeText(data_inner_text)
+    } else {
+        alertMsg(TIP_BUTTON_COPY_EMPTY)
+    }
+    // let source_anchor = event.currentTarget.source_anchor
+    // let field = $(source_anchor)
+    // $(source_anchor).tooltip("option", "content", "Awesome title!");
     // Uncomment for Debugging
+    // let msg = "";
     //  msg += "preventDefault()!<br>";
     //  msg += "data_inner_text: " + data_inner_text + "<br>";
     //  msg += "data_text_content: " + data_text_content + "<br>";
     //  document.getElementById("debug_data").innerHTML += msg;
+}
+
+/**
+ *
+ * @param event
+ */
+function downloadData(event) {
+    $(this).toggleClass("btn-image-rotate-x");
+    event.preventDefault();
+    let data_inner_text = getText(event)
+    if (data_inner_text) {
+        downloadDataActual(getFileName(event.currentTarget.file_name_keyword), data_inner_text);
+    } else {
+        alertMsg(TIP_BUTTON_DOWNLOAD_EMPTY)
+    }
 }
 
 //const copyToClipboard = async () => {
@@ -187,20 +217,15 @@ function getTimeStamp(files_format = true, native_only = false) {
     }
 }
 
-function getFileName() {
+function getFileName(file_name_keyword) {
     let title_name = document.title
     let time_stamp_native = getTimeStamp(true, true)
     let time_stamp = getTimeStamp()
     // debugData(time_stamp, 'time_stamp')
     // debugData(time_stamp_native, 'time_stamp_native')
-    return `${title_name}_${time_stamp}`.replace(" ", "_");
+    return `${title_name}_${file_name_keyword}_${time_stamp}`.replace(" ", "_");
 }
 
-function downloadData(event) {
-    $(this).toggleClass("btn-image-rotate-x");
-    event.preventDefault();
-    downloadDataActual(getFileName(), getText(event));
-}
 
 function downloadDataActual(file, text) {
     // Ref: https://www.geeksforgeeks.org/how-to-trigger-a-file-download-when-clicking-an-html-button-or-javascript/

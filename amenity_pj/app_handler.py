@@ -165,23 +165,27 @@ def whats_new(apj_id, log=None):
     :param apj_id:
     :return:
     """
-
+    news_data_pool_common = Const.NEWS_DATA_MAPPING.get(Const.APJ_ID_NEWS_COMMON, None)
     news_data_pool = Const.NEWS_DATA_MAPPING.get(apj_id, None)
     # TODO: Util
     for attempt in range(3):
-        if news_data_pool and len(news_data_pool) > 1:
+        if news_data_pool and len(news_data_pool) > 0:
             break
         PhUtil.print_(f'Flash Data: News Not Found for apj_id: {apj_id}; Checking random #{attempt}', log=log)
         # TODO: Util
         # https://www.geeksforgeeks.org/random-numbers-in-python/
-        apj_id_new = random.choice(Const.WHATS_NEW_LIST)
-        news_data_pool = Const.NEWS_DATA_MAPPING.get(apj_id_new, None)
+        apj_id = random.choice(Const.WHATS_NEW_LIST)
+        news_data_pool = Const.NEWS_DATA_MAPPING.get(apj_id, None)
     if news_data_pool is None or not news_data_pool:
         # TODO: Util
         PhUtil.print_(f'Flash Data: News Not Found for apj_id: {apj_id}; Random Attempt Exhaust', log=log)
         return
-    news_count = len(news_data_pool)
+    # News Pool Found
+    news_data_pool_combined = news_data_pool_common + news_data_pool
+    news_count = len(news_data_pool_combined)
     news_index = random.choice(range(news_count))
-    flash_msg = news_data_pool[news_index]
+    flash_msg = news_data_pool_combined[news_index]
+    if PhKeys.APP_TITLE in flash_msg:
+        flash_msg = flash_msg.replace(PhKeys.APP_TITLE, Util.get_apj_data(apj_id=apj_id, specific_key=PhKeys.APP_TITLE))
     PhUtil.print_(f'Flash Msg: {flash_msg}', log=log)
     flash(flash_msg)

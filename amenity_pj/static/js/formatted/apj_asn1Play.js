@@ -1,5 +1,8 @@
+const btn_swap_input_output_format = document.querySelector("#swap_input_output_format");
+btn_swap_input_output_format.addEventListener("click", swapInputOutputFormat, false);
+
 $(document).ready(function () {
-    // debugData("DOM is ready: custom_asn1Play.js");
+    // debugData("DOM is ready: apj_asn1Play.js");
     pageLoad_asn1Play();
     $('#asn1_schema').change(function () {
         // debugData("asn1_schema has been changed.");
@@ -11,24 +14,26 @@ $(document).ready(function () {
             $('#asn1_object').selectpicker('refresh');
         })
     });
-    $('#swap_input_output_format').bind('click', function () {
-        // debugData("swap_input_output_format is pressed.");
-        swapInputOutputFormat();
-        $(this).toggleClass("btn-image-rotate");
-    });
     $('#process_re_parse_output').bind('click', function () {
         // debugData("process_re_parse_output is pressed.");
-        swapInputOutputFormat();
+        swapInputOutputFormatActual();
         $("#input_data").val($('#output_statement').text());
     });
-    // debugData("Done custom_asn1Play.js");
+    // debugData("Done apj_asn1Play.js");
 });
 
 function pageLoad_asn1Play() {
-    // debugData("pageLoad: custom_asn1Play.js");
+    // debugData("pageLoad: apj_asn1Play.js");
 }
 
-function swapInputOutputFormat() {
+function swapInputOutputFormat(event) {
+    // debugData("swap_input_output_format is pressed.");
+    $(this).toggleClass("btn-image-rotate");
+    event.preventDefault();
+    swapInputOutputFormatActual();
+}
+
+function swapInputOutputFormatActual() {
     const selected_input_format_js = $('#input_format').val()
     const selected_output_format_js = $('#output_format').val()
     // debugData("selected_input_format_js: " +  selected_input_format_js + "\nselected_output_format_js: " +  selected_output_format_js);

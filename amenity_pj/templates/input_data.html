@@ -1,8 +1,12 @@
 <div class="form-group">
     <label for="input_data">Input Data</label>
-    <a href="#" data-toggle="tooltip" data-placement="top" title="Copy to Clipboard">
-        <img id="copy_input_data" class="btn-image-initial" alt="Copy to Clipboard"
+    <a href="#" id="copy_input_data_a" data-toggle="tooltip" data-placement="top" title="Copy Input Data">
+        <img id="copy_input_data" class="btn-image-initial" alt="Copy Input Data"
              src={{ url_for('static', filename='/images/copy-2/16_16.png') }}>
+    </a>
+    <a href="#" data-toggle="tooltip" data-placement="top" title="Download Input Data">
+        <img id="download_input_data" class="btn-image-initial" alt="Download Input Data"
+             src={{ url_for('static', filename='/images/download-2/16_16.png') }}>
     </a>
     <div class="badge float-right">
         Length: <span id="input_data_char_count">0</span>

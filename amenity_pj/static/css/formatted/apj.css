@@ -47,14 +47,17 @@
     margin-bottom: 3px;
 }
 
-.btn-image-with-other-items {
+.btn-image-with-other-components {
     margin-top: 43px;
 }
 
+.form-check-with-other-components {
+    margin-top: 35px;
+}
 
 /* Button Image - Rotate */
 .btn-image-rotate {
-    transform: rotate(360deg);
+    transform: rotate(180deg);
 }
 
 /* Button Image - RotateY */

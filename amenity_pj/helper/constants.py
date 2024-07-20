@@ -27,6 +27,7 @@ class Const:
     ####################
     APJ_ID_AMENITY_PJ = 10
     APJ_ID_LOGIN = 11
+    APJ_ID_NEWS_COMMON = 12
     APJ_ID_TESTIMONIALS = 20
     APJ_ID_TESTIMONIALS_ID = 21
     APJ_ID_ABOUT_US = 30
@@ -360,9 +361,9 @@ class Const:
         APJ_ID_NEWS_COMMON:
             [
                 #
-                f'{PhKeys.APP_TITLE} now supports copy feature for Output Data, Info as well as Input Data.'
+                f'{PhKeys.APP_TITLE} now supports "Copy Input Data", "Copy Output Data" & "Copy Info".',
                 #
-                f'{PhKeys.APP_TITLE} now supports download of Output Data.'
+                f'{PhKeys.APP_TITLE} now supports "Download Output Data".'
                 #
             ],
         #
