@@ -363,7 +363,7 @@ class Const:
                 #
                 f'{PhKeys.APP_TITLE} now supports "Copy Input Data", "Copy Output Data" & "Copy Info".',
                 #
-                f'{PhKeys.APP_TITLE} now supports "Download Output Data".'
+                f'{PhKeys.APP_TITLE} now supports "Download Input Data", "Download Output Data" & "Download Info".'
                 #
             ],
         #
