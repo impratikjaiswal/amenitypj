@@ -385,7 +385,8 @@ class Const:
                 #
                 f'if "Value In Ascii" is selected, {TITLE_TLV_PLAY} converts hex data to ascii where ever possible.',
                 #
-                f'if "Non TLV Neighbor" is selected, {TITLE_TLV_PLAY} will handle Non TLV Neighborhood.',
+                f'if "Non TLV Neighbor" is selected, {TITLE_TLV_PLAY} will handle scenarios where non TLV data is '
+                f'placed after TLV(s)',
                 #
             ],
         #
