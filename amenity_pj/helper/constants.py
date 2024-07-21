@@ -383,7 +383,9 @@ class Const:
                 #
                 f'{TITLE_TLV_PLAY} now supports Base 64 data.',
                 #
-                f'if "Value is Ascii" is selected, {TITLE_TLV_PLAY} converts hex data to ascii where ever possible.',
+                f'if "Value In Ascii" is selected, {TITLE_TLV_PLAY} converts hex data to ascii where ever possible.',
+                #
+                f'if "Non TLV Neighbor" is selected, {TITLE_TLV_PLAY} will handle Non TLV Neighborhood.',
                 #
             ],
         #
