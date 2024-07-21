@@ -53,6 +53,7 @@ def handle_requests(apj_id, api, log, default_data, **kwargs):
         PhKeys.LENGTH_IN_DECIMAL: Defaults.LENGTH_IN_DECIMAL,
         PhKeys.VALUE_IN_ASCII: Defaults.VALUE_IN_ASCII,
         PhKeys.ONE_LINER: Defaults.ONE_LINER,
+        PhKeys.NON_TLV_NEIGHBOR: Defaults.NON_TLV_NEIGHBOR,
     }
     app_data = PhUtil.dict_merge(default_data, default_data_app)
     requested_data_dict = Util.request_pre(request=request, apj_id=apj_id, api=api, log=log)
@@ -68,6 +69,7 @@ def handle_requests(apj_id, api, log, default_data, **kwargs):
         update_checked_item(PhKeys.LENGTH_IN_DECIMAL)
         update_checked_item(PhKeys.VALUE_IN_ASCII)
         update_checked_item(PhKeys.ONE_LINER)
+        update_checked_item(PhKeys.NON_TLV_NEIGHBOR)
         # 2) Everything is converted to String; below needs to be typecast, TODO: should be handled in parse_config; int
         pass
         PhUtil.print_(f'process_sample is {process_sample}', log=log)
@@ -95,6 +97,7 @@ def handle_requests(apj_id, api, log, default_data, **kwargs):
         update_app_data(PhKeys.LENGTH_IN_DECIMAL)
         update_app_data(PhKeys.VALUE_IN_ASCII)
         update_app_data(PhKeys.ONE_LINER)
+        update_app_data(PhKeys.NON_TLV_NEIGHBOR)
         update_app_data(PhKeys.REMARKS)
         # Fixed Updates
         app_data.update({PhKeys.SAMPLE_SELECTED: sample_name})
