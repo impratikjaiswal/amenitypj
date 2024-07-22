@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Flask (amenity_pj/app.py)" type="Python.FlaskServer" nameIsGenerated="true">
+  <configuration default="false" name="Flask Server (amenity_pj/app.py)" type="Python.FlaskServer">
     <output_file path="$PROJECT_DIR$/../../Github_Personal/AmenityPjRaw/TempFiles/pycharmFlask.log" is_save="true" />
     <option name="flaskDebug" value="true" />
     <module name="amenitypj" />

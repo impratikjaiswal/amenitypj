@@ -168,4 +168,21 @@ a.disabled {
     cursor: default;
 }
 
+/* Disabled Underlines */
+a.image:link {
+    text-decoration: none;
+}
+
+a.image:visited {
+    text-decoration: none;
+}
+
+a.image:hover {
+    text-decoration: none;
+}
+
+a.image:active {
+    text-decoration: none;
+}
+
 /* New Stuff - Experimental*/

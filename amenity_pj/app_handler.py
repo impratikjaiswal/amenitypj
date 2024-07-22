@@ -16,7 +16,7 @@ host_name = None
 nav_bar_app_items = None
 
 
-def set_server_name():
+def set_server_name(host_name_passed=None):
     global host_name, nav_bar_app_items
     """
     request dict
@@ -26,24 +26,29 @@ def set_server_name():
     request.url_root: http://localhost:5000/
     request.headers["Host"]: localhost:5000
     """
-    if 'Host' in request.headers:
-        host_name = request.headers['Host']
-    else:
-        # TODO: Alternate needs to check
-        host_name = ''
-    if host_name:
-        # TODO: Optimize it
-        host_name = host_name.replace('.amenitypj.in', '')
-        host_name = host_name.replace('amenitypj.in', '')
-        data = None
-        if not host_name:
-            data = Const.NAV_ITEMS_MAPPING.get('prod', None)
-        elif host_name in ['beta', 'alpha', 'past']:
-            data = Const.NAV_ITEMS_MAPPING.get(host_name, None)
+    if host_name_passed is None:
+        if 'Host' in request.headers:
+            host_name_request = request.headers['Host']
         else:
-            data = Const.NAV_ITEMS_MAPPING.get('local', None)
-        if data:
-            nav_bar_app_items = data
+            # TODO: Alternate needs to check
+            host_name_request = ''
+    else:
+        host_name_request = host_name_passed
+    key = None
+    if host_name_request:
+        if any(x in host_name_request for x in ['127.0.0.1', 'localhost']):
+            key = 'local'
+            host_name = host_name_request
+        for _ in ['beta', 'alpha', 'past']:
+            if _ in host_name_request:
+                key = _
+                host_name = key
+        if key not in Const.NAV_ITEMS_MAPPING.keys():
+            # None as well as All unknown hosts will be treated as prod
+            key = 'prod'
+            host_name = ''
+        nav_bar_app_items = Const.NAV_ITEMS_MAPPING.get(key, None)
+    return host_name, nav_bar_app_items
 
 
 def handle_requests(apj_id, **kwargs):
