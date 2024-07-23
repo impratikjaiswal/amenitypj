@@ -6,7 +6,7 @@ from flask import request, flash, url_for
 from python_helpers.ph_keys import PhKeys
 from python_helpers.ph_util import PhUtil
 
-from amenity_pj.app_others import testimonial, login
+from amenity_pj.app_others import testimonial, login, experiments
 from amenity_pj.apps import app_asn1_play, app_tlv_play, app_qr_play, app_excel_play, app_cert_play
 from amenity_pj.helper.constants import Const
 from amenity_pj.helper.defaults import Defaults
@@ -139,6 +139,9 @@ def handle_requests(apj_id, **kwargs):
         Const.APJ_ID_LOGIN: login.handle_requests,
         Const.APJ_ID_TESTIMONIALS: testimonial.handle_requests,
         Const.APJ_ID_TESTIMONIALS_ID: testimonial.handle_posts,
+        Const.APJ_ID_EXPERIMENTS_1: experiments.handle_requests,
+        Const.APJ_ID_EXPERIMENTS_2: experiments.handle_requests,
+        Const.APJ_ID_EXPERIMENTS_3: experiments.handle_requests,
     }
     func = func_mapping.get(apj_id, None)
     if func is not None:

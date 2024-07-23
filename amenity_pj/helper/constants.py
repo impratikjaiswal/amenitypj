@@ -36,13 +36,16 @@ class Const:
     APJ_ID_SITEMAP = 60
     APJ_ID_SERVER_DETAILS = 70
     APJ_ID_404 = 80
+    APJ_ID_EXPERIMENTS_GROUP = 0x90
+    APJ_ID_EXPERIMENTS_1 = 0x91
+    APJ_ID_EXPERIMENTS_2 = 0x92
+    APJ_ID_EXPERIMENTS_3 = 0x93
     APJ_ID_ASN1_PLAY = 200
     APJ_ID_ASN1_PLAY_ASN1_OBJECTS = 201
     APJ_ID_TLV_PLAY = 210
     APJ_ID_QR_PLAY = 220
     APJ_ID_EXCEL_PLAY = 230
     APJ_ID_CERT_PLAY = 240
-
     ####################
     # END_POINTS
     ####################
@@ -52,6 +55,7 @@ class Const:
     END_POINT_ABOUT_US = 'about_us'
     END_POINT_CREDITS = 'credits_'
     END_POINT_SPONSORSHIP = 'sponsorship'
+    END_POINT_EXPERIMENTS = 'experiments'
     END_POINT_ASN1_PLAY = 'asn1_play'
     END_POINT_ASN1_PLAY_ASN1_OBJECTS = 'asn1_play_asn1_objects'
     END_POINT_TLV_PLAY = 'tlv_play'
@@ -128,12 +132,14 @@ class Const:
     TITLE_QR_PLAY = 'QR Play'
     TITLE_EXCEL_PLAY = 'Excel Play'
     TITLE_CERT_PLAY = 'Cert Play'
+    TITLE_EXPERIMENTS = 'Experiments'
 
     ####################
     # Common or without end points Constants
     ####################
     VERSION_AMENITY_PJ = ConfigConst_AmenityPj.TOOL_VERSION_DETAILED
     TEMPLATE_WIP = 'wip.html'
+    DESCRIPTION_EXPERIMENTS = '!!! Only For Admins !!!'
 
     ####################
     # Common Data APPS
@@ -254,6 +260,33 @@ class Const:
                 PhKeys.APP_DESCRIPTION: f"I'm afraid you've found a page that doesn't exist on {TITLE_AMENITY_PJ}.",
                 PhKeys.APP_CODE: 404,
                 PhKeys.APP_TEMPLATE: '404.html',
+            },
+        #
+        APJ_ID_EXPERIMENTS_1:
+            {
+                PhKeys.APP_TITLE: TITLE_EXPERIMENTS,
+                PhKeys.APP_DESCRIPTION: DESCRIPTION_EXPERIMENTS,
+                PhKeys.APP_URL: '/exp1',
+                PhKeys.APP_TEMPLATE: '/experiments/1.html',
+                PhKeys.APP_END_POINT: END_POINT_EXPERIMENTS,
+            },
+        #
+        APJ_ID_EXPERIMENTS_2:
+            {
+                PhKeys.APP_TITLE: TITLE_EXPERIMENTS,
+                PhKeys.APP_DESCRIPTION: DESCRIPTION_EXPERIMENTS,
+                PhKeys.APP_URL: '/exp2',
+                PhKeys.APP_TEMPLATE: '/experiments/2.html',
+                PhKeys.APP_END_POINT: END_POINT_EXPERIMENTS,
+            },
+        #
+        APJ_ID_EXPERIMENTS_3:
+            {
+                PhKeys.APP_TITLE: TITLE_EXPERIMENTS,
+                PhKeys.APP_DESCRIPTION: DESCRIPTION_EXPERIMENTS,
+                PhKeys.APP_URL: '/exp3',
+                PhKeys.APP_TEMPLATE: '/experiments/3.html',
+                PhKeys.APP_END_POINT: END_POINT_EXPERIMENTS,
             },
         #
         APJ_ID_ASN1_PLAY:

@@ -1,3 +1,4 @@
+import copy
 import uuid
 
 from flask import jsonify, render_template
@@ -15,9 +16,12 @@ class Util:
     def get_apj_data(cls, apj_id, specific_key=None, fail_safe=False, end_point=None):
         if apj_id is None and end_point:
             apj_id = Const.END_POINT_APJ_MAPPING.get(end_point, None)
-        data = Const.COMMON_DATA_MAPPING.get(apj_id, None)
+        # create a copy so that dictionary manipulations can be done if needed
+        data = copy.deepcopy(Const.COMMON_DATA_MAPPING.get(apj_id)) if apj_id in Const.COMMON_DATA_MAPPING else None
         if fail_safe:
             data = PhUtil.set_if_not_none(current_value=data, new_value=PhConstants.DICT_EMPTY)
+        if apj_id & 0xF0 == Const.APJ_ID_EXPERIMENTS_GROUP:
+            data.update({PhKeys.APP_TITLE: f'{data.get(PhKeys.APP_TITLE)} {apj_id & 0x0F}'})
         if specific_key is None:
             return data
         specific_value = data.get(specific_key, None)

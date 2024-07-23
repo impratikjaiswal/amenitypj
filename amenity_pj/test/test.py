@@ -20,7 +20,7 @@ def test_set_server_name():
     ]
     for _host in hosts_pool:
         host_name, nav_items = set_server_name(_host)
-        print(f'{_host}: {host_name}; {nav_items} ')
+        print(f'{_host}: {host_name}; {nav_items}')
 
 
 def test_versions():

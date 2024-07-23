@@ -7,6 +7,29 @@ from amenity_pj.helper.constants import Const
 from amenity_pj.helper.util import Util
 
 
+def handle_requests(apj_id, api, log, default_data, **kwargs):
+    """
+
+    :return:
+    """
+    #
+    default_data_app = {
+    }
+    app_data = PhUtil.dict_merge(default_data, default_data_app)
+    Util.request_pre(request=request, apj_id=apj_id, api=api, log=log)
+    #
+    if request.method == PhKeys.GET:
+        pass
+    if request.method == PhKeys.POST:
+        result, msg, msg_category = __validate_credentials(request.form['username'], request.form['password'])
+        flash(msg, msg_category)
+        if result is True:
+            return redirect(
+                url_for(Util.get_apj_data(apj_id=Const.APJ_ID_AMENITY_PJ, specific_key=PhKeys.APP_END_POINT)))
+    return Util.request_post(request=request, apj_id=Const.APJ_ID_LOGIN, api=api, log=log,
+                             output_data=app_data)
+
+
 def __validate_credentials(user_name_actual, pass_word_actual):
     """
 
@@ -35,26 +58,3 @@ def __validate_credentials(user_name_actual, pass_word_actual):
     if PhCrypto.hash_str_sha256(pass_word_actual) != pass_word_expected:
         return False, 'Invalid Password', PhKeys.ALERT_CSS_CLASS_DANGER
     return True, f'Welcome {user_name_expected}', PhKeys.ALERT_CSS_CLASS_PRIMARY
-
-
-def handle_requests(apj_id, api, log, default_data, **kwargs):
-    """
-
-    :return:
-    """
-    #
-    default_data_app = {
-    }
-    app_data = PhUtil.dict_merge(default_data, default_data_app)
-    Util.request_pre(request=request, apj_id=apj_id, api=api, log=log)
-    #
-    if request.method == PhKeys.GET:
-        pass
-    if request.method == PhKeys.POST:
-        result, msg, msg_category = __validate_credentials(request.form['username'], request.form['password'])
-        flash(msg, msg_category)
-        if result is True:
-            return redirect(
-                url_for(Util.get_apj_data(apj_id=Const.APJ_ID_AMENITY_PJ, specific_key=PhKeys.APP_END_POINT)))
-    return Util.request_post(request=request, apj_id=Const.APJ_ID_LOGIN, api=api, log=log,
-                             output_data=app_data)

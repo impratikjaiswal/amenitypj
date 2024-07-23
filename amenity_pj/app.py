@@ -10,11 +10,17 @@ from amenity_pj.helper.util import Util
 
 # from amenity_pj.helper.logger import dictConfig
 
+UPLOAD_FOLDER_PERMANENT = '/data/user_data/uploads_permanent'
+UPLOAD_FOLDER_TEMP = '/data/user_data/uploads_temporary'
+LOG_FOLDER = '/logs'
+LOG_FOLDER_404 = '/logs/404'
+ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
+
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = 'Pj Test'
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER_PERMANENT
 # app.config['SECRET_KEY'] = b'_5#y2L"F4Q8z\n\xec]/'
-
 
 sitemapper = Sitemapper()
 sitemapper.init_app(app)
@@ -201,6 +207,17 @@ def server_details():
 def sitemap():
     Util.user_visit(request=request, log=log)
     return sitemapper.generate()
+
+
+@sitemapper.include(lastmod=Const.DEPLOYMENT_DATE_API)
+@app.route(Util.get_apj_data(apj_id=Const.APJ_ID_EXPERIMENTS_1, specific_key=PhKeys.APP_URL), methods=('GET', 'POST'),
+           defaults={'apj_id': Const.APJ_ID_EXPERIMENTS_1})
+@app.route(Util.get_apj_data(apj_id=Const.APJ_ID_EXPERIMENTS_2, specific_key=PhKeys.APP_URL), methods=('GET', 'POST'),
+           defaults={'apj_id': Const.APJ_ID_EXPERIMENTS_2})
+@app.route(Util.get_apj_data(apj_id=Const.APJ_ID_EXPERIMENTS_3, specific_key=PhKeys.APP_URL), methods=('GET', 'POST'),
+           defaults={'apj_id': Const.APJ_ID_EXPERIMENTS_3})
+def exp(apj_id):
+    return app_handler.handle_requests(apj_id=apj_id, log=log)
 
 
 @sitemapper.include(lastmod=Const.DEPLOYMENT_DATE)
