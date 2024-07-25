@@ -17,6 +17,11 @@ nav_bar_app_items = None
 
 
 def set_server_name(host_name_passed=None):
+    """
+
+    :param host_name_passed:
+    :return:
+    """
     global host_name, nav_bar_app_items
     """
     request dict
@@ -52,6 +57,12 @@ def set_server_name(host_name_passed=None):
 
 
 def handle_requests(apj_id, **kwargs):
+    """
+
+    :param apj_id:
+    :param kwargs:
+    :return:
+    """
     global host_name, nav_bar_app_items
     """
     :param apj_id:
@@ -169,8 +180,8 @@ def handle_requests(apj_id, **kwargs):
 def whats_new(apj_id, log=None):
     """
 
-    :param log:
     :param apj_id:
+    :param log:
     :return:
     """
     news_data_pool_common = Const.NEWS_DATA_MAPPING.get(Const.APJ_ID_NEWS_COMMON, None)

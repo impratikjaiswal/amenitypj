@@ -10,17 +10,11 @@ from amenity_pj.helper.util import Util
 
 # from amenity_pj.helper.logger import dictConfig
 
-UPLOAD_FOLDER_PERMANENT = '/data/user_data/uploads_permanent'
-UPLOAD_FOLDER_TEMP = '/data/user_data/uploads_temporary'
-LOG_FOLDER = '/logs'
-LOG_FOLDER_404 = '/logs/404'
-ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
 
 app = Flask(__name__)
-
 app.config['SECRET_KEY'] = 'Pj Test'
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER_PERMANENT
 # app.config['SECRET_KEY'] = b'_5#y2L"F4Q8z\n\xec]/'
+app.config['UPLOAD_FOLDER'] = Const.UPLOAD_FOLDER_PERMANENT
 
 sitemapper = Sitemapper()
 sitemapper.init_app(app)
@@ -34,9 +28,6 @@ host_name = None
 # yield Const.END_POINT_INDEX, {}
 # yield Const.END_POINT_INDEX, {}, Const.DEPLOYMENT_DATE, 'monthly'
 
-log_max_bytes = 1000000
-log_max_backup_count = 1000
-log_file_name = 'amenitypj.log'
 
 dictConfig(
     {
@@ -55,22 +46,22 @@ dictConfig(
             },
             "file": {
                 "class": "logging.FileHandler",
-                "filename": log_file_name,
+                "filename": Const.LOG_FILE_PATH,
                 "formatter": "default",
             },
             "size-rotate": {
                 "class": "logging.handlers.RotatingFileHandler",
-                "filename": log_file_name,
-                "maxBytes": log_max_bytes,
-                "backupCount": log_max_backup_count,
+                "filename": Const.LOG_FILE_PATH,
+                "maxBytes": Const.LOG_MAX_BYTES,
+                "backupCount": Const.LOG_MAX_BACKUP_COUNT,
                 "formatter": "default",
             },
             "time-rotate": {
                 "class": "logging.handlers.TimedRotatingFileHandler",
-                "filename": log_file_name,
+                "filename": Const.LOG_FILE_PATH,
                 "when": "D",
                 "interval": 10,
-                "backupCount": log_max_backup_count,
+                "backupCount": Const.LOG_MAX_BACKUP_COUNT,
                 "formatter": "default",
             },
         },
@@ -83,7 +74,6 @@ dictConfig(
 )
 
 log = app.logger
-
 
 @app.context_processor
 def utility_processor_title_for():
@@ -216,7 +206,7 @@ def sitemap():
            defaults={'apj_id': Const.APJ_ID_EXPERIMENTS_2})
 @app.route(Util.get_apj_data(apj_id=Const.APJ_ID_EXPERIMENTS_3, specific_key=PhKeys.APP_URL), methods=('GET', 'POST'),
            defaults={'apj_id': Const.APJ_ID_EXPERIMENTS_3})
-def exp(apj_id):
+def experiments(apj_id):
     return app_handler.handle_requests(apj_id=apj_id, log=log)
 
 

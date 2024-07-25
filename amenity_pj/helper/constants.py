@@ -1,3 +1,5 @@
+import os
+
 from asn1_play.main.helper.constants_config import ConfigConst as ConfigConst_Asn1Play
 from cert_play.main.helper.constants_config import ConfigConst as ConfigConst_CertPlay
 from excel_play.main.helper.constants_config import ConfigConst as ConfigConst_ExcelPlay
@@ -14,6 +16,16 @@ class Const:
     """
 
     """
+    LOG_FOLDER_APPS = os.sep.join(['logs', 'apps'])
+    LOG_FOLDER_OTHER = os.sep.join(['logs', 'others'])
+    LOG_FILE_NAME = 'amenitypj.log'
+    LOG_FILE_PATH = os.sep.join([LOG_FOLDER_APPS, LOG_FILE_NAME])
+    LOG_MAX_BYTES = 1000000
+    LOG_MAX_BACKUP_COUNT = 1000
+    UPLOAD_FOLDER_PERMANENT = os.sep.join(['data', 'user_data', 'uploads_permanent'])
+    UPLOAD_FOLDER_TEMP = os.sep.join(['data', 'user_data', 'uploads_temporary'])
+    UPLOAD_FILE_EXTENSIONS_ALLOWED = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif', 'ahk'}
+    UPLOAD_FILE_EXTENSIONS_BLOCKED = {'exe'}
     ####################
     # Deployment Dates
     ####################
