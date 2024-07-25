@@ -274,5 +274,7 @@ backup_*bkp
 ##################################################
 
 # Python Rotated logs
-*.log.*
-404.csv
+data/user_data
+logs/apps
+logs/backup
+logs/others

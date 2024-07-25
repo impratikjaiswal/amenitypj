@@ -26,3 +26,8 @@ https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js
 https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.js
 https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js
 https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js
+https://www.flaticon.com/free-icon/file_1092216
+https://www.flaticon.com/free-icon/file_1091554
+https://www.flaticon.com/free-icon/file-upload_5754866
+https://www.flaticon.com/free-icon/file_1092220
+pexels-miguel-3785932
