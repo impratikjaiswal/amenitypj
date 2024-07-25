@@ -167,7 +167,7 @@ def handle_requests(apj_id, **kwargs):
     if apj_id == Const.APJ_ID_SERVER_DETAILS:
         set_server_name()
     if apj_id == Const.APJ_ID_404:
-        with open("./404.csv", "a") as f:
+        with open(Const.LOG_FILE_404_PATH, "a") as f:
             f.write(f'{datetime.now()},{request.__dict__}\n')
         # return send_file('static/images/Darknet-404-Page-Concept.png', mimetype='image/png')
     # ######################

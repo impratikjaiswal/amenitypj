@@ -19,7 +19,9 @@ class Const:
     LOG_FOLDER_APPS = os.sep.join(['logs', 'apps'])
     LOG_FOLDER_OTHER = os.sep.join(['logs', 'others'])
     LOG_FILE_NAME = 'amenitypj.log'
+    LOG_404_FILE_NAME = '404.csv'
     LOG_FILE_PATH = os.sep.join([LOG_FOLDER_APPS, LOG_FILE_NAME])
+    LOG_FILE_404_PATH = os.sep.join([LOG_FOLDER_APPS, LOG_404_FILE_NAME])
     LOG_MAX_BYTES = 1000000
     LOG_MAX_BACKUP_COUNT = 1000
     UPLOAD_FOLDER_PERMANENT = os.sep.join(['data', 'user_data', 'uploads_permanent'])
