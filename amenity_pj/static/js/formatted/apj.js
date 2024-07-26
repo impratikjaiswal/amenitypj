@@ -40,6 +40,10 @@ btn_download_info.source_field = "#info_statement"
 btn_download_info.source_type = "div"
 btn_download_info.file_name_keyword = "info"
 
+const btn_input_data_file = document.querySelector("#input_data_file");
+// Process every time the user selects a new file
+btn_input_data_file.addEventListener("change", upload_input_file, false);
+
 //btn_copy_output.addEventListener("mouseout", copyToClipboardToolTip, false);
 //btn_copy_output.addEventListener("mousedown", logEvent);
 //btn_copy_output.addEventListener("mouseup", logEvent);
@@ -255,4 +259,33 @@ function getText(event) {
         data_inner_text = element.val()
     }
     return data_inner_text;
+}
+
+function upload_input_file(event) {
+    // event.target points to the input element
+    const selectedFile = event.target.files[0]
+    if (!selectedFile) {
+        return
+    }
+    let file_name = selectedFile.name
+    let file_size = selectedFile.size
+    let file_type = selectedFile.type
+    const reader = new FileReader()
+    reader.onload = (event) => {
+        // e.target points to the reader
+        const textContent = event.target.result
+        console.log(`The content of ${file_name} is ${textContent}`)
+        $("#input_data").val(textContent);
+        characterCounterInputData();
+    }
+    reader.onerror = (event) => {
+        const error = event.target.error
+        console.error(`Error occured while reading ${file_name}`, error)
+    }
+    reader.readAsText(selectedFile)
+    /*
+    reader.onchange = () => console.log(reader.result) // closure
+reader.onchange = (e) => console.log(e.target.result) // event target
+reader.onchange = function() => console.log(this.result) // 'this'
+     */
 }

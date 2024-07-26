@@ -8,6 +8,11 @@
         <img id="download_input_data" class="btn-image-initial" alt="Download Input Data"
              src={{ url_for('static', filename='/images/download-2/16_16.png') }}>
     </a>
+    <label for="input_data_file" class="image" data-toggle="tooltip" data-placement="top" title="Upload Input Data">
+        <img id="upload_input_data" class="btn-image-initial" alt="Upload Input Data"
+             src={{ url_for('static', filename='/images/upload-2/16_16.png') }}>
+    </label>
+    <input type="file" id="input_data_file" style="display:none" accept=".txt">
     <div class="badge float-right">
         Length: <span id="input_data_char_count">0</span>
     </div>
