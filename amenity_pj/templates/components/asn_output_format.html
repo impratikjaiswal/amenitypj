@@ -1,5 +1,18 @@
+&nbsp;&nbsp;&nbsp;
+<div class="form-group">
+    <a href="#" class="image" data-toggle="tooltip" data-placement="top" title="Swap I/O Formats">
+        <img id="swap_input_output_format" class="btn-image-initial btn-image-with-other-components"
+             alt="Swap I/O Formats"
+             src={{ url_for('static', filename='/images/swap-left-right-1/16_16.png') }}>
+    </a>
+</div>
+&nbsp;&nbsp;&nbsp;
 <div class="form-group col">
     <label for="output_format">Output Format</label>
+    <a href="#" class="image" data-toggle="tooltip" data-placement="top" title="Copy Output Format">
+        <img id="copy_output_format" class="btn-image-initial" alt="Copy Output Format"
+             src={{ url_for('static', filename='/images/copy-2/16_16.png') }}>
+    </a>
     <select name="output_format" class="form-control selectpicker" data-live-search="true"
             placeholder="Output Format" id="output_format">
         {% for output_format in output_formats %}

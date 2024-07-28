@@ -1,5 +1,9 @@
 <div class="form-group col">
     <label for="asn1_object">Asn1 Object</label>
+    <a href="#" class="image" data-toggle="tooltip" data-placement="top" title="Copy Asn1 Object">
+        <img id="copy_asn1_object" class="btn-image-initial" alt="Copy Asn1 Object"
+             src={{ url_for('static', filename='/images/copy-2/16_16.png') }}>
+    </a>
     <select name="asn1_object" id="asn1_object" class="form-control selectpicker" data-live-search="true"
             placeholder="Asn1 Object">
         {% for asn1_object in asn1_objects %}

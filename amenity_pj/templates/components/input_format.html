@@ -1,5 +1,9 @@
 <div class="form-group col">
     <label for="input_format">Input Format</label>
+    <a href="#" class="image" data-toggle="tooltip" data-placement="top" title="Copy Input Format">
+        <img id="copy_input_format" class="btn-image-initial" alt="Copy Input Format"
+             src={{ url_for('static', filename='/images/copy-2/16_16.png') }}>
+    </a>
     <select name="input_format" class="form-control selectpicker" data-live-search="true"
             placeholder="Input Format" id="input_format">
         {% for input_format in input_formats %}
