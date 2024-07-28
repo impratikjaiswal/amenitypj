@@ -1,3 +1,8 @@
+const SOURCE_TYPE_TEXT_AREA = 2
+const SOURCE_TYPE_TEXT = 3
+const SOURCE_TYPE_DIV = 4
+const SOURCE_TYPE_COMBO_BOX = 5
+
 const TIP_BUTTON_SWAP_IO = "Swap I/O Formats"
 const TIP_BUTTON_COPY = "Copy to Clipboard"
 const TIP_BUTTON_DOWNLOAD = "Download"
@@ -7,48 +12,138 @@ const TIP_BUTTON_COPY_EMPTY = "Nothing to Copy for now !!!"
 const TIP_BUTTON_DOWNLOAD_EMPTY = "Nothing to Download for now !!!"
 
 const btn_copy_input = document.querySelector("#copy_input_data");
-btn_copy_input.addEventListener("click", copyToClipboard, false);
-btn_copy_input.source_field = "#input_data"
-btn_copy_input.source_anchor = "#copy_input_data_a"
-btn_copy_input.source_type = "textarea"
+if (btn_copy_input) {
+    btn_copy_input.addEventListener("click", copyToClipboard, false);
+    btn_copy_input.source_field = "#input_data"
+    btn_copy_input.source_anchor = "#copy_input_data_a"
+    btn_copy_input.source_type = SOURCE_TYPE_TEXT_AREA
+}
 
 const btn_download_input = document.querySelector("#download_input_data");
-btn_download_input.addEventListener("click", downloadData, false);
-btn_download_input.source_field = "#input_data"
-btn_download_input.source_type = "textarea"
-btn_download_input.file_name_keyword = "input_data"
+if (btn_download_input) {
+    btn_download_input.addEventListener("click", downloadData, false);
+    btn_download_input.source_field = "#input_data"
+    btn_download_input.source_type = SOURCE_TYPE_TEXT_AREA
+    btn_download_input.file_name_keyword = "input_data"
+}
 
 const btn_copy_output = document.querySelector("#copy_output_data");
-btn_copy_output.addEventListener("click", copyToClipboard, false);
-btn_copy_output.source_field = "#output_statement"
-btn_copy_output.source_type = "div"
-
-const btn_download_output = document.querySelector("#download_output_data");
-btn_download_output.addEventListener("click", downloadData, false);
-btn_download_output.source_field = "#output_statement"
-btn_download_output.source_type = "div"
-btn_download_output.file_name_keyword = "output_data"
-
-const btn_copy_info = document.querySelector("#copy_info_data");
-btn_copy_info.addEventListener("click", copyToClipboard, false);
-btn_copy_info.source_field = "#info_statement"
-btn_copy_info.source_type = "div"
-
-const btn_download_info = document.querySelector("#download_info_data");
-btn_download_info.addEventListener("click", downloadData, false);
-btn_download_info.source_field = "#info_statement"
-btn_download_info.source_type = "div"
-btn_download_info.file_name_keyword = "info"
-
-const btn_input_data_file = document.querySelector("#input_data_file");
-// Process every time the user selects a new file
-btn_input_data_file.addEventListener("change", upload_input_file, false);
-
+if (btn_copy_output) {
+    btn_copy_output.addEventListener("click", copyToClipboard, false);
 //btn_copy_output.addEventListener("mouseout", copyToClipboardToolTip, false);
 //btn_copy_output.addEventListener("mousedown", logEvent);
 //btn_copy_output.addEventListener("mouseup", logEvent);
 //btn_copy_output.addEventListener("mouseenter", logEvent);
 //btn_copy_output.addEventListener("mouseleave", logEvent);
+    btn_copy_output.source_field = "#output_statement"
+    btn_copy_output.source_type = SOURCE_TYPE_DIV
+}
+
+const btn_download_output = document.querySelector("#download_output_data");
+if (btn_download_output) {
+    btn_download_output.addEventListener("click", downloadData, false);
+    btn_download_output.source_field = "#output_statement"
+    btn_download_output.source_type = SOURCE_TYPE_DIV
+    btn_download_output.file_name_keyword = "output_data"
+}
+
+const btn_copy_info = document.querySelector("#copy_info_data");
+if (btn_copy_info) {
+    btn_copy_info.addEventListener("click", copyToClipboard, false);
+    btn_copy_info.source_field = "#info_statement"
+    btn_copy_info.source_type = SOURCE_TYPE_DIV
+}
+
+const btn_download_info = document.querySelector("#download_info_data");
+if (btn_download_info) {
+    btn_download_info.addEventListener("click", downloadData, false);
+    btn_download_info.source_field = "#info_statement"
+    btn_download_info.source_type = SOURCE_TYPE_DIV
+    btn_download_info.file_name_keyword = "info"
+}
+
+const btn_input_data_file = document.querySelector("#input_data_file");
+if (btn_input_data_file) {
+// Process every time the user selects a new file
+    btn_input_data_file.addEventListener("change", upload_input_file, false);
+}
+
+const btn_copy_sample = document.querySelector("#copy_sample");
+if (btn_copy_sample) {
+    btn_copy_sample.addEventListener("click", copyToClipboard, false);
+    btn_copy_sample.source_field = "#sample"
+    btn_copy_sample.source_type = SOURCE_TYPE_COMBO_BOX
+}
+
+const btn_copy_remarks = document.querySelector("#copy_remarks");
+if (btn_copy_remarks) {
+    btn_copy_remarks.addEventListener("click", copyToClipboard, false);
+    btn_copy_remarks.source_field = "#remarks"
+    btn_copy_remarks.source_type = SOURCE_TYPE_TEXT
+}
+
+const btn_copy_scale = document.querySelector("#copy_scale");
+if (btn_copy_scale) {
+    btn_copy_scale.addEventListener("click", copyToClipboard, false);
+    btn_copy_scale.source_field = "#scale"
+    btn_copy_scale.source_type = SOURCE_TYPE_TEXT
+}
+
+const btn_copy_qr_code_version = document.querySelector("#copy_qr_code_version");
+if (btn_copy_qr_code_version) {
+    btn_copy_qr_code_version.addEventListener("click", copyToClipboard, false);
+    btn_copy_qr_code_version.source_field = "#qr_code_version"
+    btn_copy_qr_code_version.source_type = SOURCE_TYPE_COMBO_BOX
+}
+
+const btn_copy_image_format = document.querySelector("#copy_image_format");
+if (btn_copy_image_format) {
+    btn_copy_image_format.addEventListener("click", copyToClipboard, false);
+    btn_copy_image_format.source_field = "#image_format"
+    btn_copy_image_format.source_type = SOURCE_TYPE_COMBO_BOX
+}
+
+const btn_copy_input_format = document.querySelector("#copy_input_format");
+if (btn_copy_input_format) {
+    btn_copy_input_format.addEventListener("click", copyToClipboard, false);
+    btn_copy_input_format.source_field = "#input_format"
+    btn_copy_input_format.source_type = SOURCE_TYPE_COMBO_BOX
+}
+
+const btn_copy_url_time_out = document.querySelector("#copy_url_time_out");
+if (btn_copy_url_time_out) {
+    btn_copy_url_time_out.addEventListener("click", copyToClipboard, false);
+    btn_copy_url_time_out.source_field = "#url_time_out"
+    btn_copy_url_time_out.source_type = SOURCE_TYPE_COMBO_BOX
+}
+
+const btn_copy_output_format = document.querySelector("#copy_output_format");
+if (btn_copy_output_format) {
+    btn_copy_output_format.addEventListener("click", copyToClipboard, false);
+    btn_copy_output_format.source_field = "#output_format"
+    btn_copy_output_format.source_type = SOURCE_TYPE_COMBO_BOX
+}
+
+const btn_copy_asn1_schema = document.querySelector("#copy_asn1_schema");
+if (btn_copy_asn1_schema) {
+    btn_copy_asn1_schema.addEventListener("click", copyToClipboard, false);
+    btn_copy_asn1_schema.source_field = "#asn1_schema"
+    btn_copy_asn1_schema.source_type = SOURCE_TYPE_COMBO_BOX
+}
+
+const btn_copy_asn1_object_alternate = document.querySelector("#copy_asn1_object_alternate");
+if (btn_copy_asn1_object_alternate) {
+    btn_copy_asn1_object_alternate.addEventListener("click", copyToClipboard, false);
+    btn_copy_asn1_object_alternate.source_field = "#asn1_object_alternate"
+    btn_copy_asn1_object_alternate.source_type = SOURCE_TYPE_COMBO_BOX
+}
+
+const btn_copy_asn1_object = document.querySelector("#copy_asn1_object");
+if (btn_copy_asn1_object) {
+    btn_copy_asn1_object.addEventListener("click", copyToClipboard, false);
+    btn_copy_asn1_object.source_field = "#asn1_object"
+    btn_copy_asn1_object.source_type = SOURCE_TYPE_COMBO_BOX
+}
 
 $(document).ready(function () {
     // debugData("DOM is ready: apj.js");
@@ -246,14 +341,18 @@ function getText(event) {
     let source_field = event.currentTarget.source_field
     let source_type = event.currentTarget.source_type
     let data_inner_text = "";
-    if (source_type == "div") {
+    if (source_type === SOURCE_TYPE_DIV) {
         // ID of the object
         const element = document.querySelector(source_field);
         // represents inner tags
         // let data_text_content = element.textContent
         // represents exactly how text appears on the page
         data_inner_text = element.innerText
-    } else if (source_type == "textarea") {
+    } else if (source_type === SOURCE_TYPE_TEXT_AREA || source_type === SOURCE_TYPE_COMBO_BOX || source_type === SOURCE_TYPE_TEXT) {
+        // ID of the object
+        const element = $(source_field);
+        data_inner_text = element.val()
+    } else { // Unknown Source Type Handling
         // ID of the object
         const element = $(source_field);
         data_inner_text = element.val()
