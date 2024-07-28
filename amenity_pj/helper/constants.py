@@ -410,18 +410,18 @@ class Const:
                 #
                 # f'{PhKeys.APP_TITLE} now supports "Copy Input Data", "Copy Output Data" & "Copy Info".',
                 #
-                f'{PhKeys.APP_TITLE}: Now you can utilize essential copy/paste functionality using dedicated "Copy" '
-                f'icon provided along with various field(s).',
+                f'{PhKeys.APP_TITLE} is now equipped with essential copy/paste functionality. '
+                f'Try "Copy" icon available with various field(s).',
                 #
                 # f'{PhKeys.APP_TITLE} now supports "Download Input Data", "Download Output Data" & "Download Info".'
                 #
-                f'{PhKeys.APP_TITLE}: Now now you can utilize essential download functionality using dedicated '
-                f'"Download" icon provided along with various field(s).',
+                f'{PhKeys.APP_TITLE} is now equipped with essential download functionality. '
+                f'Try "Download" icon available with various field(s).',
                 #
                 # f'{PhKeys.APP_TITLE} now supports "Upload Input Data".'
                 #
-                f'{PhKeys.APP_TITLE}: Now now you can utilize essential upload functionality using dedicated "Upload" '
-                f'icon provided along with Input Data field.'
+                f'{PhKeys.APP_TITLE} is now equipped with essential upload functionality. '
+                f'Try "Upload" icon available with Input Data field.'
                 #
             ],
         #

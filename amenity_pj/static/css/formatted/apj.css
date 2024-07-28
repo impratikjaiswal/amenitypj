@@ -60,6 +60,10 @@
     transform: rotate(180deg);
 }
 
+.btn-image-rotate-360 {
+    transform: rotate(360deg);
+}
+
 /* Button Image - RotateY */
 .btn-image-rotate-y {
     transform: rotateY(360deg);

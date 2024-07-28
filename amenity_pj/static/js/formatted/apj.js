@@ -2,6 +2,7 @@ const SOURCE_TYPE_TEXT_AREA = 2
 const SOURCE_TYPE_TEXT = 3
 const SOURCE_TYPE_DIV = 4
 const SOURCE_TYPE_COMBO_BOX = 5
+const MAX_FILE_SIZE = 1024 * 1024 * 2
 
 const TIP_BUTTON_SWAP_IO = "Swap I/O Formats"
 const TIP_BUTTON_COPY = "Copy to Clipboard"
@@ -10,6 +11,8 @@ const TIP_BUTTON_COPY_SUCCESS = "Copied !!!"
 const TIP_BUTTON_DOWNLOAD_SUCCESS = "Downloading !!!"
 const TIP_BUTTON_COPY_EMPTY = "Nothing to Copy for now !!!"
 const TIP_BUTTON_DOWNLOAD_EMPTY = "Nothing to Download for now !!!"
+const TIP_BUTTON_UPLOAD_EMPTY = "Nothing to Upload for now !!!"
+const TIP_BUTTON_FILE_SIZE_EXCEEDS = "File Size must be less than 2 MB !!!\n\nUploaded File Size is: "
 
 const btn_copy_input = document.querySelector("#copy_input_data");
 if (btn_copy_input) {
@@ -170,7 +173,9 @@ function pageLoad() {
 }
 
 function characterCounterInputData() {
-    $("#input_data_char_count").text($("#input_data").val().length);
+    if ($("#input_data").val()) {
+        $("#input_data_char_count").text($("#input_data").val().length);
+    }
 }
 
 function characterCounterInfoData() {
@@ -362,24 +367,35 @@ function getText(event) {
 
 function upload_input_file(event) {
     // event.target points to the input element
+    $("#upload_input_data").toggleClass("btn-image-rotate-360");
     const selectedFile = event.target.files[0]
     if (!selectedFile) {
         return
     }
     let file_name = selectedFile.name
+    // Sample file_size (bytes): 937
     let file_size = selectedFile.size
+    // Sample file_type: "text/plain"
     let file_type = selectedFile.type
+    if (file_size > MAX_FILE_SIZE) {
+        let size_in_mb = (file_size / 1024 / 1024).toFixed(2)
+        alertMsg(TIP_BUTTON_FILE_SIZE_EXCEEDS + size_in_mb + " MB")
+        return
+    }
     const reader = new FileReader()
     reader.onload = (event) => {
-        // e.target points to the reader
-        const textContent = event.target.result
-        console.log(`The content of ${file_name} is ${textContent}`)
-        $("#input_data").val(textContent);
-        characterCounterInputData();
+        let textContent = setText(event)
+        if (textContent) {
+            // console.log(`The content of ${file_name} is ${textContent}`)
+            $("#input_data").val(textContent);
+            characterCounterInputData();
+        } else {
+            alertMsg(TIP_BUTTON_UPLOAD_EMPTY)
+        }
     }
     reader.onerror = (event) => {
         const error = event.target.error
-        console.error(`Error occured while reading ${file_name}`, error)
+        console.error(`Error occurred while reading ${file_name}`, error)
     }
     reader.readAsText(selectedFile)
     /*
@@ -387,4 +403,10 @@ function upload_input_file(event) {
 reader.onchange = (e) => console.log(e.target.result) // event target
 reader.onchange = function() => console.log(this.result) // 'this'
      */
+}
+
+function setText(event) {
+    // event.target points to the reader
+    let textContent = event.target.result
+    return textContent ? textContent.trim() : textContent
 }
