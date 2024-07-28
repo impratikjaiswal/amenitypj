@@ -1,0 +1,9 @@
+<div class="form-group col">
+    <label for="asn1_schema">Asn1 Schema</label>
+    <select name="asn1_schema" id="asn1_schema" class="form-control selectpicker" data-live-search="true"
+            placeholder="Asn1 Schema">
+        {% for asn1_schema in asn1_schemas %}
+            <option value="{{ asn1_schema }}" {{ is_selected_asn1_schema(asn1_schema, asn1_schema_selected) }}>{{ asn1_schema }}</option>
+        {% endfor %}
+    </select>
+</div>

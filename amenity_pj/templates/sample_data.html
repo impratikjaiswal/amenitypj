@@ -10,6 +10,10 @@
 <div class="form-row" id="samples_section">
     <div class="form-group col">
         <label for="sample">Select Sample</label>
+        <a href="#" class="image" data-toggle="tooltip" data-placement="top" title="Copy Sample Data">
+            <img id="copy_sample" class="btn-image-initial" alt="Copy Sample"
+                 src={{ url_for('static', filename='/images/copy-2/16_16.png') }}>
+        </a>
         <select name="sample" class="form-control selectpicker" data-live-search="true" id="sample">
             {% for sample in samples %}
                 <option value="{{ sample }}" {{ is_selected_sample(sample, sample_selected) }}>{{ sample }}</option>

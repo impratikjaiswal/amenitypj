@@ -1,0 +1,9 @@
+<div class="form-group col">
+    <label for="image_format">Image Format</label>
+    <select name="image_format" class="form-control selectpicker" data-live-search="true"
+            placeholder="Qr Code Version" id="image_format">
+        {% for image_format in image_formats %}
+            <option value="{{ image_format }}" {{ is_selected_image_format(image_format, image_format_selected) }}>{{ image_format }}</option>
+        {% endfor %}
+    </select>
+</div>

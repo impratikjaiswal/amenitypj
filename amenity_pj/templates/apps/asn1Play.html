@@ -8,15 +8,7 @@
     <form method="post">
         {% include 'input_data.html' %}
         <div class="form-row">
-            <div class="form-group col">
-                <label for="input_format">Input Format</label>
-                <select name="input_format" class="form-control selectpicker" data-live-search="true"
-                        placeholder="Input Format" id="input_format">
-                    {% for input_format in input_formats %}
-                        <option value="{{ input_format }}" {{ is_selected_input_format(input_format, input_format_selected) }}>{{ input_format }}</option>
-                    {% endfor %}
-                </select>
-            </div>
+            {% include 'input_format.html' %}
             &nbsp;&nbsp;&nbsp;
             <div class="form-group">
                 <a href="#" class="image" data-toggle="tooltip" data-placement="top" title="Swap I/O Formats">
@@ -26,83 +18,27 @@
                 </a>
             </div>
             &nbsp;&nbsp;&nbsp;
-            <div class="form-group col">
-                <label for="output_format">Output Format</label>
-                <select name="output_format" class="form-control selectpicker" data-live-search="true"
-                        placeholder="Output Format" id="output_format">
-                    {% for output_format in output_formats %}
-                        <option value="{{ output_format }}" {{ is_selected_output_format(output_format, output_format_selected) }}>{{ output_format }}</option>
-                    {% endfor %}
-                </select>
-            </div>
+            {% include 'asn_output_format.html' %}
             &nbsp;&nbsp;&nbsp;
-            <div class="form-group col">
-                <div class="form-check form-check-with-other-components">
-                    {% if tlv_parsing_of_output %}
-                        <input type="checkbox" name="tlv_parsing_of_output" class="form-check-input"
-                               value="{{ tlv_parsing_of_output }}" checked>
-                    {% else %}
-                        <input type="checkbox" name="tlv_parsing_of_output" class="form-check-input"
-                               value="{{ tlv_parsing_of_output }}">
-                    {% endif %}
-                    <!-- TLV Parsed Output (if possible) -->
-                    <label for="tlv_parsing_of_output" class="form-check-label">TLV Parsing (if possible)</label>
-                </div>
-            </div>
+            {% include 'asn_tlv_parsing_of_output.html' %}
         </div>
         <div class="form-row">
-            <div class="form-group col">
-                <label for="asn1_schema">Asn1 Schema</label>
-                <select name="asn1_schema" id="asn1_schema" class="form-control selectpicker" data-live-search="true"
-                        placeholder="Asn1 Schema">
-                    {% for asn1_schema in asn1_schemas %}
-                        <option value="{{ asn1_schema }}" {{ is_selected_asn1_schema(asn1_schema, asn1_schema_selected) }}>{{ asn1_schema }}</option>
-                    {% endfor %}
-                </select>
-            </div>
-            <div class="form-group col">
-                <label for="asn1_object">Asn1 Object</label>
-                <select name="asn1_object" id="asn1_object" class="form-control selectpicker" data-live-search="true"
-                        placeholder="Asn1 Object">
-                    {% for asn1_object in asn1_objects %}
-                        {% if asn1_object == asn1_object_selected %}
-                            <option value="{{ asn1_object }}" SELECTED>{{ asn1_object }}</option>
-                        {% else %}
-                            <option value="{{ asn1_object }}">{{ asn1_object }}</option>
-                        {% endif %}
-                    {% endfor %}
-                </select>
-            </div>
-            <div class="form-group col">
-                <label for="asn1_object_alternate">Asn1 Object - Others</label>
-                <input type="text" name="asn1_object_alternate" placeholder="Asn1 Object - Others" class="form-control"
-                       value="{{ asn1_object_alternate }}">
-            </div>
+            {% include 'asn_asn1_schema.html' %}
+            {% include 'asn_asn1_object.html' %}
+            {% include 'asn_asn1_object_others.html' %}
         </div>
         <div class="form-group right">
             <!-- TODO: Font Size can be reduced -->
             <i><B>Tip:</B> If "Asn1 Object" drop down list is empty or required object is not listed, try "Asn1 Object
                 Alternate" !!!</i><BR>
         </div>
-        <div class="form-group">
-            <div class="form-check">
-                <!-- TODO: Tool Tip: Use this field to fetch the (static) list for selected Asn1 Schema !!! -->
-                {% if fetch_asn1_objects_list %}
-                    <input type="checkbox" name="fetch_asn1_objects_list" class="form-check-input"
-                           value="{{ fetch_asn1_objects_list }}" checked>
-                {% else %}
-                    <input type="checkbox" name="fetch_asn1_objects_list" class="form-check-input"
-                           value="{{ fetch_asn1_objects_list }}">
-                {% endif %}
-                <label for="fetch_asn1_objects_list" class="form-check-label">Fetch Asn1 Objects List</label>
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="remarks">Remarks</label>
-            <input type="text" name="remarks" placeholder="Remarks" class="form-control" value="{{ remarks }}">
-        </div>
+        {% include 'asn_fetch_asn1_objects_list.html' %}
+        {% include 'remarks.html' %}
         {% include 'button.html' %}
         {% include 'output_data.html' %}
         {% include 'sample_data.html' %}
     </form>
 {% endblock %}
+{# Page Specific Script #}
+{#{% block page_specific_script %}#}
+{#{% endblock %}#}

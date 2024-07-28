@@ -1,0 +1,13 @@
+<div class="form-group">
+    <div class="form-check">
+        <!-- TODO: Tool Tip: Use this field to fetch the (static) list for selected Asn1 Schema !!! -->
+        {% if fetch_asn1_objects_list %}
+            <input type="checkbox" name="fetch_asn1_objects_list" class="form-check-input"
+                   value="{{ fetch_asn1_objects_list }}" checked>
+        {% else %}
+            <input type="checkbox" name="fetch_asn1_objects_list" class="form-check-input"
+                   value="{{ fetch_asn1_objects_list }}">
+        {% endif %}
+        <label for="fetch_asn1_objects_list" class="form-check-label">Fetch Asn1 Objects List</label>
+    </div>
+</div>

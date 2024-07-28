@@ -1,0 +1,12 @@
+<div class="form-group col">
+    <div class="form-check">
+        {% if value_in_ascii %}
+            <input type="checkbox" name="value_in_ascii" class="form-check-input"
+                   value="{{ value_in_ascii }}" checked>
+        {% else %}
+            <input type="checkbox" name="value_in_ascii" class="form-check-input"
+                   value="{{ value_in_ascii }}">
+        {% endif %}
+        <label for="value_in_ascii" class="form-check-label">Value In Ascii</label>
+    </div>
+</div>

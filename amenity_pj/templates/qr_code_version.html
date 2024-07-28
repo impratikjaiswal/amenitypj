@@ -1,0 +1,9 @@
+<div class="form-group col">
+    <label for="qr_code_version">Qr Code Version</label>
+    <select name="qr_code_version" class="form-control selectpicker" data-live-search="true"
+            placeholder="Qr Code Version" id="qr_code_version">
+        {% for qr_code_version in qr_code_versions %}
+            <option value="{{ qr_code_version }}" {{ is_selected_qr_code_version(qr_code_version, qr_code_version_selected) }}>{{ qr_code_version }}</option>
+        {% endfor %}
+    </select>
+</div>

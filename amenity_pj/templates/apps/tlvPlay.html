@@ -8,62 +8,14 @@
     <form method="post">
         {% include 'input_data.html' %}
         <div class="form-row">
-            <div class="form-group col">
-                <div class="form-check">
-                    {% if length_in_decimal %}
-                        <input type="checkbox" name="length_in_decimal" class="form-check-input"
-                               value="{{ length_in_decimal }}" checked>
-                    {% else %}
-                        <input type="checkbox" name="length_in_decimal" class="form-check-input"
-                               value="{{ length_in_decimal }}">
-                    {% endif %}
-                    <label for="length_in_decimal" class="form-check-label">Length In Decimal</label>
-                </div>
-            </div>
-            <div class="form-group col">
-                <div class="form-check">
-                    {% if value_in_ascii %}
-                        <input type="checkbox" name="value_in_ascii" class="form-check-input"
-                               value="{{ value_in_ascii }}" checked>
-                    {% else %}
-                        <input type="checkbox" name="value_in_ascii" class="form-check-input"
-                               value="{{ value_in_ascii }}">
-                    {% endif %}
-                    <label for="value_in_ascii" class="form-check-label">Value In Ascii</label>
-                </div>
-            </div>
-            <div class="form-group col">
-                <div class="form-check">
-                    {% if one_liner %}
-                        <input type="checkbox" name="one_liner" class="form-check-input" value="{{ one_liner }}"
-                               checked>
-                    {% else %}
-                        <input type="checkbox" name="one_liner" class="form-check-input" value="{{ one_liner }}">
-                    {% endif %}
-                    <label for="one_liner" class="form-check-label">One Liner</label>
-                </div>
-            </div>
-            <div class="form-group col">
-                <div class="form-check">
-                    {% if non_tlv_neighbor %}
-                        <input type="checkbox" name="non_tlv_neighbor" class="form-check-input" value="{{ non_tlv_neighbor }}"
-                               checked>
-                    {% else %}
-                        <input type="checkbox" name="non_tlv_neighbor" class="form-check-input" value="{{ non_tlv_neighbor }}">
-                    {% endif %}
-                    <label for="non_tlv_neighbor" class="form-check-label">Non TLV Neighbor</label>
-                </div>
-            </div>
+            {% include 'tlv_length_in_decimal.html' %}
+            {% include 'tlv_value_in_ascii.html' %}
+            {% include 'tlv_one_liner.html' %}
+            {% include 'tlv_non_tlv_neighbor.html' %}
         </div>
-        <div class="form-group">
-            <label for="remarks">Remarks</label>
-            <input type="text" name="remarks" placeholder="Remarks" class="form-control" value="{{ remarks }}">
-        </div>
+        {% include 'remarks.html' %}
         {% include 'button.html' %}
         {% include 'output_data.html' %}
         {% include 'sample_data.html' %}
     </form>
-{% endblock %}
-{# Page Specific Script #}
-{% block page_specific_script %}
 {% endblock %}

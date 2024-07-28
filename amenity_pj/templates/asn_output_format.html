@@ -1,0 +1,9 @@
+<div class="form-group col">
+    <label for="output_format">Output Format</label>
+    <select name="output_format" class="form-control selectpicker" data-live-search="true"
+            placeholder="Output Format" id="output_format">
+        {% for output_format in output_formats %}
+            <option value="{{ output_format }}" {{ is_selected_output_format(output_format, output_format_selected) }}>{{ output_format }}</option>
+        {% endfor %}
+    </select>
+</div>

@@ -1,0 +1,11 @@
+<div class="form-group col">
+    <div class="form-check">
+        {% if one_liner %}
+            <input type="checkbox" name="one_liner" class="form-check-input" value="{{ one_liner }}"
+                   checked>
+        {% else %}
+            <input type="checkbox" name="one_liner" class="form-check-input" value="{{ one_liner }}">
+        {% endif %}
+        <label for="one_liner" class="form-check-label">One Liner</label>
+    </div>
+</div>

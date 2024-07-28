@@ -8,50 +8,14 @@
     <form method="post">
         {% include 'input_data.html' %}
         <div class="form-row">
-            <div class="form-group col">
-                <label for="image_format">Image Format</label>
-                <select name="image_format" class="form-control selectpicker" data-live-search="true"
-                        placeholder="Qr Code Version" id="image_format">
-                    {% for image_format in image_formats %}
-                        <option value="{{ image_format }}" {{ is_selected_image_format(image_format, image_format_selected) }}>{{ image_format }}</option>
-                    {% endfor %}
-                </select>
-            </div>
-            <div class="form-group col">
-                <label for="qr_code_version">Qr Code Version</label>
-                <select name="qr_code_version" class="form-control selectpicker" data-live-search="true"
-                        placeholder="Qr Code Version" id="qr_code_version">
-                    {% for qr_code_version in qr_code_versions %}
-                        <option value="{{ qr_code_version }}" {{ is_selected_qr_code_version(qr_code_version, qr_code_version_selected) }}>{{ qr_code_version }}</option>
-                    {% endfor %}
-                </select>
-            </div>
-            <div class="form-group col">
-                <label for="scale">Scale</label>
-                <input type="text" name="scale" placeholder="Scale" class="form-control" value="{{ scale }}">
-            </div>
-            <div class="form-group col">
-                <div class="form-check form-check-with-other-components">
-                    {% if split_qrs %}
-                        <input type="checkbox" name="split_qrs" class="form-check-input"
-                               value="{{ split_qrs }}" checked>
-                    {% else %}
-                        <input type="checkbox" name="split_qrs" class="form-check-input"
-                               value="{{ split_qrs }}">
-                    {% endif %}
-                    <label for="split_qrs" class="form-check-label">Auto Split Qrs (if needed)</label>
-                </div>
-            </div>
+            {% include 'qr_image_format.html' %}
+            {% include 'qr_code_version.html' %}
+            {% include 'qr_code_scale.html' %}
+            {% include 'qr_split_qrs.html' %}
         </div>
-        <div class="form-group">
-            <label for="remarks">Remarks</label>
-            <input type="text" name="remarks" placeholder="Remarks" class="form-control" value="{{ remarks }}">
-        </div>
+        {% include 'remarks.html' %}
         {% include 'button.html' %}
         {% include 'output_data.html' %}
         {% include 'sample_data.html' %}
     </form>
-{% endblock %}
-{# Page Specific Script #}
-{% block page_specific_script %}
 {% endblock %}

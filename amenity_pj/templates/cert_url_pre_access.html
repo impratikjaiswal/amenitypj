@@ -1,0 +1,12 @@
+<div class="form-group col">
+    <div class="form-check form-check-with-other-components">
+        {% if url_pre_access %}
+            <input type="checkbox" name="url_pre_access" class="form-check-input"
+                   value="{{ url_pre_access }}" checked>
+        {% else %}
+            <input type="checkbox" name="url_pre_access" class="form-check-input"
+                   value="{{ url_pre_access }}">
+        {% endif %}
+        <label for="url_pre_access" class="form-check-label">URL Pre Access Validation</label>
+    </div>
+</div> 

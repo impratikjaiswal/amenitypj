@@ -1,0 +1,12 @@
+<div class="form-group col">
+    <div class="form-check form-check-with-other-components">
+        {% if split_qrs %}
+            <input type="checkbox" name="split_qrs" class="form-check-input"
+                   value="{{ split_qrs }}" checked>
+        {% else %}
+            <input type="checkbox" name="split_qrs" class="form-check-input"
+                   value="{{ split_qrs }}">
+        {% endif %}
+        <label for="split_qrs" class="form-check-label">Auto Split Qrs (if needed)</label>
+    </div>
+</div>

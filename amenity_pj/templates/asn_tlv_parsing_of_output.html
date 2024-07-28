@@ -1,0 +1,13 @@
+<div class="form-group col">
+    <div class="form-check form-check-with-other-components">
+        {% if tlv_parsing_of_output %}
+            <input type="checkbox" name="tlv_parsing_of_output" class="form-check-input"
+                   value="{{ tlv_parsing_of_output }}" checked>
+        {% else %}
+            <input type="checkbox" name="tlv_parsing_of_output" class="form-check-input"
+                   value="{{ tlv_parsing_of_output }}">
+        {% endif %}
+        <!-- TLV Parsed Output (if possible) -->
+        <label for="tlv_parsing_of_output" class="form-check-label">TLV Parsing (if possible)</label>
+    </div>
+</div>

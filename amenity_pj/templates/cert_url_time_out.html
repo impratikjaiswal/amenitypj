@@ -1,0 +1,9 @@
+<div class="form-group col">
+    <label for="url_time_out">URL Time Out</label>
+    <select name="url_time_out" class="form-control selectpicker" data-live-search="true"
+            placeholder="Input Format" id="url_time_out">
+        {% for url_time_out in url_time_outs %}
+            <option value="{{ url_time_out }}" {{ is_selected_url_time_out(url_time_out, url_time_out_selected) }}>{{ url_time_out }}</option>
+        {% endfor %}
+    </select>
+</div>

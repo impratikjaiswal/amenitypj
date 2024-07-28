@@ -8,46 +8,13 @@
     <form method="post">
         {% include 'input_data.html' %}
         <div class="form-row">
-            <div class="form-group col">
-                <label for="input_format">Input Format</label>
-                <select name="input_format" class="form-control selectpicker" data-live-search="true"
-                        placeholder="Input Format" id="input_format">
-                    {% for input_format in input_formats %}
-                        <option value="{{ input_format }}" {{ is_selected_input_format(input_format, input_format_selected) }}>{{ input_format }}</option>
-                    {% endfor %}
-                </select>
-            </div>
-            <div class="form-group col">
-                <label for="url_time_out">URL Time Out</label>
-                <select name="url_time_out" class="form-control selectpicker" data-live-search="true"
-                        placeholder="Input Format" id="url_time_out">
-                    {% for url_time_out in url_time_outs %}
-                        <option value="{{ url_time_out }}" {{ is_selected_url_time_out(url_time_out, url_time_out_selected) }}>{{ url_time_out }}</option>
-                    {% endfor %}
-                </select>
-            </div>
-            <div class="form-group col">
-                <div class="form-check form-check-with-other-components">
-                    {% if url_pre_access %}
-                        <input type="checkbox" name="url_pre_access" class="form-check-input"
-                               value="{{ url_pre_access }}" checked>
-                    {% else %}
-                        <input type="checkbox" name="url_pre_access" class="form-check-input"
-                               value="{{ url_pre_access }}">
-                    {% endif %}
-                    <label for="url_pre_access" class="form-check-label">URL Pre Access Validation</label>
-                </div>
-            </div>
+            {% include 'input_format.html' %}
+            {% include 'cert_url_time_out.html' %}
+            {% include 'cert_url_pre_access.html' %}
         </div>
-        <div class="form-group">
-            <label for="remarks">Remarks</label>
-            <input type="text" name="remarks" placeholder="Remarks" class="form-control" value="{{ remarks }}">
-        </div>
+        {% include 'remarks.html' %}
         {% include 'button.html' %}
         {% include 'output_data.html' %}
         {% include 'sample_data.html' %}
     </form>
-{% endblock %}
-{# Page Specific Script #}
-{% block page_specific_script %}
 {% endblock %}

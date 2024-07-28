@@ -408,9 +408,20 @@ class Const:
         APJ_ID_NEWS_COMMON:
             [
                 #
-                f'{PhKeys.APP_TITLE} now supports "Copy Input Data", "Copy Output Data" & "Copy Info".',
+                # f'{PhKeys.APP_TITLE} now supports "Copy Input Data", "Copy Output Data" & "Copy Info".',
                 #
-                f'{PhKeys.APP_TITLE} now supports "Download Input Data", "Download Output Data" & "Download Info".'
+                f'{PhKeys.APP_TITLE}: Now you can utilize essential copy/paste functionality using dedicated "Copy" '
+                f'icon provided along with various field(s).',
+                #
+                # f'{PhKeys.APP_TITLE} now supports "Download Input Data", "Download Output Data" & "Download Info".'
+                #
+                f'{PhKeys.APP_TITLE}: Now now you can utilize essential download functionality using dedicated '
+                f'"Download" icon provided along with various field(s).',
+                #
+                # f'{PhKeys.APP_TITLE} now supports "Upload Input Data".'
+                #
+                f'{PhKeys.APP_TITLE}: Now now you can utilize essential upload functionality using dedicated "Upload" '
+                f'icon provided along with Input Data field.'
                 #
             ],
         #

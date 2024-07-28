@@ -1,0 +1,11 @@
+<div class="form-group col">
+    <div class="form-check">
+        {% if non_tlv_neighbor %}
+            <input type="checkbox" name="non_tlv_neighbor" class="form-check-input" value="{{ non_tlv_neighbor }}"
+                   checked>
+        {% else %}
+            <input type="checkbox" name="non_tlv_neighbor" class="form-check-input" value="{{ non_tlv_neighbor }}">
+        {% endif %}
+        <label for="non_tlv_neighbor" class="form-check-label">Non TLV Neighbor</label>
+    </div>
+</div>

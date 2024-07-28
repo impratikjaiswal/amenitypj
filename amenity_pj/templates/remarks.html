@@ -1,0 +1,9 @@
+<div class="form-group">
+    <label for="remarks">Remarks</label>
+    <a href="#" class="image" data-toggle="tooltip" data-placement="top" title="Copy Remarks">
+        <img id="copy_remarks" class="btn-image-initial" alt="Copy Remarks"
+             src={{ url_for('static', filename='/images/copy-2/16_16.png') }}>
+    </a>
+    <input type="text" name="remarks" id="remarks" placeholder="Remarks" class="form-control"
+           value="{{ remarks }}">
+</div>
