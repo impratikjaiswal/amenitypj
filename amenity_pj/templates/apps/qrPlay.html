@@ -4,18 +4,18 @@
 {% block title %}{{ app_title }}{% endblock %}
 {# Page Specific Content #}
 {% block content %}
-    {% include 'header.html' %}
+    {% include 'components/header.html' %}
     <form method="post">
-        {% include 'input_data.html' %}
+        {% include 'components/input_data.html' %}
         <div class="form-row">
-            {% include 'qr_image_format.html' %}
-            {% include 'qr_code_version.html' %}
-            {% include 'qr_code_scale.html' %}
-            {% include 'qr_split_qrs.html' %}
+            {% include 'components/qr_image_format.html' %}
+            {% include 'components/qr_code_version.html' %}
+            {% include 'components/qr_code_scale.html' %}
+            {% include 'components/qr_split_qrs.html' %}
         </div>
-        {% include 'remarks.html' %}
-        {% include 'button.html' %}
-        {% include 'output_data.html' %}
-        {% include 'sample_data.html' %}
+        {% include 'components/remarks.html' %}
+        {% include 'components/button.html' %}
+        {% include 'components/output_data.html' %}
+        {% include 'components/sample_data.html' %}
     </form>
 {% endblock %}

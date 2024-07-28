@@ -4,18 +4,18 @@
 {% block title %}{{ app_title }}{% endblock %}
 {# Page Specific Content #}
 {% block content %}
-    {% include 'header.html' %}
+    {% include 'components/header.html' %}
     <form method="post">
-        {% include 'input_data.html' %}
+        {% include 'components/input_data.html' %}
         <div class="form-row">
-            {% include 'tlv_length_in_decimal.html' %}
-            {% include 'tlv_value_in_ascii.html' %}
-            {% include 'tlv_one_liner.html' %}
-            {% include 'tlv_non_tlv_neighbor.html' %}
+            {% include 'components/tlv_length_in_decimal.html' %}
+            {% include 'components/tlv_value_in_ascii.html' %}
+            {% include 'components/tlv_one_liner.html' %}
+            {% include 'components/tlv_non_tlv_neighbor.html' %}
         </div>
-        {% include 'remarks.html' %}
-        {% include 'button.html' %}
-        {% include 'output_data.html' %}
-        {% include 'sample_data.html' %}
+        {% include 'components/remarks.html' %}
+        {% include 'components/button.html' %}
+        {% include 'components/output_data.html' %}
+        {% include 'components/sample_data.html' %}
     </form>
 {% endblock %}

@@ -4,11 +4,11 @@
 {% block title %}{{ app_title }}{% endblock %}
 {# Page Specific Content #}
 {% block content %}
-    {% include 'header.html' %}
+    {% include 'components/header.html' %}
     <form method="post">
-        {% include 'input_data.html' %}
+        {% include 'components/input_data.html' %}
         <div class="form-row">
-            {% include 'input_format.html' %}
+            {% include 'components/input_format.html' %}
             &nbsp;&nbsp;&nbsp;
             <div class="form-group">
                 <a href="#" class="image" data-toggle="tooltip" data-placement="top" title="Swap I/O Formats">
@@ -18,25 +18,25 @@
                 </a>
             </div>
             &nbsp;&nbsp;&nbsp;
-            {% include 'asn_output_format.html' %}
+            {% include 'components/asn_output_format.html' %}
             &nbsp;&nbsp;&nbsp;
-            {% include 'asn_tlv_parsing_of_output.html' %}
+            {% include 'components/asn_tlv_parsing_of_output.html' %}
         </div>
         <div class="form-row">
-            {% include 'asn_asn1_schema.html' %}
-            {% include 'asn_asn1_object.html' %}
-            {% include 'asn_asn1_object_others.html' %}
+            {% include 'components/asn_asn1_schema.html' %}
+            {% include 'components/asn_asn1_object.html' %}
+            {% include 'components/asn_asn1_object_others.html' %}
         </div>
         <div class="form-group right">
             <!-- TODO: Font Size can be reduced -->
             <i><B>Tip:</B> If "Asn1 Object" drop down list is empty or required object is not listed, try "Asn1 Object
                 Alternate" !!!</i><BR>
         </div>
-        {% include 'asn_fetch_asn1_objects_list.html' %}
-        {% include 'remarks.html' %}
-        {% include 'button.html' %}
-        {% include 'output_data.html' %}
-        {% include 'sample_data.html' %}
+        {% include 'components/asn_fetch_asn1_objects_list.html' %}
+        {% include 'components/remarks.html' %}
+        {% include 'components/button.html' %}
+        {% include 'components/output_data.html' %}
+        {% include 'components/sample_data.html' %}
     </form>
 {% endblock %}
 {# Page Specific Script #}

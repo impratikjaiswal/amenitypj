@@ -4,17 +4,17 @@
 {% block title %}{{ app_title }}{% endblock %}
 {# Page Specific Content #}
 {% block content %}
-    {% include 'header.html' %}
+    {% include 'components/header.html' %}
     <form method="post">
-        {% include 'input_data.html' %}
+        {% include 'components/input_data.html' %}
         <div class="form-row">
-            {% include 'input_format.html' %}
-            {% include 'cert_url_time_out.html' %}
-            {% include 'cert_url_pre_access.html' %}
+            {% include 'components/input_format.html' %}
+            {% include 'components/cert_url_time_out.html' %}
+            {% include 'components/cert_url_pre_access.html' %}
         </div>
-        {% include 'remarks.html' %}
-        {% include 'button.html' %}
-        {% include 'output_data.html' %}
-        {% include 'sample_data.html' %}
+        {% include 'components/remarks.html' %}
+        {% include 'components/button.html' %}
+        {% include 'components/output_data.html' %}
+        {% include 'components/sample_data.html' %}
     </form>
 {% endblock %}
