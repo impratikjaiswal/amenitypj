@@ -19,6 +19,27 @@
         </a>
     {% endif %}
     <BR>
-    <div><h6>{{ app_description }}</h6></div>
-    <div><h3>{{ app_description_level_2 }}</h3></div>
+    <div>
+        {% if app_description %}
+            <h5>{{ app_description }}</h5>
+        {% endif %}
+        {% if app_description_level_1 %}
+            <h1>{{ app_description_level_1 }}</h1>
+        {% endif %}
+        {% if app_description_level_2 %}
+            <h2>{{ app_description_level_2 }}</h2>
+        {% endif %}
+        {% if app_description_level_3 %}
+            <h3>{{ app_description_level_3 }}</h3>
+        {% endif %}
+        {% if app_description_level_4 %}
+            <h4>{{ app_description_level_4 }}</h4>
+        {% endif %}
+        {% if app_description_level_5 %}
+            <h5>{{ app_description_level_5 }}</h5>
+        {% endif %}
+        {% if app_description_level_6 %}
+            <h6>{{ app_description_level_6 }}</h6>
+        {% endif %}
+    </div>
 </div>

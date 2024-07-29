@@ -233,7 +233,9 @@ class Const:
         APJ_ID_CREDITS:
             {
                 PhKeys.APP_TITLE: 'Credits',
-                PhKeys.APP_DESCRIPTION: f'{TITLE_AMENITY_PJ} is Thankful to: ',
+                PhKeys.APP_DESCRIPTION: f'{TITLE_AMENITY_PJ} is Thankful to its day to day users, feedback providers '
+                                        f'(online as well as offline), validators, 3rd Party products. '
+                                        f'Couple of names can be found below: ',
                 PhKeys.APP_URL: '/credits',
                 PhKeys.APP_TEMPLATE: 'credits.html',
                 PhKeys.APP_END_POINT: END_POINT_CREDITS,
