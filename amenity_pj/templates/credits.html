@@ -6,32 +6,58 @@
 {% block content %}
     {% include 'components/header.html' %}
     <div>
-        <h5 class="display-inline">Day to Day Users</h5> - Who motivates us to keep running !!!
+        <h5 class="display-inline">Day to Day Users</h5> — Who motivates us to keep running !!!
     </div>
     <BR>
     <div>
-        <h5 class="display-inline">Feedback Providers / Validators (Offline)</h5> - Who keeps on providing feedback
+        <h5 class="display-inline">Feedback Providers / Validators (Offline)</h5> — Who keeps on providing feedback
         offline and helps in creation of better product !!!
     </div>
     <BR>
     <div>
-        <h5 class="display-inline">Feedback Providers (Online)</h5> - Who covers an extra mile and provide us feedback
-        on Github to make a better product !!!
-        <ul>
-            {% for issue_contributor in issue_contributors %}
-                <li class="nav-item">
-                    <a class="nav-link nav-link-page-image" href="{{ issue_contributor['html_url'] }}"
-                       target="_blank"
-                       rel="noopener noreferrer">
-                        <img src="{{ issue_contributor['avatar_url'] }}"
-                             alt="{{ issue_contributor['login'] }}" class="img-credits img-credits-github"/>
-                        {{ issue_contributor['login'] }}
-                    </a>
-                </li>
-                <BR>
+        <h5 class="display-inline">Feedback Providers (Online)</h5> — Who covers an extra mile and provide us feedback
+        on GitHub to make a better product !!!
+        {% set issue_contributors_count = issue_contributors|length %}
+        {% set max_item_in_a_row = 3 %}
+        {% for issue_contributor in issue_contributors %}
+            {% if loop.index0 % max_item_in_a_row == 0 %}
+                <div class="form-row">
+            {% endif %}
+        <div class="form-group col">
+            {#            {{ loop.index }}#}
+            <a class="nav-link" href="{{ issue_contributor['html_url'] }}" target="_blank" rel="noopener noreferrer">
+                <img src="{{ issue_contributor['avatar_url'] }}" alt="{{ issue_contributor['login'] }}"
+                     class="img-credits"/>
+                {{ issue_contributor['login'] }}
+            </a>
+        </div>
+        {% if loop.index % max_item_in_a_row == 0 %}
+            </div>
+        {% endif %}
+        {% endfor %}
+        {% if issue_contributors_count % max_item_in_a_row != 0 %}
+            {% for missing_count in range(max_item_in_a_row - (issue_contributors_count % max_item_in_a_row)) %}
+                <div class="form-group col">
+                </div>
             {% endfor %}
-        </ul>
-    </div>
+            </div>
+        {% endif %}
+    {#    <div>#}
+    {#        <ul>#}
+    {#            {% for issue_contributor in issue_contributors %}#}
+    {#                <li class="nav-item">#}
+    {#                    <a class="nav-link nav-link-page-image" href="{{ issue_contributor['html_url'] }}"#}
+    {#                       target="_blank"#}
+    {#                       rel="noopener noreferrer">#}
+    {#                        <img src="{{ issue_contributor['avatar_url'] }}"#}
+    {#                             alt="{{ issue_contributor['login'] }}" class="img-credits img-credits-github"/>#}
+    {#                        {{ issue_contributor['login'] }}#}
+    {#                    </a>#}
+    {#                </li>#}
+    {#                <BR>#}
+    {#            {% endfor %}#}
+    {#        </ul>#}
+    {#    </div>#}
     <div>
         <h5 class="display-inline">3rd Party Free (and/or open source) Products</h5> - Which continuously helping in
         shaping the product !!!

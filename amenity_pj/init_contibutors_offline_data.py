@@ -5,6 +5,22 @@ from python_helpers.ph_util import PhUtil
 
 
 def extract_data_and_generate_json_pre_deployment():
+    """
+
+    :return:
+    """
+    """
+    Structure:
+    
+    items: [
+        user: {
+            "login": "",
+            "avatar_url": "",
+            "html_url": "",
+        }
+        "created_at": "",
+    ]
+    """
     path_src = os.sep.join([os.pardir, 'data', 'issues_data'])
     path_dest = os.sep.join(['static', 'issues_data'])
     file_name = 'combined.json'

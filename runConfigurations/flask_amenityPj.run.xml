@@ -13,6 +13,7 @@
     <option name="IS_MODULE_SDK" value="true" />
     <option name="ADD_CONTENT_ROOTS" value="true" />
     <option name="ADD_SOURCE_ROOTS" value="true" />
+    <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
     <option name="SCRIPT_NAME" value="flask" />
     <option name="PARAMETERS" value="--app amenity_pj/app.py --debug run" />
     <option name="SHOW_COMMAND_LINE" value="false" />
