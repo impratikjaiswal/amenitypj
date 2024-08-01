@@ -5,6 +5,7 @@
 {# Page Specific Content #}
 {% block content %}
     {% include 'components/header.html' %}
+    <BR>
     <div>
         <h5 class="display-inline">Day to Day Users</h5> — Who motivates us to keep running !!!
     </div>
@@ -15,93 +16,91 @@
     </div>
     <BR>
     <div>
-        <h5 class="display-inline">Feedback Providers (Online)</h5> — Who covers an extra mile and provide us feedback
+        <h5 class="display-inline">Feedback Providers (Online)</h5> — Who covers an extra mile and provides us feedback
         on GitHub to make a better product !!!
+        {# Calculate List Length #}
         {% set issue_contributors_count = issue_contributors|length %}
-        {% set max_item_in_a_row = 3 %}
+        {# Set Max Item in a Row #}
+        {% set max_item_in_a_row = 4 %}
         {% for issue_contributor in issue_contributors %}
             {% if loop.index0 % max_item_in_a_row == 0 %}
+                {# New Row should be started for 0, 2, 4 (when max item is 2) #}
                 <div class="form-row">
             {% endif %}
         <div class="form-group col">
-            {#            {{ loop.index }}#}
+            {# TODO: class="nav-link nav-link-page-image" #}
             <a class="nav-link" href="{{ issue_contributor['html_url'] }}" target="_blank" rel="noopener noreferrer">
                 <img src="{{ issue_contributor['avatar_url'] }}" alt="{{ issue_contributor['login'] }}"
+                        {# TODO: class="img-credits img-credits-github" #}
                      class="img-credits"/>
                 {{ issue_contributor['login'] }}
             </a>
         </div>
         {% if loop.index % max_item_in_a_row == 0 %}
+            {# Row should be closed for 1, 3, 5 (when max item is 2) #}
             </div>
         {% endif %}
         {% endfor %}
         {% if issue_contributors_count % max_item_in_a_row != 0 %}
             {% for missing_count in range(max_item_in_a_row - (issue_contributors_count % max_item_in_a_row)) %}
+                {# Empty div so that div col are aligned #}
                 <div class="form-group col">
                 </div>
             {% endfor %}
             </div>
         {% endif %}
-    {#    <div>#}
-    {#        <ul>#}
-    {#            {% for issue_contributor in issue_contributors %}#}
-    {#                <li class="nav-item">#}
-    {#                    <a class="nav-link nav-link-page-image" href="{{ issue_contributor['html_url'] }}"#}
-    {#                       target="_blank"#}
-    {#                       rel="noopener noreferrer">#}
-    {#                        <img src="{{ issue_contributor['avatar_url'] }}"#}
-    {#                             alt="{{ issue_contributor['login'] }}" class="img-credits img-credits-github"/>#}
-    {#                        {{ issue_contributor['login'] }}#}
-    {#                    </a>#}
-    {#                </li>#}
-    {#                <BR>#}
-    {#            {% endfor %}#}
-    {#        </ul>#}
-    {#    </div>#}
     <div>
-        <h5 class="display-inline">3rd Party Free (and/or open source) Products</h5> - Which continuously helping in
+        <h5 class="display-inline">Third Party Free (and/or open source) Products</h5> — Which continuously helping in
         shaping the product !!!
-        <ul>
-            <li class="form-group">
-                <a class="nav-link nav-link-page-image" href="https://github.com/" target="_blank"
+        {# Max Item in a Row is 2 #}
+        <div class="form-row">
+            <div class="form-group col">
+                <a class="nav-link" href="https://github.com/" target="_blank"
                    rel="noopener noreferrer">
                     <img src="https://github.githubassets.com/assets/pinned-octocat-093da3e6fa40.svg"
                          alt="Github" class="img-credits img-credits-github"/>
                     Github
                 </a>
-            </li>
-            <li class="form-group">
-                <a class="nav-link nav-link-page-image" href="https://jb.gg/OpenSourceSupport" target="_blank"
+            </div>
+            <div class="form-group col">
+                <a class="nav-link" href="https://jb.gg/OpenSourceSupport" target="_blank"
                    rel="noopener noreferrer">
                     <img src="https://resources.jetbrains.com/storage/products/company/brand/logos/jetbrains.png"
                          alt="Jet Brains" class="img-credits"/>
                     JetBrains - Open Source Support
                 </a>
-            </li>
-            <li class="form-group">
-                <a class="nav-link nav-link-page-image" href="https://letsencrypt.org/" target="_blank"
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col">
+                <a class="nav-link" href="https://letsencrypt.org/" target="_blank"
                    rel="noopener noreferrer">
                     <img src="https://letsencrypt.org/images/le-logo-twitter-noalpha.png"
                          alt="Let's Encrypt" class="img-credits img-credits-lets-encrypt"/>
                     Let's Encrypt
                 </a>
-            </li>
-            <li class="form-group">
-                <a class="nav-link nav-link-page-image" href="https://pixabay.com/" title="images"
+            </div>
+            <div class="form-group col">
+                <a class="nav-link" href="https://pixabay.com/" title="images"
                    target="_blank" rel="noopener noreferrer">
                     <img src="https://pixabay.com/static/img/logo_square.png"
                          alt="pixabay" class="img-credits img-credits-pixabay"/>
                     Free Images - Pixabay
                 </a>
-            </li>
-            <li class="form-group">
-                <a class="nav-link nav-link-page-image" href="https://www.flaticon.com/icons" title="icons"
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col">
+                <a class="nav-link" href="https://www.flaticon.com/icons" title="icons"
                    target="_blank" rel="noopener noreferrer">
                     <img src="https://www.flaticon.com/media/dist/min/img/logo/flaticon_positive.svg"
                          alt="Flaticon" class="img-credits"/>
                     Free icons - Flaticon
                 </a>
-            </li>
-        </ul>
+            </div>
+            {# Empty div so that div col are aligned #}
+            <div class="form-group col">
+            </div>
+        </div>
     </div>
 {% endblock %}

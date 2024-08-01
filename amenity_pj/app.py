@@ -1,3 +1,4 @@
+import os
 from logging.config import dictConfig
 
 from flask import Flask, request
@@ -20,6 +21,8 @@ sitemapper = Sitemapper()
 sitemapper.init_app(app)
 
 host_name = None
+# Default is Prod Env
+prod_env = True
 
 # @sitemap.register_generator
 # def index():
@@ -28,6 +31,24 @@ host_name = None
 # yield Const.END_POINT_INDEX, {}
 # yield Const.END_POINT_INDEX, {}, Const.DEPLOYMENT_DATE, 'monthly'
 
+# TODO: Uncomment below for local execution
+# prod_env = False
+
+# Prod Logging
+LOG_LEVEL = "INFO"
+LOG_HANDLER = ["size-rotate"]
+LOG_FILE_PATH = os.sep.join([Const.LOG_FOLDER_APPS, Const.LOG_FILE_NAME])
+# Others
+# LOG_HANDLER = ["console"]
+# LOG_HANDLER = ["console", "file"]
+# LOG_HANDLER = ["time-rotate"]
+
+
+if prod_env is False:
+    # localhost logging
+    LOG_LEVEL = "INFO"
+    LOG_HANDLER = ["console", "size-rotate"]
+    LOG_FILE_PATH = Const.LOG_FILE_NAME
 
 dictConfig(
     {
@@ -46,34 +67,35 @@ dictConfig(
             },
             "file": {
                 "class": "logging.FileHandler",
-                "filename": Const.LOG_FILE_PATH,
+                "filename": LOG_FILE_PATH,
                 "formatter": "default",
             },
             "size-rotate": {
                 "class": "logging.handlers.RotatingFileHandler",
-                "filename": Const.LOG_FILE_PATH,
+                "filename": LOG_FILE_PATH,
                 "maxBytes": Const.LOG_MAX_BYTES,
                 "backupCount": Const.LOG_MAX_BACKUP_COUNT,
                 "formatter": "default",
             },
             "time-rotate": {
                 "class": "logging.handlers.TimedRotatingFileHandler",
-                "filename": Const.LOG_FILE_PATH,
+                "filename": LOG_FILE_PATH,
                 "when": "D",
                 "interval": 10,
                 "backupCount": Const.LOG_MAX_BACKUP_COUNT,
                 "formatter": "default",
             },
         },
-        # "root": {"level": "INFO", "handlers": ["console"]},
-        # "root": {"level": "INFO", "handlers": ["console", "file"]},
-        # "root": {"level": "INFO", "handlers": ["time-rotate"]},
-        # "root": {"level": "INFO", "handlers": ["console", "size-rotate"]},
-        "root": {"level": "INFO", "handlers": ["size-rotate"]},
+        "root":
+            {
+                "level": LOG_LEVEL,
+                "handlers": LOG_HANDLER,
+            },
     }
 )
 
 log = app.logger
+
 
 @app.context_processor
 def utility_processor_title_for():
