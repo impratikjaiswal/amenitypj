@@ -1,0 +1,15 @@
+{# Common Content #}
+{% extends 'base.html' %}
+{% block description %}{{ app_description }}{% endblock %}
+{% block title %}{{ app_title }}{% endblock %}
+{# Page Specific Content #}
+{% block content %}
+    {% include 'components/header.html' %}
+    <form method="post">
+        {% include 'components/excel_input_file.html' %}
+        {% include 'components/remarks.html' %}
+        {% include 'components/button.html' %}
+        {% include 'components/output_data.html' %}
+        {% include 'components/sample_data.html' %}
+    </form>
+{% endblock %}

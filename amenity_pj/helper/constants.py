@@ -169,6 +169,7 @@ class Const:
 
     INDEX_LIST = [
         APJ_ID_AMENITY_PJ,
+        APJ_ID_LOGIN,
     ]
 
     APPS_LIST = [
@@ -355,17 +356,16 @@ class Const:
         #
         APJ_ID_EXCEL_PLAY:
             {
-                # PhKeys.APP_TITLE_PRE: Defaults.APP_WELCOME,
+                PhKeys.APP_TITLE_PRE: Defaults.APP_WELCOME,
                 PhKeys.APP_TITLE: TITLE_EXCEL_PLAY,
                 PhKeys.APP_VERSION: ConfigConst_ExcelPlay.TOOL_VERSION_DETAILED,
-                PhKeys.APP_DESCRIPTION: 'Export one or more Excel file(s) with single or multiple sheets to several files each containing one sheet.',
+                PhKeys.APP_DESCRIPTION: 'Export one or more Excel file(s) (with single or multiple sheets) to several '
+                                        'csv files each containing one sheet.',
                 PhKeys.APP_GITHUB_URL: 'excelPlay',
                 PhKeys.APP_GIT_SUMMARY: ConfigConst_ExcelPlay.TOOL_GIT_SUMMARY,
                 PhKeys.APP_URL: '/excelPlay',
                 PhKeys.APP_URL_API: '/api/excelPlay',
-                # PhKeys.APP_TEMPLATE:  'excelPlay.html',
-                PhKeys.APP_TEMPLATE: TEMPLATE_WIP,
-                PhKeys.APP_DESCRIPTION_LEVEL_2: Defaults.DESCRIPTION_WIP,
+                PhKeys.APP_TEMPLATE: '/apps/excelPlay.html',
                 PhKeys.APP_END_POINT: END_POINT_EXCEL_PLAY,
             },
         #

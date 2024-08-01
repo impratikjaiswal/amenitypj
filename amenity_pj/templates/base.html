@@ -17,7 +17,6 @@
     <title>{% block title %} {% endblock %}</title>
     <link rel="shortcut icon" href="{{ url_for('static', filename='/images/favicon.ico') }}">
 </head>
-<!-- <body class="{ % if app_parent_title %}body-navbar-2 { % else %}body-navbar-1 { % endif %}"> -->
 <body>
 <!-- <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top"> -->
 <nav class="navbar navbar-expand-md navbar-light bg-light">
@@ -93,7 +92,8 @@
         {% endif %}
         {# <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">#}
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 ">
-            <div class="container">
+			{#	Conditional CSS #}
+            <div class="{% if nav_bar_app_items %}container{% else %}{% endif %}">
                 {% with messages = get_flashed_messages(with_categories=true) %}
                     {% if messages %}
                         {% for category, message in messages %}

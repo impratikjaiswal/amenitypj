@@ -273,9 +273,11 @@ backup_*bkp
 #### Project.gitignore
 ##################################################
 
-# Python Rotated logs
-data/user_data
+# Project logs
 logs/apps
 logs/backup
 logs/others
+
+# Project data
+data/user_data
 data/issues_data/

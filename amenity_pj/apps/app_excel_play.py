@@ -46,7 +46,10 @@ def handle_requests(apj_id, api, log, default_data, **kwargs):
             {target_key: int(requested_data_dict.get(target_key) if target_key in requested_data_dict else -1)})
 
     samples_dict = PhConstants.DICT_EMPTY
+    samples_list = PhUtil.generalise_list(list(samples_dict.keys()), sort=False)
     default_data_app = {
+        PhKeys.SAMPLES: samples_list,
+        PhKeys.SAMPLE_SELECTED: samples_list[1] if len(samples_list) > 1 else None,
     }
     app_data = PhUtil.dict_merge(default_data, default_data_app)
     requested_data_dict = Util.request_pre(request=request, apj_id=apj_id, api=api, log=log)
