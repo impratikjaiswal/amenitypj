@@ -28,6 +28,7 @@ class Const:
     UPLOAD_FOLDER_TEMP = os.sep.join(['data', 'user_data', 'uploads_temporary'])
     UPLOAD_FILE_EXTENSIONS_ALLOWED = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif', 'ahk'}
     UPLOAD_FILE_EXTENSIONS_BLOCKED = {'exe'}
+
     ####################
     # Deployment Dates
     ####################
@@ -54,12 +55,16 @@ class Const:
     APJ_ID_EXPERIMENTS_1 = 0x91
     APJ_ID_EXPERIMENTS_2 = 0x92
     APJ_ID_EXPERIMENTS_3 = 0x93
-    APJ_ID_ASN1_PLAY = 200
-    APJ_ID_ASN1_PLAY_ASN1_OBJECTS = 201
-    APJ_ID_TLV_PLAY = 210
-    APJ_ID_QR_PLAY = 220
-    APJ_ID_EXCEL_PLAY = 230
-    APJ_ID_CERT_PLAY = 240
+    APJ_ID_EXPERIMENTS_4 = 0x94
+    APJ_ID_EXPERIMENTS_5 = 0x95
+    APJ_ID_APPS_GROUP = 0xD0
+    APJ_ID_ASN1_PLAY = 0xD1
+    APJ_ID_TLV_PLAY = 0xD2
+    APJ_ID_QR_PLAY = 0xD3
+    APJ_ID_EXCEL_PLAY = 0xD4
+    APJ_ID_CERT_PLAY = 0xD5
+    APJ_ID_ASN1_PLAY_ASN1_OBJECTS = 0xE1
+
     ####################
     # END_POINTS
     ####################
@@ -165,6 +170,12 @@ class Const:
         PhKeys.INPUT_DATA: PhConstants.STR_EMPTY,
         PhKeys.OUTPUT_DATA: PhConstants.STR_EMPTY,
         PhKeys.INFO_DATA: PhConstants.STR_EMPTY,
+    }
+
+    COMMON_DATA_EXPERIMENTS = {
+        PhKeys.APP_TITLE: TITLE_EXPERIMENTS,
+        PhKeys.APP_DESCRIPTION: DESCRIPTION_EXPERIMENTS,
+        PhKeys.APP_END_POINT: END_POINT_EXPERIMENTS,
     }
 
     INDEX_LIST = [
@@ -281,29 +292,32 @@ class Const:
         #
         APJ_ID_EXPERIMENTS_1:
             {
-                PhKeys.APP_TITLE: TITLE_EXPERIMENTS,
-                PhKeys.APP_DESCRIPTION: DESCRIPTION_EXPERIMENTS,
                 PhKeys.APP_URL: '/exp1',
                 PhKeys.APP_TEMPLATE: '/experiments/1.html',
-                PhKeys.APP_END_POINT: END_POINT_EXPERIMENTS,
             },
         #
         APJ_ID_EXPERIMENTS_2:
             {
-                PhKeys.APP_TITLE: TITLE_EXPERIMENTS,
-                PhKeys.APP_DESCRIPTION: DESCRIPTION_EXPERIMENTS,
                 PhKeys.APP_URL: '/exp2',
                 PhKeys.APP_TEMPLATE: '/experiments/2.html',
-                PhKeys.APP_END_POINT: END_POINT_EXPERIMENTS,
             },
         #
         APJ_ID_EXPERIMENTS_3:
             {
-                PhKeys.APP_TITLE: TITLE_EXPERIMENTS,
-                PhKeys.APP_DESCRIPTION: DESCRIPTION_EXPERIMENTS,
                 PhKeys.APP_URL: '/exp3',
                 PhKeys.APP_TEMPLATE: '/experiments/3.html',
-                PhKeys.APP_END_POINT: END_POINT_EXPERIMENTS,
+            },
+        #
+        APJ_ID_EXPERIMENTS_4:
+            {
+                PhKeys.APP_URL: '/exp4',
+                PhKeys.APP_TEMPLATE: '/experiments/4_404_cave_man.html',
+            },
+        #
+        APJ_ID_EXPERIMENTS_5:
+            {
+                PhKeys.APP_URL: '/exp5',
+                PhKeys.APP_TEMPLATE: '/experiments/5_404_fear_eyes.html',
             },
         #
         APJ_ID_ASN1_PLAY:

@@ -228,6 +228,10 @@ def sitemap():
            defaults={'apj_id': Const.APJ_ID_EXPERIMENTS_2})
 @app.route(Util.get_apj_data(apj_id=Const.APJ_ID_EXPERIMENTS_3, specific_key=PhKeys.APP_URL), methods=('GET', 'POST'),
            defaults={'apj_id': Const.APJ_ID_EXPERIMENTS_3})
+@app.route(Util.get_apj_data(apj_id=Const.APJ_ID_EXPERIMENTS_4, specific_key=PhKeys.APP_URL), methods=('GET', 'POST'),
+           defaults={'apj_id': Const.APJ_ID_EXPERIMENTS_4})
+@app.route(Util.get_apj_data(apj_id=Const.APJ_ID_EXPERIMENTS_5, specific_key=PhKeys.APP_URL), methods=('GET', 'POST'),
+           defaults={'apj_id': Const.APJ_ID_EXPERIMENTS_5})
 def experiments(apj_id):
     return app_handler.handle_requests(apj_id=apj_id, log=log)
 

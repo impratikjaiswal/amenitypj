@@ -18,16 +18,24 @@ class Util:
             apj_id = Const.END_POINT_APJ_MAPPING.get(end_point, None)
         # create a copy so that dictionary manipulations can be done if needed
         data = copy.deepcopy(Const.COMMON_DATA_MAPPING.get(apj_id)) if apj_id in Const.COMMON_DATA_MAPPING else None
+        apj_id_group = cls.get_apj_id_group(apj_id)
+        if apj_id_group == Const.APJ_ID_APPS_GROUP:
+            data = PhUtil.dict_merge(data, Const.COMMON_DATA_APPS)
+        if apj_id_group == Const.APJ_ID_EXPERIMENTS_GROUP:
+            data = PhUtil.dict_merge(data, Const.COMMON_DATA_EXPERIMENTS)
+            data.update({PhKeys.APP_TITLE: f'{data.get(PhKeys.APP_TITLE)} {apj_id & 0x0F}'})
         if fail_safe:
             data = PhUtil.set_if_not_none(current_value=data, new_value=PhConstants.DICT_EMPTY)
-        if apj_id & 0xF0 == Const.APJ_ID_EXPERIMENTS_GROUP:
-            data.update({PhKeys.APP_TITLE: f'{data.get(PhKeys.APP_TITLE)} {apj_id & 0x0F}'})
-        if specific_key is None:
+        if specific_key is None or data is None:
             return data
         specific_value = data.get(specific_key, None)
         if fail_safe:
             specific_value = PhUtil.set_if_not_none(current_value=specific_value, new_value=PhConstants.STR_EMPTY)
         return specific_value
+
+    @classmethod
+    def get_apj_id_group(cls, apj_id):
+        return apj_id & 0xF0
 
     @classmethod
     def get_github_url(cls, github_repo=None, github_pages=True):

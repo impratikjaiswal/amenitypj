@@ -28,18 +28,24 @@ def handle_requests(apj_id, api, log, default_data, **kwargs):
         pass
     if request.method == PhKeys.POST:
         pass
+    result = None
     if apj_id == Const.APJ_ID_EXPERIMENTS_1:
-        return experiments_1(apj_id=apj_id)
-    elif apj_id == Const.APJ_ID_EXPERIMENTS_1:
-        return experiments_2(apj_id=apj_id)
-    elif apj_id == Const.APJ_ID_EXPERIMENTS_1:
-        return experiments_3(apj_id=apj_id)
-    return Util.request_post(request=request, apj_id=apj_id, api=api, log=log, output_data=app_data)
+        result = experiments_1(apj_id=apj_id)
+    if apj_id == Const.APJ_ID_EXPERIMENTS_2:
+        result = experiments_2(apj_id=apj_id)
+    if apj_id == Const.APJ_ID_EXPERIMENTS_3:
+        result = experiments_3(apj_id=apj_id)
+    if apj_id == Const.APJ_ID_EXPERIMENTS_4:
+        result = experiments_4(apj_id=apj_id)
+    if apj_id == Const.APJ_ID_EXPERIMENTS_5:
+        result = experiments_5(apj_id=apj_id)
+    return result if result else Util.request_post(request=request, apj_id=apj_id, api=api, log=log,
+                                                   output_data=app_data)
 
 
 def experiments_1(apj_id):
     if request.method == 'POST':
-        # check if the post request has the file part
+        # check if the post-request has the file part
         if 'file' not in request.files:
             flash('No file part')
             return redirect(request.url)
@@ -66,11 +72,19 @@ def experiments_1(apj_id):
 
 
 def experiments_2(apj_id):
-    pass
+    return None
 
 
 def experiments_3(apj_id):
-    pass
+    return None
+
+
+def experiments_4(apj_id):
+    return Util.request_post(request=request, apj_id=apj_id)
+
+
+def experiments_5(apj_id):
+    return Util.request_post(request=request, apj_id=apj_id)
 
 
 def allowed_file(filename):

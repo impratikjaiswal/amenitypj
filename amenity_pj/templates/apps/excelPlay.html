@@ -5,7 +5,7 @@
 {# Page Specific Content #}
 {% block content %}
     {% include 'components/header.html' %}
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
         {% include 'components/excel_input_file.html' %}
         {% include 'components/remarks.html' %}
         {% include 'components/button.html' %}

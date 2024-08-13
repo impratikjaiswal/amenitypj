@@ -1,7 +1,7 @@
 # from excel_play.main.data_type.data_type_master import DataTypeMaster
 # from python_helpers.ph_modes_error_handling import PhErrorHandlingModes
 # from excel_play.main.helper.defaults import Defaults
-from flask import request
+from flask import request, redirect, flash
 from python_helpers.ph_constants import PhConstants
 from python_helpers.ph_keys import PhKeys
 from python_helpers.ph_util import PhUtil
@@ -56,6 +56,25 @@ def handle_requests(apj_id, api, log, default_data, **kwargs):
     if request.method == PhKeys.GET:
         pass
     if request.method == PhKeys.POST:
+        # check if the post-request has the file part
+        if 'file' not in request.files:
+            flash('File Object is not received !!!')
+            return redirect(request.url)
+        # To Handle Singlt File
+        # file = files['file']
+        # Get List of FileStorage Objects (Multiple)
+        files = request.files.getlist('file')
+        files_length = len(files)
+        valid_files_count = 0
+        for file in files:
+            # If the user does not select a file, the browser submits an empty file without a filename.
+            if file.filename:
+                valid_files_count += 1
+                file.save(file.filename)
+                flash(f'{file.filename} uploaded')
+        if valid_files_count == 0:
+            flash('No selected file')
+            return redirect(request.url)
         process_sample = True if PhKeys.PROCESS_SAMPLE in requested_data_dict else None
         sample_option = requested_data_dict.get(PhKeys.SAMPLE_OPTION, None)
         sample_name = requested_data_dict.get(PhKeys.SAMPLE, None)

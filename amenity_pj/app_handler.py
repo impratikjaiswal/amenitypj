@@ -154,6 +154,8 @@ def handle_requests(apj_id, **kwargs):
         Const.APJ_ID_EXPERIMENTS_1: experiments.handle_requests,
         Const.APJ_ID_EXPERIMENTS_2: experiments.handle_requests,
         Const.APJ_ID_EXPERIMENTS_3: experiments.handle_requests,
+        Const.APJ_ID_EXPERIMENTS_4: experiments.handle_requests,
+        Const.APJ_ID_EXPERIMENTS_5: experiments.handle_requests,
     }
     func = func_mapping.get(apj_id, None)
     if func is not None:
@@ -161,8 +163,7 @@ def handle_requests(apj_id, **kwargs):
             apj_id=apj_id,
             api=api,
             log=log,
-            default_data=PhUtil.dict_merge(common_data,
-                                           Const.COMMON_DATA_APPS) if apj_id in Const.APPS_LIST else common_data,
+            default_data=common_data,
             testimonial_post_id=testimonial_post_id,
         )
     if apj_id == Const.APJ_ID_SERVER_DETAILS:
