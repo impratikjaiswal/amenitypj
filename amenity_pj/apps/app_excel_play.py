@@ -1,15 +1,19 @@
 # from excel_play.main.data_type.data_type_master import DataTypeMaster
 # from python_helpers.ph_modes_error_handling import PhErrorHandlingModes
 # from excel_play.main.helper.defaults import Defaults
-from flask import request, redirect, flash
+import os
+
+from excel_play.main.excelPlay import process_input
+from flask import request, redirect, flash, send_file
 from python_helpers.ph_constants import PhConstants
 from python_helpers.ph_keys import PhKeys
 from python_helpers.ph_util import PhUtil
 
+from amenity_pj.helper.constants import Const
 from amenity_pj.helper.util import Util
 
 
-def handle_requests(apj_id, api, log, default_data, **kwargs):
+def handle_requests(apj_id, api, log, root_path, default_data, **kwargs):
     """
 
     :return:
@@ -56,25 +60,6 @@ def handle_requests(apj_id, api, log, default_data, **kwargs):
     if request.method == PhKeys.GET:
         pass
     if request.method == PhKeys.POST:
-        # check if the post-request has the file part
-        if 'file' not in request.files:
-            flash('File Object is not received !!!')
-            return redirect(request.url)
-        # To Handle Singlt File
-        # file = files['file']
-        # Get List of FileStorage Objects (Multiple)
-        files = request.files.getlist('file')
-        files_length = len(files)
-        valid_files_count = 0
-        for file in files:
-            # If the user does not select a file, the browser submits an empty file without a filename.
-            if file.filename:
-                valid_files_count += 1
-                file.save(file.filename)
-                flash(f'{file.filename} uploaded')
-        if valid_files_count == 0:
-            flash('No selected file')
-            return redirect(request.url)
         process_sample = True if PhKeys.PROCESS_SAMPLE in requested_data_dict else None
         sample_option = requested_data_dict.get(PhKeys.SAMPLE_OPTION, None)
         sample_name = requested_data_dict.get(PhKeys.SAMPLE, None)
@@ -98,6 +83,41 @@ def handle_requests(apj_id, api, log, default_data, **kwargs):
             # Filter All Processing Related Keys
             dic_to_process = PhUtil.filter_processing_related_keys(dic_received)
             PhUtil.print_iter(dic_to_process, header='dic_to_process', log=log)
+            # Check if the post-request has the file part
+            if 'file' not in request.files:
+                flash('File Object is not received !!!', PhKeys.ALERT_CSS_CLASS_DANGER)
+                return redirect(request.url)
+            # Get List of FileStorage Objects (Multiple)
+            files = request.files.getlist('file')
+            # ImmutableMultiDict([('file', <FileStorage: 'Finance.csv' ('text/csv')>), ('file', <FileStorage:
+            # 'House.csv' ('text/csv')>), ('file', <FileStorage: 'OrderData.csv' ('text/csv')>)])
+            valid_files_count = 0
+            files_list = []
+            transaction_id = PhUtil.generate_transaction_id()
+            target_directory_path = os.sep.join([root_path, Const.UPLOAD_FOLDER_TEMPORARY, transaction_id])
+            PhUtil.print_(f'target_directory_path is {target_directory_path}', log=log)
+            PhUtil.makedirs(target_directory_path)
+            for file in files:
+                if not file.filename:
+                    # If the user does not select a file, the browser submits an empty file without a filename.
+                    continue
+                if Util.allowed_file(file.filename, ext_list=Const.UPLOAD_FILE_EXTENSIONS_ALLOWED_EXCEL_PLAY):
+                    valid_files_count += 1
+                    input_file_name = Util.sanitize_file_name(file.filename)
+                    input_file_path = os.sep.join([target_directory_path, input_file_name])
+                    file.save(input_file_path)
+                    files_list.append(input_file_path)
+                    flash(f'{file.filename} uploaded')
+            if valid_files_count == 0:
+                flash('No uploaded files', PhKeys.ALERT_CSS_CLASS_DANGER)
+                return redirect(request.url)
+            PhUtil.print_iter(files_list, header='files_list', log=log)
+            process_input(input_file_or_folder=files_list)
+            output_file_name = ''
+            output_file_path = os.sep.join([target_directory_path, 'SampleData_excelPlay', 'Sheet1.csv'])
+            PhUtil.print_(f'output_file_path is {output_file_path}', log=log)
+            return send_file(output_file_path, as_attachment=True)
+            # return send_from_directory(local_folder_path, 'Sheet1.csv')
         # Conditional Updates
         update_app_data(PhKeys.INPUT_DATA)
         # Fixed Updates

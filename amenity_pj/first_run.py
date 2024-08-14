@@ -13,7 +13,7 @@ def folders_setup():
         Const.LOG_FOLDER_APPS,
         Const.LOG_FOLDER_OTHER,
         Const.UPLOAD_FOLDER_PERMANENT,
-        Const.UPLOAD_FOLDER_TEMP,
+        Const.UPLOAD_FOLDER_TEMPORARY,
     ]
     folders_list_absolute = [
         PhUtil.path_default_out_folder,

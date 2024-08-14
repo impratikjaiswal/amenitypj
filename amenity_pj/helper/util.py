@@ -5,6 +5,7 @@ from flask import jsonify, render_template
 from python_helpers.ph_constants import PhConstants
 from python_helpers.ph_keys import PhKeys
 from python_helpers.ph_util import PhUtil
+from werkzeug.utils import secure_filename
 
 from amenity_pj.helper.constants import Const
 from amenity_pj.helper.defaults import Defaults
@@ -162,3 +163,11 @@ class Util:
     @classmethod
     def is_selected(cls, item, selected_item):
         return 'SELECTED' if item == selected_item else ''
+
+    @classmethod
+    def sanitize_file_name(cls, file_name):
+        return secure_filename(file_name)
+
+    @classmethod
+    def allowed_file(cls, filename, ext_list=Const.UPLOAD_FILE_EXTENSIONS_ALLOWED_GENERIC):
+        return '.' in filename and filename.rsplit('.', 1)[1].lower() in ext_list

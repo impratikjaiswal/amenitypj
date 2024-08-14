@@ -284,7 +284,7 @@ def qr_play(api):
 @app.route(Util.get_apj_data(apj_id=Const.APJ_ID_EXCEL_PLAY, specific_key=PhKeys.APP_URL), methods=('GET', 'POST'),
            defaults={'api': False})
 def excel_play(api):
-    return app_handler.handle_requests(apj_id=Const.APJ_ID_EXCEL_PLAY, api=api, log=log)
+    return app_handler.handle_requests(apj_id=Const.APJ_ID_EXCEL_PLAY, api=api, log=log, root_path=app.root_path)
 
 
 if __name__ == "__main__":

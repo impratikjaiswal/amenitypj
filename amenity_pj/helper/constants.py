@@ -24,9 +24,10 @@ class Const:
     LOG_FILE_404_PATH = os.sep.join([LOG_FOLDER_APPS, LOG_404_FILE_NAME])
     LOG_MAX_BYTES = 1000000
     LOG_MAX_BACKUP_COUNT = 1000
-    UPLOAD_FOLDER_PERMANENT = os.sep.join(['data', 'user_data', 'uploads_permanent'])
-    UPLOAD_FOLDER_TEMP = os.sep.join(['data', 'user_data', 'uploads_temporary'])
-    UPLOAD_FILE_EXTENSIONS_ALLOWED = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif', 'ahk'}
+    UPLOAD_FOLDER_PERMANENT = os.sep.join([os.pardir, 'data', 'user_data', 'uploads_permanent'])
+    UPLOAD_FOLDER_TEMPORARY = os.sep.join([os.pardir, 'data', 'user_data', 'uploads_temporary'])
+    UPLOAD_FILE_EXTENSIONS_ALLOWED_GENERIC = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif', 'ahk'}
+    UPLOAD_FILE_EXTENSIONS_ALLOWED_EXCEL_PLAY = {'xls', 'xlsx', 'csv'}
     UPLOAD_FILE_EXTENSIONS_BLOCKED = {'exe'}
 
     ####################
@@ -57,6 +58,16 @@ class Const:
     APJ_ID_EXPERIMENTS_3 = 0x93
     APJ_ID_EXPERIMENTS_4 = 0x94
     APJ_ID_EXPERIMENTS_5 = 0x95
+    APJ_ID_EXPERIMENTS_6 = 0x96
+    APJ_ID_EXPERIMENTS_7 = 0x97
+    APJ_ID_EXPERIMENTS_8 = 0x98
+    APJ_ID_EXPERIMENTS_9 = 0x99
+    APJ_ID_EXPERIMENTS_10 = 0x9A
+    APJ_ID_EXPERIMENTS_11 = 0x9B
+    APJ_ID_EXPERIMENTS_12 = 0x9C
+    APJ_ID_EXPERIMENTS_13 = 0x9D
+    APJ_ID_EXPERIMENTS_14 = 0x9E
+    APJ_ID_EXPERIMENTS_15 = 0x9F
     APJ_ID_APPS_GROUP = 0xD0
     APJ_ID_ASN1_PLAY = 0xD1
     APJ_ID_TLV_PLAY = 0xD2
@@ -293,31 +304,91 @@ class Const:
         APJ_ID_EXPERIMENTS_1:
             {
                 PhKeys.APP_URL: '/exp1',
-                PhKeys.APP_TEMPLATE: '/experiments/1.html',
+                PhKeys.APP_TEMPLATE: '/experiments/1_file_upload.html',
             },
         #
         APJ_ID_EXPERIMENTS_2:
             {
                 PhKeys.APP_URL: '/exp2',
-                PhKeys.APP_TEMPLATE: '/experiments/2.html',
+                PhKeys.APP_TEMPLATE: '/experiments/2_404_cave_man.html',
             },
         #
         APJ_ID_EXPERIMENTS_3:
             {
                 PhKeys.APP_URL: '/exp3',
-                PhKeys.APP_TEMPLATE: '/experiments/3.html',
+                PhKeys.APP_TEMPLATE: '/experiments/3_404_fear_eyes.html',
             },
         #
         APJ_ID_EXPERIMENTS_4:
             {
                 PhKeys.APP_URL: '/exp4',
-                PhKeys.APP_TEMPLATE: '/experiments/4_404_cave_man.html',
+                PhKeys.APP_TEMPLATE: '/experiments/4.html',
             },
         #
         APJ_ID_EXPERIMENTS_5:
             {
                 PhKeys.APP_URL: '/exp5',
-                PhKeys.APP_TEMPLATE: '/experiments/5_404_fear_eyes.html',
+                PhKeys.APP_TEMPLATE: '/experiments/5.html',
+            },
+        #
+        APJ_ID_EXPERIMENTS_6:
+            {
+                PhKeys.APP_URL: '/exp6',
+                PhKeys.APP_TEMPLATE: '/experiments/6.html',
+            },
+        #
+        APJ_ID_EXPERIMENTS_7:
+            {
+                PhKeys.APP_URL: '/exp7',
+                PhKeys.APP_TEMPLATE: '/experiments/7.html',
+            },
+        #
+        APJ_ID_EXPERIMENTS_8:
+            {
+                PhKeys.APP_URL: '/exp8',
+                PhKeys.APP_TEMPLATE: '/experiments/8.html',
+            },
+        #
+        APJ_ID_EXPERIMENTS_9:
+            {
+                PhKeys.APP_URL: '/exp9',
+                PhKeys.APP_TEMPLATE: '/experiments/9.html',
+            },
+        #
+        APJ_ID_EXPERIMENTS_10:
+            {
+                PhKeys.APP_URL: '/exp10',
+                PhKeys.APP_TEMPLATE: '/experiments/10.html',
+            },
+        #
+        APJ_ID_EXPERIMENTS_11:
+            {
+                PhKeys.APP_URL: '/exp11',
+                PhKeys.APP_TEMPLATE: '/experiments/11.html',
+            },
+        #
+        APJ_ID_EXPERIMENTS_12:
+            {
+                PhKeys.APP_URL: '/exp12',
+                PhKeys.APP_TEMPLATE: '/experiments/12.html',
+            },
+        #
+        APJ_ID_EXPERIMENTS_13:
+            {
+                PhKeys.APP_URL: '/exp13',
+                PhKeys.APP_TEMPLATE: '/experiments/13.html',
+            },
+        #
+        APJ_ID_EXPERIMENTS_14:
+            {
+                PhKeys.APP_URL: '/exp14',
+                PhKeys.APP_TEMPLATE: '/experiments/14.html',
+            },
+        #
+        APJ_ID_EXPERIMENTS_15:
+            {
+                PhKeys.APP_URL: '/exp15',
+                PhKeys.APP_TEMPLATE: '/experiments/15.html',
             },
         #
         APJ_ID_ASN1_PLAY:

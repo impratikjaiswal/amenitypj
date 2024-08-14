@@ -74,6 +74,7 @@ def handle_requests(apj_id, **kwargs):
     log = kwargs.get(PhKeys.LOG, Defaults.LOG)
     internal = kwargs.get(PhKeys.INTERNAL, Defaults.INTERNAL)
     testimonial_post_id = kwargs.get(PhKeys.TESTIMONIAL_POST_ID, -1)
+    root_path = kwargs.get(PhKeys.ROOT_PATH, None)
     #
     # TODO: Alternative/Availability needs to check
     request_path = request.path
@@ -165,6 +166,7 @@ def handle_requests(apj_id, **kwargs):
             log=log,
             default_data=common_data,
             testimonial_post_id=testimonial_post_id,
+            root_path=root_path,
         )
     if apj_id == Const.APJ_ID_SERVER_DETAILS:
         set_server_name()
