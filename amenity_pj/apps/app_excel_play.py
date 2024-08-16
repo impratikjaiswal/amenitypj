@@ -4,6 +4,7 @@
 import os
 
 from excel_play.main.excelPlay import process_input
+from excel_play.main.helper.formats import Formats
 from flask import request, redirect, flash, send_file
 from python_helpers.ph_constants import PhConstants
 from python_helpers.ph_keys import PhKeys
@@ -112,11 +113,18 @@ def handle_requests(apj_id, api, log, root_path, default_data, **kwargs):
                 flash('No uploaded files', PhKeys.ALERT_CSS_CLASS_DANGER)
                 return redirect(request.url)
             PhUtil.print_iter(files_list, header='files_list', log=log)
-            process_input(input_file_or_folder=files_list)
-            output_file_name = ''
-            output_file_path = os.sep.join([target_directory_path, 'SampleData_excelPlay', 'Sheet1.csv'])
-            PhUtil.print_(f'output_file_path is {output_file_path}', log=log)
-            return send_file(output_file_path, as_attachment=True)
+            output_files_paths = []
+            for file in files_list:
+                output_file_path = process_input(input_file_or_folder=file, output_archive_format=Formats.ZIP)
+                PhUtil.print_(f'output_file_path is {output_file_path}', log=log)
+                output_files_paths.append(output_file_path)
+                break
+            if output_files_paths:
+                for file_set in output_files_paths:
+                    for file in file_set:
+                        return send_file(path_or_file=file, as_attachment=True
+                                         # , download_name=PhUtil.get_file_name_and_extn(file_path=file)
+                                         )
             # return send_from_directory(local_folder_path, 'Sheet1.csv')
         # Conditional Updates
         update_app_data(PhKeys.INPUT_DATA)
