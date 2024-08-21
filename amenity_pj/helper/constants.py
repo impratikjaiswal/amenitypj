@@ -24,8 +24,8 @@ class Const:
     LOG_FILE_404_PATH = os.sep.join([LOG_FOLDER_APPS, LOG_404_FILE_NAME])
     LOG_MAX_BYTES = 1000000
     LOG_MAX_BACKUP_COUNT = 1000
-    UPLOAD_FOLDER_PERMANENT = os.sep.join([os.pardir, 'data', 'user_data', 'uploads_permanent'])
-    UPLOAD_FOLDER_TEMPORARY = os.sep.join([os.pardir, 'data', 'user_data', 'uploads_temporary'])
+    UPLOAD_FOLDER_PERMANENT = os.sep.join([os.pardir, 'data', 'user', 'uploads_permanent'])
+    UPLOAD_FOLDER_TEMPORARY = os.sep.join([os.pardir, 'data', 'user', 'uploads_temporary'])
     UPLOAD_FILE_EXTENSIONS_ALLOWED_GENERIC = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif', 'ahk'}
     UPLOAD_FILE_EXTENSIONS_ALLOWED_EXCEL_PLAY = {'xls', 'xlsx', 'csv'}
     UPLOAD_FILE_EXTENSIONS_BLOCKED = {'exe'}

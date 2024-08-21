@@ -9,7 +9,7 @@ git+https://github.com/impratikjaiswal/certPlay@v2.0.1
 # D:\Other\Github_Self\certPlay
 
 # excelPlay Tool From Specific Tag (Remove @ String for Main Branch); Public Repo
-git+https://github.com/impratikjaiswal/excelPlay@v2.4.0
+git+https://github.com/impratikjaiswal/excelPlay@v2.4.3
 
 # excelPlay Tool From Local Path
 # D:\Other\Github_Self\excelPlay

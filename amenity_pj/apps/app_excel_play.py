@@ -66,7 +66,7 @@ def handle_requests(apj_id, api, log, root_path, default_data, **kwargs):
         sample_name = requested_data_dict.get(PhKeys.SAMPLE, None)
         sample_dict = None
         # When submitting an HTML form,
-        # 1) unchecked checkboxes do not send any data, however checked checkboxes do send False (may send True as well)
+        # 1) unchecked checkbox does not send any data, however checked checkboxes do send False (may send True as well)
         pass
         # 2) Everything is converted to String; below needs to be typecast, TODO: should be handled in parse_config; int
         pass
@@ -93,7 +93,7 @@ def handle_requests(apj_id, api, log, root_path, default_data, **kwargs):
             # ImmutableMultiDict([('file', <FileStorage: 'Finance.csv' ('text/csv')>), ('file', <FileStorage:
             # 'House.csv' ('text/csv')>), ('file', <FileStorage: 'OrderData.csv' ('text/csv')>)])
             valid_files_count = 0
-            files_list = []
+            files_list_input = []
             transaction_id = PhUtil.generate_transaction_id()
             target_directory_path = os.sep.join([root_path, Const.UPLOAD_FOLDER_TEMPORARY, transaction_id])
             PhUtil.print_(f'target_directory_path is {target_directory_path}', log=log)
@@ -107,24 +107,23 @@ def handle_requests(apj_id, api, log, root_path, default_data, **kwargs):
                     input_file_name = Util.sanitize_file_name(file.filename)
                     input_file_path = os.sep.join([target_directory_path, input_file_name])
                     file.save(input_file_path)
-                    files_list.append(input_file_path)
+                    files_list_input.append(input_file_path)
                     flash(f'{file.filename} uploaded')
             if valid_files_count == 0:
                 flash('No uploaded files', PhKeys.ALERT_CSS_CLASS_DANGER)
                 return redirect(request.url)
-            PhUtil.print_iter(files_list, header='files_list', log=log)
-            output_files_paths = []
-            for file in files_list:
-                output_file_path = process_input(input_file_or_folder=file, output_archive_format=Formats.ZIP)
-                PhUtil.print_(f'output_file_path is {output_file_path}', log=log)
-                output_files_paths.append(output_file_path)
-                break
-            if output_files_paths:
-                for file_set in output_files_paths:
-                    for file in file_set:
-                        return send_file(path_or_file=file, as_attachment=True
-                                         # , download_name=PhUtil.get_file_name_and_extn(file_path=file)
-                                         )
+            PhUtil.print_iter(files_list_input, header='files_list_input', log=log)
+            files_list_output = process_input(input_file_or_folder=files_list_input, output_archive_format=Formats.ZIP)
+            PhUtil.print_iter(files_list_output, header='files_list_output', log=log)
+            if files_list_output and len(files_list_output) > 1:
+                single_zip_file = PhUtil.zip_and_clean_dir(source_files_dir=target_directory_path,
+                                                           include_files=['*.zip'])
+            else:
+                single_zip_file = files_list_output[0]
+            PhUtil.print_(f'single_zip_file is {single_zip_file}', log=log)
+            return send_file(path_or_file=single_zip_file, as_attachment=True
+                             # , download_name=PhUtil.get_file_name_and_extn(file_path=file)
+                             )
             # return send_from_directory(local_folder_path, 'Sheet1.csv')
         # Conditional Updates
         update_app_data(PhKeys.INPUT_DATA)

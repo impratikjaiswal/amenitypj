@@ -21,7 +21,7 @@ def extract_data_and_generate_json_pre_deployment():
         "created_at": "",
     ]
     """
-    path_src = os.sep.join([os.pardir, 'data', 'issues_data'])
+    path_src = os.sep.join([os.pardir, 'data', 'issues'])
     path_dest = os.sep.join(['static', 'issues_data'])
     file_name_raw = 'combined_raw.json'
     file_name = 'combined.json'

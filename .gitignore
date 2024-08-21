@@ -279,5 +279,8 @@ logs/backup
 logs/others
 
 # Project data
-data/user_data
-data/issues_data/
+data/apps
+data/backup
+data/others
+data/user
+data/issues
