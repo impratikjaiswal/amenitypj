@@ -5,7 +5,7 @@ import os
 
 from excel_play.main.excelPlay import process_input
 from excel_play.main.helper.formats import Formats
-from flask import request, redirect, flash, send_file
+from flask import request, redirect, flash, send_file, jsonify
 from python_helpers.ph_constants import PhConstants
 from python_helpers.ph_keys import PhKeys
 from python_helpers.ph_util import PhUtil
@@ -13,12 +13,17 @@ from python_helpers.ph_util import PhUtil
 from amenity_pj.helper.constants import Const
 from amenity_pj.helper.util import Util
 
+info = None
+
 
 def handle_requests(apj_id, api, log, root_path, default_data, **kwargs):
     """
 
     :return:
     """
+
+    global info
+    info = None
 
     def update_app_data(source_key, target_key=None):
         """
@@ -108,10 +113,15 @@ def handle_requests(apj_id, api, log, root_path, default_data, **kwargs):
                     input_file_path = os.sep.join([target_directory_path, input_file_name])
                     file.save(input_file_path)
                     files_list_input.append(input_file_path)
-                    flash(f'{file.filename} uploaded')
             if valid_files_count == 0:
                 flash('No uploaded files', PhKeys.ALERT_CSS_CLASS_DANGER)
                 return redirect(request.url)
+            elif valid_files_count == 1:
+                msg = f'{file.filename} uploaded successfully. {Const.DOWNLOAD_MSG}'
+            else:
+                msg = f'{valid_files_count} files uploaded successfully. {Const.DOWNLOAD_MSG}'
+            info = msg
+            # flash(f'{msg}')
             PhUtil.print_iter(files_list_input, header='files_list_input', log=log)
             files_list_output = process_input(input_file_or_folder=files_list_input, output_archive_format=Formats.ZIP)
             PhUtil.print_iter(files_list_output, header='files_list_output', log=log)
@@ -130,3 +140,13 @@ def handle_requests(apj_id, api, log, root_path, default_data, **kwargs):
         # Fixed Updates
         app_data.update({PhKeys.SAMPLE_OPTION: sample_option})
     return Util.request_post(request=request, apj_id=apj_id, api=api, log=log, output_data=app_data)
+
+
+def handle_info(**kwargs):
+    """
+
+    :return:
+    """
+    # time.sleep(0.005)
+    global info
+    return jsonify(html_string_selected=(info if info else Const.DOWNLOAD_MSG_DEFAULT))

@@ -30,6 +30,9 @@ class Const:
     UPLOAD_FILE_EXTENSIONS_ALLOWED_EXCEL_PLAY = {'xls', 'xlsx', 'csv'}
     UPLOAD_FILE_EXTENSIONS_BLOCKED = {'exe'}
 
+    DOWNLOAD_MSG = 'Your Download will begin shortly !!!'
+    DOWNLOAD_MSG_DEFAULT = f'Processing Initiated ... {DOWNLOAD_MSG}'
+
     ####################
     # Deployment Dates
     ####################
@@ -75,6 +78,7 @@ class Const:
     APJ_ID_EXCEL_PLAY = 0xD4
     APJ_ID_CERT_PLAY = 0xD5
     APJ_ID_ASN1_PLAY_ASN1_OBJECTS = 0xE1
+    APJ_ID_EXCEL_PLAY_INFO = 0xE2
 
     ####################
     # END_POINTS
@@ -91,6 +95,7 @@ class Const:
     END_POINT_TLV_PLAY = 'tlv_play'
     END_POINT_QR_PLAY = 'qr_play'
     END_POINT_EXCEL_PLAY = 'excel_play'
+    END_POINT_EXCEL_PLAY_INFO = 'excel_play_info'
     END_POINT_CERT_PLAY = 'cert_play'
 
     ####################
@@ -202,9 +207,17 @@ class Const:
         APJ_ID_CERT_PLAY,
     ]
 
+    APPS_LIST_NEWS = [
+        APJ_ID_ASN1_PLAY,
+        APJ_ID_TLV_PLAY,
+        APJ_ID_QR_PLAY,
+        # APJ_ID_EXCEL_PLAY,
+        APJ_ID_CERT_PLAY,
+    ]
+
     APPS_LIST_W_INDEX = INDEX_LIST + APPS_LIST
 
-    WHATS_NEW_LIST = APPS_LIST_W_INDEX
+    WHATS_NEW_LIST = INDEX_LIST + APPS_LIST_NEWS
 
     ####################
     # Common Data All
@@ -409,6 +422,12 @@ class Const:
             {
                 PhKeys.APP_URL: '/asn1Play/asn1Objects',
                 PhKeys.APP_END_POINT: END_POINT_ASN1_PLAY_ASN1_OBJECTS
+            },
+        #
+        APJ_ID_EXCEL_PLAY_INFO:
+            {
+                PhKeys.APP_URL: '/excelPlay/info',
+                PhKeys.APP_END_POINT: END_POINT_EXCEL_PLAY_INFO
             },
         #
         APJ_ID_TLV_PLAY:

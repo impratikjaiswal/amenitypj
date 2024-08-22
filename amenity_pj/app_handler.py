@@ -145,6 +145,7 @@ def handle_requests(apj_id, **kwargs):
         # Imported Apps/APIs
         # #################
         Const.APJ_ID_ASN1_PLAY_ASN1_OBJECTS: app_asn1_play.handle_asn1_objects,
+        Const.APJ_ID_EXCEL_PLAY_INFO: app_excel_play.handle_info,
         # #################
         # AmenityPj Apps/APIs
         # #################
@@ -211,4 +212,6 @@ def whats_new(apj_id, log=None):
     if PhKeys.APP_TITLE in flash_msg:
         flash_msg = flash_msg.replace(PhKeys.APP_TITLE, Util.get_apj_data(apj_id=apj_id, specific_key=PhKeys.APP_TITLE))
     PhUtil.print_(f'Flash Msg: {flash_msg}', log=log)
+    # session['_flashes'].clear()
+    # session.pop('_flashes', None)
     flash(flash_msg)

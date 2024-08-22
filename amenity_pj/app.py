@@ -287,5 +287,11 @@ def excel_play(api):
     return app_handler.handle_requests(apj_id=Const.APJ_ID_EXCEL_PLAY, api=api, log=log, root_path=app.root_path)
 
 
+@app.route(Util.get_apj_data(apj_id=Const.APJ_ID_EXCEL_PLAY_INFO, specific_key=PhKeys.APP_URL))
+def excel_play_info():
+    return app_handler.handle_requests(apj_id=Const.APJ_ID_EXCEL_PLAY_INFO, api=True, log=log,
+                                       internal=True)
+
+
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port='8080')

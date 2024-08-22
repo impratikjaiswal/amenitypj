@@ -18,27 +18,29 @@
         <pre>{{ info_data }}</pre>
     </div>
 </div>
-<div id="output_data" class="form-group">
-    <label for="output_data">Output Data</label>
-    <a href="#" class="image" data-toggle="tooltip" data-placement="top" title="Copy Output Data">
-        <img id="copy_output_data" class="btn-image-initial" alt="Copy Output Data"
-             src={{ url_for('static', filename='/images/copy-2/16_16.png') }}>
-    </a>
-    <a href="#" class="image" data-toggle="tooltip" data-placement="top" title="Download Output Data">
-        <img id="download_output_data" class="btn-image-initial" alt="Download Output Data"
-             src={{ url_for('static', filename='/images/download-2/16_16.png') }}>
-    </a>
-    {#    <a href="#" class="disabled" data-toggle="tooltip" data-placement="top" title="Compare Output Data">#}
-    {#        <img id="compare_output_data" class="btn-image-initial" alt="Compare Output Data"#}
-    {#             src={{ url_for('static', filename='/images/compare-2/16_16.png') }}>#}
-    {#    </a>#}
-    <div class="badge float-right">
-        Length: <span id="output_data_char_count">0</span>
+{% if app_title != 'Excel Play' %}
+    <div id="output_data" class="form-group">
+        <label for="output_data">Output Data</label>
+        <a href="#" class="image" data-toggle="tooltip" data-placement="top" title="Copy Output Data">
+            <img id="copy_output_data" class="btn-image-initial" alt="Copy Output Data"
+                 src={{ url_for('static', filename='/images/copy-2/16_16.png') }}>
+        </a>
+        <a href="#" class="image" data-toggle="tooltip" data-placement="top" title="Download Output Data">
+            <img id="download_output_data" class="btn-image-initial" alt="Download Output Data"
+                 src={{ url_for('static', filename='/images/download-2/16_16.png') }}>
+        </a>
+        {#    <a href="#" class="disabled" data-toggle="tooltip" data-placement="top" title="Compare Output Data">#}
+        {#        <img id="compare_output_data" class="btn-image-initial" alt="Compare Output Data"#}
+        {#             src={{ url_for('static', filename='/images/compare-2/16_16.png') }}>#}
+        {#    </a>#}
+        <div class="badge float-right">
+            Length: <span id="output_data_char_count">0</span>
+        </div>
+        <div id="output_statement" class="div-output">
+            <pre>{{ output_data }}</pre>
+        </div>
     </div>
-    <div id="output_statement" class="div-output">
-        <pre>{{ output_data }}</pre>
-    </div>
-</div>
+{% endif %}
 {% if app_title == 'QR Play' %}
     <div id="output_data_images" class="form-group">
         <label for="output_data_images">QrCode Images</label>
