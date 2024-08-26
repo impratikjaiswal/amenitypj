@@ -263,6 +263,8 @@ class Const:
                                         f'various day to day tools which may elevates productivity.',
                 PhKeys.APP_URL: '/aboutUs',
                 PhKeys.APP_TEMPLATE: 'aboutus.html',
+                # Empty Value is necessary, so that default value can be set here
+                PhKeys.APP_GITHUB_URL: '',
                 PhKeys.APP_END_POINT: END_POINT_ABOUT_US,
             },
         #
