@@ -1,0 +1,33 @@
+body {
+    color: rgb(51 65 85);
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 10rem;
+}
+* {
+    box-sizing: border-box;
+}
+
+.container {
+    display: flex;
+    border: 1px solid rgb(203 213 225);
+    border-radius: 0.5rem;
+    overflow: hidden;
+    max-height: 32rem;
+}
+.container__textarea {
+    border: none;
+    outline: none;
+    padding: 0.5rem;
+    width: 100%;
+}
+.container__lines {
+    border-right: 1px solid rgb(203 213 225);
+    padding: 0.5rem;
+    text-align: right;
+    overflow: hidden;
+}

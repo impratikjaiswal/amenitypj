@@ -21,10 +21,8 @@ def folders_setup():
     adjustment_path = os.pardir if runningFromPycharm is True else None
     for folder in folders_list_relative:
         target_path = os.sep.join(filter(None, [adjustment_path, folder]))
-        print(f'folder {folder}')
-        PhUtil.makedirs(target_path)
+        PhUtil.makedirs(target_path, absolute_path_needed=True)
     for folder in folders_list_absolute:
-        print(f'folder {folder}')
         PhUtil.makedirs(folder)
 
 

@@ -337,7 +337,7 @@ class Const:
         APJ_ID_EXPERIMENTS_4:
             {
                 PhKeys.APP_URL: '/exp4',
-                PhKeys.APP_TEMPLATE: '/experiments/4.html',
+                PhKeys.APP_TEMPLATE: '/experiments/4_text_area_line_number.html',
             },
         #
         APJ_ID_EXPERIMENTS_5:

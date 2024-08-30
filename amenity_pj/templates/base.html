@@ -14,6 +14,8 @@
     <!-- APJ CSS -->
     <link rel="stylesheet" type="text/css"
           href="{{ url_for('static', filename='/css/formatted/apj.css') }}">
+    <!-- Page Specific CSS -->
+    {% block page_specific_css %} {% endblock %}
     <title>{% block title %} {% endblock %}</title>
     <link rel="shortcut icon" href="{{ url_for('static', filename='/images/favicon.ico') }}">
 </head>
@@ -139,7 +141,8 @@
 {% if app_title == 'Excel Play' %}
     <script src="{{ url_for('static', filename='/js/formatted/apj_excelPlay.js') }}"></script>
 {% endif %}
-
+<!-- Page Specific JS -->
+{% block page_specific_js %} {% endblock %}
 {#
 TODO:
 <!-- Script to send objects to Js-->
