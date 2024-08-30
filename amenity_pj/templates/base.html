@@ -4,6 +4,7 @@
     <!-- Meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Page Specific Description -->
     <meta name="description" content="{% block description %} {% endblock %}">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" type="text/css"
@@ -15,7 +16,8 @@
     <link rel="stylesheet" type="text/css"
           href="{{ url_for('static', filename='/css/formatted/apj.css') }}">
     <!-- Page Specific CSS -->
-    {% block page_specific_css %} {% endblock %}
+    {% block page_specific_css %}{% endblock %}
+    <!-- Page Specific Title -->
     <title>{% block title %} {% endblock %}</title>
     <link rel="shortcut icon" href="{{ url_for('static', filename='/images/favicon.ico') }}">
 </head>
@@ -115,7 +117,9 @@
                         {% endfor %}
                     {% endif %}
                 {% endwith %}
-                {% block content %} {% endblock %}
+				{# Page Specific Content #}
+                {% block content %}
+				{% endblock %}
             </div>
         </main>
     </div>
@@ -142,7 +146,7 @@
     <script src="{{ url_for('static', filename='/js/formatted/apj_excelPlay.js') }}"></script>
 {% endif %}
 <!-- Page Specific JS -->
-{% block page_specific_js %} {% endblock %}
+{% block page_specific_js %}{% endblock %}
 {#
 TODO:
 <!-- Script to send objects to Js-->
