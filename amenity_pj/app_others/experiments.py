@@ -60,15 +60,6 @@ def experiments_1_file_upload(apj_id):
             local_path = os.path.join(Const.UPLOAD_FOLDER_PERMANENT, filename)
             file.save(local_path)
             return redirect(url_for('experiments', apj_id=apj_id, name=filename))
-    return '''
-        <!doctype html>
-        <title>Upload new File</title>
-        <h1>Upload new File</h1>
-        <form method=post enctype=multipart/form-data>
-          <input type=file name=file>
-          <input type=submit value=Upload>
-        </form>
-        '''
 
 
 def experiments_2_404_cave_man(apj_id):

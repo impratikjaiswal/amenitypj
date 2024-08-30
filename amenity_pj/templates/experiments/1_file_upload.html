@@ -1,8 +1,20 @@
 {# Common Content #}
 {% extends 'base.html' %}
+<!-- Page Specific Description -->
 {% block description %}{{ app_description }}{% endblock %}
+<!-- Page Specific CSS -->
+{% block page_specific_css %}
+{% endblock %}
+<!-- Page Specific Title -->
 {% block title %}{{ app_title }}{% endblock %}
 {# Page Specific Content #}
 {% block content %}
     {% include 'components/header.html' %}
+    <form method=post enctype=multipart/form-data>
+        <input type=file name=file>
+        <input type=submit value=Upload>
+    </form>
+{% endblock %}
+<!-- Page Specific JS -->
+{% block page_specific_js %}
 {% endblock %}

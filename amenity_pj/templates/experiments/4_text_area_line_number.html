@@ -1,11 +1,13 @@
 {# Common Content #}
 {% extends 'base.html' %}
-<!-- Custom CSS -->
-{% block custom_css %}
+<!-- Page Specific Description -->
+{% block description %}{{ app_description }}{% endblock %}
+<!-- Page Specific CSS -->
+{% block page_specific_css %}
 <link rel="stylesheet" type="text/css"
       href="{{ url_for('static', filename='/css/experiments/4_text_area_line_number.css') }}">
 {% endblock %}
-{% block description %}{{ app_description }}{% endblock %}
+<!-- Page Specific Title -->
 {% block title %}{{ app_title }}{% endblock %}
 {# Page Specific Content #}
 {% block content %}
@@ -49,6 +51,7 @@ Made day years you'll winged.
 Set, them all of hath it seed you.</textarea>
 </div>
 {% endblock %}
-{% block custom_js %}
+<!-- Page Specific JS -->
+{% block page_specific_js %}
     <script src="{{ url_for('static', filename='/js/experiments/4_text_area_line_number.js') }}"></script>
 {% endblock %}

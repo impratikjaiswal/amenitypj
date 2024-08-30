@@ -385,13 +385,13 @@ class Const:
         APJ_ID_EXPERIMENTS_12:
             {
                 PhKeys.APP_URL: '/exp12',
-                PhKeys.APP_TEMPLATE: '/experiments/12.html',
+                PhKeys.APP_TEMPLATE: '/experiments/12_404_cave_man_apj.html',
             },
         #
         APJ_ID_EXPERIMENTS_13:
             {
                 PhKeys.APP_URL: '/exp13',
-                PhKeys.APP_TEMPLATE: '/experiments/13.html',
+                PhKeys.APP_TEMPLATE: '/experiments/13_404_fear_eyes_apj.html',
             },
         #
         APJ_ID_EXPERIMENTS_14:
