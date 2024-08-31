@@ -1,6 +1,11 @@
 {# Common Content #}
 {% extends 'base.html' %}
+<!-- Page Specific Description -->
 {% block description %}{{ app_description }}{% endblock %}
+<!-- Page Specific CSS -->
+{% block page_specific_css %}
+{% endblock %}
+<!-- Page Specific Title -->
 {% block title %}{{ app_title }}{% endblock %}
 {# Page Specific Content #}
 {% block content %}
@@ -14,4 +19,7 @@
         </dl>
         <p><input type=submit value=Login>
     </form>
+{% endblock %}
+<!-- Page Specific JS -->
+{% block page_specific_js %}
 {% endblock %}

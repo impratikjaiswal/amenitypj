@@ -1,6 +1,11 @@
 {# Common Content #}
 {% extends 'base.html' %}
+<!-- Page Specific Description -->
 {% block description %}{{ app_description }}{% endblock %}
+<!-- Page Specific CSS -->
+{% block page_specific_css %}
+{% endblock %}
+<!-- Page Specific Title -->
 {% block title %}{{ app_title }}{% endblock %}
 {# Page Specific Content #}
 {% block content %}
@@ -29,6 +34,7 @@
         {% include 'components/sample_data.html' %}
     </form>
 {% endblock %}
-{# Page Specific Script #}
-{#{% block page_specific_script %}#}
-{#{% endblock %}#}
+<!-- Page Specific JS -->
+{% block page_specific_js %}
+    <script src="{{ url_for('static', filename='/js/formatted/apj_asn1Play.js') }}"></script>
+{% endblock %}

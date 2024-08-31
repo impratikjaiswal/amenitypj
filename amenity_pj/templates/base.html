@@ -139,13 +139,6 @@
 <script src="{{ url_for('static', filename='/js/formatted/dayjs_1.11.12.min.js') }}"></script>
 <!-- APJ Script -->
 <script src="{{ url_for('static', filename='/js/formatted/apj.js') }}"></script>
-<!-- APJ Script; Page Specific -->
-{% if app_title == 'ASN1 Play' %}
-    <script src="{{ url_for('static', filename='/js/formatted/apj_asn1Play.js') }}"></script>
-{% endif %}
-{% if app_title == 'Excel Play' %}
-    <script src="{{ url_for('static', filename='/js/formatted/apj_excelPlay.js') }}"></script>
-{% endif %}
 <!-- Page Specific JS -->
 {% block page_specific_js %}
 {% endblock %}

@@ -5,6 +5,7 @@ from cert_play.main.helper.constants_config import ConfigConst as ConfigConst_Ce
 from excel_play.main.helper.constants_config import ConfigConst as ConfigConst_ExcelPlay
 from python_helpers.ph_constants import PhConstants
 from python_helpers.ph_keys import PhKeys
+from python_helpers.ph_util import PhUtil
 from qr_play.main.helper.constants_config import ConfigConst as ConfigConst_QrPlay
 from tlv_play.main.helper.constants_config import ConfigConst as ConfigConst_TlvPlay
 
@@ -575,3 +576,21 @@ class Const:
                 #
             ],
     }
+
+    @classmethod
+    def print_versions(cls):
+        """
+
+        :return:
+        """
+        PhUtil.print_heading()
+        PhUtil.print_version(ConfigConst_AmenityPj.TOOL_NAME, ConfigConst_AmenityPj.TOOL_VERSION)
+        config_const_pool = [
+            ConfigConst_Asn1Play,
+            ConfigConst_TlvPlay,
+            ConfigConst_QrPlay,
+            ConfigConst_ExcelPlay,
+            ConfigConst_CertPlay,
+        ]
+        for config_const in config_const_pool:
+            PhUtil.print_version(config_const.TOOL_NAME, config_const.TOOL_VERSION, no_additional_info=True)

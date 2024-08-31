@@ -5,7 +5,7 @@ from flask import Flask, request
 from flask_sitemapper import Sitemapper
 from python_helpers.ph_keys import PhKeys
 
-from amenity_pj import app_handler
+from amenity_pj.apps import app_handler
 from amenity_pj.helper.constants import Const
 from amenity_pj.helper.util import Util
 
@@ -294,4 +294,5 @@ def excel_play_info():
 
 
 if __name__ == "__main__":
+    Const.print_versions()
     app.run(host='0.0.0.0', port='8080')

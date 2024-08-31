@@ -1,8 +1,7 @@
 from python_helpers.ph_keys import PhKeys
 from python_helpers.ph_util import PhUtil
 
-from amenity_pj.app_handler import set_server_name
-from amenity_pj.app_others.experiments import sanitize_file_name
+from amenity_pj.apps.app_handler import set_server_name
 from amenity_pj.helper.constants import Const
 from amenity_pj.helper.util import Util
 
@@ -44,7 +43,7 @@ def test_file_name():
     ]
     for _filename in filename_pool:
         print(f'{PhKeys.BEFORE}{_filename}')
-        file_name = sanitize_file_name(_filename)
+        file_name = Util.sanitize_file_name(_filename)
         print(f'{PhKeys.AFTER}{file_name}')
         print()
 

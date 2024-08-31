@@ -1,6 +1,11 @@
 {# Common Content #}
 {% extends 'base.html' %}
+<!-- Page Specific Description -->
 {% block description %}{{ app_description }}{% endblock %}
+<!-- Page Specific CSS -->
+{% block page_specific_css %}
+{% endblock %}
+<!-- Page Specific Title -->
 {% block title %}{{ app_title }}{% endblock %}
 {# Page Specific Content #}
 {% block content %}
@@ -18,4 +23,7 @@
         {% include 'components/output_data.html' %}
         {% include 'components/sample_data.html' %}
     </form>
+{% endblock %}
+<!-- Page Specific JS -->
+{% block page_specific_js %}
 {% endblock %}
