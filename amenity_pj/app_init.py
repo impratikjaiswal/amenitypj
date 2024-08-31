@@ -8,6 +8,11 @@ from amenity_pj.helper.constants import Const
 
 
 def init_directories(running_from_pycharm=False):
+    """
+
+    :param running_from_pycharm:
+    :return:
+    """
     PhUtil.print_heading()
     folders_list_relative = [
         Const.LOG_FOLDER_APPS,
@@ -80,6 +85,10 @@ def init_contributors_offline_data_and_generate_json():
 
 
 def init_db():
+    """
+
+    :return:
+    """
     connection = sqlite3.connect('../db/database.db')
 
     with open('../db/schema.sql') as f:
