@@ -229,9 +229,11 @@ class Const:
             {
                 PhKeys.APP_TITLE_PRE: Defaults.APP_WELCOME,
                 PhKeys.APP_TITLE: TITLE_AMENITY_PJ,
-                PhKeys.APP_DESCRIPTION: f'{TITLE_AMENITY_PJ} offers a playground for various open source tools ('
-                                        f'amenities) such as ASN1 Play, TLV Play, QR Play, Cert Play, Excel Play '
-                                        f'which are crafted with the purpose of enhancing productivity.',
+                PhKeys.APP_DESCRIPTION: f'{TITLE_AMENITY_PJ} is a family of various Apps & Tools (amenities) where '
+                                        f'FREE (& Open Source) playgrounds are offered. This extended family is a group'
+                                        f' of various tools such as ASN1 Play, TLV Play, QR Play, Cert Play, '
+                                        f'Excel Play; Which are crafted with the purpose of enhancing day to day'
+                                        f'productivity.',
                 PhKeys.APP_VERSION: VERSION_AMENITY_PJ,
                 PhKeys.APP_GITHUB_URL: 'amenitypj',
                 PhKeys.APP_GIT_SUMMARY: ConfigConst_AmenityPj.TOOL_GIT_SUMMARY,

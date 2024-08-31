@@ -123,8 +123,7 @@ def handle_requests(apj_id, api, log, root_path, default_data, **kwargs):
             info = msg
             # flash(f'{msg}')
             PhUtil.print_iter(files_list_input, header='files_list_input', log=log)
-            files_list_output = process_input(input_file_or_folder=files_list_input, output_archive_format=Formats.ZIP,
-                                              print_version=False)
+            files_list_output = process_input(input_file_or_folder=files_list_input, output_archive_format=Formats.ZIP)
             PhUtil.print_iter(files_list_output, header='files_list_output', log=log)
             if files_list_output and len(files_list_output) > 1:
                 single_zip_file = PhUtil.zip_and_clean_dir(source_files_dir=target_directory_path,
