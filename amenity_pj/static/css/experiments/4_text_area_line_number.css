@@ -12,7 +12,7 @@ body {
     box-sizing: border-box;
 }
 
-.container {
+.container__div {
     display: flex;
     border: 1px solid rgb(203 213 225);
     border-radius: 0.5rem;

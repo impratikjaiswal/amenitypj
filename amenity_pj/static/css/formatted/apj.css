@@ -190,3 +190,23 @@ a.image:active {
 }
 
 /* New Stuff - Experimental*/
+
+.container__div {
+    display: flex;
+    border: 1px solid rgb(203 213 225);
+    border-radius: 0.5rem;
+    overflow: hidden;
+    max-height: 32rem;
+}
+.container__textarea {
+    border: none;
+    outline: none;
+    padding: 0.5rem;
+    width: 100%;
+}
+.container__lines {
+    border-right: 1px solid rgb(203 213 225);
+    padding: 0.5rem;
+    text-align: right;
+    overflow: hidden;
+}

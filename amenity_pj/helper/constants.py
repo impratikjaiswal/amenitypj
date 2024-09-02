@@ -230,7 +230,7 @@ class Const:
                 PhKeys.APP_TITLE_PRE: Defaults.APP_WELCOME,
                 PhKeys.APP_TITLE: TITLE_AMENITY_PJ,
                 PhKeys.APP_DESCRIPTION: f'{TITLE_AMENITY_PJ} is a family of various Apps & Tools (amenities) where '
-                                        f'FREE (& Open Source) playgrounds are offered. This extended family is a group'
+                                        f'FREE (& Open Source) playgrounds are offered. This extended family is a collection'
                                         f' of various tools such as ASN1 Play, TLV Play, QR Play, Cert Play, '
                                         f'Excel Play; Which are crafted with the purpose of enhancing day to day'
                                         f'productivity.',
