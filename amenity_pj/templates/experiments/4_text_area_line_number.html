@@ -4,8 +4,8 @@
 {% block description %}{{ app_description }}{% endblock %}
 <!-- Page Specific CSS -->
 {% block page_specific_css %}
-<link rel="stylesheet" type="text/css"
-      href="{{ url_for('static', filename='/css/experiments/4_text_area_line_number.css') }}">
+    <link rel="stylesheet" type="text/css"
+          href="{{ url_for('static', filename='/css/experiments/4_text_area_line_number.css') }}">
 {% endblock %}
 <!-- Page Specific Title -->
 {% block title %}{{ app_title }}{% endblock %}
@@ -15,18 +15,15 @@
     <label for="textarea">Input Data</label>
     <div id="container" class="container__div">
         <div id="line-numbers" class="container__lines"></div>
-        <textarea id="textarea" class="container__textarea" placeholder="Input Data" rows="3" disabled>
+        <textarea id="textarea" class="container__textarea" placeholder="Input Data" rows="3">
             {{ input_data }}
         </textarea>
     </div>
     <label for="output_statement">Output Data</label>
-    <div id="container-output" class="container__div">
+    <div id="container" class="container__div">
         <div id="line-numbers-output" class="container__lines"></div>
-        <div id="textarea-output" class="container__textarea">
-            <pre>{{ output_data }}</pre>
-        </div>
+        <pre><div id="textarea-output" class="container__textarea">{{ output_data }}</div></pre>
     </div>
-</div>
 {% endblock %}
 <!-- Page Specific JS -->
 {% block page_specific_js %}

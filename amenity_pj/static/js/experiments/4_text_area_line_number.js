@@ -141,8 +141,7 @@ function outputDataHandling() {
 
     const calculateLineNumbers = () => {
                 // ID of the object
-        const element = document.querySelector(textarea);
-        const lines = element.innerText.split('\n');
+        const lines = textarea.innerText.split('\n');
         const numLines = lines.map((line) => calculateNumLines(line));
 
         let lineNumbers = [];
