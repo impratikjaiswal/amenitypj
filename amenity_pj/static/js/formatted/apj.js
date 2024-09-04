@@ -528,8 +528,8 @@ function outputDataLines() {
         let lines_data = Array.from({
             length: lines.length,
         }, (_, i) => `${i + 1}`).join('\n');
-        debugData(lines_data, heading = "lines_data")
-        lineNumbersEle.innerHTML = "<pre>" + lines_data + "<pre>";
+        // debugData(lines_data, heading = "lines_data")
+        lineNumbersEle.innerHTML = "<pre class='container__lines__div__output_pre'>" + lines_data + "</pre>";
     }
     displayLineNumbers();
 }
