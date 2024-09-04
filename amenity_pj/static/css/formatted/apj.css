@@ -221,8 +221,8 @@ a.image:active {
     border: 1px solid rgb(203 213 225);
     border-radius: 0.5rem;
     /*overflow: hidden;*/
-    max-height: 50rem;
-    overflow: scroll;
+    max-height: 41rem;
+    overflow: auto;
     /*overflow-y:auto;*/
     /*overflow-x:auto;*/
 }
