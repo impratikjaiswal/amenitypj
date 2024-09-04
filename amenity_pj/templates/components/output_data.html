@@ -36,13 +36,16 @@
         <div class="badge float-right">
             Length: <span id="output_data_char_count">0</span>
         </div>
-        {#  <div id="output_statement" class="div-output">#}
-        {#      <pre>{{ output_data }}</pre>#}
-        {#  </div>#}
-        <div class="container__div div-output">
-            <div id="output_statement_line_numbers" class="container__lines"></div>
-            <div id="output_statement" class="container__textarea"><pre>{{ output_data }}</pre></div>
+        <div class="container__div__div__output">
+            <div id="output_statement_line_numbers" class="container__lines__div__output"></div>
+            <div id="output_statement" class="container__textarea__div__output">
+                <pre>{{ output_data }}</pre>
+            </div>
         </div>
+{#        <BR>#}
+{#        <div id="output_statement_org" class="div-output">#}
+{#            <pre>{{ output_data }}</pre>#}
+{#        </div>#}
     </div>
 {% endif %}
 {% if app_title == 'QR Play' %}
