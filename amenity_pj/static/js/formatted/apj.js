@@ -1,3 +1,6 @@
+const LENGTH_OF_INFO_STATEMENT_INITIAL_TEXT = 14
+// const LENGTH_OF_OUTPUT_STATEMENT_INITIAL_TEXT = 14
+const LENGTH_OF_OUTPUT_STATEMENT_INITIAL_TEXT = 30
 const SOURCE_TYPE_TEXT_AREA = 2
 const SOURCE_TYPE_TEXT = 3
 const SOURCE_TYPE_DIV = 4
@@ -188,13 +191,11 @@ function characterCounterInputData() {
 }
 
 function characterCounterInfoData() {
-    const length_of_info_statement_initial_text = 14
-    $("#info_data_char_count").text(($("#info_statement").text().length - length_of_info_statement_initial_text));
+    $("#info_data_char_count").text(($("#info_statement").text().length - LENGTH_OF_INFO_STATEMENT_INITIAL_TEXT));
 }
 
 function characterCounterOutputData() {
-    const length_of_output_statement_initial_text = 14
-    $("#output_data_char_count").text(($("#output_statement").text().length - length_of_output_statement_initial_text));
+    $("#output_data_char_count").text(($("#output_statement").text().length - LENGTH_OF_OUTPUT_STATEMENT_INITIAL_TEXT));
 }
 
 function alertMsg(msg = "Hello! I am an alert box!!") {
