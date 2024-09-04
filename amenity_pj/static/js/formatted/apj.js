@@ -1,4 +1,5 @@
-const LENGTH_OF_INFO_STATEMENT_INITIAL_TEXT = 14
+// const LENGTH_OF_INFO_STATEMENT_INITIAL_TEXT = 14
+const LENGTH_OF_INFO_STATEMENT_INITIAL_TEXT = 22
 // const LENGTH_OF_OUTPUT_STATEMENT_INITIAL_TEXT = 14
 const LENGTH_OF_OUTPUT_STATEMENT_INITIAL_TEXT = 30
 const SOURCE_TYPE_TEXT_AREA = 2
@@ -157,6 +158,7 @@ $(document).ready(function () {
     pageLoad();
     inputDataLines();
     outputDataLines();
+    infoDataLines();
     $('#input_data').on('input', function () {
         // Attach an "input" event listener to input_data
         characterCounterInputData();
@@ -530,6 +532,23 @@ function outputDataLines() {
         }, (_, i) => `${i + 1}`).join('\n');
         // debugData(lines_data, heading = "lines_data")
         lineNumbersEle.innerHTML = "<pre class='container__lines__div__output_pre'>" + lines_data + "</pre>";
+    }
+    displayLineNumbers();
+}
+
+function infoDataLines() {
+    const textarea = document.getElementById('info_statement');
+    const lineNumbersEle = document.getElementById('info_statement_line_numbers');
+    if (textarea == null) {
+        return
+    }
+    const displayLineNumbers = () => {
+        const lines = textarea.innerText.split('\n');
+        let lines_data = Array.from({
+            length: lines.length,
+        }, (_, i) => `${i + 1}`).join('\n');
+        // debugData(lines_data, heading = "lines_data")
+        lineNumbersEle.innerHTML = "<pre class='container__lines__div__info_pre'>" + lines_data + "</pre>";
     }
     displayLineNumbers();
 }

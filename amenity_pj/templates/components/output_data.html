@@ -14,8 +14,14 @@
     <div class="badge float-right">
         Length: <span id="info_data_char_count">0</span>
     </div>
-    <div id="info_statement" class="div-output">
-        <pre>{{ info_data }}</pre>
+    {#    <div id="info_statement" class="div-output">#}
+    {#        <pre>{{ info_data }}</pre>#}
+    {#    </div>#}
+    <div class="container__div__div__info">
+        <div id="info_statement_line_numbers" class="container__lines__div__info"></div>
+        <div id="info_statement" class="container__textarea__div__info">
+            <pre>{{ info_data }}</pre>
+        </div>
     </div>
 </div>
 {% if app_title != 'Excel Play' %}
@@ -42,10 +48,10 @@
                 <pre>{{ output_data }}</pre>
             </div>
         </div>
-{#        <BR>#}
-{#        <div id="output_statement_org" class="div-output">#}
-{#            <pre>{{ output_data }}</pre>#}
-{#        </div>#}
+        {#        <BR>#}
+        {#        <div id="output_statement_org" class="div-output">#}
+        {#            <pre>{{ output_data }}</pre>#}
+        {#        </div>#}
     </div>
 {% endif %}
 {% if app_title == 'QR Play' %}
