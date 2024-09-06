@@ -15,9 +15,11 @@
     <!-- APJ CSS -->
     <link rel="stylesheet" type="text/css"
           href="{{ url_for('static', filename='/css/formatted/apj.css') }}">
+    <!-- Experiment -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/tokyo-night-dark.css">
     <!-- Page Specific CSS -->
     {% block page_specific_css %}
-	{% endblock %}
+    {% endblock %}
     <!-- Page Specific Title -->
     <title>{% block title %} {% endblock %}</title>
     <link rel="shortcut icon" href="{{ url_for('static', filename='/images/favicon.ico') }}">
@@ -97,7 +99,7 @@
         {% endif %}
         {# <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">#}
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 ">
-			{#	Conditional CSS #}
+            {#	Conditional CSS #}
             <div class="{% if nav_bar_app_items %}container{% else %}{% endif %}">
                 {% with messages = get_flashed_messages(with_categories=true) %}
                     {% if messages %}
@@ -118,9 +120,9 @@
                         {% endfor %}
                     {% endif %}
                 {% endwith %}
-				{# Page Specific Content #}
+                {# Page Specific Content #}
                 {% block content %}
-				{% endblock %}
+                {% endblock %}
             </div>
         </main>
     </div>
@@ -139,6 +141,9 @@
 <script src="{{ url_for('static', filename='/js/formatted/dayjs_1.11.12.min.js') }}"></script>
 <!-- APJ Script -->
 <script src="{{ url_for('static', filename='/js/formatted/apj.js') }}"></script>
+<!-- Experiment -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
 <!-- Page Specific JS -->
 {% block page_specific_js %}
 {% endblock %}
