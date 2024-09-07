@@ -59,6 +59,7 @@ class Const:
     APJ_ID_CREDITS = 40
     APJ_ID_SPONSORSHIP = 50
     APJ_ID_SITEMAP = 60
+    APJ_ID_ROBOT_TXT = 61
     APJ_ID_SERVER_DETAILS = 70
     APJ_ID_404 = 80
     APJ_ID_EXPERIMENTS_GROUP = 0x90
@@ -309,6 +310,11 @@ class Const:
         APJ_ID_SITEMAP:
             {
                 PhKeys.APP_URL: '/sitemap.xml',
+            },
+        #
+        APJ_ID_ROBOT_TXT:
+            {
+                PhKeys.APP_URL: '/robots.txt',
             },
         #
         APJ_ID_SERVER_DETAILS:

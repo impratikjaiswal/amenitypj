@@ -38,8 +38,8 @@ prod_env = True
 LOG_LEVEL = "INFO"
 LOG_HANDLER = ["size-rotate"]
 LOG_FILE_PATH = os.sep.join([Const.LOG_FOLDER_APPS, Const.LOG_FILE_NAME])
-# TODO: Sitemap should work only for prod, beta, local; should not be allowed for alpha; past
-sitemap_needed = True
+# TODO: Sitemap, Robot should work only for prod, beta, local; should not be allowed for alpha; past
+sitemap_robot_needed = True
 # Others
 # LOG_HANDLER = ["console"]
 # LOG_HANDLER = ["console", "file"]
@@ -273,9 +273,15 @@ def server_details():
 
 @app.route(Util.get_apj_data(apj_id=Const.APJ_ID_SITEMAP, specific_key=PhKeys.APP_URL))
 def sitemap():
-    if sitemap_needed:
+    if sitemap_robot_needed:
         Util.user_visit(request=request, log=log)
         return sitemapper.generate()
+
+
+@app.route(Util.get_apj_data(apj_id=Const.APJ_ID_ROBOT_TXT, specific_key=PhKeys.APP_URL))
+def robot():
+    if sitemap_robot_needed:
+        return app_handler.handle_requests(apj_id=Const.APJ_ID_ROBOT_TXT, log=log)
 
 
 @app.route(Util.get_apj_data(apj_id=Const.APJ_ID_EXPERIMENTS_1, specific_key=PhKeys.APP_URL), methods=('GET', 'POST'),

@@ -1,0 +1,44 @@
+# All User agents are allowed to crawl the entire site. (default behavior)
+# User-agent: *
+# Allow: /
+
+# Allow/Block specific pages/directories
+User-agent: *
+Disallow: /app_others/
+Disallow: /apps/
+Disallow: /db/
+Disallow: /extra/
+Disallow: /helper/
+Disallow: /static/
+Allow: /templates/apps/
+Allow: /templates/*
+Disallow: /templates/components/
+Disallow: /templates/experiments/
+Disallow: /test/
+
+# Allow/Block specific Routes
+User-agent: *
+Allow: /asn1Play 
+Allow: /tlvPlay 
+Allow: /qrPlay 
+Allow: /excelPlay 
+Allow: /certPlay 
+Allow: /login 
+Allow: /aboutUs 
+Disallow: /testimonials 
+Disallow: /testimonials/<int:testimonial_post_id> 
+Disallow: /credits 
+Disallow: /sponsorship 
+Disallow: /exp* 
+Disallow: /api/* 
+Disallow: /asn1Play/asn1Objects 
+Disallow: /excelPlay/info 
+
+# Block specific subdomain from all crawlers
+User-agent: *
+Disallow: /https://alpha.amenitypj.in/robots.txt
+Disallow: /https://past.amenitypj.in/robots.txt
+
+# Sitemaps
+Sitemap: https://amenitypj.in/sitemap.xml
+Sitemap: https://beta.amenitypj.in/sitemap.xml

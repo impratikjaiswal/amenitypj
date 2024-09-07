@@ -2,7 +2,7 @@ import copy
 import random
 from datetime import datetime
 
-from flask import request, flash, url_for
+from flask import request, flash, url_for, send_from_directory
 from python_helpers.ph_keys import PhKeys
 from python_helpers.ph_util import PhUtil
 
@@ -175,6 +175,8 @@ def handle_requests(apj_id, **kwargs):
         with open(Const.LOG_FILE_404_PATH, "a") as f:
             f.write(f'{datetime.now()},{request.__dict__}\n')
         # return send_file('static/images/Darknet-404-Page-Concept.png', mimetype='image/png')
+    if apj_id == Const.APJ_ID_ROBOT_TXT:
+        return send_from_directory('static/txt', request.path[1:])
     # ######################
     # AmenityPj Apps
     # ######################
