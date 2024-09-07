@@ -38,6 +38,8 @@ prod_env = True
 LOG_LEVEL = "INFO"
 LOG_HANDLER = ["size-rotate"]
 LOG_FILE_PATH = os.sep.join([Const.LOG_FOLDER_APPS, Const.LOG_FILE_NAME])
+# TODO: Sitemap should work only for prod, beta, local; should not be allowed for alpha; past
+sitemap_needed = True
 # Others
 # LOG_HANDLER = ["console"]
 # LOG_HANDLER = ["console", "file"]
@@ -161,7 +163,7 @@ def utility_processor_selected_image_format():
     return dict(is_selected_image_format=is_selected_image_format)
 
 
-@sitemapper.include(lastmod=Const.DEPLOYMENT_DATE)
+@sitemapper.include(lastmod=Const.LAST_MODIFY_DATE_INDEX)
 @app.route(Util.get_apj_data(apj_id=Const.APJ_ID_AMENITY_PJ, specific_key=PhKeys.APP_URL))
 # Due to alias=True, URL_ALT will be redirected to URL
 @app.route(Util.get_apj_data(apj_id=Const.APJ_ID_AMENITY_PJ, specific_key=PhKeys.APP_URL_ALT), alias=True)
@@ -169,7 +171,63 @@ def index():
     return app_handler.handle_requests(apj_id=Const.APJ_ID_AMENITY_PJ, log=log)
 
 
-@sitemapper.include(lastmod=Const.DEPLOYMENT_DATE)
+@sitemapper.include(lastmod=Const.LAST_MODIFY_DATE_ASN1_PLAY)
+@app.route(Util.get_apj_data(apj_id=Const.APJ_ID_ASN1_PLAY, specific_key=PhKeys.APP_URL_API), methods=('GET', 'POST'),
+           defaults={'api': True})
+@app.route(Util.get_apj_data(apj_id=Const.APJ_ID_ASN1_PLAY, specific_key=PhKeys.APP_URL), methods=('GET', 'POST'),
+           defaults={'api': False})
+def asn1_play(api):
+    return app_handler.handle_requests(apj_id=Const.APJ_ID_ASN1_PLAY, api=api, log=log)
+
+
+@app.route(Util.get_apj_data(apj_id=Const.APJ_ID_ASN1_PLAY_ASN1_OBJECTS, specific_key=PhKeys.APP_URL))
+def asn1_play_asn1_objects():
+    return app_handler.handle_requests(apj_id=Const.APJ_ID_ASN1_PLAY_ASN1_OBJECTS, api=True, log=log,
+                                       internal=True)
+
+
+@sitemapper.include(lastmod=Const.LAST_MODIFY_DATE_TLV_PLAY)
+@app.route(Util.get_apj_data(apj_id=Const.APJ_ID_TLV_PLAY, specific_key=PhKeys.APP_URL_API), methods=('GET', 'POST'),
+           defaults={'api': True})
+@app.route(Util.get_apj_data(apj_id=Const.APJ_ID_TLV_PLAY, specific_key=PhKeys.APP_URL), methods=('GET', 'POST'),
+           defaults={'api': False})
+def tlv_play(api):
+    return app_handler.handle_requests(apj_id=Const.APJ_ID_TLV_PLAY, api=api, log=log)
+
+
+@sitemapper.include(lastmod=Const.LAST_MODIFY_DATE_QR_PLAY)
+@app.route(Util.get_apj_data(apj_id=Const.APJ_ID_QR_PLAY, specific_key=PhKeys.APP_URL_API), methods=('GET', 'POST'),
+           defaults={'api': True})
+@app.route(Util.get_apj_data(apj_id=Const.APJ_ID_QR_PLAY, specific_key=PhKeys.APP_URL), methods=('GET', 'POST'),
+           defaults={'api': False})
+def qr_play(api):
+    return app_handler.handle_requests(apj_id=Const.APJ_ID_QR_PLAY, api=api, log=log)
+
+
+@sitemapper.include(lastmod=Const.LAST_MODIFY_DATE_EXCEL_PLAY)
+@app.route(Util.get_apj_data(apj_id=Const.APJ_ID_EXCEL_PLAY, specific_key=PhKeys.APP_URL_API), methods=('GET', 'POST'),
+           defaults={'api': True})
+@app.route(Util.get_apj_data(apj_id=Const.APJ_ID_EXCEL_PLAY, specific_key=PhKeys.APP_URL), methods=('GET', 'POST'),
+           defaults={'api': False})
+def excel_play(api):
+    return app_handler.handle_requests(apj_id=Const.APJ_ID_EXCEL_PLAY, api=api, log=log, root_path=app.root_path)
+
+
+@app.route(Util.get_apj_data(apj_id=Const.APJ_ID_EXCEL_PLAY_INFO, specific_key=PhKeys.APP_URL))
+def excel_play_info():
+    return app_handler.handle_requests(apj_id=Const.APJ_ID_EXCEL_PLAY_INFO, api=True, log=log,
+                                       internal=True)
+
+
+@sitemapper.include(lastmod=Const.LAST_MODIFY_DATE_CERT_PLAY)
+@app.route(Util.get_apj_data(apj_id=Const.APJ_ID_CERT_PLAY, specific_key=PhKeys.APP_URL_API), methods=('GET', 'POST'),
+           defaults={'api': True})
+@app.route(Util.get_apj_data(apj_id=Const.APJ_ID_CERT_PLAY, specific_key=PhKeys.APP_URL), methods=('GET', 'POST'),
+           defaults={'api': False})
+def cert_play(api):
+    return app_handler.handle_requests(apj_id=Const.APJ_ID_CERT_PLAY, api=api, log=log)
+
+
 @app.route(Util.get_apj_data(apj_id=Const.APJ_ID_TESTIMONIALS, specific_key=PhKeys.APP_URL), methods=('GET', 'POST'))
 def testimonials():
     return app_handler.handle_requests(apj_id=Const.APJ_ID_TESTIMONIALS, log=log)
@@ -181,25 +239,23 @@ def testimonials_post(testimonial_post_id):
                                        testimonial_post_id=testimonial_post_id)
 
 
-@sitemapper.include(lastmod=Const.DEPLOYMENT_DATE)
+@sitemapper.include(lastmod=Const.LAST_MODIFY_DATE_ABOUT_US)
 @app.route(Util.get_apj_data(apj_id=Const.APJ_ID_ABOUT_US, specific_key=PhKeys.APP_URL), methods=('GET', 'POST'))
 def about_us():
     return app_handler.handle_requests(apj_id=Const.APJ_ID_ABOUT_US, log=log)
 
 
-@sitemapper.include(lastmod=Const.DEPLOYMENT_DATE_CREDITS)
 @app.route(Util.get_apj_data(apj_id=Const.APJ_ID_CREDITS, specific_key=PhKeys.APP_URL), methods=('GET', 'POST'))
 def credits_():
     return app_handler.handle_requests(apj_id=Const.APJ_ID_CREDITS, log=log)
 
 
-@sitemapper.include(lastmod=Const.DEPLOYMENT_DATE)
 @app.route(Util.get_apj_data(apj_id=Const.APJ_ID_SPONSORSHIP, specific_key=PhKeys.APP_URL), methods=('GET', 'POST'))
 def sponsorship():
     return app_handler.handle_requests(apj_id=Const.APJ_ID_SPONSORSHIP, log=log)
 
 
-@sitemapper.include(lastmod=Const.DEPLOYMENT_DATE_API)
+@sitemapper.include(lastmod=Const.LAST_MODIFY_DATE_LOGIN)
 @app.route(Util.get_apj_data(apj_id=Const.APJ_ID_LOGIN, specific_key=PhKeys.APP_URL), methods=('GET', 'POST'))
 def login():
     return app_handler.handle_requests(apj_id=Const.APJ_ID_LOGIN, log=log)
@@ -217,11 +273,11 @@ def server_details():
 
 @app.route(Util.get_apj_data(apj_id=Const.APJ_ID_SITEMAP, specific_key=PhKeys.APP_URL))
 def sitemap():
-    Util.user_visit(request=request, log=log)
-    return sitemapper.generate()
+    if sitemap_needed:
+        Util.user_visit(request=request, log=log)
+        return sitemapper.generate()
 
 
-@sitemapper.include(lastmod=Const.DEPLOYMENT_DATE_API)
 @app.route(Util.get_apj_data(apj_id=Const.APJ_ID_EXPERIMENTS_1, specific_key=PhKeys.APP_URL), methods=('GET', 'POST'),
            defaults={'apj_id': Const.APJ_ID_EXPERIMENTS_1})
 @app.route(Util.get_apj_data(apj_id=Const.APJ_ID_EXPERIMENTS_2, specific_key=PhKeys.APP_URL), methods=('GET', 'POST'),
@@ -234,63 +290,6 @@ def sitemap():
            defaults={'apj_id': Const.APJ_ID_EXPERIMENTS_5})
 def experiments(apj_id):
     return app_handler.handle_requests(apj_id=apj_id, log=log)
-
-
-@sitemapper.include(lastmod=Const.DEPLOYMENT_DATE)
-@app.route(Util.get_apj_data(apj_id=Const.APJ_ID_ASN1_PLAY, specific_key=PhKeys.APP_URL_API), methods=('GET', 'POST'),
-           defaults={'api': True})
-@app.route(Util.get_apj_data(apj_id=Const.APJ_ID_ASN1_PLAY, specific_key=PhKeys.APP_URL), methods=('GET', 'POST'),
-           defaults={'api': False})
-def asn1_play(api):
-    return app_handler.handle_requests(apj_id=Const.APJ_ID_ASN1_PLAY, api=api, log=log)
-
-
-@app.route(Util.get_apj_data(apj_id=Const.APJ_ID_ASN1_PLAY_ASN1_OBJECTS, specific_key=PhKeys.APP_URL))
-def asn1_play_asn1_objects():
-    return app_handler.handle_requests(apj_id=Const.APJ_ID_ASN1_PLAY_ASN1_OBJECTS, api=True, log=log,
-                                       internal=True)
-
-
-@sitemapper.include(lastmod=Const.DEPLOYMENT_DATE_CERT_PLAY)
-@app.route(Util.get_apj_data(apj_id=Const.APJ_ID_CERT_PLAY, specific_key=PhKeys.APP_URL_API), methods=('GET', 'POST'),
-           defaults={'api': True})
-@app.route(Util.get_apj_data(apj_id=Const.APJ_ID_CERT_PLAY, specific_key=PhKeys.APP_URL), methods=('GET', 'POST'),
-           defaults={'api': False})
-def cert_play(api):
-    return app_handler.handle_requests(apj_id=Const.APJ_ID_CERT_PLAY, api=api, log=log)
-
-
-@sitemapper.include(lastmod=Const.DEPLOYMENT_DATE)
-@app.route(Util.get_apj_data(apj_id=Const.APJ_ID_TLV_PLAY, specific_key=PhKeys.APP_URL_API), methods=('GET', 'POST'),
-           defaults={'api': True})
-@app.route(Util.get_apj_data(apj_id=Const.APJ_ID_TLV_PLAY, specific_key=PhKeys.APP_URL), methods=('GET', 'POST'),
-           defaults={'api': False})
-def tlv_play(api):
-    return app_handler.handle_requests(apj_id=Const.APJ_ID_TLV_PLAY, api=api, log=log)
-
-
-@sitemapper.include(lastmod=Const.DEPLOYMENT_DATE)
-@app.route(Util.get_apj_data(apj_id=Const.APJ_ID_QR_PLAY, specific_key=PhKeys.APP_URL_API), methods=('GET', 'POST'),
-           defaults={'api': True})
-@app.route(Util.get_apj_data(apj_id=Const.APJ_ID_QR_PLAY, specific_key=PhKeys.APP_URL), methods=('GET', 'POST'),
-           defaults={'api': False})
-def qr_play(api):
-    return app_handler.handle_requests(apj_id=Const.APJ_ID_QR_PLAY, api=api, log=log)
-
-
-@sitemapper.include(lastmod=Const.DEPLOYMENT_DATE)
-@app.route(Util.get_apj_data(apj_id=Const.APJ_ID_EXCEL_PLAY, specific_key=PhKeys.APP_URL_API), methods=('GET', 'POST'),
-           defaults={'api': True})
-@app.route(Util.get_apj_data(apj_id=Const.APJ_ID_EXCEL_PLAY, specific_key=PhKeys.APP_URL), methods=('GET', 'POST'),
-           defaults={'api': False})
-def excel_play(api):
-    return app_handler.handle_requests(apj_id=Const.APJ_ID_EXCEL_PLAY, api=api, log=log, root_path=app.root_path)
-
-
-@app.route(Util.get_apj_data(apj_id=Const.APJ_ID_EXCEL_PLAY_INFO, specific_key=PhKeys.APP_URL))
-def excel_play_info():
-    return app_handler.handle_requests(apj_id=Const.APJ_ID_EXCEL_PLAY_INFO, api=True, log=log,
-                                       internal=True)
 
 
 if __name__ == "__main__":
