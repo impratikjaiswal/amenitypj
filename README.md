@@ -1,6 +1,6 @@
 # amenitypj
 Source code of [https://amenitypj.in/](https://amenitypj.in/)
-<BR>Amenity Pj offers a playground for various open source tools (amenities) such as ASN1 Play, TLV Play, QR Play, Excel Play, Cert Play which are crafted with the purpose of enhancing productivity.
+<BR>Amenity Pj is a collection of FREE & Open Source Apps including asn1Play, tlvPlay, qrPlay, excelPlay, certPlay.
 
 [![GitHub License](https://img.shields.io/github/license/impratikjaiswal/amenitypj)](LICENSE)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CONDUCT.md)
