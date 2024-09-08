@@ -7,6 +7,9 @@
 {% endblock %}
 <!-- Page Specific Title -->
 {% block title %}{{ app_title }}{% endblock %}
+{% block page_specific_canonical_url %}
+    <link rel="canonical" href="https://amenitypj.in/aboutUs" />
+{% endblock %}
 {# Page Specific Content #}
 {% block content %}
     {% include 'components/header.html' %}

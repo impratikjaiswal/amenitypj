@@ -24,6 +24,9 @@
     {% endblock %}
     <!-- Page Specific Title -->
     <title>{% block title %}{% endblock %}</title>
+    <!-- Page Specific Canonical URL -->
+    {% block page_specific_canonical_url %}
+    {% endblock %}
     <link rel="shortcut icon" href="{{ url_for('static', filename='/images/favicon.ico') }}">
 </head>
 <body>
