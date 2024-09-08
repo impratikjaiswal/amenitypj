@@ -10,6 +10,7 @@ from qr_play.main.helper.constants_config import ConfigConst as ConfigConst_QrPl
 from tlv_play.main.helper.constants_config import ConfigConst as ConfigConst_TlvPlay
 
 from amenity_pj.helper.constants_config import ConfigConst as ConfigConst_AmenityPj
+from amenity_pj.helper.constants_seo import ConstSeo
 from amenity_pj.helper.defaults import Defaults
 
 
@@ -35,33 +36,24 @@ class Const:
     DOWNLOAD_MSG_DEFAULT = f'Processing Initiated ... {DOWNLOAD_MSG}'
 
     ####################
-    # Deployment Dates
-    ####################
-    DEPLOYMENT_DATE = '2023-11-11'
-    LAST_MODIFY_DATE_INDEX = '2024-09-01'
-    LAST_MODIFY_DATE_ASN1_PLAY = '2024-09-01'
-    LAST_MODIFY_DATE_TLV_PLAY = '2024-09-01'
-    LAST_MODIFY_DATE_QR_PLAY = '2024-09-01'
-    LAST_MODIFY_DATE_EXCEL_PLAY = '2024-09-01'
-    LAST_MODIFY_DATE_CERT_PLAY = '2024-09-01'
-    LAST_MODIFY_DATE_ABOUT_US = '2024-09-01'
-    LAST_MODIFY_DATE_LOGIN = '2024-09-01'
-
-    ####################
     # IDs
     ####################
-    APJ_ID_AMENITY_PJ = 10
-    APJ_ID_LOGIN = 11
-    APJ_ID_NEWS_COMMON = 12
-    APJ_ID_TESTIMONIALS = 20
-    APJ_ID_TESTIMONIALS_ID = 21
-    APJ_ID_ABOUT_US = 30
-    APJ_ID_CREDITS = 40
-    APJ_ID_SPONSORSHIP = 50
-    APJ_ID_SITEMAP = 60
-    APJ_ID_ROBOT_TXT = 61
-    APJ_ID_SERVER_DETAILS = 70
-    APJ_ID_404 = 80
+    APJ_ID_AMENITY_PJ = 0x11
+    APJ_ID_LOGIN = 0x12
+    APJ_ID_ABOUT_US = 0x13
+
+    APJ_ID_TESTIMONIALS = 0x21
+    APJ_ID_TESTIMONIALS_ID = 0x22
+    APJ_ID_NEWS_COMMON = 0x23
+
+    APJ_ID_CREDITS = 0x31
+    APJ_ID_SPONSORSHIP = 0x32
+    APJ_ID_404 = 0x33
+
+    APJ_ID_SEO_GROUP = 0x40
+    APJ_ID_SITEMAP = 0x41
+    APJ_ID_ROBOT_TXT = 0x42
+
     APJ_ID_EXPERIMENTS_GROUP = 0x90
     APJ_ID_EXPERIMENTS_1 = 0x91
     APJ_ID_EXPERIMENTS_2 = 0x92
@@ -78,14 +70,20 @@ class Const:
     APJ_ID_EXPERIMENTS_13 = 0x9D
     APJ_ID_EXPERIMENTS_14 = 0x9E
     APJ_ID_EXPERIMENTS_15 = 0x9F
+
     APJ_ID_APPS_GROUP = 0xD0
     APJ_ID_ASN1_PLAY = 0xD1
     APJ_ID_TLV_PLAY = 0xD2
     APJ_ID_QR_PLAY = 0xD3
     APJ_ID_EXCEL_PLAY = 0xD4
     APJ_ID_CERT_PLAY = 0xD5
+
+    APJ_ID_APPS_API_GROUP = 0xE0
     APJ_ID_ASN1_PLAY_ASN1_OBJECTS = 0xE1
     APJ_ID_EXCEL_PLAY_INFO = 0xE2
+
+    APJ_ID_DEV_API_GROUP = 0xF0
+    APJ_ID_SERVER_DETAILS = 0xF1
 
     ####################
     # END_POINTS
@@ -167,13 +165,6 @@ class Const:
     ####################
     # Titles
     ####################
-    TITLE_AMENITY_PJ = ConfigConst_AmenityPj.TOOL_TITLE
-    # TODO: Tool Title in every tools config
-    TITLE_ASN1_PLAY = 'ASN1 Play'
-    TITLE_TLV_PLAY = 'TLV Play'
-    TITLE_QR_PLAY = 'QR Play'
-    TITLE_EXCEL_PLAY = 'Excel Play'
-    TITLE_CERT_PLAY = 'Cert Play'
     TITLE_EXPERIMENTS = 'Experiments'
 
     ####################
@@ -187,7 +178,7 @@ class Const:
     # Common Data APPS
     ####################
     COMMON_DATA_APPS = {
-        PhKeys.APP_PARENT_TITLE: TITLE_AMENITY_PJ,
+        PhKeys.APP_PARENT_TITLE: ConstSeo.TITLE_AMENITY_PJ,
         PhKeys.APP_PARENT_VERSION: VERSION_AMENITY_PJ,
         PhKeys.SAMPLE_OPTION: Defaults.SAMPLE_OPTION,
         PhKeys.INPUT_DATA: PhConstants.STR_EMPTY,
@@ -196,7 +187,7 @@ class Const:
     }
 
     COMMON_DATA_EXPERIMENTS = {
-        PhKeys.APP_TITLE: TITLE_EXPERIMENTS,
+        PhKeys.APP_TITLE: ConstSeo.TITLE_EXPERIMENTS,
         PhKeys.APP_DESCRIPTION: DESCRIPTION_EXPERIMENTS,
         PhKeys.APP_END_POINT: END_POINT_EXPERIMENTS,
     }
@@ -234,12 +225,8 @@ class Const:
         APJ_ID_AMENITY_PJ:
             {
                 PhKeys.APP_TITLE_PRE: Defaults.APP_WELCOME,
-                PhKeys.APP_TITLE: TITLE_AMENITY_PJ,
-                PhKeys.APP_DESCRIPTION: f'{TITLE_AMENITY_PJ} is a family of various Apps & Tools (amenities) where '
-                                        f'FREE (& Open Source) playgrounds are offered. This extended family is a collection'
-                                        f' of various tools such as ASN1 Play, TLV Play, QR Play, Cert Play, '
-                                        f'Excel Play; Which are crafted with the purpose of enhancing day to day'
-                                        f'productivity.',
+                PhKeys.APP_TITLE: ConstSeo.TITLE_AMENITY_PJ,
+                PhKeys.APP_DESCRIPTION: ConstSeo.APP_DESCRIPTION_AMENITY_PJ,
                 PhKeys.APP_VERSION: VERSION_AMENITY_PJ,
                 PhKeys.APP_GITHUB_URL: 'amenitypj',
                 PhKeys.APP_GIT_SUMMARY: ConfigConst_AmenityPj.TOOL_GIT_SUMMARY,
@@ -247,6 +234,106 @@ class Const:
                 PhKeys.APP_URL_ALT: '/index.html',
                 PhKeys.APP_TEMPLATE: 'index.html',
                 PhKeys.APP_END_POINT: END_POINT_AMENITY_PJ,
+                PhKeys.APP_META_DESCRIPTION: ConstSeo.APP_META_DESCRIPTION_AMENITY_PJ,
+                PhKeys.APP_META_KEYWORDS: ConstSeo.APP_META_KEYWORDS_AMENITY_PJ,
+                PhKeys.APP_META_AUTHOR: ConstSeo.APP_META_AUTHOR,
+            },
+        #
+        APJ_ID_ASN1_PLAY:
+            {
+                PhKeys.APP_TITLE_PRE: Defaults.APP_WELCOME,
+                PhKeys.APP_TITLE: ConstSeo.TITLE_ASN1_PLAY,
+                PhKeys.APP_VERSION: ConfigConst_Asn1Play.TOOL_VERSION_DETAILED,
+                PhKeys.APP_DESCRIPTION: ConstSeo.APP_DESCRIPTION_ASN1_PLAY,
+                PhKeys.APP_GITHUB_URL: 'asn1Play',
+                PhKeys.APP_GIT_SUMMARY: ConfigConst_Asn1Play.TOOL_GIT_SUMMARY,
+                PhKeys.APP_URL: '/asn1Play',
+                PhKeys.APP_URL_API: '/api/asn1Play',
+                PhKeys.APP_TEMPLATE: '/apps/asn1Play.html',
+                PhKeys.APP_END_POINT: END_POINT_ASN1_PLAY,
+                PhKeys.APP_META_DESCRIPTION: ConstSeo.APP_META_DESCRIPTION_ASN1_PLAY,
+                PhKeys.APP_META_KEYWORDS: ConstSeo.APP_META_KEYWORDS_ASN1_PLAY,
+                PhKeys.APP_META_AUTHOR: ConstSeo.APP_META_AUTHOR,
+            },
+        #
+        APJ_ID_ASN1_PLAY_ASN1_OBJECTS:
+            {
+                PhKeys.APP_URL: '/asn1Play/asn1Objects',
+                PhKeys.APP_END_POINT: END_POINT_ASN1_PLAY_ASN1_OBJECTS
+            },
+        #
+        APJ_ID_EXCEL_PLAY_INFO:
+            {
+                PhKeys.APP_URL: '/excelPlay/info',
+                PhKeys.APP_END_POINT: END_POINT_EXCEL_PLAY_INFO
+            },
+        #
+        APJ_ID_TLV_PLAY:
+            {
+                PhKeys.APP_TITLE_PRE: Defaults.APP_WELCOME,
+                PhKeys.APP_TITLE: ConstSeo.TITLE_TLV_PLAY,
+                PhKeys.APP_VERSION: ConfigConst_TlvPlay.TOOL_VERSION,
+                PhKeys.APP_DESCRIPTION: ConstSeo.APP_DESCRIPTION_TLV_PLAY,
+                PhKeys.APP_GITHUB_URL: 'tlvPlay',
+                PhKeys.APP_GIT_SUMMARY: ConfigConst_TlvPlay.TOOL_GIT_SUMMARY,
+                PhKeys.APP_URL: '/tlvPlay',
+                PhKeys.APP_URL_API: '/api/tlvPlay',
+                PhKeys.APP_TEMPLATE: '/apps/tlvPlay.html',
+                PhKeys.APP_END_POINT: END_POINT_TLV_PLAY,
+                PhKeys.APP_META_DESCRIPTION: ConstSeo.APP_META_DESCRIPTION_TLV_PLAY,
+                PhKeys.APP_META_KEYWORDS: ConstSeo.APP_META_KEYWORDS_TLV_PLAY,
+                PhKeys.APP_META_AUTHOR: ConstSeo.APP_META_AUTHOR,
+            },
+        #
+        APJ_ID_QR_PLAY:
+            {
+                PhKeys.APP_TITLE_PRE: Defaults.APP_WELCOME,
+                PhKeys.APP_TITLE: ConstSeo.TITLE_QR_PLAY,
+                PhKeys.APP_VERSION: ConfigConst_QrPlay.TOOL_VERSION_DETAILED,
+                PhKeys.APP_DESCRIPTION: ConstSeo.APP_DESCRIPTION_QR_PLAY,
+                PhKeys.APP_GITHUB_URL: 'qrPlay',
+                PhKeys.APP_GIT_SUMMARY: ConfigConst_QrPlay.TOOL_GIT_SUMMARY,
+                PhKeys.APP_URL: '/qrPlay',
+                PhKeys.APP_URL_API: '/api/qrPlay',
+                PhKeys.APP_TEMPLATE: '/apps/qrPlay.html',
+                PhKeys.APP_END_POINT: END_POINT_QR_PLAY,
+                PhKeys.APP_META_DESCRIPTION: ConstSeo.APP_META_DESCRIPTION_QR_PLAY,
+                PhKeys.APP_META_KEYWORDS: ConstSeo.APP_META_KEYWORDS_QR_PLAY,
+                PhKeys.APP_META_AUTHOR: ConstSeo.APP_META_AUTHOR,
+            },
+        #
+        APJ_ID_EXCEL_PLAY:
+            {
+                PhKeys.APP_TITLE_PRE: Defaults.APP_WELCOME,
+                PhKeys.APP_TITLE: ConstSeo.TITLE_EXCEL_PLAY,
+                PhKeys.APP_VERSION: ConfigConst_ExcelPlay.TOOL_VERSION_DETAILED,
+                PhKeys.APP_DESCRIPTION: ConstSeo.APP_DESCRIPTION_EXCEL_PLAY,
+                PhKeys.APP_GITHUB_URL: 'excelPlay',
+                PhKeys.APP_GIT_SUMMARY: ConfigConst_ExcelPlay.TOOL_GIT_SUMMARY,
+                PhKeys.APP_URL: '/excelPlay',
+                PhKeys.APP_URL_API: '/api/excelPlay',
+                PhKeys.APP_TEMPLATE: '/apps/excelPlay.html',
+                PhKeys.APP_END_POINT: END_POINT_EXCEL_PLAY,
+                PhKeys.APP_META_DESCRIPTION: ConstSeo.APP_META_DESCRIPTION_EXCEL_PLAY,
+                PhKeys.APP_META_KEYWORDS: ConstSeo.APP_META_KEYWORDS_EXCEL_PLAY,
+                PhKeys.APP_META_AUTHOR: ConstSeo.APP_META_AUTHOR,
+            },
+        #
+        APJ_ID_CERT_PLAY:
+            {
+                PhKeys.APP_TITLE_PRE: Defaults.APP_WELCOME,
+                PhKeys.APP_TITLE: ConstSeo.TITLE_CERT_PLAY,
+                PhKeys.APP_VERSION: ConfigConst_CertPlay.TOOL_VERSION_DETAILED,
+                PhKeys.APP_DESCRIPTION: ConstSeo.APP_DESCRIPTION_CERT_PLAY,
+                PhKeys.APP_GITHUB_URL: 'certPlay',
+                PhKeys.APP_GIT_SUMMARY: ConfigConst_CertPlay.TOOL_GIT_SUMMARY,
+                PhKeys.APP_URL: '/certPlay',
+                PhKeys.APP_URL_API: '/api/certPlay',
+                PhKeys.APP_TEMPLATE: '/apps/certPlay.html',
+                PhKeys.APP_END_POINT: END_POINT_CERT_PLAY,
+                PhKeys.APP_META_DESCRIPTION: ConstSeo.APP_META_DESCRIPTION_CERT_PLAY,
+                PhKeys.APP_META_KEYWORDS: ConstSeo.APP_META_KEYWORDS_CERT_PLAY,
+                PhKeys.APP_META_AUTHOR: ConstSeo.APP_META_AUTHOR,
             },
         #
         APJ_ID_TESTIMONIALS:
@@ -267,20 +354,21 @@ class Const:
         APJ_ID_ABOUT_US:
             {
                 PhKeys.APP_TITLE: 'About Us',
-                PhKeys.APP_DESCRIPTION: f'As the word Amenity refers to an additional feature or service that '
-                                        f'elevates convenience and comfort. {TITLE_AMENITY_PJ} also intends to offer '
-                                        f'various day to day tools which may elevates productivity.',
+                PhKeys.APP_DESCRIPTION: ConstSeo.APP_DESCRIPTION_ABOUT_US,
                 PhKeys.APP_URL: '/aboutUs',
                 PhKeys.APP_TEMPLATE: 'aboutus.html',
                 # Empty Value is necessary, so that default value can be set here
                 PhKeys.APP_GITHUB_URL: '',
                 PhKeys.APP_END_POINT: END_POINT_ABOUT_US,
+                PhKeys.APP_META_DESCRIPTION: ConstSeo.APP_META_DESCRIPTION_ABOUT_US,
+                PhKeys.APP_META_KEYWORDS: ConstSeo.APP_META_KEYWORDS_ABOUT_US,
+                PhKeys.APP_META_AUTHOR: ConstSeo.APP_META_AUTHOR,
             },
         #
         APJ_ID_CREDITS:
             {
                 PhKeys.APP_TITLE: 'Credits',
-                PhKeys.APP_DESCRIPTION: f'{TITLE_AMENITY_PJ} is Thankful to its day to day users, feedback providers '
+                PhKeys.APP_DESCRIPTION: f'{ConstSeo.TITLE_AMENITY_PJ} is Thankful to its day to day users, feedback providers '
                                         f'(online as well as offline), validators, 3rd Party products. '
                                         f'Couple of names can be found below: ',
                 PhKeys.APP_URL: '/credits',
@@ -301,10 +389,13 @@ class Const:
         APJ_ID_LOGIN:
             {
                 PhKeys.APP_TITLE: 'Login',
-                PhKeys.APP_DESCRIPTION: '!!! Currently only Admin Login is supported !!!',
+                PhKeys.APP_DESCRIPTION: ConstSeo.APP_DESCRIPTION_LOGIN,
                 PhKeys.APP_URL: '/login',
                 PhKeys.APP_TEMPLATE: 'login.html',
                 PhKeys.APP_END_POINT: END_POINT_LOGIN,
+                PhKeys.APP_META_DESCRIPTION: ConstSeo.APP_META_DESCRIPTION_LOGIN,
+                PhKeys.APP_META_KEYWORDS: ConstSeo.APP_META_KEYWORDS_LOGIN,
+                PhKeys.APP_META_AUTHOR: ConstSeo.APP_META_AUTHOR,
             },
         #
         APJ_ID_SITEMAP:
@@ -325,7 +416,7 @@ class Const:
         APJ_ID_404:
             {
                 PhKeys.APP_TITLE: '404',
-                PhKeys.APP_DESCRIPTION: f"I'm afraid you've found a page that doesn't exist on {TITLE_AMENITY_PJ}.",
+                PhKeys.APP_DESCRIPTION: f"I'm afraid you've found a page that doesn't exist on {ConstSeo.TITLE_AMENITY_PJ}.",
                 PhKeys.APP_CODE: 404,
                 PhKeys.APP_TEMPLATE: '404.html',
             },
@@ -419,89 +510,6 @@ class Const:
                 PhKeys.APP_URL: '/exp15',
                 PhKeys.APP_TEMPLATE: '/experiments/15.html',
             },
-        #
-        APJ_ID_ASN1_PLAY:
-            {
-                PhKeys.APP_TITLE_PRE: Defaults.APP_WELCOME,
-                PhKeys.APP_TITLE: TITLE_ASN1_PLAY,
-                PhKeys.APP_VERSION: ConfigConst_Asn1Play.TOOL_VERSION_DETAILED,
-                PhKeys.APP_DESCRIPTION: 'ASN1 Encoder & Decoder based on pycrate.',
-                PhKeys.APP_GITHUB_URL: 'asn1Play',
-                PhKeys.APP_GIT_SUMMARY: ConfigConst_Asn1Play.TOOL_GIT_SUMMARY,
-                PhKeys.APP_URL: '/asn1Play',
-                PhKeys.APP_URL_API: '/api/asn1Play',
-                PhKeys.APP_TEMPLATE: '/apps/asn1Play.html',
-                PhKeys.APP_END_POINT: END_POINT_ASN1_PLAY,
-            },
-        #
-        APJ_ID_ASN1_PLAY_ASN1_OBJECTS:
-            {
-                PhKeys.APP_URL: '/asn1Play/asn1Objects',
-                PhKeys.APP_END_POINT: END_POINT_ASN1_PLAY_ASN1_OBJECTS
-            },
-        #
-        APJ_ID_EXCEL_PLAY_INFO:
-            {
-                PhKeys.APP_URL: '/excelPlay/info',
-                PhKeys.APP_END_POINT: END_POINT_EXCEL_PLAY_INFO
-            },
-        #
-        APJ_ID_TLV_PLAY:
-            {
-                PhKeys.APP_TITLE_PRE: Defaults.APP_WELCOME,
-                PhKeys.APP_TITLE: TITLE_TLV_PLAY,
-                PhKeys.APP_VERSION: ConfigConst_TlvPlay.TOOL_VERSION,
-                PhKeys.APP_DESCRIPTION: 'Generic TLV Parser. Will parse any TLV upto nth Level.',
-                PhKeys.APP_GITHUB_URL: 'tlvPlay',
-                PhKeys.APP_GIT_SUMMARY: ConfigConst_TlvPlay.TOOL_GIT_SUMMARY,
-                PhKeys.APP_URL: '/tlvPlay',
-                PhKeys.APP_URL_API: '/api/tlvPlay',
-                PhKeys.APP_TEMPLATE: '/apps/tlvPlay.html',
-                PhKeys.APP_END_POINT: END_POINT_TLV_PLAY,
-            },
-        #
-        APJ_ID_QR_PLAY:
-            {
-                PhKeys.APP_TITLE_PRE: Defaults.APP_WELCOME,
-                PhKeys.APP_TITLE: TITLE_QR_PLAY,
-                PhKeys.APP_VERSION: ConfigConst_QrPlay.TOOL_VERSION_DETAILED,
-                PhKeys.APP_DESCRIPTION: 'Qr Code Generator based on Segno. Can Generate Single as well as Multiple Qr codes.',
-                PhKeys.APP_GITHUB_URL: 'qrPlay',
-                PhKeys.APP_GIT_SUMMARY: ConfigConst_QrPlay.TOOL_GIT_SUMMARY,
-                PhKeys.APP_URL: '/qrPlay',
-                PhKeys.APP_URL_API: '/api/qrPlay',
-                PhKeys.APP_TEMPLATE: '/apps/qrPlay.html',
-                PhKeys.APP_END_POINT: END_POINT_QR_PLAY,
-            },
-        #
-        APJ_ID_EXCEL_PLAY:
-            {
-                PhKeys.APP_TITLE_PRE: Defaults.APP_WELCOME,
-                PhKeys.APP_TITLE: TITLE_EXCEL_PLAY,
-                PhKeys.APP_VERSION: ConfigConst_ExcelPlay.TOOL_VERSION_DETAILED,
-                PhKeys.APP_DESCRIPTION: 'Export one or more Excel file(s) (with single or multiple sheets) to several '
-                                        'csv files each containing one sheet.',
-                PhKeys.APP_GITHUB_URL: 'excelPlay',
-                PhKeys.APP_GIT_SUMMARY: ConfigConst_ExcelPlay.TOOL_GIT_SUMMARY,
-                PhKeys.APP_URL: '/excelPlay',
-                PhKeys.APP_URL_API: '/api/excelPlay',
-                PhKeys.APP_TEMPLATE: '/apps/excelPlay.html',
-                PhKeys.APP_END_POINT: END_POINT_EXCEL_PLAY,
-            },
-        #
-        APJ_ID_CERT_PLAY:
-            {
-                PhKeys.APP_TITLE_PRE: Defaults.APP_WELCOME,
-                PhKeys.APP_TITLE: TITLE_CERT_PLAY,
-                PhKeys.APP_VERSION: ConfigConst_CertPlay.TOOL_VERSION_DETAILED,
-                PhKeys.APP_DESCRIPTION: 'OpenSSL based Cert Parser. Will parse any TLS cert.',
-                PhKeys.APP_GITHUB_URL: 'certPlay',
-                PhKeys.APP_GIT_SUMMARY: ConfigConst_CertPlay.TOOL_GIT_SUMMARY,
-                PhKeys.APP_URL: '/certPlay',
-                PhKeys.APP_URL_API: '/api/certPlay',
-                PhKeys.APP_TEMPLATE: '/apps/certPlay.html',
-                PhKeys.APP_END_POINT: END_POINT_CERT_PLAY,
-            },
     }
 
     ####################
@@ -550,22 +558,22 @@ class Const:
         APJ_ID_ASN1_PLAY:
             [
                 #
-                f'{TITLE_ASN1_PLAY} now supports GSMA SGP.32 v1.1 & v1.2 (GSMA_SGP_32_v1_1, GSMA_SGP_32_v1_2).',
+                f'{ConstSeo.TITLE_ASN1_PLAY} now supports GSMA SGP.32 v1.1 & v1.2 (GSMA_SGP_32_v1_1, GSMA_SGP_32_v1_2).',
                 #
-                f'{TITLE_ASN1_PLAY} will auto trim the Quotation marks \"\" or \'\' if present.',
+                f'{ConstSeo.TITLE_ASN1_PLAY} will auto trim the Quotation marks \"\" or \'\' if present.',
                 #
-                f'To convert any APDU in {TITLE_ASN1_PLAY}, please trim the last 2 bytes of SW/Status Word (e.g: 9000).',
+                f'To convert any APDU in {ConstSeo.TITLE_ASN1_PLAY}, please trim the last 2 bytes of SW/Status Word (e.g: 9000).',
                 #
             ],
         #
         APJ_ID_TLV_PLAY:
             [
                 #
-                f'{TITLE_TLV_PLAY} now supports Base 64 data.',
+                f'{ConstSeo.TITLE_TLV_PLAY} now supports Base 64 data.',
                 #
-                f'if "Value In Ascii" is selected, {TITLE_TLV_PLAY} converts hex data to ascii where ever possible.',
+                f'if "Value In Ascii" is selected, {ConstSeo.TITLE_TLV_PLAY} converts hex data to ascii where ever possible.',
                 #
-                f'if "Non TLV Neighbor" is selected, {TITLE_TLV_PLAY} will handle scenarios where non TLV data is '
+                f'if "Non TLV Neighbor" is selected, {ConstSeo.TITLE_TLV_PLAY} will handle scenarios where non TLV data is '
                 f'placed after TLV(s)',
                 #
             ],
@@ -573,7 +581,7 @@ class Const:
         APJ_ID_QR_PLAY:
             [
                 #
-                f'if "Auto Split Qrs" is selected, {TITLE_QR_PLAY} breaks data in multiple chunks if data does not '
+                f'if "Auto Split Qrs" is selected, {ConstSeo.TITLE_QR_PLAY} breaks data in multiple chunks if data does not '
                 f'fit in one QR.',
                 #
             ],
@@ -584,7 +592,7 @@ class Const:
         APJ_ID_CERT_PLAY:
             [
                 #
-                f'{TITLE_CERT_PLAY} Automatically takes care of Open SSL format (-----BEGIN CERTIFICATE-----, '
+                f'{ConstSeo.TITLE_CERT_PLAY} Automatically takes care of Open SSL format (-----BEGIN CERTIFICATE-----, '
                 f'-----END CERTIFICATE-----).',
                 #
             ],

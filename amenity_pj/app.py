@@ -7,6 +7,7 @@ from python_helpers.ph_keys import PhKeys
 
 from amenity_pj.apps import app_handler
 from amenity_pj.helper.constants import Const
+from amenity_pj.helper.constants_seo import ConstSeo
 from amenity_pj.helper.util import Util
 
 # from amenity_pj.helper.logger import dictConfig
@@ -163,7 +164,7 @@ def utility_processor_selected_image_format():
     return dict(is_selected_image_format=is_selected_image_format)
 
 
-@sitemapper.include(lastmod=Const.LAST_MODIFY_DATE_INDEX)
+@sitemapper.include(lastmod=ConstSeo.LAST_MODIFY_DATE_INDEX)
 @app.route(Util.get_apj_data(apj_id=Const.APJ_ID_AMENITY_PJ, specific_key=PhKeys.APP_URL))
 # Due to alias=True, URL_ALT will be redirected to URL
 @app.route(Util.get_apj_data(apj_id=Const.APJ_ID_AMENITY_PJ, specific_key=PhKeys.APP_URL_ALT), alias=True)
@@ -171,7 +172,7 @@ def index():
     return app_handler.handle_requests(apj_id=Const.APJ_ID_AMENITY_PJ, log=log)
 
 
-@sitemapper.include(lastmod=Const.LAST_MODIFY_DATE_ASN1_PLAY)
+@sitemapper.include(lastmod=ConstSeo.LAST_MODIFY_DATE_ASN1_PLAY)
 @app.route(Util.get_apj_data(apj_id=Const.APJ_ID_ASN1_PLAY, specific_key=PhKeys.APP_URL_API), methods=('GET', 'POST'),
            defaults={'api': True})
 @app.route(Util.get_apj_data(apj_id=Const.APJ_ID_ASN1_PLAY, specific_key=PhKeys.APP_URL), methods=('GET', 'POST'),
@@ -186,7 +187,7 @@ def asn1_play_asn1_objects():
                                        internal=True)
 
 
-@sitemapper.include(lastmod=Const.LAST_MODIFY_DATE_TLV_PLAY)
+@sitemapper.include(lastmod=ConstSeo.LAST_MODIFY_DATE_TLV_PLAY)
 @app.route(Util.get_apj_data(apj_id=Const.APJ_ID_TLV_PLAY, specific_key=PhKeys.APP_URL_API), methods=('GET', 'POST'),
            defaults={'api': True})
 @app.route(Util.get_apj_data(apj_id=Const.APJ_ID_TLV_PLAY, specific_key=PhKeys.APP_URL), methods=('GET', 'POST'),
@@ -195,7 +196,7 @@ def tlv_play(api):
     return app_handler.handle_requests(apj_id=Const.APJ_ID_TLV_PLAY, api=api, log=log)
 
 
-@sitemapper.include(lastmod=Const.LAST_MODIFY_DATE_QR_PLAY)
+@sitemapper.include(lastmod=ConstSeo.LAST_MODIFY_DATE_QR_PLAY)
 @app.route(Util.get_apj_data(apj_id=Const.APJ_ID_QR_PLAY, specific_key=PhKeys.APP_URL_API), methods=('GET', 'POST'),
            defaults={'api': True})
 @app.route(Util.get_apj_data(apj_id=Const.APJ_ID_QR_PLAY, specific_key=PhKeys.APP_URL), methods=('GET', 'POST'),
@@ -204,7 +205,7 @@ def qr_play(api):
     return app_handler.handle_requests(apj_id=Const.APJ_ID_QR_PLAY, api=api, log=log)
 
 
-@sitemapper.include(lastmod=Const.LAST_MODIFY_DATE_EXCEL_PLAY)
+@sitemapper.include(lastmod=ConstSeo.LAST_MODIFY_DATE_EXCEL_PLAY)
 @app.route(Util.get_apj_data(apj_id=Const.APJ_ID_EXCEL_PLAY, specific_key=PhKeys.APP_URL_API), methods=('GET', 'POST'),
            defaults={'api': True})
 @app.route(Util.get_apj_data(apj_id=Const.APJ_ID_EXCEL_PLAY, specific_key=PhKeys.APP_URL), methods=('GET', 'POST'),
@@ -219,7 +220,7 @@ def excel_play_info():
                                        internal=True)
 
 
-@sitemapper.include(lastmod=Const.LAST_MODIFY_DATE_CERT_PLAY)
+@sitemapper.include(lastmod=ConstSeo.LAST_MODIFY_DATE_CERT_PLAY)
 @app.route(Util.get_apj_data(apj_id=Const.APJ_ID_CERT_PLAY, specific_key=PhKeys.APP_URL_API), methods=('GET', 'POST'),
            defaults={'api': True})
 @app.route(Util.get_apj_data(apj_id=Const.APJ_ID_CERT_PLAY, specific_key=PhKeys.APP_URL), methods=('GET', 'POST'),
@@ -239,7 +240,7 @@ def testimonials_post(testimonial_post_id):
                                        testimonial_post_id=testimonial_post_id)
 
 
-@sitemapper.include(lastmod=Const.LAST_MODIFY_DATE_ABOUT_US)
+@sitemapper.include(lastmod=ConstSeo.LAST_MODIFY_DATE_ABOUT_US)
 @app.route(Util.get_apj_data(apj_id=Const.APJ_ID_ABOUT_US, specific_key=PhKeys.APP_URL), methods=('GET', 'POST'))
 def about_us():
     return app_handler.handle_requests(apj_id=Const.APJ_ID_ABOUT_US, log=log)
@@ -255,7 +256,7 @@ def sponsorship():
     return app_handler.handle_requests(apj_id=Const.APJ_ID_SPONSORSHIP, log=log)
 
 
-@sitemapper.include(lastmod=Const.LAST_MODIFY_DATE_LOGIN)
+@sitemapper.include(lastmod=ConstSeo.LAST_MODIFY_DATE_LOGIN)
 @app.route(Util.get_apj_data(apj_id=Const.APJ_ID_LOGIN, specific_key=PhKeys.APP_URL), methods=('GET', 'POST'))
 def login():
     return app_handler.handle_requests(apj_id=Const.APJ_ID_LOGIN, log=log)
