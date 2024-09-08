@@ -16,4 +16,4 @@ class Defaults:
     INTERNAL = False
     APP_TITLE_PRE = ''
     APP_TITLE_POST = ''
-    APP_WELCOME = 'Welcome to'
+    APP_WELCOME = 'Welcome to '

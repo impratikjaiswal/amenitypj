@@ -179,7 +179,7 @@ class Const:
     ####################
     COMMON_DATA_APPS = {
         PhKeys.APP_PARENT_TITLE: ConstSeo.TITLE_AMENITY_PJ,
-        PhKeys.APP_PARENT_VERSION: VERSION_AMENITY_PJ,
+        PhKeys.APP_PARENT_VERSION: f'{PhConstants.SEPERATOR_NAME_VERSION}{VERSION_AMENITY_PJ}',
         PhKeys.SAMPLE_OPTION: Defaults.SAMPLE_OPTION,
         PhKeys.INPUT_DATA: PhConstants.STR_EMPTY,
         PhKeys.OUTPUT_DATA: PhConstants.STR_EMPTY,
@@ -187,7 +187,7 @@ class Const:
     }
 
     COMMON_DATA_EXPERIMENTS = {
-        PhKeys.APP_TITLE: ConstSeo.TITLE_EXPERIMENTS,
+        PhKeys.APP_TITLE: TITLE_EXPERIMENTS,
         PhKeys.APP_DESCRIPTION: DESCRIPTION_EXPERIMENTS,
         PhKeys.APP_END_POINT: END_POINT_EXPERIMENTS,
     }
@@ -227,7 +227,7 @@ class Const:
                 PhKeys.APP_TITLE_PRE: Defaults.APP_WELCOME,
                 PhKeys.APP_TITLE: ConstSeo.TITLE_AMENITY_PJ,
                 PhKeys.APP_DESCRIPTION: ConstSeo.APP_DESCRIPTION_AMENITY_PJ,
-                PhKeys.APP_VERSION: VERSION_AMENITY_PJ,
+                PhKeys.APP_VERSION: f'{PhConstants.SEPERATOR_NAME_VERSION}{VERSION_AMENITY_PJ}',
                 PhKeys.APP_GITHUB_URL: 'amenitypj',
                 PhKeys.APP_GIT_SUMMARY: ConfigConst_AmenityPj.TOOL_GIT_SUMMARY,
                 PhKeys.APP_URL: '/',
@@ -243,7 +243,7 @@ class Const:
             {
                 PhKeys.APP_TITLE_PRE: Defaults.APP_WELCOME,
                 PhKeys.APP_TITLE: ConstSeo.TITLE_ASN1_PLAY,
-                PhKeys.APP_VERSION: ConfigConst_Asn1Play.TOOL_VERSION_DETAILED,
+                PhKeys.APP_VERSION: f'{PhConstants.SEPERATOR_NAME_VERSION}{ConfigConst_Asn1Play.TOOL_VERSION_DETAILED}',
                 PhKeys.APP_DESCRIPTION: ConstSeo.APP_DESCRIPTION_ASN1_PLAY,
                 PhKeys.APP_GITHUB_URL: 'asn1Play',
                 PhKeys.APP_GIT_SUMMARY: ConfigConst_Asn1Play.TOOL_GIT_SUMMARY,
@@ -272,7 +272,7 @@ class Const:
             {
                 PhKeys.APP_TITLE_PRE: Defaults.APP_WELCOME,
                 PhKeys.APP_TITLE: ConstSeo.TITLE_TLV_PLAY,
-                PhKeys.APP_VERSION: ConfigConst_TlvPlay.TOOL_VERSION,
+                PhKeys.APP_VERSION: f'{PhConstants.SEPERATOR_NAME_VERSION}{ConfigConst_TlvPlay.TOOL_VERSION}',
                 PhKeys.APP_DESCRIPTION: ConstSeo.APP_DESCRIPTION_TLV_PLAY,
                 PhKeys.APP_GITHUB_URL: 'tlvPlay',
                 PhKeys.APP_GIT_SUMMARY: ConfigConst_TlvPlay.TOOL_GIT_SUMMARY,
@@ -289,7 +289,7 @@ class Const:
             {
                 PhKeys.APP_TITLE_PRE: Defaults.APP_WELCOME,
                 PhKeys.APP_TITLE: ConstSeo.TITLE_QR_PLAY,
-                PhKeys.APP_VERSION: ConfigConst_QrPlay.TOOL_VERSION_DETAILED,
+                PhKeys.APP_VERSION: f'{PhConstants.SEPERATOR_NAME_VERSION}{ConfigConst_QrPlay.TOOL_VERSION_DETAILED}',
                 PhKeys.APP_DESCRIPTION: ConstSeo.APP_DESCRIPTION_QR_PLAY,
                 PhKeys.APP_GITHUB_URL: 'qrPlay',
                 PhKeys.APP_GIT_SUMMARY: ConfigConst_QrPlay.TOOL_GIT_SUMMARY,
@@ -306,7 +306,7 @@ class Const:
             {
                 PhKeys.APP_TITLE_PRE: Defaults.APP_WELCOME,
                 PhKeys.APP_TITLE: ConstSeo.TITLE_EXCEL_PLAY,
-                PhKeys.APP_VERSION: ConfigConst_ExcelPlay.TOOL_VERSION_DETAILED,
+                PhKeys.APP_VERSION: f'{PhConstants.SEPERATOR_NAME_VERSION}{ConfigConst_ExcelPlay.TOOL_VERSION_DETAILED}',
                 PhKeys.APP_DESCRIPTION: ConstSeo.APP_DESCRIPTION_EXCEL_PLAY,
                 PhKeys.APP_GITHUB_URL: 'excelPlay',
                 PhKeys.APP_GIT_SUMMARY: ConfigConst_ExcelPlay.TOOL_GIT_SUMMARY,
@@ -323,7 +323,7 @@ class Const:
             {
                 PhKeys.APP_TITLE_PRE: Defaults.APP_WELCOME,
                 PhKeys.APP_TITLE: ConstSeo.TITLE_CERT_PLAY,
-                PhKeys.APP_VERSION: ConfigConst_CertPlay.TOOL_VERSION_DETAILED,
+                PhKeys.APP_VERSION: f'{PhConstants.SEPERATOR_NAME_VERSION}{ConfigConst_CertPlay.TOOL_VERSION_DETAILED}',
                 PhKeys.APP_DESCRIPTION: ConstSeo.APP_DESCRIPTION_CERT_PLAY,
                 PhKeys.APP_GITHUB_URL: 'certPlay',
                 PhKeys.APP_GIT_SUMMARY: ConfigConst_CertPlay.TOOL_GIT_SUMMARY,

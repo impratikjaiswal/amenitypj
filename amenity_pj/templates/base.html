@@ -5,11 +5,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Meta: Page Specific Description -->
-    <meta name="description" content="{% block app_meta_description %} {% endblock %}">
+    <meta name="description" content="{% block app_meta_description %}{% endblock %}">
     <!-- Meta: Page Specific Keywords -->
-    <meta name="keywords" content="{% block app_meta_keywords %} {% endblock %}">
+    <meta name="keywords" content="{% block app_meta_keywords %}{% endblock %}">
     <!-- Meta: Page Specific Author -->
-    <meta name="author" content="{% block app_meta_author %} {% endblock %}">
+    <meta name="author" content="{% block app_meta_author %}{% endblock %}">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" type="text/css"
           href="{{ url_for('static', filename='/css/formatted/bootstrap-4.6.2.min.css') }}">
@@ -23,7 +23,7 @@
     {% block page_specific_css %}
     {% endblock %}
     <!-- Page Specific Title -->
-    <title>{% block title %} {% endblock %}</title>
+    <title>{% block title %}{% endblock %}</title>
     <link rel="shortcut icon" href="{{ url_for('static', filename='/images/favicon.ico') }}">
 </head>
 <body>
