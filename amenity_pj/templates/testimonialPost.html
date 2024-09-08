@@ -9,7 +9,7 @@
 {% block title %}{{ app_title }}{% endblock %}
 {# Page Specific Content #}
 {% block content %}
-    <h2>{% block title %}{{ testimonial_post['title'] }}{% endblock %}</h2>
+    <h2>{{ testimonial_post['title'] }}</h2>
     <span class="badge badge-primary">{{ testimonial_post['created'] }}</span>
     <span class="badge badge-warning">{{ testimonial_post['publisher'] }}</span>
     <p>{{ testimonial_post['content'] }}</p>
