@@ -10,6 +10,9 @@ Disallow: /db/
 Disallow: /extra/
 Disallow: /helper/
 Disallow: /static/
+Allow: /static/images
+Allow: /static/css/formatted
+Allow: /static/js/formatted
 Allow: /templates/apps/
 Allow: /templates/*
 Disallow: /templates/components/
