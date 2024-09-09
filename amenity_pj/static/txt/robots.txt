@@ -45,9 +45,9 @@ Disallow: /excelPlay/info
 
 # Block specific subdomain from all crawlers
 User-agent: *
+Disallow: /https://beta.amenitypj.in/robots.txt
 Disallow: /https://alpha.amenitypj.in/robots.txt
 Disallow: /https://past.amenitypj.in/robots.txt
 
 # Sitemaps
 Sitemap: https://amenitypj.in/sitemap.xml
-Sitemap: https://beta.amenitypj.in/sitemap.xml
