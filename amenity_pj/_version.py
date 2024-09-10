@@ -7,5 +7,5 @@ Provides amenity_pj version information.
 
 from incremental import Version
 
-__version__ = Version("amenity_pj", 6, 9, 16)
+__version__ = Version("amenity_pj", 6, 9, 17)
 __all__ = ["__version__"]
