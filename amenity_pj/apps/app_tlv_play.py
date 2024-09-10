@@ -60,12 +60,18 @@ def handle_requests(apj_id, api, log, default_data, **kwargs):
     if request.method == PhKeys.GET:
         pass
     if request.method == PhKeys.POST:
-        process_sample = True if PhKeys.PROCESS_SAMPLE in requested_data_dict else None
-        sample_option = requested_data_dict.get(PhKeys.SAMPLE_OPTION, None)
-        sample_name = requested_data_dict.get(PhKeys.SAMPLE, None)
+        process_sample_random = True if PhKeys.PROCESS_SAMPLE_RANDOM in requested_data_dict else False
+        if process_sample_random:
+            process_sample = True
+            sample_option = PhKeys.SAMPLE_LOAD_AND_SUBMIT
+            sample_name = PhUtil.get_random_item_from_iter(samples_dict, skip_generalise_item=True)
+        else:
+            process_sample = True if PhKeys.PROCESS_SAMPLE in requested_data_dict else None
+            sample_option = requested_data_dict.get(PhKeys.SAMPLE_OPTION, None)
+            sample_name = requested_data_dict.get(PhKeys.SAMPLE, None)
         sample_dict = None
         # When submitting an HTML form,
-        # 1) unchecked checkboxes do not send any data, however checked checkboxes do send False (may send True as well)
+        # 1) unchecked check-boxes do not send any data, however checked checkboxes do send False (may send True as well)
         update_checked_item(PhKeys.LENGTH_IN_DECIMAL)
         update_checked_item(PhKeys.VALUE_IN_ASCII)
         update_checked_item(PhKeys.ONE_LINER)

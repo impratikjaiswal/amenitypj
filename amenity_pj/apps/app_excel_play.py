@@ -66,12 +66,18 @@ def handle_requests(apj_id, api, log, root_path, default_data, **kwargs):
     if request.method == PhKeys.GET:
         pass
     if request.method == PhKeys.POST:
-        process_sample = True if PhKeys.PROCESS_SAMPLE in requested_data_dict else None
-        sample_option = requested_data_dict.get(PhKeys.SAMPLE_OPTION, None)
-        sample_name = requested_data_dict.get(PhKeys.SAMPLE, None)
+        process_sample_random = True if PhKeys.PROCESS_SAMPLE_RANDOM in requested_data_dict else False
+        if process_sample_random:
+            process_sample = True
+            sample_option = PhKeys.SAMPLE_LOAD_AND_SUBMIT
+            sample_name = PhUtil.get_random_item_from_iter(samples_dict, skip_generalise_item=True)
+        else:
+            process_sample = True if PhKeys.PROCESS_SAMPLE in requested_data_dict else None
+            sample_option = requested_data_dict.get(PhKeys.SAMPLE_OPTION, None)
+            sample_name = requested_data_dict.get(PhKeys.SAMPLE, None)
         sample_dict = None
         # When submitting an HTML form,
-        # 1) unchecked checkbox does not send any data, however checked checkboxes do send False (may send True as well)
+        # 1) unchecked check-boxes do not send any data, however checked checkboxes do send False (may send True as well)
         pass
         # 2) Everything is converted to String; below needs to be typecast, TODO: should be handled in parse_config; int
         pass
