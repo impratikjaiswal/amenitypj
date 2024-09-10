@@ -1,7 +1,7 @@
 from python_helpers.ph_keys import PhKeys
 from python_helpers.ph_util import PhUtil
 
-from amenity_pj.helper.app_handler import set_server_name
+from amenity_pj.handler.app_handler import set_server_name
 from amenity_pj.helper.constants import Const
 from amenity_pj.helper.util import Util
 
