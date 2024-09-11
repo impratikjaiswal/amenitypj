@@ -7,6 +7,9 @@
 {% endblock %}
 <!-- Page Specific Title -->
 {% block title %}{{ app_title }}{% endblock %}
+<!-- Page Specific Canonical URL -->
+{% block page_specific_canonical_url %}
+{% endblock %}
 {# Page Specific Content #}
 {% block content %}
     {% include 'components/header.html' %}
@@ -108,6 +111,12 @@
             </div>
         </div>
     </div>
+{% endblock %}
+<!-- Page Specific Stats Counter -->
+{% block page_specific_stats_counter %}
+    <script type='text/javascript'
+            src='https://www.freevisitorcounters.com/auth.php?id=9dfac25c8ad18a6ed59d591f2e25be1b295b3888'></script>
+    <script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/1232641/t/5"></script>
 {% endblock %}
 <!-- Page Specific JS -->
 {% block page_specific_js %}
