@@ -22,6 +22,10 @@
     <!-- Page Specific CSS -->
     {% block page_specific_css %}
     {% endblock %}
+    {% if setting_highlight_js %}
+        <link rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/tokyo-night-dark.css">
+    {% endif %}
     <!-- Page Specific Title -->
     <title>{% block title %}{% endblock %}</title>
     <!-- Page Specific Canonical URL -->
@@ -146,9 +150,20 @@
 <script src="{{ url_for('static', filename='/js/formatted/dayjs_1.11.12.min.js') }}"></script>
 <!-- APJ Script -->
 <script src="{{ url_for('static', filename='/js/formatted/apj.js') }}"></script>
+<!-- Page Specific Stats Counter -->
+{% if setting_stats_counter %}
+    <div style="display: none;">
+        {% block page_specific_stats_counter %}
+        {% endblock %}
+    </div>
+{% endif %}
 <!-- Page Specific JS -->
 {% block page_specific_js %}
 {% endblock %}
+{% if setting_highlight_js %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+{% endif %}
 {#
 TODO:
 <!-- Script to send objects to Js-->

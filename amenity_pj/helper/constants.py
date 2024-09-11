@@ -49,6 +49,8 @@ class Const:
     APJ_ID_CREDITS = 0x31
     APJ_ID_SPONSORSHIP = 0x32
     APJ_ID_404 = 0x33
+    APJ_ID_STATS = 0x34
+    APJ_ID_SETTINGS = 0x35
 
     APJ_ID_SEO_GROUP = 0x40
     APJ_ID_SITEMAP = 0x41
@@ -94,6 +96,8 @@ class Const:
     END_POINT_ABOUT_US = 'about_us'
     END_POINT_CREDITS = 'credits_'
     END_POINT_SPONSORSHIP = 'sponsorship'
+    END_POINT_STATS = 'stats'
+    END_POINT_SETTINGS = 'settings'
     END_POINT_EXPERIMENTS = 'experiments'
     END_POINT_ASN1_PLAY = 'asn1_play'
     END_POINT_ASN1_PLAY_ASN1_OBJECTS = 'asn1_play_asn1_objects'
@@ -172,7 +176,7 @@ class Const:
     ####################
     VERSION_AMENITY_PJ = ConfigConst_AmenityPj.TOOL_VERSION_DETAILED
     TEMPLATE_WIP = 'wip.html'
-    DESCRIPTION_EXPERIMENTS = '!!! Only For Admins !!!'
+    DESCRIPTION_ONLY_FOR_ADMINS = '!!! Only For Admins !!!'
 
     ####################
     # Common Data APPS
@@ -188,7 +192,7 @@ class Const:
 
     COMMON_DATA_EXPERIMENTS = {
         PhKeys.APP_TITLE: TITLE_EXPERIMENTS,
-        PhKeys.APP_DESCRIPTION: DESCRIPTION_EXPERIMENTS,
+        PhKeys.APP_DESCRIPTION: DESCRIPTION_ONLY_FOR_ADMINS,
         PhKeys.APP_END_POINT: END_POINT_EXPERIMENTS,
     }
 
@@ -398,6 +402,25 @@ class Const:
                 PhKeys.APP_META_AUTHOR: ConstSeo.APP_META_AUTHOR,
             },
         #
+        APJ_ID_STATS:
+            {
+                PhKeys.APP_TITLE: 'Stats',
+                PhKeys.APP_DESCRIPTION: DESCRIPTION_ONLY_FOR_ADMINS,
+                PhKeys.APP_URL: '/stats',
+                PhKeys.APP_TEMPLATE: 'stats.html',
+                PhKeys.APP_END_POINT: END_POINT_STATS,
+            },
+        #
+        APJ_ID_SETTINGS:
+            {
+                PhKeys.APP_TITLE: 'Settings',
+                PhKeys.APP_DESCRIPTION: DESCRIPTION_ONLY_FOR_ADMINS,
+                PhKeys.APP_URL: '/settings',
+                PhKeys.APP_URL_API: '/api/settings',
+                PhKeys.APP_TEMPLATE: 'settings.html',
+                PhKeys.APP_END_POINT: END_POINT_SETTINGS,
+            },
+        #
         APJ_ID_SITEMAP:
             {
                 PhKeys.APP_URL: '/sitemap.xml',
@@ -522,6 +545,8 @@ class Const:
         END_POINT_ABOUT_US: APJ_ID_ABOUT_US,
         END_POINT_CREDITS: APJ_ID_CREDITS,
         END_POINT_SPONSORSHIP: APJ_ID_SPONSORSHIP,
+        END_POINT_STATS: APJ_ID_STATS,
+        END_POINT_SETTINGS: APJ_ID_SETTINGS,
         END_POINT_ASN1_PLAY: APJ_ID_ASN1_PLAY,
         END_POINT_ASN1_PLAY_ASN1_OBJECTS: APJ_ID_ASN1_PLAY_ASN1_OBJECTS,
         END_POINT_TLV_PLAY: APJ_ID_TLV_PLAY,

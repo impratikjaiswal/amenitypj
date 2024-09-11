@@ -7,8 +7,9 @@
 {% endblock %}
 <!-- Page Specific Title -->
 {% block title %}{{ app_title }}{% endblock %}
+<!-- Page Specific Canonical URL -->
 {% block page_specific_canonical_url %}
-    <link rel="canonical" href="https://amenitypj.in/tlvPlay" />
+    <link rel="canonical" href="https://amenitypj.in/tlvPlay"/>
 {% endblock %}
 {# Page Specific Content #}
 {% block content %}
@@ -26,6 +27,12 @@
         {% include 'components/output_data.html' %}
         {% include 'components/sample_data.html' %}
     </form>
+{% endblock %}
+<!-- Page Specific Stats Counter -->
+{% block page_specific_stats_counter %}
+    <script type='text/javascript'
+            src='https://www.freevisitorcounters.com/auth.php?id=66f375724d749e5e276c5d20017829690adc66f7'></script>
+    <script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/1232637/t/1"></script>
 {% endblock %}
 <!-- Page Specific JS -->
 {% block page_specific_js %}

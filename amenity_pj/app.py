@@ -262,6 +262,19 @@ def login():
     return app_handler.handle_requests(apj_id=Const.APJ_ID_LOGIN, log=log)
 
 
+@app.route(Util.get_apj_data(apj_id=Const.APJ_ID_STATS, specific_key=PhKeys.APP_URL), methods=('GET', 'POST'))
+def stats():
+    return app_handler.handle_requests(apj_id=Const.APJ_ID_STATS, log=log)
+
+
+@app.route(Util.get_apj_data(apj_id=Const.APJ_ID_SETTINGS, specific_key=PhKeys.APP_URL_API), methods=('GET', 'POST'),
+           defaults={'api': True})
+@app.route(Util.get_apj_data(apj_id=Const.APJ_ID_SETTINGS, specific_key=PhKeys.APP_URL), methods=('GET', 'POST'),
+           defaults={'api': False})
+def settings(api):
+    return app_handler.handle_requests(apj_id=Const.APJ_ID_SETTINGS, api=api, log=log)
+
+
 @app.errorhandler(Util.get_apj_data(apj_id=Const.APJ_ID_404, specific_key=PhKeys.APP_CODE))
 def not_found(e):
     return app_handler.handle_requests(apj_id=Const.APJ_ID_404, log=log)

@@ -45,7 +45,11 @@
         <div class="container__div__div__output">
             <div id="output_statement_line_numbers" class="container__lines__div__output"></div>
             <div id="output_statement" class="container__textarea__div__output">
-                <pre>{{ output_data }}</pre>
+                {% if setting_highlight_js %}
+                    <pre><code class="language-javascript">{{ output_data }}</code></pre>
+                {% else %}
+                    <pre>{{ output_data }}</pre>
+                {% endif %}
             </div>
         </div>
         {#        <BR>#}

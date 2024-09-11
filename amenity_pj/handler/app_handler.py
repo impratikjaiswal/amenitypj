@@ -6,14 +6,17 @@ from flask import request, flash, url_for, send_from_directory
 from python_helpers.ph_keys import PhKeys
 from python_helpers.ph_util import PhUtil
 
-from amenity_pj.app_others import testimonial, login, experiments, credits
+from amenity_pj.app_others import testimonial, login, experiments, credits, stats, settings
 from amenity_pj.apps import app_asn1_play, app_tlv_play, app_qr_play, app_excel_play, app_cert_play
+from amenity_pj.handler.app_settings import AppSettings
 from amenity_pj.helper.constants import Const
 from amenity_pj.helper.defaults import Defaults
 from amenity_pj.helper.util import Util
 
 host_name = None
 nav_bar_app_items = None
+
+app_settings = AppSettings()
 
 
 def set_server_name(host_name_passed=None):
@@ -63,7 +66,7 @@ def handle_requests(apj_id, **kwargs):
     :param kwargs:
     :return:
     """
-    global host_name, nav_bar_app_items
+    global host_name, nav_bar_app_items, app_settings
     """
     :param apj_id:
     :param kwargs:
@@ -91,13 +94,21 @@ def handle_requests(apj_id, **kwargs):
         whats_new(apj_id=apj_id, log=log)
     common_data = Util.get_apj_data(apj_id=apj_id).copy()
     if common_data:
+        # Add Github URLs
         github_url = common_data.get(PhKeys.APP_GITHUB_URL, Defaults.GITHUB_REPO)
         if github_url is not None:
             common_data.update({PhKeys.APP_GITHUB_URL: Util.get_github_url(github_repo=github_url, github_pages=False)})
             common_data.update(
                 {PhKeys.APP_GITHUB_PAGES_URL: Util.get_github_url(github_repo=github_url, github_pages=True)})
+        # Add Hostname
         if host_name:
             common_data.update({PhKeys.APP_HOST: f'({host_name})'})
+        # Add Hostname
+        if app_settings:
+            common_data = PhUtil.dict_merge(common_data, app_settings.get_setting())
+            # for app_setting in app_settings.get_setting():
+            #     common_data.update({dict(app_setting).ke   : f'({host_name})'})
+        # Add Nav Data
         nav_data_url_for = []
         nav_data = []
         nav_data_app_specific = []
@@ -153,6 +164,8 @@ def handle_requests(apj_id, **kwargs):
         Const.APJ_ID_TESTIMONIALS: testimonial.handle_requests,
         Const.APJ_ID_TESTIMONIALS_ID: testimonial.handle_posts,
         Const.APJ_ID_CREDITS: credits.handle_requests,
+        Const.APJ_ID_STATS: stats.handle_requests,
+        Const.APJ_ID_SETTINGS: settings.handle_requests,
         Const.APJ_ID_EXPERIMENTS_1: experiments.handle_requests,
         Const.APJ_ID_EXPERIMENTS_2: experiments.handle_requests,
         Const.APJ_ID_EXPERIMENTS_3: experiments.handle_requests,
