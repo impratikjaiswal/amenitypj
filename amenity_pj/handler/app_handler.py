@@ -103,7 +103,14 @@ def handle_requests(apj_id, **kwargs):
         # Add Hostname
         if host_name:
             common_data.update({PhKeys.APP_HOST: f'({host_name})'})
-        # Add Hostname
+        # Add STATS ID
+        common_data.update({PhKeys.APP_STATS_ID: Const.COUNTER_STATS_ID_MAPPING.get(apj_id, Defaults.STATS_ID)})
+        # Add App Canonical URL
+        app_url = common_data.get(PhKeys.APP_URL, None)
+        if app_url:
+            canonical_url = f'{Const.DEFAULT_CANONICAL_URL}' if apj_id == Const.APJ_ID_AMENITY_PJ else f'{Const.DEFAULT_CANONICAL_URL}{request_path}'
+            common_data.update({PhKeys.APP_CANONICAL_URL: canonical_url})
+        # Add AppSettings
         if app_settings:
             common_data = PhUtil.dict_merge(common_data, app_settings.get_setting())
             # for app_setting in app_settings.get_setting():

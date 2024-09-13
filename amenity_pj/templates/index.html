@@ -7,10 +7,6 @@
 {% endblock %}
 <!-- Page Specific Title -->
 {% block title %}{{ app_title }}{% endblock %}
-<!-- Page Specific Canonical URL -->
-{% block page_specific_canonical_url %}
-    <link rel="canonical" href="https://amenitypj.in"/>
-{% endblock %}
 {# Page Specific Content #}
 {% block content %}
     {% include 'components/header.html' %}
@@ -124,12 +120,6 @@
         </div>
     </div>
     <hr/>
-{% endblock %}
-<!-- Page Specific Stats Counter -->
-{% block page_specific_stats_counter %}
-    <script type='text/javascript'
-            src='https://www.freevisitorcounters.com/auth.php?id=f173817c110232e690615804a2fe4fe6975163db'></script>
-    <script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/1232638/t/2"></script>
 {% endblock %}
 <!-- Page Specific JS -->
 {% block page_specific_js %}

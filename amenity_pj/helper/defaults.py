@@ -17,3 +17,4 @@ class Defaults:
     APP_TITLE_PRE = ''
     APP_TITLE_POST = ''
     APP_WELCOME = 'Welcome to '
+    STATS_ID = '9dfac25c8ad18a6ed59d591f2e25be1b295b3888'

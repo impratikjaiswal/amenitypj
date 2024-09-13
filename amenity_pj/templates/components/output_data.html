@@ -45,8 +45,8 @@
         <div class="container__div__div__output">
             <div id="output_statement_line_numbers" class="container__lines__div__output"></div>
             <div id="output_statement" class="container__textarea__div__output">
-                {% if setting_highlight_js %}
-                    <pre><code class="language-javascript">{{ output_data }}</code></pre>
+                {% if cfg_highlight_syntax %}
+                    <pre><code class="language-{{ cfg_highlight_syntax_language }}">{{ output_data }}</code></pre>
                 {% else %}
                     <pre>{{ output_data }}</pre>
                 {% endif %}

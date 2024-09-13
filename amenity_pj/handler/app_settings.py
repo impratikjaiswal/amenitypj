@@ -1,3 +1,6 @@
+from python_helpers.ph_keys import PhKeys
+
+
 class AppSettings:
     def __init__(self, settings=None):
         if settings is None:
@@ -7,8 +10,11 @@ class AppSettings:
             self.settings = settings
 
     def set_default_settings(self):
-        self.settings.update({'setting_highlight_js': True})
-        self.settings.update({'setting_stats_counter': True})
+        self.settings.update({PhKeys.CFG_HIGHLIGHT_SYNTAX: True})
+        self.settings.update({PhKeys.CFG_HIGHLIGHT_SYNTAX_LANGUAGE: 'javascript'})
+        self.settings.update({PhKeys.CFG_HIGHLIGHT_SYNTAX_STYLE: 'tokyo-night-dark'})
+        self.settings.update({PhKeys.CFG_COUNTERS_STATS: True})
+        self.settings.update({PhKeys.CFG_COUNTERS_STATS_FORMAT: '1232638/t/2'})
 
     def get_setting(self):
         return self.settings

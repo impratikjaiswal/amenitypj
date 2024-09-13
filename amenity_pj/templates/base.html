@@ -22,15 +22,16 @@
     <!-- Page Specific CSS -->
     {% block page_specific_css %}
     {% endblock %}
-    {% if setting_highlight_js %}
+    <!-- Highlight Syntax CSS -->
+    {% if cfg_highlight_syntax %}
         <link rel="stylesheet"
-              href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/tokyo-night-dark.css">
+              href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/{{ cfg_highlight_syntax_style }}.css">
     {% endif %}
     <!-- Page Specific Title -->
     <title>{% block title %}{% endblock %}</title>
     <!-- Page Specific Canonical URL -->
-    {% block page_specific_canonical_url %}
-    {% endblock %}
+    <link rel="canonical" href="{{ app_canonical_url }}"/>
+    <!-- Icon -->
     <link rel="shortcut icon" href="{{ url_for('static', filename='/images/favicon.ico') }}">
 </head>
 <body>
@@ -151,16 +152,20 @@
 <!-- APJ Script -->
 <script src="{{ url_for('static', filename='/js/formatted/apj.js') }}"></script>
 <!-- Page Specific Stats Counter -->
-{% if setting_stats_counter %}
-    <div style="display: none;">
-        {% block page_specific_stats_counter %}
-        {% endblock %}
+{% if cfg_counters_stats %}
+    <div class="counter_div">
+{#        <a href='http://www.freevisitorcounters.com'>www.Freevisitorcounters.com</a>#}
+        <a href='http://www.freevisitorcounters.com' class="counter_div">amenitypj</a>
+        <script type='text/javascript'
+                src='https://www.freevisitorcounters.com/auth.php?id=f173817c110232e690615804a2fe4fe6975163db'></script>
+        <script type="text/javascript"
+                src="https://www.freevisitorcounters.com/en/home/counter/{{ cfg_counters_stats_format }}"></script>
     </div>
 {% endif %}
 <!-- Page Specific JS -->
 {% block page_specific_js %}
 {% endblock %}
-{% if setting_highlight_js %}
+{% if cfg_highlight_syntax %}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
     <script>hljs.highlightAll();</script>
 {% endif %}

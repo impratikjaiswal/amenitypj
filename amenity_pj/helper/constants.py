@@ -117,6 +117,7 @@ class Const:
     HOST_ADDRESS_ALPHA = 'https://alpha.amenitypj.in'
     HOST_ADDRESS_PAST = 'https://past.amenitypj.in'
 
+    DEFAULT_CANONICAL_URL = HOST_ADDRESS_PROD
     ####################
     # APIs
     ####################
@@ -199,6 +200,7 @@ class Const:
     INDEX_LIST = [
         APJ_ID_AMENITY_PJ,
         APJ_ID_LOGIN,
+        APJ_ID_ABOUT_US,
     ]
 
     APPS_LIST = [
@@ -553,6 +555,20 @@ class Const:
         END_POINT_QR_PLAY: APJ_ID_QR_PLAY,
         END_POINT_EXCEL_PLAY: APJ_ID_EXCEL_PLAY,
         END_POINT_CERT_PLAY: APJ_ID_CERT_PLAY,
+    }
+
+    ####################
+    # Stats Counter IDs
+    ####################
+    COUNTER_STATS_ID_MAPPING = {
+        APJ_ID_AMENITY_PJ: 'f173817c110232e690615804a2fe4fe6975163db',
+        APJ_ID_LOGIN: 'f48c06c2f0ba4c0b5288cda4359cb098271d712a',
+        APJ_ID_ABOUT_US: '5344ba753f658c5fc34e0bb93f1ef7db9455ccab',
+        APJ_ID_ASN1_PLAY: 'c28ad7357e9fa5df51ec1083a1efe5cd515df5ab',
+        APJ_ID_TLV_PLAY: '66f375724d749e5e276c5d20017829690adc66f7',
+        APJ_ID_QR_PLAY: 'e75f3460e58f2a32a1b7ab3ffab1b70e3466abe6',
+        APJ_ID_EXCEL_PLAY: '6539579995b2458ab23fc5b6c4ceebd7c17a9b47',
+        APJ_ID_CERT_PLAY: '5a8556bb1deb0161e2e8d4261fcc5c9cd190791a',
     }
 
     ####################
