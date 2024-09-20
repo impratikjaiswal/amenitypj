@@ -171,3 +171,9 @@ class Util:
     @classmethod
     def allowed_file(cls, filename, ext_list=Const.UPLOAD_FILE_EXTENSIONS_ALLOWED_GENERIC):
         return '.' in filename and filename.rsplit('.', 1)[1].lower() in ext_list
+
+    @classmethod
+    def get_stats_data(cls, apj_id):
+        if apj_id not in Const.COUNTER_STATS_ID_MAPPING:
+            apj_id = PhKeys.DEFAULT
+        return Const.COUNTER_STATS_ID_MAPPING.get(apj_id)

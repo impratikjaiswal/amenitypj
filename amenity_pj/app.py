@@ -308,6 +308,26 @@ def robot():
            defaults={'apj_id': Const.APJ_ID_EXPERIMENTS_4})
 @app.route(Util.get_apj_data(apj_id=Const.APJ_ID_EXPERIMENTS_5, specific_key=PhKeys.APP_URL), methods=('GET', 'POST'),
            defaults={'apj_id': Const.APJ_ID_EXPERIMENTS_5})
+@app.route(Util.get_apj_data(apj_id=Const.APJ_ID_EXPERIMENTS_6, specific_key=PhKeys.APP_URL), methods=('GET', 'POST'),
+           defaults={'apj_id': Const.APJ_ID_EXPERIMENTS_6})
+@app.route(Util.get_apj_data(apj_id=Const.APJ_ID_EXPERIMENTS_7, specific_key=PhKeys.APP_URL), methods=('GET', 'POST'),
+           defaults={'apj_id': Const.APJ_ID_EXPERIMENTS_7})
+@app.route(Util.get_apj_data(apj_id=Const.APJ_ID_EXPERIMENTS_8, specific_key=PhKeys.APP_URL), methods=('GET', 'POST'),
+           defaults={'apj_id': Const.APJ_ID_EXPERIMENTS_8})
+@app.route(Util.get_apj_data(apj_id=Const.APJ_ID_EXPERIMENTS_9, specific_key=PhKeys.APP_URL), methods=('GET', 'POST'),
+           defaults={'apj_id': Const.APJ_ID_EXPERIMENTS_9})
+@app.route(Util.get_apj_data(apj_id=Const.APJ_ID_EXPERIMENTS_10, specific_key=PhKeys.APP_URL), methods=('GET', 'POST'),
+           defaults={'apj_id': Const.APJ_ID_EXPERIMENTS_10})
+@app.route(Util.get_apj_data(apj_id=Const.APJ_ID_EXPERIMENTS_11, specific_key=PhKeys.APP_URL), methods=('GET', 'POST'),
+           defaults={'apj_id': Const.APJ_ID_EXPERIMENTS_11})
+@app.route(Util.get_apj_data(apj_id=Const.APJ_ID_EXPERIMENTS_12, specific_key=PhKeys.APP_URL), methods=('GET', 'POST'),
+           defaults={'apj_id': Const.APJ_ID_EXPERIMENTS_12})
+@app.route(Util.get_apj_data(apj_id=Const.APJ_ID_EXPERIMENTS_13, specific_key=PhKeys.APP_URL), methods=('GET', 'POST'),
+           defaults={'apj_id': Const.APJ_ID_EXPERIMENTS_13})
+@app.route(Util.get_apj_data(apj_id=Const.APJ_ID_EXPERIMENTS_14, specific_key=PhKeys.APP_URL), methods=('GET', 'POST'),
+           defaults={'apj_id': Const.APJ_ID_EXPERIMENTS_14})
+@app.route(Util.get_apj_data(apj_id=Const.APJ_ID_EXPERIMENTS_15, specific_key=PhKeys.APP_URL), methods=('GET', 'POST'),
+           defaults={'apj_id': Const.APJ_ID_EXPERIMENTS_15})
 def experiments(apj_id):
     return app_handler.handle_requests(apj_id=apj_id, log=log)
 

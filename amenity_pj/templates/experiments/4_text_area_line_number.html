@@ -5,7 +5,7 @@
 <!-- Page Specific CSS -->
 {% block page_specific_css %}
     <link rel="stylesheet" type="text/css"
-          href="{{ url_for('static', filename='/css/experiments/4_text_area_line_number.css') }}">
+          href="{{ url_for('static', filename='css/experiments/4_text_area_line_number.css') }}">
 {% endblock %}
 <!-- Page Specific Title -->
 {% block title %}{{ app_title }}{% endblock %}
@@ -27,5 +27,5 @@
 {% endblock %}
 <!-- Page Specific JS -->
 {% block page_specific_js %}
-    <script src="{{ url_for('static', filename='/js/experiments/4_text_area_line_number.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/experiments/4_text_area_line_number.js') }}"></script>
 {% endblock %}

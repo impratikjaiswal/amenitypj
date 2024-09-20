@@ -104,7 +104,7 @@ def handle_requests(apj_id, **kwargs):
         if host_name:
             common_data.update({PhKeys.APP_HOST: f'({host_name})'})
         # Add STATS ID
-        common_data.update({PhKeys.APP_STATS_ID: Const.COUNTER_STATS_ID_MAPPING.get(apj_id, Defaults.STATS_ID)})
+        common_data.update({PhKeys.APP_STATS_ID: Util.get_stats_data(apj_id=apj_id)})
         # Add App Canonical URL
         app_url = common_data.get(PhKeys.APP_URL, None)
         if app_url:
@@ -173,13 +173,11 @@ def handle_requests(apj_id, **kwargs):
         Const.APJ_ID_CREDITS: credits.handle_requests,
         Const.APJ_ID_STATS: stats.handle_requests,
         Const.APJ_ID_SETTINGS: settings.handle_requests,
-        Const.APJ_ID_EXPERIMENTS_1: experiments.handle_requests,
-        Const.APJ_ID_EXPERIMENTS_2: experiments.handle_requests,
-        Const.APJ_ID_EXPERIMENTS_3: experiments.handle_requests,
-        Const.APJ_ID_EXPERIMENTS_4: experiments.handle_requests,
-        Const.APJ_ID_EXPERIMENTS_5: experiments.handle_requests,
     }
-    func = func_mapping.get(apj_id, None)
+    if Util.get_apj_id_group(apj_id=apj_id) == Const.APJ_ID_EXPERIMENTS_GROUP:
+        func = experiments.handle_requests
+    else:
+        func = func_mapping.get(apj_id, None)
     if func is not None:
         return func(
             apj_id=apj_id,

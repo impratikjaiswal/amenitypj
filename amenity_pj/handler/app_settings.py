@@ -10,7 +10,7 @@ class AppSettings:
             self.settings = settings
 
     def set_default_settings(self):
-        self.settings.update({PhKeys.CFG_HIGHLIGHT_SYNTAX: True})
+        self.settings.update({PhKeys.CFG_HIGHLIGHT_SYNTAX: False})
         self.settings.update({PhKeys.CFG_HIGHLIGHT_SYNTAX_LANGUAGE: 'javascript'})
         self.settings.update({PhKeys.CFG_HIGHLIGHT_SYNTAX_STYLE: 'tokyo-night-dark'})
         self.settings.update({PhKeys.CFG_COUNTERS_STATS: True})

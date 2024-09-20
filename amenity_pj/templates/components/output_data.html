@@ -5,11 +5,11 @@
     <label for="info_data">Info</label>
     <a href="#" class="image" data-toggle="tooltip" data-placement="top" title="Copy Info">
         <img id="copy_info_data" class="btn-image-initial" alt="Copy Info"
-             src={{ url_for('static', filename='/images/copy-2/16_16.png') }}>
+             src={{ url_for('static', filename='images/copy-2/16_16.png') }}>
     </a>
     <a href="#" class="image" data-toggle="tooltip" data-placement="top" title="Download Info">
         <img id="download_info_data" class="btn-image-initial" alt="Download Info"
-             src={{ url_for('static', filename='/images/download-2/16_16.png') }}>
+             src={{ url_for('static', filename='images/download-2/16_16.png') }}>
     </a>
     <div class="badge float-right">
         Length: <span id="info_data_char_count">0</span>
@@ -29,15 +29,15 @@
         <label for="output_data">Output Data</label>
         <a href="#" class="image" data-toggle="tooltip" data-placement="top" title="Copy Output Data">
             <img id="copy_output_data" class="btn-image-initial" alt="Copy Output Data"
-                 src={{ url_for('static', filename='/images/copy-2/16_16.png') }}>
+                 src={{ url_for('static', filename='images/copy-2/16_16.png') }}>
         </a>
         <a href="#" class="image" data-toggle="tooltip" data-placement="top" title="Download Output Data">
             <img id="download_output_data" class="btn-image-initial" alt="Download Output Data"
-                 src={{ url_for('static', filename='/images/download-2/16_16.png') }}>
+                 src={{ url_for('static', filename='images/download-2/16_16.png') }}>
         </a>
         {#    <a href="#" class="disabled" data-toggle="tooltip" data-placement="top" title="Compare Output Data">#}
         {#        <img id="compare_output_data" class="btn-image-initial" alt="Compare Output Data"#}
-        {#             src={{ url_for('static', filename='/images/compare-2/16_16.png') }}>#}
+        {#             src={{ url_for('static', filename='images/compare-2/16_16.png') }}>#}
         {#    </a>#}
         <div class="badge float-right">
             Length: <span id="output_data_char_count">0</span>
@@ -45,6 +45,7 @@
         <div class="container__div__div__output">
             <div id="output_statement_line_numbers" class="container__lines__div__output"></div>
             <div id="output_statement" class="container__textarea__div__output">
+                <!-- Highlight Syntax; Settings Specific -->
                 {% if cfg_highlight_syntax %}
                     <pre><code class="language-{{ cfg_highlight_syntax_language }}">{{ output_data }}</code></pre>
                 {% else %}
