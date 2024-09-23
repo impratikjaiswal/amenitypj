@@ -27,7 +27,7 @@ git+https://github.com/impratikjaiswal/qrPlay@v3.1.2
 # D:\Other\Github_Self\qrPlay
 
 # asn1Play Tool From Specific Tag (Remove @ String for Main Branch); Public Repo
-git+https://github.com/impratikjaiswal/asn1play@v8.3.4
+git+https://github.com/impratikjaiswal/asn1play@v8.3.5
 
 # asn1Play Tool From Local Path
 # D:\Other\Github_Self\asn1Play
