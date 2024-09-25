@@ -177,3 +177,16 @@ class Util:
         if apj_id not in Const.COUNTER_STATS_ID_MAPPING:
             apj_id = PhKeys.DEFAULT
         return Const.COUNTER_STATS_ID_MAPPING.get(apj_id)
+
+    @classmethod
+    def fetch_transaction_id_from_info_data(cls, info_data):
+        # TODO: Create generic method in PhUtil; should be able to fetch any value from info data
+        if not info_data:
+            return PhConstants.STR_EMPTY
+        info_data_split = info_data.split(PhConstants.SEPERATOR_MULTI_OBJ)
+        key = PhUtil.get_user_friendly_name(PhKeys.TRANSACTION_ID)
+        for item in info_data_split:
+            if key in item:
+                res = item.split(PhConstants.SEPERATOR_KEY_VALUE)
+                if len(res) == 2:
+                    return res[1]

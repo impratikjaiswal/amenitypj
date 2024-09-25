@@ -106,6 +106,7 @@ def handle_requests(apj_id, api, log, default_data, **kwargs):
                 temp_output_data.append(output_data)
             app_data.update({PhKeys.OUTPUT_DATA: temp_output_data})
             app_data.update({PhKeys.INFO_DATA: info_data})
+            app_data.update({PhKeys.TRANSACTION_ID: Util.fetch_transaction_id_from_info_data(info_data)})
         # Conditional Updates
         update_app_data(PhKeys.INPUT_DATA)
         update_app_data(PhKeys.SPLIT_QRS)

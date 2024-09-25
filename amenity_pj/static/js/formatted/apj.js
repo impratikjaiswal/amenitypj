@@ -1,7 +1,8 @@
 // const LENGTH_OF_INFO_STATEMENT_INITIAL_TEXT = 14
 const LENGTH_OF_INFO_STATEMENT_INITIAL_TEXT = 22
 // const LENGTH_OF_OUTPUT_STATEMENT_INITIAL_TEXT = 14
-const LENGTH_OF_OUTPUT_STATEMENT_INITIAL_TEXT = 30
+// const LENGTH_OF_OUTPUT_STATEMENT_INITIAL_TEXT = 30
+const LENGTH_OF_OUTPUT_STATEMENT_INITIAL_TEXT = 85
 const SOURCE_TYPE_TEXT_AREA = 2
 const SOURCE_TYPE_TEXT = 3
 const SOURCE_TYPE_DIV = 4
@@ -334,12 +335,17 @@ function getTimeStamp(files_format = true, native_only = false) {
 }
 
 function getFileName(file_name_keyword) {
-    let title_name = document.title
+    let title_name = document.title.replace(" | ","_")
+    // TODO: Add regex
+    title_name = title_name.replaceAll(".","_")
+    title_name = title_name.replaceAll(":","_")
     let time_stamp_native = getTimeStamp(true, true)
     let time_stamp = getTimeStamp()
     // debugData(time_stamp, 'time_stamp')
     // debugData(time_stamp_native, 'time_stamp_native')
-    return `${title_name}_${file_name_keyword}_${time_stamp}`.replace(" ", "_");
+    let file_name = `${title_name}_${file_name_keyword}_${time_stamp}`.replace(" ", "_");
+    // debugData(file_name, 'file_name')
+    return `${file_name}`;
 }
 
 

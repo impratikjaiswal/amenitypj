@@ -99,6 +99,7 @@ def handle_requests(apj_id, api, log, default_data, **kwargs):
             output_data, info_data = data_type.get_output_data(only_output=False)
             app_data.update({PhKeys.OUTPUT_DATA: output_data})
             app_data.update({PhKeys.INFO_DATA: info_data})
+            app_data.update({PhKeys.TRANSACTION_ID: Util.fetch_transaction_id_from_info_data(info_data)})
         # Conditional Updates
         update_app_data(PhKeys.INPUT_DATA)
         update_app_data(PhKeys.INPUT_FORMAT, PhKeys.INPUT_FORMAT_SELECTED)
