@@ -1,7 +1,9 @@
 <div>
-    <h1 class="display-inline"> {{ app_title_pre }}{{ app_title }}{{ app_version }}{{ app_title_post }}</h1>
-    <h5 class="display-inline"> {{ app_parent_title }}{{ app_parent_version }} </h5>
-    <h6 class="display-inline"> {{ app_host }} </h6>
+    <h1 class="display-inline">{{ app_title_pre }}{{ app_title }}{{ app_version }}{{ app_title_post }}</h1>
+    <h5 class="display-inline">{{ app_parent_title }}{{ app_parent_version }}</h5>
+    {% if app_host %}
+        <h6 class="display-inline">({{ app_host }})</h6>
+    {% endif %}
     {% if app_git_summary %}
         <a class="very-small a-float-right" data-toggle="collapse" href="#gitInfoCollapse" role="button"
            aria-expanded="false" aria-controls="gitInfoCollapse">Git Info</a>

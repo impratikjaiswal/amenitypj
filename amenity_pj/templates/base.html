@@ -28,7 +28,8 @@
               href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/{{ cfg_highlight_syntax_style }}.css">
     {% endif %}
     <!-- Page Specific Title -->
-    <title>{% block title %}{% endblock %}</title>
+    {#    <title>{% block title %}{% endblock %}</title>#}
+    <title>{{ app_title }}{% if app_host %} | {{ app_host }}{% endif %}</title>
     <!-- Page Specific Canonical URL -->
     <link rel="canonical" href="{{ app_canonical_url }}"/>
     <!-- Icon -->

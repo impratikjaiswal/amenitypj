@@ -102,7 +102,7 @@ def handle_requests(apj_id, **kwargs):
                 {PhKeys.APP_GITHUB_PAGES_URL: Util.get_github_url(github_repo=github_url, github_pages=True)})
         # Add Hostname
         if host_name:
-            common_data.update({PhKeys.APP_HOST: f'({host_name})'})
+            common_data.update({PhKeys.APP_HOST: host_name})
         # Add STATS ID
         common_data.update({PhKeys.APP_STATS_ID: Util.get_stats_data(apj_id=apj_id)})
         # Add App Canonical URL
