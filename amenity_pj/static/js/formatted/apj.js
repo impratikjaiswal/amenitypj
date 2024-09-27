@@ -15,6 +15,7 @@ const TIP_BUTTON_DOWNLOAD = "Download"
 const TIP_BUTTON_COPY_SUCCESS = "Copied !!!"
 const TIP_BUTTON_DOWNLOAD_SUCCESS = "Downloading !!!"
 const TIP_BUTTON_COPY_EMPTY = "Nothing to Copy for now !!!"
+const TIP_BUTTON_TOGGLE_EMPTY = "Nothing to See for now !!!"
 const TIP_BUTTON_DOWNLOAD_EMPTY = "Nothing to Download for now !!!"
 const TIP_BUTTON_UPLOAD_EMPTY = "Nothing to Upload for now !!!"
 const TIP_BUTTON_FILE_SIZE_EXCEEDS = "File Size must be less than 2 MB !!!\n\nUploaded File Size is: "
@@ -153,6 +154,11 @@ if (btn_copy_asn1_object) {
     btn_copy_asn1_object.source_type = SOURCE_TYPE_COMBO_BOX
 }
 
+const btn_toggle_info_data = document.querySelector("#toggle_collapse_info_data");
+if (btn_toggle_info_data) {
+    btn_toggle_info_data.addEventListener("click", toggleCollapse, false);
+}
+
 $(document).ready(function () {
     // debugData("DOM is ready: apj.js");
     $('[data-toggle="tooltip"]').tooltip();
@@ -162,7 +168,7 @@ $(document).ready(function () {
     infoDataLines();
     $('#input_data').on('input', function () {
         // Attach an "input" event listener to input_data
-        characterCounterInputData();
+        disaplyCounterInputData();
     });
     // navChangeActiveLinkOnClick();
     // navChangeActiveLinkOnScroll();
@@ -182,22 +188,26 @@ function htmlToJs(vars) {
 
 function pageLoad() {
     // debugData("pageLoad: apj.js");
-    characterCounterInputData();
-    characterCounterInfoData();
-    characterCounterOutputData();
+    disaplyCounterInputData();
+    displayCharacterCounterInfoData();
+    displayCharacterCounterOutputData();
 }
 
-function characterCounterInputData() {
+function disaplyCounterInputData() {
     if ($("#input_data").val()) {
         $("#input_data_char_count").text($("#input_data").val().length);
     }
 }
 
-function characterCounterInfoData() {
-    $("#info_data_char_count").text(($("#info_statement").text().length - LENGTH_OF_INFO_STATEMENT_INITIAL_TEXT));
+function getCharacterCounterInfoData() {
+    return $("#info_statement").text().length - LENGTH_OF_INFO_STATEMENT_INITIAL_TEXT
 }
 
-function characterCounterOutputData() {
+function displayCharacterCounterInfoData() {
+    $("#info_data_char_count").text(getCharacterCounterInfoData());
+}
+
+function displayCharacterCounterOutputData() {
     $("#output_data_char_count").text(($("#output_statement").text().length - LENGTH_OF_OUTPUT_STATEMENT_INITIAL_TEXT));
 }
 
@@ -268,6 +278,20 @@ function downloadData(event) {
     }
 }
 
+function toggleCollapse(event) {
+    let data_inner_text = getCharacterCounterInfoData()
+    debugData(data_inner_text)
+    if (data_inner_text == 0) {
+        // $(this).collapse()
+        // $(this).collapse("hide")
+        // debugData("yes")
+        alertMsg(TIP_BUTTON_TOGGLE_EMPTY)
+    } else {
+        $('#info_data').collapse("toggle")
+        // $(this).collapse()
+    }
+}
+
 //const copyToClipboard = async () => {
 //  try {
 //    const element = document.querySelector(".user-select-all");
@@ -335,10 +359,11 @@ function getTimeStamp(files_format = true, native_only = false) {
 }
 
 function getFileName(file_name_keyword) {
-    let title_name = document.title.replace(" | ","_")
+    let title_name = document.title
     // TODO: Add regex
-    title_name = title_name.replaceAll(".","_")
-    title_name = title_name.replaceAll(":","_")
+    title_name = title_name.replaceAll(" | ", "_")
+    title_name = title_name.replaceAll(".", "_")
+    title_name = title_name.replaceAll(":", "_")
     let time_stamp_native = getTimeStamp(true, true)
     let time_stamp = getTimeStamp()
     // debugData(time_stamp, 'time_stamp')
@@ -406,7 +431,7 @@ function upload_input_file(event) {
         if (textContent) {
             // console.log(`The content of ${file_name} is ${textContent}`)
             $("#input_data").val(textContent);
-            characterCounterInputData();
+            disaplyCounterInputData();
         } else {
             alertMsg(TIP_BUTTON_UPLOAD_EMPTY)
         }
