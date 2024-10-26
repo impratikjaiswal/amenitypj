@@ -1,0 +1,10 @@
+}************************************************************{ Jinja Variables to Js
+// HTML/Jinja Code
+// <meta name="jinja_transaction_id" content={{ transaction_id }}>
+
+// JS Code
+const meta_jinja = document.querySelector("meta[name='jinja_transaction_id']");
+let transaction_id = meta_jinja.content;
+
+Ref: https://developer.mozilla.org/en-US/docs/Web/API/HTMLMetaElement/content
+}++++++++++++++++++++++++++++++++++++++++{ 

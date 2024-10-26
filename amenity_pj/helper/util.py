@@ -8,6 +8,7 @@ from python_helpers.ph_util import PhUtil
 from werkzeug.utils import secure_filename
 
 from amenity_pj.helper.constants import Const
+from amenity_pj.helper.constants_seo import ConstSeo
 from amenity_pj.helper.defaults import Defaults
 
 
@@ -19,6 +20,12 @@ class Util:
             apj_id = Const.END_POINT_APJ_MAPPING.get(end_point, None)
         # create a copy so that dictionary manipulations can be done if needed
         data = copy.deepcopy(Const.COMMON_DATA_MAPPING.get(apj_id)) if apj_id in Const.COMMON_DATA_MAPPING else None
+        # Add APP_HEADER if missing
+        if PhKeys.APP_HEADER not in data.keys():
+            data.update({PhKeys.APP_HEADER: f'{data.get(PhKeys.APP_TITLE, Defaults.APP_HEADER)}'})
+        # Add APP_HEADER if missing
+        if PhKeys.APP_META_AUTHOR not in data.keys():
+            data.update({PhKeys.APP_META_AUTHOR: ConstSeo.APP_META_AUTHOR})
         apj_id_group = cls.get_apj_id_group(apj_id)
         if apj_id_group == Const.APJ_ID_APPS_GROUP:
             data = PhUtil.dict_merge(data, Const.COMMON_DATA_APPS)
@@ -26,12 +33,12 @@ class Util:
             data = PhUtil.dict_merge(data, Const.COMMON_DATA_EXPERIMENTS)
             data.update({PhKeys.APP_TITLE: f'{data.get(PhKeys.APP_TITLE)} {apj_id & 0x0F}'})
         if fail_safe:
-            data = PhUtil.set_if_not_none(current_value=data, new_value=PhConstants.DICT_EMPTY)
+            data = PhUtil.set_if_none(current_value=data, new_value=PhConstants.DICT_EMPTY)
         if specific_key is None or data is None:
             return data
         specific_value = data.get(specific_key, None)
         if fail_safe:
-            specific_value = PhUtil.set_if_not_none(current_value=specific_value, new_value=PhConstants.STR_EMPTY)
+            specific_value = PhUtil.set_if_none(current_value=specific_value, new_value=PhConstants.STR_EMPTY)
         return specific_value
 
     @classmethod
@@ -190,3 +197,7 @@ class Util:
                 res = item.split(PhConstants.SEPERATOR_KEY_VALUE)
                 if len(res) == 2:
                     return res[1]
+
+    @classmethod
+    def prepare_title(cls, title_items: list):
+        return PhConstants.SEPERATOR_TITLE.join(filter(None, title_items))

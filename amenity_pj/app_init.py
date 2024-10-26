@@ -110,7 +110,7 @@ def init_db():
                 )
 
     cur.execute("INSERT INTO posts (title, content, publisher) VALUES (?, ?, ?)",
-                ('QrPlay', 'Wow !!!, Variety of Qr versions are supporrted under one roof', 'Amrit')
+                ('QrPlay', 'Wow !!!, Variety of Qr versions are supported under one roof', 'Amrit')
                 )
 
     connection.commit()

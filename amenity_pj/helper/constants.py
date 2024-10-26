@@ -230,7 +230,7 @@ class Const:
         #
         APJ_ID_AMENITY_PJ:
             {
-                PhKeys.APP_TITLE_PRE: Defaults.APP_WELCOME,
+                PhKeys.APP_HEADER_PRE: Defaults.APP_WELCOME,
                 PhKeys.APP_TITLE: ConstSeo.TITLE_AMENITY_PJ,
                 PhKeys.APP_DESCRIPTION: ConstSeo.APP_DESCRIPTION_AMENITY_PJ,
                 PhKeys.APP_VERSION: f'{PhConstants.SEPERATOR_NAME_VERSION}{VERSION_AMENITY_PJ}',
@@ -242,12 +242,11 @@ class Const:
                 PhKeys.APP_END_POINT: END_POINT_AMENITY_PJ,
                 PhKeys.APP_META_DESCRIPTION: ConstSeo.APP_META_DESCRIPTION_AMENITY_PJ,
                 PhKeys.APP_META_KEYWORDS: ConstSeo.APP_META_KEYWORDS_AMENITY_PJ,
-                PhKeys.APP_META_AUTHOR: ConstSeo.APP_META_AUTHOR,
             },
         #
         APJ_ID_ASN1_PLAY:
             {
-                PhKeys.APP_TITLE_PRE: Defaults.APP_WELCOME,
+                PhKeys.APP_HEADER_PRE: Defaults.APP_WELCOME,
                 PhKeys.APP_TITLE: ConstSeo.TITLE_ASN1_PLAY,
                 PhKeys.APP_VERSION: f'{PhConstants.SEPERATOR_NAME_VERSION}{ConfigConst_Asn1Play.TOOL_VERSION_DETAILED}',
                 PhKeys.APP_DESCRIPTION: ConstSeo.APP_DESCRIPTION_ASN1_PLAY,
@@ -259,7 +258,6 @@ class Const:
                 PhKeys.APP_END_POINT: END_POINT_ASN1_PLAY,
                 PhKeys.APP_META_DESCRIPTION: ConstSeo.APP_META_DESCRIPTION_ASN1_PLAY,
                 PhKeys.APP_META_KEYWORDS: ConstSeo.APP_META_KEYWORDS_ASN1_PLAY,
-                PhKeys.APP_META_AUTHOR: ConstSeo.APP_META_AUTHOR,
             },
         #
         APJ_ID_ASN1_PLAY_ASN1_OBJECTS:
@@ -276,7 +274,7 @@ class Const:
         #
         APJ_ID_TLV_PLAY:
             {
-                PhKeys.APP_TITLE_PRE: Defaults.APP_WELCOME,
+                PhKeys.APP_HEADER_PRE: Defaults.APP_WELCOME,
                 PhKeys.APP_TITLE: ConstSeo.TITLE_TLV_PLAY,
                 PhKeys.APP_VERSION: f'{PhConstants.SEPERATOR_NAME_VERSION}{ConfigConst_TlvPlay.TOOL_VERSION}',
                 PhKeys.APP_DESCRIPTION: ConstSeo.APP_DESCRIPTION_TLV_PLAY,
@@ -288,12 +286,11 @@ class Const:
                 PhKeys.APP_END_POINT: END_POINT_TLV_PLAY,
                 PhKeys.APP_META_DESCRIPTION: ConstSeo.APP_META_DESCRIPTION_TLV_PLAY,
                 PhKeys.APP_META_KEYWORDS: ConstSeo.APP_META_KEYWORDS_TLV_PLAY,
-                PhKeys.APP_META_AUTHOR: ConstSeo.APP_META_AUTHOR,
             },
         #
         APJ_ID_QR_PLAY:
             {
-                PhKeys.APP_TITLE_PRE: Defaults.APP_WELCOME,
+                PhKeys.APP_HEADER_PRE: Defaults.APP_WELCOME,
                 PhKeys.APP_TITLE: ConstSeo.TITLE_QR_PLAY,
                 PhKeys.APP_VERSION: f'{PhConstants.SEPERATOR_NAME_VERSION}{ConfigConst_QrPlay.TOOL_VERSION_DETAILED}',
                 PhKeys.APP_DESCRIPTION: ConstSeo.APP_DESCRIPTION_QR_PLAY,
@@ -305,12 +302,11 @@ class Const:
                 PhKeys.APP_END_POINT: END_POINT_QR_PLAY,
                 PhKeys.APP_META_DESCRIPTION: ConstSeo.APP_META_DESCRIPTION_QR_PLAY,
                 PhKeys.APP_META_KEYWORDS: ConstSeo.APP_META_KEYWORDS_QR_PLAY,
-                PhKeys.APP_META_AUTHOR: ConstSeo.APP_META_AUTHOR,
             },
         #
         APJ_ID_EXCEL_PLAY:
             {
-                PhKeys.APP_TITLE_PRE: Defaults.APP_WELCOME,
+                PhKeys.APP_HEADER_PRE: Defaults.APP_WELCOME,
                 PhKeys.APP_TITLE: ConstSeo.TITLE_EXCEL_PLAY,
                 PhKeys.APP_VERSION: f'{PhConstants.SEPERATOR_NAME_VERSION}{ConfigConst_ExcelPlay.TOOL_VERSION_DETAILED}',
                 PhKeys.APP_DESCRIPTION: ConstSeo.APP_DESCRIPTION_EXCEL_PLAY,
@@ -322,12 +318,11 @@ class Const:
                 PhKeys.APP_END_POINT: END_POINT_EXCEL_PLAY,
                 PhKeys.APP_META_DESCRIPTION: ConstSeo.APP_META_DESCRIPTION_EXCEL_PLAY,
                 PhKeys.APP_META_KEYWORDS: ConstSeo.APP_META_KEYWORDS_EXCEL_PLAY,
-                PhKeys.APP_META_AUTHOR: ConstSeo.APP_META_AUTHOR,
             },
         #
         APJ_ID_CERT_PLAY:
             {
-                PhKeys.APP_TITLE_PRE: Defaults.APP_WELCOME,
+                PhKeys.APP_HEADER_PRE: Defaults.APP_WELCOME,
                 PhKeys.APP_TITLE: ConstSeo.TITLE_CERT_PLAY,
                 PhKeys.APP_VERSION: f'{PhConstants.SEPERATOR_NAME_VERSION}{ConfigConst_CertPlay.TOOL_VERSION_DETAILED}',
                 PhKeys.APP_DESCRIPTION: ConstSeo.APP_DESCRIPTION_CERT_PLAY,
@@ -339,27 +334,29 @@ class Const:
                 PhKeys.APP_END_POINT: END_POINT_CERT_PLAY,
                 PhKeys.APP_META_DESCRIPTION: ConstSeo.APP_META_DESCRIPTION_CERT_PLAY,
                 PhKeys.APP_META_KEYWORDS: ConstSeo.APP_META_KEYWORDS_CERT_PLAY,
-                PhKeys.APP_META_AUTHOR: ConstSeo.APP_META_AUTHOR,
             },
         #
         APJ_ID_TESTIMONIALS:
             {
-                PhKeys.APP_TITLE: 'Testimonials',
-                PhKeys.APP_DESCRIPTION: 'Read What others feel about us',
+                PhKeys.APP_TITLE: ConstSeo.TITLE_TESTIMONIALS,
+                PhKeys.APP_DESCRIPTION: ConstSeo.APP_DESCRIPTION_TESTIMONIALS,
                 PhKeys.APP_URL: '/testimonials',
                 PhKeys.APP_TEMPLATE: 'testimonials.html',
                 PhKeys.APP_END_POINT: END_POINT_TESTIMONIALS,
+                PhKeys.APP_META_DESCRIPTION: ConstSeo.APP_META_DESCRIPTION_TESTIMONIALS,
+                PhKeys.APP_META_KEYWORDS: ConstSeo.APP_META_KEYWORDS_TESTIMONIALS,
             },
         #
         APJ_ID_TESTIMONIALS_ID:
             {
+                PhKeys.APP_TITLE: 'Testimonial',
                 PhKeys.APP_URL: '/testimonials/<int:testimonial_post_id>',
                 PhKeys.APP_TEMPLATE: 'testimonialPost.html',
             },
         #
         APJ_ID_ABOUT_US:
             {
-                PhKeys.APP_TITLE: 'About Us',
+                PhKeys.APP_TITLE: ConstSeo.TITLE_ABOUT_US,
                 PhKeys.APP_DESCRIPTION: ConstSeo.APP_DESCRIPTION_ABOUT_US,
                 PhKeys.APP_URL: '/aboutUs',
                 PhKeys.APP_TEMPLATE: 'aboutus.html',
@@ -368,40 +365,40 @@ class Const:
                 PhKeys.APP_END_POINT: END_POINT_ABOUT_US,
                 PhKeys.APP_META_DESCRIPTION: ConstSeo.APP_META_DESCRIPTION_ABOUT_US,
                 PhKeys.APP_META_KEYWORDS: ConstSeo.APP_META_KEYWORDS_ABOUT_US,
-                PhKeys.APP_META_AUTHOR: ConstSeo.APP_META_AUTHOR,
             },
         #
         APJ_ID_CREDITS:
             {
-                PhKeys.APP_TITLE: 'Credits',
-                PhKeys.APP_DESCRIPTION: f'{ConstSeo.TITLE_AMENITY_PJ} is Thankful to its day to day users, feedback providers '
-                                        f'(online as well as offline), validators, 3rd Party products. '
-                                        f'Couple of names can be found below: ',
+                PhKeys.APP_TITLE: ConstSeo.TITLE_CREDITS,
+                PhKeys.APP_DESCRIPTION: ConstSeo.APP_DESCRIPTION_CREDITS,
                 PhKeys.APP_URL: '/credits',
                 PhKeys.APP_TEMPLATE: 'credits.html',
                 PhKeys.APP_END_POINT: END_POINT_CREDITS,
+                PhKeys.APP_META_DESCRIPTION: ConstSeo.APP_META_DESCRIPTION_CREDITS,
+                PhKeys.APP_META_KEYWORDS: ConstSeo.APP_META_KEYWORDS_CREDITS,
             },
         #
         APJ_ID_SPONSORSHIP:
             {
-                PhKeys.APP_TITLE: 'Sponsorship',
-                PhKeys.APP_DESCRIPTION: Defaults.DESCRIPTION,
+                PhKeys.APP_TITLE: ConstSeo.TITLE_SPONSORSHIP,
+                PhKeys.APP_DESCRIPTION: ConstSeo.APP_DESCRIPTION_SPONSORSHIP,
                 PhKeys.APP_URL: '/sponsorship',
                 PhKeys.APP_TEMPLATE: TEMPLATE_WIP,
                 PhKeys.APP_DESCRIPTION_LEVEL_2: Defaults.DESCRIPTION_WIP,
                 PhKeys.APP_END_POINT: END_POINT_SPONSORSHIP,
+                PhKeys.APP_META_DESCRIPTION: ConstSeo.APP_META_DESCRIPTION_SPONSORSHIP,
+                PhKeys.APP_META_KEYWORDS: ConstSeo.APP_META_KEYWORDS_SPONSORSHIP,
             },
         #
         APJ_ID_LOGIN:
             {
-                PhKeys.APP_TITLE: 'Login',
+                PhKeys.APP_TITLE: ConstSeo.TITLE_LOGIN,
                 PhKeys.APP_DESCRIPTION: ConstSeo.APP_DESCRIPTION_LOGIN,
                 PhKeys.APP_URL: '/login',
                 PhKeys.APP_TEMPLATE: 'login.html',
                 PhKeys.APP_END_POINT: END_POINT_LOGIN,
                 PhKeys.APP_META_DESCRIPTION: ConstSeo.APP_META_DESCRIPTION_LOGIN,
                 PhKeys.APP_META_KEYWORDS: ConstSeo.APP_META_KEYWORDS_LOGIN,
-                PhKeys.APP_META_AUTHOR: ConstSeo.APP_META_AUTHOR,
             },
         #
         APJ_ID_STATS:
@@ -602,6 +599,8 @@ class Const:
                 #
                 f'{ConstSeo.TITLE_ASN1_PLAY} now supports GSMA SGP.32 v1.1 & v1.2 (GSMA_SGP_32_v1_1, GSMA_SGP_32_v1_2).',
                 #
+                f'{ConstSeo.TITLE_ASN1_PLAY} now supports GSMA SGP.22 v2.6 (GSMA_SGP_22_v2_6).',
+                #
                 f'{ConstSeo.TITLE_ASN1_PLAY} will auto trim the Quotation marks \"\" or \'\' if present.',
                 #
                 f'To convert any APDU in {ConstSeo.TITLE_ASN1_PLAY}, please trim the last 2 bytes of SW/Status Word (e.g: 9000).',
@@ -629,13 +628,21 @@ class Const:
             ],
         #
         APJ_ID_EXCEL_PLAY:
-            [],
+            [
+                #
+                f'{ConstSeo.TITLE_EXCEL_PLAY} now supports various encoding Formats.',
+                #
+            ],
         #
         APJ_ID_CERT_PLAY:
             [
                 #
                 f'{ConstSeo.TITLE_CERT_PLAY} Automatically takes care of Open SSL format (-----BEGIN CERTIFICATE-----, '
                 f'-----END CERTIFICATE-----).',
+                #
+                f'Now {ConstSeo.TITLE_CERT_PLAY} can fetch "All Certs" (Full Certificate Chain) for a URL',
+                #
+                f'{ConstSeo.TITLE_CERT_PLAY}, Support "Fetch only" for a URL',
                 #
             ],
     }

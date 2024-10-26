@@ -7,6 +7,7 @@ from python_helpers.ph_keys import PhKeys
 from python_helpers.ph_util import PhUtil
 
 from amenity_pj.helper.constants import Const
+from amenity_pj.helper.defaults import Defaults
 from amenity_pj.helper.util import Util
 
 
@@ -61,8 +62,13 @@ def handle_posts(apj_id, api, log, default_data, testimonial_post_id, **kwargs):
         PhKeys.TESTIMONIAL_POSTS: PhConstants.STR_EMPTY,
     }
     app_data = PhUtil.dict_merge(default_data, default_data_app)
+    # sqlite object
     post = get_post(testimonial_post_id)
     app_data.update({PhKeys.TESTIMONIAL_POST: post})
+    post_title = post['title']
+    page_title = default_data.get(PhKeys.APP_TITLE, Defaults.APP_TITLE)
+    app_data.update({PhKeys.APP_HEADER: f'{post_title}'})
+    app_data.update({PhKeys.APP_TITLE: Util.prepare_title([page_title, post_title])})
     return Util.request_post(request=request, apj_id=apj_id, api=api, log=log, output_data=app_data)
 
 

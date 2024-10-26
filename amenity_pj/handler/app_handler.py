@@ -94,7 +94,7 @@ def handle_requests(apj_id, **kwargs):
         whats_new(apj_id=apj_id, log=log)
     common_data = Util.get_apj_data(apj_id=apj_id).copy()
     if common_data:
-        # Add Github URLs
+        # Add GitHub URLs
         github_url = common_data.get(PhKeys.APP_GITHUB_URL, Defaults.GITHUB_REPO)
         if github_url is not None:
             common_data.update({PhKeys.APP_GITHUB_URL: Util.get_github_url(github_repo=github_url, github_pages=False)})

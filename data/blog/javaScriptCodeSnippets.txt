@@ -1,0 +1,9 @@
+}************************************************************{ Empty Variable ?
+if (data_inner_text) {
+    # Not Empty
+    alertMsg("Data is There")
+} else {
+    # Empty
+    alertMsg("Empty Data")
+}
+}************************************************************{ 

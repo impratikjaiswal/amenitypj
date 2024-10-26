@@ -1,0 +1,26 @@
+}************************************************************{ Comment
+}####################{ Sample
+REM Remove Target Files
+}************************************************************{ echo
+}++++++++++++++++++++++++++++++++++++++++{ echo off
+@echo off
+}++++++++++++++++++++++++++++++++++++++++{ echo empty line
+echo.
+}++++++++++++++++++++++++++++++++++++++++{ echo
+echo "Target File"
+}************************************************************{ Switch to current Directory
+pushd %~dp0
+}************************************************************{ Conditional
+if condition <Action If True>
+}************************************************************{ Conditional File Delete
+if <Check Existence> <Delete Command>
+}####################{ Sample
+if exist "D:\sgp22.md5.hash" DEL /F /S /Q /A "D:\sgp22.md5.hash"
+}************************************************************{ Delete a File
+DEL /F /S /Q /A "<File Name>
+}####################{ Sample
+DEL /F /S /Q /A "SGP_22_v2_5.asn"
+DEL /F /S /Q /A "SGP_22_v2_6.asn"
+DEL /F /S /Q /A "*v2_*.asn"
+}************************************************************{ Remove Empty Dirs
+for /f "delims=" %%d in ('dir /s /b /ad ^| sort /r') do rd "%%d"

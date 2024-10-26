@@ -14,6 +14,8 @@ class Defaults:
     API = False
     LOG = None
     INTERNAL = False
-    APP_TITLE_PRE = ''
-    APP_TITLE_POST = ''
+    APP_TITLE = ''
+    APP_HEADER = ''
+    APP_HEADER_PRE = ''
+    APP_HEADER_POST = ''
     APP_WELCOME = 'Welcome to '
