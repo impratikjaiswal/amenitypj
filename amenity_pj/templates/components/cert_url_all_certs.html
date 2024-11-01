@@ -1,0 +1,12 @@
+<div class="form-group col">
+    <div class="form-check form-check-with-other-components">
+        {% if url_all_certs %}
+            <input type="checkbox" name="url_all_certs" class="form-check-input"
+                   value="{{ url_all_certs }}" checked>
+        {% else %}
+            <input type="checkbox" name="url_all_certs" class="form-check-input"
+                   value="{{ url_all_certs }}">
+        {% endif %}
+        <label for="url_all_certs" class="form-check-label">URL All Certs</label>
+    </div>
+</div> 

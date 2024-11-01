@@ -229,6 +229,15 @@ def cert_play(api):
     return app_handler.handle_requests(apj_id=Const.APJ_ID_CERT_PLAY, api=api, log=log)
 
 
+@sitemapper.include(lastmod=ConstSeo.LAST_MODIFY_DATE_DATA_PLAY)
+@app.route(Util.get_apj_data(apj_id=Const.APJ_ID_DATA_PLAY, specific_key=PhKeys.APP_URL_API), methods=('GET', 'POST'),
+           defaults={'api': True})
+@app.route(Util.get_apj_data(apj_id=Const.APJ_ID_DATA_PLAY, specific_key=PhKeys.APP_URL), methods=('GET', 'POST'),
+           defaults={'api': False})
+def data_play(api):
+    return app_handler.handle_requests(apj_id=Const.APJ_ID_DATA_PLAY, api=api, log=log)
+
+
 @app.route(Util.get_apj_data(apj_id=Const.APJ_ID_TESTIMONIALS, specific_key=PhKeys.APP_URL), methods=('GET', 'POST'))
 def testimonials():
     return app_handler.handle_requests(apj_id=Const.APJ_ID_TESTIMONIALS, log=log)

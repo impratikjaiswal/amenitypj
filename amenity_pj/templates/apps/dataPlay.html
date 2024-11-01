@@ -11,11 +11,10 @@
     <form method="post">
         {% include 'components/input_data.html' %}
         <div class="form-row">
-            {% include 'components/input_format.html' %}
-            {% include 'components/cert_url_time_out.html' %}
-            {% include 'components/cert_url_all_certs.html' %}
-            {% include 'components/cert_url_pre_access.html' %}
-            {% include 'components/cert_url_cert_fetch_only.html' %}
+            {% include 'components/tlv_length_in_decimal.html' %}
+            {% include 'components/tlv_value_in_ascii.html' %}
+            {% include 'components/tlv_one_liner.html' %}
+            {% include 'components/tlv_non_tlv_neighbor.html' %}
         </div>
         {% include 'components/remarks.html' %}
         {% include 'components/button.html' %}

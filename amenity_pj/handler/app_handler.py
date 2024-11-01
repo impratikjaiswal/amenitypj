@@ -7,9 +7,10 @@ from python_helpers.ph_keys import PhKeys
 from python_helpers.ph_util import PhUtil
 
 from amenity_pj.app_others import testimonial, login, experiments, credits, stats, settings
-from amenity_pj.apps import app_asn1_play, app_tlv_play, app_qr_play, app_excel_play, app_cert_play
+from amenity_pj.apps import app_asn1_play, app_tlv_play, app_qr_play, app_excel_play, app_cert_play, app_data_play
 from amenity_pj.handler.app_settings import AppSettings
 from amenity_pj.helper.constants import Const
+from amenity_pj.helper.constants_news import ConstNews
 from amenity_pj.helper.defaults import Defaults
 from amenity_pj.helper.util import Util
 
@@ -50,7 +51,7 @@ def set_server_name(host_name_passed=None):
         for _ in ['beta', 'alpha', 'past']:
             if _ in host_name_request:
                 key = _
-                host_name = key
+                host_name = PhUtil.get_user_friendly_name(key)
         if key not in Const.NAV_ITEMS_MAPPING.keys():
             # None as well as All unknown hosts will be treated as prod
             key = 'prod'
@@ -159,6 +160,7 @@ def handle_requests(apj_id, **kwargs):
         Const.APJ_ID_QR_PLAY: app_qr_play.handle_requests,
         Const.APJ_ID_EXCEL_PLAY: app_excel_play.handle_requests,
         Const.APJ_ID_CERT_PLAY: app_cert_play.handle_requests,
+        Const.APJ_ID_DATA_PLAY: app_data_play.handle_requests,
         # #################
         # Imported Apps/APIs
         # #################
@@ -209,8 +211,8 @@ def whats_new(apj_id, log=None):
     :param log:
     :return:
     """
-    news_data_pool_common = Const.NEWS_DATA_MAPPING.get(Const.APJ_ID_NEWS_COMMON, None)
-    news_data_pool = Const.NEWS_DATA_MAPPING.get(apj_id, None)
+    news_data_pool_common = ConstNews.NEWS_DATA_MAPPING.get(Const.APJ_ID_NEWS_COMMON, None)
+    news_data_pool = ConstNews.NEWS_DATA_MAPPING.get(apj_id, None)
     # TODO: Util
     for attempt in range(3):
         if news_data_pool and len(news_data_pool) > 0:
@@ -219,7 +221,7 @@ def whats_new(apj_id, log=None):
         # TODO: Util
         # https://www.geeksforgeeks.org/random-numbers-in-python/
         apj_id = random.choice(Const.WHATS_NEW_LIST)
-        news_data_pool = Const.NEWS_DATA_MAPPING.get(apj_id, None)
+        news_data_pool = ConstNews.NEWS_DATA_MAPPING.get(apj_id, None)
     if news_data_pool is None or not news_data_pool:
         # TODO: Util
         PhUtil.print_(f'Flash Data: News Not Found for apj_id: {apj_id}; Random Attempt Exhaust', log=log)

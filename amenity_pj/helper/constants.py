@@ -2,6 +2,7 @@ import os
 
 from asn1_play.main.helper.constants_config import ConfigConst as ConfigConst_Asn1Play
 from cert_play.main.helper.constants_config import ConfigConst as ConfigConst_CertPlay
+from data_play.main.helper.constants_config import ConfigConst as ConfigConst_DataPlay
 from excel_play.main.helper.constants_config import ConfigConst as ConfigConst_ExcelPlay
 from python_helpers.ph_constants import PhConstants
 from python_helpers.ph_keys import PhKeys
@@ -79,6 +80,7 @@ class Const:
     APJ_ID_QR_PLAY = 0xD3
     APJ_ID_EXCEL_PLAY = 0xD4
     APJ_ID_CERT_PLAY = 0xD5
+    APJ_ID_DATA_PLAY = 0xD6
 
     APJ_ID_APPS_API_GROUP = 0xE0
     APJ_ID_ASN1_PLAY_ASN1_OBJECTS = 0xE1
@@ -106,6 +108,7 @@ class Const:
     END_POINT_EXCEL_PLAY = 'excel_play'
     END_POINT_EXCEL_PLAY_INFO = 'excel_play_info'
     END_POINT_CERT_PLAY = 'cert_play'
+    END_POINT_DATA_PLAY = 'data_play'
 
     ####################
     # External URLs
@@ -209,14 +212,17 @@ class Const:
         APJ_ID_QR_PLAY,
         APJ_ID_EXCEL_PLAY,
         APJ_ID_CERT_PLAY,
+        APJ_ID_DATA_PLAY,
     ]
 
     APPS_LIST_NEWS = [
         APJ_ID_ASN1_PLAY,
         APJ_ID_TLV_PLAY,
         APJ_ID_QR_PLAY,
+        # ExcelPlay has its own notifications
         # APJ_ID_EXCEL_PLAY,
         APJ_ID_CERT_PLAY,
+        APJ_ID_DATA_PLAY,
     ]
 
     APPS_LIST_W_INDEX = INDEX_LIST + APPS_LIST
@@ -334,6 +340,22 @@ class Const:
                 PhKeys.APP_END_POINT: END_POINT_CERT_PLAY,
                 PhKeys.APP_META_DESCRIPTION: ConstSeo.APP_META_DESCRIPTION_CERT_PLAY,
                 PhKeys.APP_META_KEYWORDS: ConstSeo.APP_META_KEYWORDS_CERT_PLAY,
+            },
+        #
+        APJ_ID_DATA_PLAY:
+            {
+                PhKeys.APP_HEADER_PRE: Defaults.APP_WELCOME,
+                PhKeys.APP_TITLE: ConstSeo.TITLE_DATA_PLAY,
+                PhKeys.APP_VERSION: f'{PhConstants.SEPERATOR_NAME_VERSION}{ConfigConst_DataPlay.TOOL_VERSION_DETAILED}',
+                PhKeys.APP_DESCRIPTION: ConstSeo.APP_DESCRIPTION_DATA_PLAY,
+                PhKeys.APP_GITHUB_URL: 'dataPlay',
+                PhKeys.APP_GIT_SUMMARY: ConfigConst_DataPlay.TOOL_GIT_SUMMARY,
+                PhKeys.APP_URL: '/dataPlay',
+                PhKeys.APP_URL_API: '/api/dataPlay',
+                PhKeys.APP_TEMPLATE: '/apps/dataPlay.html',
+                PhKeys.APP_END_POINT: END_POINT_DATA_PLAY,
+                PhKeys.APP_META_DESCRIPTION: ConstSeo.APP_META_DESCRIPTION_DATA_PLAY,
+                PhKeys.APP_META_KEYWORDS: ConstSeo.APP_META_KEYWORDS_DATA_PLAY,
             },
         #
         APJ_ID_TESTIMONIALS:
@@ -552,6 +574,7 @@ class Const:
         END_POINT_QR_PLAY: APJ_ID_QR_PLAY,
         END_POINT_EXCEL_PLAY: APJ_ID_EXCEL_PLAY,
         END_POINT_CERT_PLAY: APJ_ID_CERT_PLAY,
+        END_POINT_DATA_PLAY: APJ_ID_DATA_PLAY,
     }
 
     ####################
@@ -564,87 +587,10 @@ class Const:
         APJ_ID_QR_PLAY: 'e75f3460e58f2a32a1b7ab3ffab1b70e3466abe6',
         APJ_ID_EXCEL_PLAY: '6539579995b2458ab23fc5b6c4ceebd7c17a9b47',
         APJ_ID_CERT_PLAY: '5a8556bb1deb0161e2e8d4261fcc5c9cd190791a',
+        APJ_ID_DATA_PLAY: '5a8556bb1deb0161e2e8d4261fcc5c9cd190791a',
         APJ_ID_ABOUT_US: '5344ba753f658c5fc34e0bb93f1ef7db9455ccab',
         APJ_ID_LOGIN: 'f48c06c2f0ba4c0b5288cda4359cb098271d712a',
         PhKeys.DEFAULT: '9dfac25c8ad18a6ed59d591f2e25be1b295b3888',
-    }
-
-    ####################
-    # News Data All
-    ####################
-    NEWS_DATA_MAPPING = {
-        #
-        APJ_ID_NEWS_COMMON:
-            [
-                #
-                # f'{PhKeys.APP_TITLE} now supports "Copy Input Data", "Copy Output Data" & "Copy Info".',
-                #
-                f'{PhKeys.APP_TITLE} is now equipped with essential copy/paste functionality. '
-                f'Try "Copy" icon available with various field(s).',
-                #
-                # f'{PhKeys.APP_TITLE} now supports "Download Input Data", "Download Output Data" & "Download Info".'
-                #
-                f'{PhKeys.APP_TITLE} is now equipped with essential download functionality. '
-                f'Try "Download" icon available with various field(s).',
-                #
-                # f'{PhKeys.APP_TITLE} now supports "Upload Input Data".'
-                #
-                f'{PhKeys.APP_TITLE} is now equipped with essential upload functionality. '
-                f'Try "Upload" icon available with Input Data field.'
-                #
-            ],
-        #
-        APJ_ID_ASN1_PLAY:
-            [
-                #
-                f'{ConstSeo.TITLE_ASN1_PLAY} now supports GSMA SGP.32 v1.1 & v1.2 (GSMA_SGP_32_v1_1, GSMA_SGP_32_v1_2).',
-                #
-                f'{ConstSeo.TITLE_ASN1_PLAY} now supports GSMA SGP.22 v2.6 (GSMA_SGP_22_v2_6).',
-                #
-                f'{ConstSeo.TITLE_ASN1_PLAY} will auto trim the Quotation marks \"\" or \'\' if present.',
-                #
-                f'To convert any APDU in {ConstSeo.TITLE_ASN1_PLAY}, please trim the last 2 bytes of SW/Status Word (e.g: 9000).',
-                #
-            ],
-        #
-        APJ_ID_TLV_PLAY:
-            [
-                #
-                f'{ConstSeo.TITLE_TLV_PLAY} now supports Base 64 data.',
-                #
-                f'if "Value In Ascii" is selected, {ConstSeo.TITLE_TLV_PLAY} converts hex data to ascii where ever possible.',
-                #
-                f'if "Non TLV Neighbor" is selected, {ConstSeo.TITLE_TLV_PLAY} will handle scenarios where non TLV data is '
-                f'placed after TLV(s)',
-                #
-            ],
-        #
-        APJ_ID_QR_PLAY:
-            [
-                #
-                f'if "Auto Split Qrs" is selected, {ConstSeo.TITLE_QR_PLAY} breaks data in multiple chunks if data does not '
-                f'fit in one QR.',
-                #
-            ],
-        #
-        APJ_ID_EXCEL_PLAY:
-            [
-                #
-                f'{ConstSeo.TITLE_EXCEL_PLAY} now supports various encoding Formats.',
-                #
-            ],
-        #
-        APJ_ID_CERT_PLAY:
-            [
-                #
-                f'{ConstSeo.TITLE_CERT_PLAY} Automatically takes care of Open SSL format (-----BEGIN CERTIFICATE-----, '
-                f'-----END CERTIFICATE-----).',
-                #
-                f'Now {ConstSeo.TITLE_CERT_PLAY} can fetch "All Certs" (Full Certificate Chain) for a URL',
-                #
-                f'{ConstSeo.TITLE_CERT_PLAY}, Support "Fetch only" for a URL',
-                #
-            ],
     }
 
     @classmethod
@@ -661,6 +607,7 @@ class Const:
             ConfigConst_QrPlay,
             ConfigConst_ExcelPlay,
             ConfigConst_CertPlay,
+            ConfigConst_DataPlay,
         ]
         for config_const in config_const_pool:
             PhUtil.print_version(config_const.TOOL_NAME, config_const.TOOL_VERSION, no_additional_info=True)

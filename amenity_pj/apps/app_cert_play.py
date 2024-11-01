@@ -58,6 +58,8 @@ def handle_requests(apj_id, api, log, default_data, **kwargs):
         PhKeys.URL_TIME_OUTS: utl_time_outs,
         PhKeys.URL_TIME_OUT_SELECTED: Defaults.URL_TIME_OUT,
         PhKeys.URL_PRE_ACCESS: Defaults.URL_PRE_ACCESS,
+        PhKeys.URL_CERT_FETCH_ONLY: Defaults.URL_CERT_FETCH_ONLY,
+        PhKeys.URL_ALL_CERTS: Defaults.URL_ALL_CERTS,
     }
     app_data = PhUtil.dict_merge(default_data, default_data_app)
     requested_data_dict = Util.request_pre(request=request, apj_id=apj_id, api=api, log=log)
@@ -77,6 +79,8 @@ def handle_requests(apj_id, api, log, default_data, **kwargs):
         # When submitting an HTML form,
         # 1) unchecked check-boxes do not send any data, however checked checkboxes do send False (may send True as well)
         update_checked_item(PhKeys.URL_PRE_ACCESS)
+        update_checked_item(PhKeys.URL_CERT_FETCH_ONLY)
+        update_checked_item(PhKeys.URL_ALL_CERTS)
         # 2) Everything is converted to String; below needs to be typecast, TODO: should be handled in parse_config; int
         update_integer_item(PhKeys.URL_TIME_OUT)
         PhUtil.print_(f'process_sample is {process_sample}', log=log)
@@ -104,6 +108,8 @@ def handle_requests(apj_id, api, log, default_data, **kwargs):
         update_app_data(PhKeys.INPUT_DATA)
         update_app_data(PhKeys.INPUT_FORMAT, PhKeys.INPUT_FORMAT_SELECTED)
         update_app_data(PhKeys.URL_PRE_ACCESS)
+        update_app_data(PhKeys.URL_CERT_FETCH_ONLY)
+        update_app_data(PhKeys.URL_ALL_CERTS)
         update_app_data(PhKeys.URL_TIME_OUT, PhKeys.URL_TIME_OUT_SELECTED)
         update_app_data(PhKeys.REMARKS)
         # Fixed Updates

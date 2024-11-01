@@ -1,0 +1,12 @@
+<div class="form-group col">
+    <div class="form-check form-check-with-other-components">
+        {% if url_cert_fetch_only %}
+            <input type="checkbox" name="url_cert_fetch_only" class="form-check-input"
+                   value="{{ url_cert_fetch_only }}" checked>
+        {% else %}
+            <input type="checkbox" name="url_cert_fetch_only" class="form-check-input"
+                   value="{{ url_cert_fetch_only }}">
+        {% endif %}
+        <label for="url_cert_fetch_only" class="form-check-label">URL Certs Fetch (Only)</label>
+    </div>
+</div> 
