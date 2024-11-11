@@ -91,6 +91,20 @@ if (btn_copy_remarks) {
     btn_copy_remarks.source_type = SOURCE_TYPE_TEXT
 }
 
+const btn_copy_content_mappings = document.querySelector("#copy_content_mappings");
+if (btn_copy_content_mappings) {
+    btn_copy_content_mappings.addEventListener("click", copyToClipboard, false);
+    btn_copy_content_mappings.source_field = "#content_mappings"
+    btn_copy_content_mappings.source_type = SOURCE_TYPE_TEXT
+}
+
+const btn_copy_name_mappings = document.querySelector("#copy_name_mappings");
+if (btn_copy_name_mappings) {
+    btn_copy_name_mappings.addEventListener("click", copyToClipboard, false);
+    btn_copy_name_mappings.source_field = "#name_mappings"
+    btn_copy_name_mappings.source_type = SOURCE_TYPE_TEXT
+}
+
 const btn_copy_scale = document.querySelector("#copy_scale");
 if (btn_copy_scale) {
     btn_copy_scale.addEventListener("click", copyToClipboard, false);
