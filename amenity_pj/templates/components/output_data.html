@@ -2,9 +2,10 @@
     <span class="badge badge-info">Jump To Samples</span>
 </a>
 <a id="toggle_collapse_info_data"
-{#   data-toggle="collapse" #}
+        {#   data-toggle="collapse" #}
    href="#info_data" role="button" aria-expanded="false" aria-controls="info_data">
     <span class="badge badge-success">Info{% if transaction_id %} - {{ transaction_id }}{% endif %}</span>
+    <meta name="jinja_transaction_id" content={{ transaction_id }}>
 </a>
 <div id="info_data" class="collapse form-group">
     <label for="info_data">Info</label>

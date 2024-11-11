@@ -18,7 +18,7 @@ class ConstNews:
                 f'{PhKeys.APP_TITLE} is now equipped with essential copy/paste functionality. '
                 f'Try "Copy" icon available with various field(s).',
                 #
-                # f'{PhKeys.APP_TITLE} now supports "Download Input Data", "Download Output Data" & "Download Info".'
+                # f'{PhKeys.APP_TITLE} now supports "Download Input Data", "Download Output Data" and "Download Info".'
                 #
                 f'{PhKeys.APP_TITLE} is now equipped with essential download functionality. '
                 f'Try "Download" icon available with various field(s).',
@@ -79,7 +79,7 @@ class ConstNews:
                 #
                 f'Now {ConstSeo.TITLE_CERT_PLAY} can fetch "All Certs" (Full Certificate Chain) for a URL',
                 #
-                f'{ConstSeo.TITLE_CERT_PLAY}, Support "Fetch only" for a URL',
+                f'{ConstSeo.TITLE_CERT_PLAY}, Support "Fetch only" (Don\'t Parse) for a URL',
                 #
             ],
         #

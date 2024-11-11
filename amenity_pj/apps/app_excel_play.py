@@ -3,11 +3,12 @@
 # from excel_play.main.helper.defaults import Defaults
 import os
 
-from excel_play.main.excelPlay import process_input
-from excel_play.main.helper.formats import Formats
+from excel_play.main.data_type.data_type_master import DataTypeMaster
+from excel_play.main.helper.defaults import Defaults
 from flask import request, redirect, flash, send_file, jsonify
 from python_helpers.ph_constants import PhConstants
 from python_helpers.ph_keys import PhKeys
+from python_helpers.ph_modes_error_handling import PhErrorHandlingModes
 from python_helpers.ph_util import PhUtil
 
 from amenity_pj.helper.constants import Const
@@ -57,9 +58,15 @@ def handle_requests(apj_id, api, log, root_path, default_data, **kwargs):
 
     samples_dict = PhConstants.DICT_EMPTY
     samples_list = PhUtil.generalise_list(list(samples_dict.keys()), sort=False)
+    encoding_pool = PhUtil.generalise_list(PhConstants.CHAR_ENCODING_POOL)
+    encoding_errors_pool = PhUtil.generalise_list(PhConstants.CHAR_ENCODING_ERRORS_POOL)
     default_data_app = {
         PhKeys.SAMPLES: samples_list,
         PhKeys.SAMPLE_SELECTED: samples_list[1] if len(samples_list) > 1 else None,
+        PhKeys.ENCODING_POOL: encoding_pool,
+        PhKeys.ENCODING_ERRORS_POOL: encoding_errors_pool,
+        PhKeys.ENCODING_SELECTED: Defaults.ENCODING,
+        PhKeys.ENCODING_ERRORS_SELECTED: Defaults.ENCODING_ERRORS
     }
     app_data = PhUtil.dict_merge(default_data, default_data_app)
     requested_data_dict = Util.request_pre(request=request, apj_id=apj_id, api=api, log=log)
@@ -81,16 +88,16 @@ def handle_requests(apj_id, api, log, root_path, default_data, **kwargs):
         pass
         # 2) Everything is converted to String; below needs to be typecast, TODO: should be handled in parse_config; int
         pass
-        PhUtil.print_(f'process_sample is {process_sample}', log=log)
+        PhUtil.print(f'process_sample is {process_sample}', log=log)
         if process_sample:
             sample_dict = samples_dict.get(sample_name, None)
             if sample_dict:
                 PhUtil.print_iter(sample_dict, header='sample_dict', log=log)
         if sample_dict and sample_option == PhKeys.SAMPLE_LOAD_ONLY:
-            PhUtil.print_('Data Processing is not needed', log=log)
+            PhUtil.print('Data Processing is not needed', log=log)
             pass
         else:
-            PhUtil.print_('Data Processing is needed', log=log)
+            PhUtil.print('Data Processing is needed', log=log)
             dic_received = sample_dict if sample_dict else requested_data_dict
             # Filter All Processing Related Keys
             dic_to_process = PhUtil.filter_processing_related_keys(dic_received)
@@ -107,8 +114,8 @@ def handle_requests(apj_id, api, log, root_path, default_data, **kwargs):
             files_list_input = []
             transaction_id = PhUtil.generate_transaction_id()
             target_directory_path = os.sep.join([root_path, Const.UPLOAD_FOLDER_TEMPORARY, transaction_id])
-            PhUtil.print_(f'target_directory_path is {target_directory_path}', log=log)
-            PhUtil.makedirs(target_directory_path)
+            PhUtil.print(f'target_directory_path is {target_directory_path}', log=log)
+            PhUtil.make_dirs(target_directory_path)
             for file in files:
                 if not file.filename:
                     # If the user does not select a file, the browser submits an empty file without a filename.
@@ -129,15 +136,23 @@ def handle_requests(apj_id, api, log, root_path, default_data, **kwargs):
             info = msg
             # flash(f'{msg}')
             PhUtil.print_iter(files_list_input, header='files_list_input', log=log)
-            files_list_output = process_input(input_file_or_folder=files_list_input, output_archive_format=Formats.ZIP,
-                                              print_version=False)
+            dic_to_process.update({PhKeys.INPUT_DATA: files_list_input})
+            PhUtil.print_iter(dic_to_process, header='dic_to_process', log=log)
+            data_type = DataTypeMaster()
+            data_type.set_data_pool(data_pool=dic_to_process)
+            data_type.process_safe(PhErrorHandlingModes.CONTINUE_ON_ERROR)
+            output_data, info_data = data_type.get_output_data(only_output=False)
+            app_data.update({PhKeys.OUTPUT_DATA: output_data})
+            app_data.update({PhKeys.INFO_DATA: info_data})
+            app_data.update({PhKeys.TRANSACTION_ID: Util.fetch_transaction_id_from_info_data(info_data)})
+            files_list_output = output_data
             PhUtil.print_iter(files_list_output, header='files_list_output', log=log)
             if files_list_output and len(files_list_output) > 1:
                 single_zip_file = PhUtil.zip_and_clean_dir(source_files_dir=target_directory_path,
                                                            include_files=['*.zip'])
             else:
                 single_zip_file = files_list_output[0]
-            PhUtil.print_(f'single_zip_file is {single_zip_file}', log=log)
+            PhUtil.print(f'single_zip_file is {single_zip_file}', log=log)
             return send_file(path_or_file=single_zip_file, as_attachment=True
                              # , download_name=PhUtil.get_file_name_and_extn(file_path=file)
                              )

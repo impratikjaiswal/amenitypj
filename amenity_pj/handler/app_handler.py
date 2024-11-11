@@ -217,14 +217,14 @@ def whats_new(apj_id, log=None):
     for attempt in range(3):
         if news_data_pool and len(news_data_pool) > 0:
             break
-        PhUtil.print_(f'Flash Data: News Not Found for apj_id: {apj_id}; Checking random #{attempt}', log=log)
+        PhUtil.print(f'Flash Data: News Not Found for apj_id: {apj_id}; Checking random #{attempt}', log=log)
         # TODO: Util
         # https://www.geeksforgeeks.org/random-numbers-in-python/
         apj_id = random.choice(Const.WHATS_NEW_LIST)
         news_data_pool = ConstNews.NEWS_DATA_MAPPING.get(apj_id, None)
     if news_data_pool is None or not news_data_pool:
         # TODO: Util
-        PhUtil.print_(f'Flash Data: News Not Found for apj_id: {apj_id}; Random Attempt Exhaust', log=log)
+        PhUtil.print(f'Flash Data: News Not Found for apj_id: {apj_id}; Random Attempt Exhaust', log=log)
         return
     # News Pool Found
     news_data_pool_combined = news_data_pool_common + news_data_pool
@@ -233,7 +233,7 @@ def whats_new(apj_id, log=None):
     flash_msg = news_data_pool_combined[news_index]
     if PhKeys.APP_TITLE in flash_msg:
         flash_msg = flash_msg.replace(PhKeys.APP_TITLE, Util.get_apj_data(apj_id=apj_id, specific_key=PhKeys.APP_TITLE))
-    PhUtil.print_(f'Flash Msg: {flash_msg}', log=log)
+    PhUtil.print(f'Flash Msg: {flash_msg}', log=log)
     # session['_flashes'].clear()
     # session.pop('_flashes', None)
     flash(flash_msg)

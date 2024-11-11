@@ -1,10 +1,10 @@
+from data_play.main.data_type.data_type_master import DataTypeMaster
+from data_play.main.data_type.sample import Sample
+from data_play.main.helper.defaults import Defaults
 from flask import request
 from python_helpers.ph_keys import PhKeys
 from python_helpers.ph_modes_error_handling import PhErrorHandlingModes
 from python_helpers.ph_util import PhUtil
-from tlv_play.main.data_type.data_type_master import DataTypeMaster
-from tlv_play.main.data_type.sample import Sample
-from tlv_play.main.helper.defaults import Defaults
 
 from amenity_pj.helper.util import Util
 
@@ -50,10 +50,8 @@ def handle_requests(apj_id, api, log, default_data, **kwargs):
     default_data_app = {
         PhKeys.SAMPLES: samples_list,
         PhKeys.SAMPLE_SELECTED: samples_list[1] if len(samples_list) > 1 else None,
-        PhKeys.LENGTH_IN_DECIMAL: Defaults.LENGTH_IN_DECIMAL,
-        PhKeys.VALUE_IN_ASCII: Defaults.VALUE_IN_ASCII,
-        PhKeys.ONE_LINER: Defaults.ONE_LINER,
-        PhKeys.NON_TLV_NEIGHBOR: Defaults.NON_TLV_NEIGHBOR,
+        PhKeys.CONTENT_MAPPINGS: Defaults.CONTENT_MAPPINGS,
+        PhKeys.NAME_MAPPINGS: Defaults.NAME_MAPPINGS,
     }
     app_data = PhUtil.dict_merge(default_data, default_data_app)
     requested_data_dict = Util.request_pre(request=request, apj_id=apj_id, api=api, log=log)
@@ -72,10 +70,7 @@ def handle_requests(apj_id, api, log, default_data, **kwargs):
         sample_dict = None
         # When submitting an HTML form,
         # 1) unchecked check-boxes do not send any data, however checked checkboxes do send False (may send True as well)
-        update_checked_item(PhKeys.LENGTH_IN_DECIMAL)
-        update_checked_item(PhKeys.VALUE_IN_ASCII)
-        update_checked_item(PhKeys.ONE_LINER)
-        update_checked_item(PhKeys.NON_TLV_NEIGHBOR)
+        pass
         # 2) Everything is converted to String; below needs to be typecast, TODO: should be handled in parse_config; int
         pass
         PhUtil.print(f'process_sample is {process_sample}', log=log)
@@ -101,10 +96,8 @@ def handle_requests(apj_id, api, log, default_data, **kwargs):
             app_data.update({PhKeys.TRANSACTION_ID: Util.fetch_transaction_id_from_info_data(info_data)})
         # Conditional Updates
         update_app_data(PhKeys.INPUT_DATA)
-        update_app_data(PhKeys.LENGTH_IN_DECIMAL)
-        update_app_data(PhKeys.VALUE_IN_ASCII)
-        update_app_data(PhKeys.ONE_LINER)
-        update_app_data(PhKeys.NON_TLV_NEIGHBOR)
+        update_app_data(PhKeys.CONTENT_MAPPINGS)
+        update_app_data(PhKeys.NAME_MAPPINGS)
         update_app_data(PhKeys.REMARKS)
         # Fixed Updates
         app_data.update({PhKeys.SAMPLE_SELECTED: sample_name})

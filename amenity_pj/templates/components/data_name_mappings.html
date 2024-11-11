@@ -1,0 +1,9 @@
+<div class="form-group">
+    <label for="name_mappings">Name Mappings</label>
+    <a href="#" class="image" data-toggle="tooltip" data-placement="top" title="Copy Name Mappings">
+        <img id="copy_name_mappings" class="btn-image-initial" alt="Copy Name Mappings"
+             src={{ url_for('static', filename='images/copy-2/16_16.png') }}>
+    </a>
+    <input type="text" name="name_mappings" id="name_mappings" placeholder="Name Mappings" class="form-control"
+           value="{{ name_mappings }}">
+</div>

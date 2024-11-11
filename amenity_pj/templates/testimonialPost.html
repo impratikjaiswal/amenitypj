@@ -7,7 +7,7 @@
 {% endblock %}
 {# Page Specific Content #}
 {% block content %}
-    <h2>{{ testimonial_post['title'] }}</h2>
+    {% include 'components/header.html' %}
     <span class="badge badge-primary">{{ testimonial_post['created'] }}</span>
     <span class="badge badge-warning">{{ testimonial_post['publisher'] }}</span>
     <p>{{ testimonial_post['content'] }}</p>

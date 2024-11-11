@@ -81,23 +81,23 @@ def handle_requests(apj_id, api, log, default_data, **kwargs):
         # 2) Everything is converted to String; below needs to be typecast, TODO: should be handled in parse_config; int
         update_integer_item(PhKeys.QR_CODE_VERSION)
         update_integer_item(PhKeys.SCALE)
-        PhUtil.print_(f'process_sample is {process_sample}', log=log)
+        PhUtil.print(f'process_sample is {process_sample}', log=log)
         if process_sample:
             sample_dict = samples_dict.get(sample_name, None)
             if sample_dict:
                 PhUtil.print_iter(sample_dict, header='sample_dict', log=log)
         if sample_dict and sample_option == PhKeys.SAMPLE_LOAD_ONLY:
-            PhUtil.print_('Data Processing is not needed', log=log)
+            PhUtil.print('Data Processing is not needed', log=log)
             pass
         else:
-            PhUtil.print_('Data Processing is needed', log=log)
+            PhUtil.print('Data Processing is needed', log=log)
             dic_received = sample_dict if sample_dict else requested_data_dict
             # Filter All Processing Related Keys
             dic_to_process = PhUtil.filter_processing_related_keys(dic_received)
             PhUtil.print_iter(dic_to_process, header='dic_to_process', log=log)
             data_type = DataTypeMaster()
             data_type.set_data_pool(data_pool=dic_to_process)
-            data_type.parse_safe(PhErrorHandlingModes.CONTINUE_ON_ERROR)
+            data_type.process_safe(PhErrorHandlingModes.CONTINUE_ON_ERROR)
             output_data, info_data = data_type.get_output_data(only_output=False)
             temp_output_data = []
             if isinstance(output_data, list):

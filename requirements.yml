@@ -2,7 +2,7 @@
 #### List of Requirements Files
 ##################################################
 
--r requirements_build.txt
--r requirements_external.txt
--r requirements_internal_lib.txt
--r requirements_internal_tool.txt
+-r requirements_build.yml
+-r requirements_external.yml
+-r requirements_internal_lib.yml
+-r requirements_internal_tool.yml

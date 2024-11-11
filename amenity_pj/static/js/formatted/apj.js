@@ -361,14 +361,23 @@ function getTimeStamp(files_format = true, native_only = false) {
 function getFileName(file_name_keyword) {
     let title_name = document.title
     // TODO: Add regex
+    // Host Name
     title_name = title_name.replaceAll(" | ", "_")
+    // ec2.xxx
     title_name = title_name.replaceAll(".", "_")
+    // Port Number
     title_name = title_name.replaceAll(":", "_")
     let time_stamp_native = getTimeStamp(true, true)
     let time_stamp = getTimeStamp()
     // debugData(time_stamp, 'time_stamp')
     // debugData(time_stamp_native, 'time_stamp_native')
-    let file_name = `${title_name}_${file_name_keyword}_${time_stamp}`.replace(" ", "_");
+    const meta_jinja = document.querySelector("meta[name='jinja_transaction_id']");
+    let transaction_id = meta_jinja.content;
+    // debugData(transaction_id, 'transaction_id')
+    if (transaction_id) {
+        transaction_id = `${transaction_id}_`
+    }
+    let file_name = `${title_name}_${transaction_id}${file_name_keyword}_${time_stamp}`.replace(" ", "_");
     // debugData(file_name, 'file_name')
     return `${file_name}`;
 }

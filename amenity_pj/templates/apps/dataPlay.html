@@ -10,12 +10,8 @@
     {% include 'components/header.html' %}
     <form method="post">
         {% include 'components/input_data.html' %}
-        <div class="form-row">
-            {% include 'components/tlv_length_in_decimal.html' %}
-            {% include 'components/tlv_value_in_ascii.html' %}
-            {% include 'components/tlv_one_liner.html' %}
-            {% include 'components/tlv_non_tlv_neighbor.html' %}
-        </div>
+        {% include 'components/data_content_mappings.html' %}
+        {% include 'components/data_name_mappings.html' %}
         {% include 'components/remarks.html' %}
         {% include 'components/button.html' %}
         {% include 'components/output_data.html' %}
