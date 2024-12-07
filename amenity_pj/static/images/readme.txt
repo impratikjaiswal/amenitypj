@@ -1,3 +1,4 @@
+}--------------------------------------------------------------------------------{ General Icons
 https://pixabay.com/vectors/work-under-construction-98936/
 https://www.flaticon.com/free-icon/ab-testing_10435206
 https://www.flaticon.com/free-icon/ab-testing_7778517
@@ -15,3 +16,7 @@ https://www.flaticon.com/free-icon/file_3240354
 https://www.flaticon.com/free-icon/paper-stack_10303715
 https://www.flaticon.com/free-icon/save-instagram_5662990
 https://www.flaticon.com/free-icon/save_3106887
+}--------------------------------------------------------------------------------{ Favicons
+https://favicon.io/
+https://www.favicon-generator.org/
+}--------------------------------------------------------------------------------{ 
