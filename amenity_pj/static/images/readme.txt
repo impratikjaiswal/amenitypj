@@ -18,5 +18,19 @@ https://www.flaticon.com/free-icon/save-instagram_5662990
 https://www.flaticon.com/free-icon/save_3106887
 }--------------------------------------------------------------------------------{ Favicons
 https://favicon.io/
-https://www.favicon-generator.org/
-}--------------------------------------------------------------------------------{ 
+    Source: "\amenity_pj\static\images\logo\full_size_grey_crop_trans"
+    Dest:   "\amenity_pj\static\images\favicon-2
+}++++++++++++++++++++++++++++++++++++++++{ 
+    Source: "\amenity_pj\static\images\logo\full_size_grey_crop_full_trans"
+    Dest:   "\amenity_pj\static\images\favicon-3
+}--------------------------------------------------------------------------------{ MsPaint
+Image Size: 1920 x 1080px
+Text Tool: Full size
+Text: "  PJ  '"
+Font: Poor Richard
+Size 725
+Font Colour:  Grey - 50%
+    R:149   x95
+    G:145   x91
+    B:145   x91 
+    #959191
