@@ -197,6 +197,8 @@ def handle_requests(apj_id, **kwargs):
         # return send_file('static/images/Darknet-404-Page-Concept.png', mimetype='image/png')
     if apj_id == Const.APJ_ID_ROBOT_TXT:
         return send_from_directory('static/txt', request.path[1:])
+    if apj_id == Const.APJ_ID_FAV_ICON:
+        return send_from_directory('static/images/favicon-3', request.path[1:])
     # ######################
     # AmenityPj Apps
     # ######################

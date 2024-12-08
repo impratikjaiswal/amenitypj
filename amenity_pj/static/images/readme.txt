@@ -39,6 +39,8 @@ BackGround Color:   #FFF (White)
     Dest:   "\amenity_pj\static\images\favicon-6
 BackGround Color:   #000 (Black)
     Dest:   "\amenity_pj\static\images\favicon-5
+}++++++++++++++++++++++++++++++++++++++++{    
+Font Source:        https://fonts.gstatic.com/s/cinzeldecorative/v17/daaCSScvJGqLYhG8nNt8KPPswUAPnh7URs1LaCyC.ttf    
 }--------------------------------------------------------------------------------{ MsPaint
 Image Size: 1920 x 1080px
 Text Tool: Full size

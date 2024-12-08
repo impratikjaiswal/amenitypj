@@ -27,7 +27,7 @@ If Primary Url(s) did not work for you (or its down), try these:
 1. <a href="http://amenitypj.in/">http://amenitypj.in</a>
 
 # Screen Shot(s) of Web App [![Static Badge](https://img.shields.io/badge/amenitypj.in-a)](https://amenitypj.in/) 
-![sample_web_1](https://github.com/impratikjaiswal/amenitypj/blob/main/static/images/sample_web_1.gif?raw=true)
+![sample_web_1](https://github.com/impratikjaiswal/amenitypj/blob/main/amenity_pj/static/images/samples/sample_web_1.gif?raw=true)
 
 # Installation/Setup
 Steps can be found [here](https://github.com/impratikjaiswal/pythonHelpers/blob/main/HOW_TO_INSTALL_PYTHON_APPS.md).

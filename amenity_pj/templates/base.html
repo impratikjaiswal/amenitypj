@@ -33,7 +33,15 @@
     <!-- Page Specific Canonical URL -->
     <link rel="canonical" href="{{ app_canonical_url }}"/>
     <!-- Icon -->
-    <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon-3/favicon.ico') }}" />
+    {#  Other Locations for FavIcon:
+        \amenitypj\_includes\head-custom.html
+        \amenitypj\amenity_pj\static\site.webmanifest
+        \amenitypj\amenity_pj\handler\app_handler.py
+    #}
+    <!-- Manifest -->
+    <link rel="manifest" href="{{ url_for('static', filename='images/favicon-3/favicon.ico') }}" />
+    <link rel="manifest" href="manifest.json" />
 </head>
 <body>
 <!-- <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top"> -->
