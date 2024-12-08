@@ -307,6 +307,12 @@ def robot():
         return app_handler.handle_requests(apj_id=Const.APJ_ID_ROBOT_TXT, log=log)
 
 
+
+@app.route(Util.get_apj_data(apj_id=Const.APJ_ID_FAV_ICON, specific_key=PhKeys.APP_URL))
+def favicon():
+    return app_handler.handle_requests(apj_id=Const.APJ_ID_FAV_ICON, log=log)
+
+
 @app.route(Util.get_apj_data(apj_id=Const.APJ_ID_EXPERIMENTS_1, specific_key=PhKeys.APP_URL), methods=('GET', 'POST'),
            defaults={'apj_id': Const.APJ_ID_EXPERIMENTS_1})
 @app.route(Util.get_apj_data(apj_id=Const.APJ_ID_EXPERIMENTS_2, specific_key=PhKeys.APP_URL), methods=('GET', 'POST'),

@@ -56,6 +56,7 @@ class Const:
     APJ_ID_SEO_GROUP = 0x40
     APJ_ID_SITEMAP = 0x41
     APJ_ID_ROBOT_TXT = 0x42
+    APJ_ID_FAV_ICON = 0x43
 
     APJ_ID_EXPERIMENTS_GROUP = 0x90
     APJ_ID_EXPERIMENTS_1 = 0x91
@@ -450,6 +451,11 @@ class Const:
         APJ_ID_ROBOT_TXT:
             {
                 PhKeys.APP_URL: '/robots.txt',
+            },
+        #
+        APJ_ID_FAV_ICON:
+            {
+                PhKeys.APP_URL: '/favicon.ico',
             },
         #
         APJ_ID_SERVER_DETAILS:
