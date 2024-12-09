@@ -87,6 +87,11 @@
     padding: 2rem;
 }
 
+body {
+    /* Needed for fixed navbar */
+    padding-top: 60px;
+}
+
 /*
 for 2nd Nav Bar (Apps)
     The height of the Navbar is ~56px.
@@ -261,4 +266,12 @@ a.image:active {
 .counter_div {
     /*display: none;*/
     visibility: hidden;
+}
+
+.border-top {
+    border-top: 3px solid #ED7D31 !important
+}
+
+.img-logo {
+    padding-right: 10px;
 }

@@ -21,6 +21,18 @@ https://www.flaticon.com/free-icon/file_1091554
 https://www.flaticon.com/free-icon/file-upload_5754866
 https://www.flaticon.com/free-icon/file_1092220
 pexels-miguel-3785932
+}--------------------------------------------------------------------------------{ MsPaint
+Image Size: 1920 x 1080px
+Text Tool: Full size
+Text: "  PJ  '"
+Font: Poor Richard
+Size 725
+
+Font Color: White                          R:255,  G:255,  B:255   #FFFFFF
+Font Color: Black                          R:0,    G:0,    B:0,    #000000
+Font Color: Red                            R:255,  G:0,    B:0,    #FF0000
+Font Color: Grey - 50%                     R:149,  G:145,  B:145,  #959191
+Font Color: Orange Accent 2 Darker 50%     R:237,  G:125,  B:49,   #ED7D31
 }--------------------------------------------------------------------------------{ Favicons
 https://favicon.io/
     Source: "\amenity_pj\static\images\logo\full_size_grey_crop_trans"
@@ -36,20 +48,14 @@ Font Variant:       Regular 400 Normal
 Font Size:          110
 Font Color:         #959191
 BackGround Color:   #FFF (White)
-    Dest:   "\amenity_pj\static\images\favicon-6
+    Dest:   "\amenity_pj\static\images\favicon-4
 BackGround Color:   #000 (Black)
     Dest:   "\amenity_pj\static\images\favicon-5
+Font Color:         #ED7D31
+BackGround Color:   #FFF (White)
+    Dest:   "\amenity_pj\static\images\favicon-6
+BackGround Color:   #000 (Black)
+    Dest:   "\amenity_pj\static\images\favicon-7
 }++++++++++++++++++++++++++++++++++++++++{    
 Font Source:        https://fonts.gstatic.com/s/cinzeldecorative/v17/daaCSScvJGqLYhG8nNt8KPPswUAPnh7URs1LaCyC.ttf    
-}--------------------------------------------------------------------------------{ MsPaint
-Image Size: 1920 x 1080px
-Text Tool: Full size
-Text: "  PJ  '"
-Font: Poor Richard
-Size 725
-Font Colour:  Grey - 50%
-    R:149   x95
-    G:145   x91
-    B:145   x91 
-    #959191
 }--------------------------------------------------------------------------------{

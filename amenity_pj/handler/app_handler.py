@@ -81,10 +81,13 @@ def handle_requests(apj_id, **kwargs):
     root_path = kwargs.get(PhKeys.ROOT_PATH, None)
     #
     # TODO: Alternative/Availability needs to check
+    # Sample: /asn1Play
     request_path = request.path
     # TODO: Alternative/Availability needs to check
+    # Sample: asn1Play
     request_endpoint = request.endpoint
     # TODO: Alternative/Availability needs to check
+    # Sample: 'GET'
     request_method = request.method
     #
     if not internal:
@@ -198,7 +201,7 @@ def handle_requests(apj_id, **kwargs):
     if apj_id == Const.APJ_ID_ROBOT_TXT:
         return send_from_directory('static/txt', request.path[1:])
     if apj_id == Const.APJ_ID_FAV_ICON:
-        return send_from_directory('static/images/favicon-3', request.path[1:])
+        return send_from_directory('static/images/favicon-2', 'favicon.ico')
     # ######################
     # AmenityPj Apps
     # ######################

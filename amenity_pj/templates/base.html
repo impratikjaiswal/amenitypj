@@ -33,21 +33,21 @@
     <!-- Page Specific Canonical URL -->
     <link rel="canonical" href="{{ app_canonical_url }}"/>
     <!-- Icon -->
-    <link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon-3/favicon.ico') }}" />
-    {#  Other Locations for FavIcon:
-        \amenitypj\_includes\head-custom.html
-            Needs to repeat in every project
+    <link rel="shortcut icon" type="image/x-icon"
+          href="{{ url_for('static', filename='images/favicon-2/favicon.ico') }}"/>
+    {#  All Locations for FavIcon:
+        \amenitypj\amenity_pj\templates\base.html (2 times)
+        \amenitypj\_includes\head-custom.html (Needs to repeat in every project)
             Icon will be picked from: \Github_Self\impratikjaiswal.github.io\static (Icon Folder Needs to be synced)
         \amenitypj\amenity_pj\static\site.webmanifest
         \amenitypj\amenity_pj\handler\app_handler.py
     #}
     <!-- Manifest -->
-    <link rel="manifest" href="{{ url_for('static', filename='images/favicon-3/favicon.ico') }}" />
-    <link rel="manifest" href="manifest.json" />
+    <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}"/>
 </head>
 <body>
-<!-- <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top"> -->
-<nav class="navbar navbar-expand-md navbar-light bg-light">
+<nav class="navbar navbar-expand-md navbar-light bg-light border-top fixed-top">
+    <img src="{{ url_for('static', filename='images/favicon-2/favicon-32x32.png') }}" alt="Pj" class="img-logo"/>
     <a class="navbar-brand" href="{{ url_for('index') }}">{{ title_for('index') }}</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -102,7 +102,6 @@
 <div class="container-fluid">
     <div class="row">
         {% if nav_bar_app_items %}
-            {# <nav class="navbar navbar-expand-md navbar-inverse bg-light fixed-top fixed-top-2">#}
             <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
                 <a class="navbar-brand navbar-brand-2" href="{{ url_for(request.endpoint) }}">{{ app_title }}</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavApps"
