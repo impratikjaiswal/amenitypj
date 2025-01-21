@@ -1,3 +1,5 @@
+import os
+
 from flask import request
 from python_helpers.ph_keys import PhKeys
 from python_helpers.ph_modes_error_handling import PhErrorHandlingModes
@@ -5,12 +7,14 @@ from python_helpers.ph_util import PhUtil
 from qr_play.main.data_type.data_type_master import DataTypeMaster
 from qr_play.main.data_type.sample import Sample
 from qr_play.main.helper.defaults import Defaults
+from qr_play.main.helper.formats import Formats
 from qr_play.main.helper.formats_group import FormatsGroup
 
+from amenity_pj.helper.constants import Const
 from amenity_pj.helper.util import Util
 
 
-def handle_requests(apj_id, api, log, default_data, **kwargs):
+def handle_requests(apj_id, api, log, root_path, default_data, **kwargs):
     """
 
     :return:
@@ -49,16 +53,19 @@ def handle_requests(apj_id, api, log, default_data, **kwargs):
     samples_dict = Sample().get_sample_data_pool_for_web()
     samples_list = PhUtil.generalise_list(list(samples_dict.keys()), sort=False)
     qr_code_versions = PhUtil.generalise_list(FormatsGroup.QR_CODE_VERSIONS_SUPPORTED)
-    image_formats = PhUtil.generalise_list(FormatsGroup.IMAGE_FORMATS_SUPPORTED)
+    output_formats = PhUtil.generalise_list(FormatsGroup.OUTPUT_FORMATS_SUPPORTED)
     default_data_app = {
         PhKeys.SAMPLES: samples_list,
         PhKeys.SAMPLE_SELECTED: samples_list[1] if len(samples_list) > 1 else None,
+        PhKeys.OUTPUT_FORMATS: output_formats,
+        # PhKeys.OUTPUT_FORMAT_SELECTED: Defaults.OUTPUT_FORMAT,
+        PhKeys.OUTPUT_FORMAT_SELECTED: Formats.PNG_URI,
+        PhKeys.SIZE: Defaults.SIZE,
         PhKeys.QR_CODE_VERSIONS: qr_code_versions,
         PhKeys.QR_CODE_VERSION_SELECTED: Defaults.QR_CODE_VERSION,
-        PhKeys.IMAGE_FORMATS: image_formats,
-        PhKeys.IMAGE_FORMAT_SELECTED: Defaults.IMAGE_FORMAT,
         PhKeys.SPLIT_QRS: Defaults.SPLIT_QRS,
-        PhKeys.SCALE: Defaults.SCALE,
+        # PhKeys.DECORATE_QR: Defaults.DECORATE_QR,
+        PhKeys.DECORATE_QR: True,
     }
     app_data = PhUtil.dict_merge(default_data, default_data_app)
     requested_data_dict = Util.request_pre(request=request, apj_id=apj_id, api=api, log=log)
@@ -78,9 +85,10 @@ def handle_requests(apj_id, api, log, default_data, **kwargs):
         # When submitting an HTML form,
         # 1) unchecked check-boxes do not send any data, however checked checkboxes do send False (may send True as well)
         update_checked_item(PhKeys.SPLIT_QRS)
+        update_checked_item(PhKeys.DECORATE_QR)
         # 2) Everything is converted to String; below needs to be typecast, TODO: should be handled in parse_config; int
         update_integer_item(PhKeys.QR_CODE_VERSION)
-        update_integer_item(PhKeys.SCALE)
+        update_integer_item(PhKeys.SIZE)
         PhUtil.print(f'process_sample is {process_sample}', log=log)
         if process_sample:
             sample_dict = samples_dict.get(sample_name, None)
@@ -94,6 +102,11 @@ def handle_requests(apj_id, api, log, default_data, **kwargs):
             dic_received = sample_dict if sample_dict else requested_data_dict
             # Filter All Processing Related Keys
             dic_to_process = PhUtil.filter_processing_related_keys(dic_received)
+            transaction_id = PhUtil.generate_transaction_id()
+            target_directory_path = os.sep.join([root_path, Const.STATIC_IMAGES_OUT_FOLDER, transaction_id])
+            PhUtil.print(f'target_directory_path is {target_directory_path}', log=log)
+            PhUtil.make_dirs(target_directory_path)
+            dic_to_process.update({PhKeys.OUTPUT_PATH: target_directory_path})
             PhUtil.print_iter(dic_to_process, header='dic_to_process', log=log)
             data_type = DataTypeMaster()
             data_type.set_data_pool(data_pool=dic_to_process)
@@ -104,15 +117,19 @@ def handle_requests(apj_id, api, log, default_data, **kwargs):
                 temp_output_data = output_data
             else:
                 temp_output_data.append(output_data)
+            # temp_output_data = [x.replace('D:/Other/Github_Self/amenitypj/amenity_pj', '') for x in temp_output_data]
+            # Change to Relative only when an absolute path is provided (case of PNG & SVG)
+            temp_output_data = [os.path.relpath(x, root_path) if os.path.isabs(x) else x for x in temp_output_data]
             app_data.update({PhKeys.OUTPUT_DATA: temp_output_data})
             app_data.update({PhKeys.INFO_DATA: info_data})
             app_data.update({PhKeys.TRANSACTION_ID: Util.fetch_transaction_id_from_info_data(info_data)})
         # Conditional Updates
         update_app_data(PhKeys.INPUT_DATA)
         update_app_data(PhKeys.SPLIT_QRS)
+        update_app_data(PhKeys.DECORATE_QR)
         update_app_data(PhKeys.QR_CODE_VERSION, PhKeys.QR_CODE_VERSION_SELECTED)
-        update_app_data(PhKeys.IMAGE_FORMAT, PhKeys.IMAGE_FORMAT_SELECTED)
-        update_app_data(PhKeys.SCALE)
+        update_app_data(PhKeys.OUTPUT_FORMAT, PhKeys.OUTPUT_FORMAT_SELECTED)
+        update_app_data(PhKeys.SIZE)
         update_app_data(PhKeys.REMARKS)
         # Fixed Updates
         app_data.update({PhKeys.SAMPLE_SELECTED: sample_name})

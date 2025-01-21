@@ -11,10 +11,11 @@
     <form method="post">
         {% include 'components/input_data.html' %}
         <div class="form-row">
-            {% include 'components/qr_image_format.html' %}
+            {% include 'components/qr_output_format.html' %}
+            {% include 'components/qr_size.html' %}
             {% include 'components/qr_code_version.html' %}
-            {% include 'components/qr_code_scale.html' %}
             {% include 'components/qr_split_qrs.html' %}
+            {% include 'components/qr_decorate_qr.html' %}
         </div>
         {% include 'components/remarks.html' %}
         {% include 'components/button.html' %}

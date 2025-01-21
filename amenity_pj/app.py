@@ -50,7 +50,8 @@ sitemap_robot_needed = True
 if prod_env is False:
     # localhost logging
     LOG_LEVEL = "INFO"
-    LOG_HANDLER = ["console", "size-rotate"]
+    # LOG_HANDLER = ["console", "size-rotate"]
+    LOG_HANDLER = ["console", "file"]
     LOG_FILE_PATH = Const.LOG_FILE_NAME
 
 dictConfig(
@@ -156,14 +157,6 @@ def utility_processor_selected_url_time_out():
     return dict(is_selected_url_time_out=is_selected_url_time_out)
 
 
-@app.context_processor
-def utility_processor_selected_image_format():
-    def is_selected_image_format(sample, selected_image_format):
-        return Util.is_selected(sample, selected_image_format)
-
-    return dict(is_selected_image_format=is_selected_image_format)
-
-
 @sitemapper.include(lastmod=ConstSeo.LAST_MODIFY_DATE_INDEX)
 @app.route(Util.get_apj_data(apj_id=Const.APJ_ID_AMENITY_PJ, specific_key=PhKeys.APP_URL))
 # Due to alias=True, URL_ALT will be redirected to URL
@@ -202,7 +195,7 @@ def tlv_play(api):
 @app.route(Util.get_apj_data(apj_id=Const.APJ_ID_QR_PLAY, specific_key=PhKeys.APP_URL), methods=('GET', 'POST'),
            defaults={'api': False})
 def qr_play(api):
-    return app_handler.handle_requests(apj_id=Const.APJ_ID_QR_PLAY, api=api, log=log)
+    return app_handler.handle_requests(apj_id=Const.APJ_ID_QR_PLAY, api=api, log=log, root_path=app.root_path)
 
 
 @sitemapper.include(lastmod=ConstSeo.LAST_MODIFY_DATE_EXCEL_PLAY)

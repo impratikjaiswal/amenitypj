@@ -72,7 +72,7 @@
         <label for="output_data_images">QrCode Images</label>
         <div id="output_statement_2" class="div-output">
             {% for qr_image in output_data %}
-                <img src="{{ qr_image }}"><br>
+                <img src="{{ qr_image }}" alt="{{ qr_image }}"><br>
             {% endfor %}
         </div>
     </div>
@@ -82,7 +82,7 @@
         <span class="badge badge-danger">Suspicious Result? !!! Raise an issue !!!</span>
     </a>
     <a href="{{ app_github_url }}/discussions" rel="noopener noreferrer" target="_blank">
-        <span class="badge badge-warning">Need Help? or Have a Feedback? !!! All Ears !!!</span>
+        <span class="badge badge-warning">Need Help? or Have Feedback? !!! All Ears !!!</span>
     </a>
     <a href="{{ app_github_url }}/discussions/new?category=ideas" rel="noopener noreferrer" target="_blank">
         <span class="badge badge-success">Got an Idea? !!! Let's Discuss !!! </span>

@@ -119,13 +119,6 @@ if (btn_copy_qr_code_version) {
     btn_copy_qr_code_version.source_type = SOURCE_TYPE_COMBO_BOX
 }
 
-const btn_copy_image_format = document.querySelector("#copy_image_format");
-if (btn_copy_image_format) {
-    btn_copy_image_format.addEventListener("click", copyToClipboard, false);
-    btn_copy_image_format.source_field = "#image_format"
-    btn_copy_image_format.source_type = SOURCE_TYPE_COMBO_BOX
-}
-
 const btn_copy_input_format = document.querySelector("#copy_input_format");
 if (btn_copy_input_format) {
     btn_copy_input_format.addEventListener("click", copyToClipboard, false);

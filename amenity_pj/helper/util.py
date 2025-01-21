@@ -137,6 +137,24 @@ class Util:
         PhUtil.print_separator(main_text=f'user_visit Received!!!', log=log)
         try:
             request_id = str(uuid.uuid4())
+            # session["ctx"] = {"request_id": request_id}
+            # Ref: https://tedboy.github.io/flask/generated/generated/flask.Request.html
+            log.info(f'User Visit: {request_id}')
+            log.info(f'request.url: {request.url}')
+            log.info(f'request.method: {request.method}')
+            log.info(f'request.host: {request.host}')
+            if 'Host' in request.headers:
+                log.info(f'request.headers["Host"]: {request.headers["Host"]}')
+            log.info(f'request.remote_addr: {request.remote_addr}')
+            log.info(f'request.access_route: {request.access_route}')
+            log.info(f'request.host_url: {request.host_url}')
+            log.info(f'request.url_root: {request.url_root}')
+            log.info(f'request.path: {request.path}')  # "/antitop/pj"
+            log.info(f'request.url_rule: {request.url_rule}')  # "/antitop/<username>"
+            log.info(f'request.url_rule_rule: {request.url_rule.rule}')
+            log.info(f'request.endpoint: {request.endpoint}')
+            log.info(f'request.referrer: {request.referrer}')
+            log.info(PhConstants.STR_EMPTY)
             # TODO: Error
             # dir(request)
             # request.__dict__
@@ -151,18 +169,6 @@ class Util:
             log.info(PhConstants.STR_EMPTY)
             log.info('request.environ dict')
             log.info(request.environ)
-            log.info(PhConstants.STR_EMPTY)
-            log.info('Other Param')
-            # session["ctx"] = {"request_id": request_id}
-            log.info(f'User Visit: {request_id}')
-            log.info(f'request.url_root: {request.url_root}')
-            log.info(f'request.path: {request.path}')  # "/antitop/pj"
-            log.info(f'request.url_rule: {request.url_rule}')  # "/antitop/<username>"
-            log.info(f'request.url_rule_rule: {request.url_rule.rule}')
-            log.info(f'request.endpoint: {request.endpoint}')
-            if 'Host' in request.headers:
-                log.info(f'request.headers["Host"]: {request.headers["Host"]}')
-            log.info(PhConstants.STR_EMPTY)
         except Exception as e:
             log.info(f'user_visit: {e}')
             log.info(PhConstants.STR_EMPTY)
