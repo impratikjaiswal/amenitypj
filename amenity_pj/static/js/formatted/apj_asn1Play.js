@@ -17,7 +17,7 @@ $(document).ready(function () {
     $('#process_re_parse_output').bind('click', function () {
         // debugData("process_re_parse_output is pressed.");
         swapInputOutputFormatActual();
-        $("#input_data").val($('#output_statement').text());
+        $("#input_data").val($('#output_statement').text().trim());
     });
     // debugData("Done apj_asn1Play.js");
 });

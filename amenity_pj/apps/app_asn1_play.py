@@ -60,9 +60,9 @@ def handle_requests(apj_id, api, log, default_data, **kwargs):
         PhKeys.SAMPLES: samples_list,
         PhKeys.SAMPLE_SELECTED: samples_list[1] if len(samples_list) > 1 else None,
         PhKeys.INPUT_FORMATS: input_formats,
-        PhKeys.INPUT_FORMAT_SELECTED: Defaults.FORMAT_INPUT,
+        PhKeys.INPUT_FORMAT_SELECTED: Defaults.INPUT_FORMAT,
         PhKeys.OUTPUT_FORMATS: output_formats,
-        PhKeys.OUTPUT_FORMAT_SELECTED: Defaults.FORMAT_OUTPUT,
+        PhKeys.OUTPUT_FORMAT_SELECTED: Defaults.OUTPUT_FORMAT,
         PhKeys.ASN1_SCHEMAS: asn1_schemas,
         PhKeys.ASN1_SCHEMA_SELECTED: default_selected_asn1_schema,
         PhKeys.ASN1_OBJECTS: asn1_objects,
@@ -113,7 +113,7 @@ def handle_requests(apj_id, api, log, default_data, **kwargs):
             data_type.set_data_pool(data_pool=dic_to_process)
             data_type.process_safe(PhErrorHandlingModes.CONTINUE_ON_ERROR)
             output_data, info_data = data_type.get_output_data(only_output=False)
-            app_data.update({PhKeys.OUTPUT_DATA: output_data})
+            app_data.update({PhKeys.OUTPUT_DATA: PhUtil.decorate_output_data(output_data)})
             app_data.update({PhKeys.INFO_DATA: info_data})
             app_data.update({PhKeys.TRANSACTION_ID: Util.fetch_transaction_id_from_info_data(info_data)})
         # Conditional Updates
