@@ -26,14 +26,15 @@ def init_directories(running_from_pycharm=False):
     adjustment_path = os.pardir if running_from_pycharm is True else None
     for folder in folders_list_relative:
         target_path = os.sep.join(filter(None, [adjustment_path, folder]))
-        PhUtil.makedirs(target_path, absolute_path_needed=True)
+        PhUtil.make_dirs(target_path, absolute_path_needed=True)
     for folder in folders_list_absolute:
-        PhUtil.makedirs(folder)
+        PhUtil.make_dirs(folder)
 
 
-def init_contributors_offline_data_and_generate_json():
+def init_contributors_offline_data_and_generate_json(running_from_pycharm=False):
     """
 
+    :param running_from_pycharm:
     :return:
     """
     """
@@ -48,8 +49,11 @@ def init_contributors_offline_data_and_generate_json():
         "created_at": "",
     ]
     """
-    path_src = os.sep.join([os.pardir, 'data', 'issues'])
+    folder = os.sep.join(['data', 'issues'])
+    adjustment_path = os.pardir if running_from_pycharm is True else None
+    path_src = os.sep.join(filter(None, [adjustment_path, folder]))
     path_dest = os.sep.join(['static', 'issues_data'])
+    PhUtil.make_dirs(path_dest, absolute_path_needed=True)
     file_name_raw = 'combined_raw.json'
     file_name = 'combined.json'
     file_path_src = os.path.join(path_src, file_name)
@@ -126,7 +130,7 @@ def main():
     #
     init_directories(running_from_pycharm)
     #
-    init_contributors_offline_data_and_generate_json()
+    init_contributors_offline_data_and_generate_json(running_from_pycharm)
     #
     init_db()
     #
