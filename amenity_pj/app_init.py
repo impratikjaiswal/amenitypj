@@ -26,9 +26,9 @@ def init_directories(running_from_pycharm=False):
     adjustment_path = os.pardir if running_from_pycharm is True else None
     for folder in folders_list_relative:
         target_path = os.sep.join(filter(None, [adjustment_path, folder]))
-        PhUtil.makedirs(target_path, absolute_path_needed=True)
+        PhUtil.make_dirs(target_path, absolute_path_needed=True)
     for folder in folders_list_absolute:
-        PhUtil.makedirs(folder)
+        PhUtil.make_dirs(folder)
 
 
 def init_contributors_offline_data_and_generate_json():
