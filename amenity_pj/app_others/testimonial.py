@@ -73,8 +73,7 @@ def handle_posts(apj_id, api, log, default_data, testimonial_post_id, **kwargs):
 
 
 def get_db_connection():
-    # conn = sqlite3.connect(r'database.db')
-    path = os.sep.join([os.path.dirname(os.path.realpath(__file__)), os.pardir, 'db', 'database.db'])
+    path = os.sep.join([os.path.dirname(os.path.realpath(__file__)), Const.SQL_DB_FOLDER, Const.SQL_DB_FILE])
     conn = sqlite3.connect(path)
     conn.row_factory = sqlite3.Row
     return conn

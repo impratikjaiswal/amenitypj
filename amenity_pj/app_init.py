@@ -7,10 +7,10 @@ from python_helpers.ph_util import PhUtil
 from amenity_pj.helper.constants import Const
 
 
-def init_directories(running_from_pycharm=False):
+def init_directories(execution_from_inside):
     """
 
-    :param running_from_pycharm:
+    :param execution_from_inside:
     :return:
     """
     PhUtil.print_heading()
@@ -23,18 +23,17 @@ def init_directories(running_from_pycharm=False):
     folders_list_absolute = [
         PhUtil.path_default_out_folder,
     ]
-    adjustment_path = os.pardir if running_from_pycharm is True else None
     for folder in folders_list_relative:
-        target_path = os.sep.join(filter(None, [adjustment_path, folder]))
+        target_path = PhUtil.adjust_paths(execution_from_inside, folder)
         PhUtil.make_dirs(target_path, absolute_path_needed=True)
     for folder in folders_list_absolute:
         PhUtil.make_dirs(folder)
 
 
-def init_contributors_offline_data_and_generate_json(running_from_pycharm=False):
+def init_contributors_offline_data_and_generate_json(execution_from_inside=False):
     """
 
-    :param running_from_pycharm:
+    :param execution_from_inside:
     :return:
     """
     """
@@ -49,14 +48,11 @@ def init_contributors_offline_data_and_generate_json(running_from_pycharm=False)
         "created_at": "",
     ]
     """
-    folder = os.sep.join(['data', 'issues'])
-    adjustment_path = os.pardir if running_from_pycharm is True else None
-    path_src = os.sep.join(filter(None, [adjustment_path, folder]))
     path_dest = os.sep.join(['static', 'issues_data'])
     PhUtil.make_dirs(path_dest, absolute_path_needed=True)
     file_name_raw = 'combined_raw.json'
     file_name = 'combined.json'
-    file_path_src = os.path.join(path_src, file_name)
+    file_path_src = PhUtil.adjust_paths(execution_from_inside, ['data', 'issues', file_name])
     file_path_dest = os.path.join(path_dest, file_name)
     file_path_dest_raw = os.path.join(path_dest, file_name_raw)
     # Open the orders.json file
@@ -88,14 +84,15 @@ def init_contributors_offline_data_and_generate_json(running_from_pycharm=False)
     PhUtil.print_iter(feedback_providers_data_raw, depth_level=1)
 
 
-def init_db():
+def init_db(execution_from_inside):
     """
 
+    :param execution_from_inside:
     :return:
     """
-    connection = sqlite3.connect('../db/database.db')
+    connection = sqlite3.connect(PhUtil.adjust_paths(execution_from_inside, [Const.SQL_DB_FOLDER, Const.SQL_DB_FILE]))
 
-    with open('../db/schema.sql') as f:
+    with open(PhUtil.adjust_paths(execution_from_inside, [Const.SQL_DB_FOLDER, Const.SQL_DB_SCHEMA_FILE])) as f:
         connection.executescript(f.read())
 
     cur = connection.cursor()
@@ -126,13 +123,14 @@ def main():
 
     :return:
     """
-    running_from_pycharm = False
+    # Must Be True when running from IDE, e.g.: Pycharm
+    execution_from_inside = False
     #
-    init_directories(running_from_pycharm)
+    init_directories(execution_from_inside)
     #
-    init_contributors_offline_data_and_generate_json(running_from_pycharm)
+    init_contributors_offline_data_and_generate_json(execution_from_inside)
     #
-    init_db()
+    init_db(execution_from_inside)
     #
     PhUtil.print_done()
 

@@ -27,6 +27,9 @@ class Const:
     LOG_FILE_404_PATH = os.sep.join([LOG_FOLDER_APPS, LOG_404_FILE_NAME])
     LOG_MAX_BYTES = 1000000
     LOG_MAX_BACKUP_COUNT = 1000
+    SQL_DB_FOLDER = os.sep.join([os.pardir, 'data', 'sql_db'])
+    SQL_DB_FILE = 'database.db'
+    SQL_DB_SCHEMA_FILE = 'schema.sql'
     UPLOAD_FOLDER_PERMANENT = os.sep.join([os.pardir, 'data', 'user', 'uploads_permanent'])
     UPLOAD_FOLDER_TEMPORARY = os.sep.join([os.pardir, 'data', 'user', 'uploads_temporary'])
     STATIC_IMAGES_OUT_FOLDER = os.sep.join(['static', 'images_out'])

@@ -1,0 +1,30 @@
+##################################################
+#### List of Needed External Tools / Libraries
+##################################################
+
+# Robot
+robotframework
+
+# Robot-Selenium
+robotframework-seleniumlibrary
+
+# Robot-Ride
+robotframework-ride
+
+# Robot-Requests
+robotframework-requests
+
+# Robot-DB
+robotframework-databaselibrary
+
+# Ride GUI
+wxPython
+
+# Firefox
+gekodriver
+
+# Chrome
+chromedriver
+
+# Edge
+edgedriver-autoinstaller
