@@ -1,0 +1,84 @@
+}--------------------------------------------------------------------------------{ 
+}--------------------------------------------------------------------------------{ 
+}--------------------------------------------------------------------------------{ 
+Collecting git+https://github.com/impratikjaiswal/pythonHelpers@v5.1.0 (from -r ../requirements_internal_lib.yml (line 9))
+  Cloning https://github.com/impratikjaiswal/pythonHelpers (to revision v5.1.0) to /tmp/pip-req-build-_ii0qhnq
+  Running command git clone --filter=blob:none -q https://github.com/impratikjaiswal/pythonHelpers /tmp/pip-req-build-_ii0qhnq
+  Running command git checkout -q 81045a93d81024de982b22a795600648333362c8
+  Resolved https://github.com/impratikjaiswal/pythonHelpers to commit 81045a93d81024de982b22a795600648333362c8
+  Preparing metadata (setup.py) ... error
+  ERROR: Command errored out with exit status 1:
+   command: /home/ec2-user/amenitypj.in/venv/bin/python -c 'import io, os, sys, setuptools, tokenize; sys.argv[0] = '"'"'/tmp/pip-req-build-_ii0qhnq/setup.py'"'"'; __file__='"'"'/tmp/pip-req-build-_ii0qhnq/setup.py'"'"';f = getattr(tokenize, '"'"'open'"'"', open)(__file__) if os.path.exists(__file__) else io.StringIO('"'"'from setuptools import setup; setup()'"'"');code = f.read().replace('"'"'\r\n'"'"', '"'"'\n'"'"');f.close();exec(compile(code, __file__, '"'"'exec'"'"'))' egg_info --egg-base /tmp/pip-pip-egg-info-nf9z1sm2
+       cwd: /tmp/pip-req-build-_ii0qhnq/
+  Complete output (15 lines):
+  Traceback (most recent call last):
+    File "<string>", line 1, in <module>
+    File "/tmp/pip-req-build-_ii0qhnq/setup.py", line 7, in <module>
+      from python_helpers.ph_constants_config import PhConfigConst
+    File "/tmp/pip-req-build-_ii0qhnq/python_helpers/ph_constants_config.py", line 1, in <module>
+      from ._git_info import GIT_SUMMARY
+    File "/tmp/pip-req-build-_ii0qhnq/python_helpers/_git_info.py", line 4, in <module>
+      from python_helpers.ph_git import PhGit
+    File "/tmp/pip-req-build-_ii0qhnq/python_helpers/ph_git.py", line 4, in <module>
+      from python_helpers.ph_defaults import PhDefaults
+    File "/tmp/pip-req-build-_ii0qhnq/python_helpers/ph_defaults.py", line 1, in <module>
+      from python_helpers.ph_constants import PhConstants
+    File "/tmp/pip-req-build-_ii0qhnq/python_helpers/ph_constants.py", line 1, in <module>
+      import pandas as pd
+  ModuleNotFoundError: No module named 'pandas'
+  ----------------------------------------
+WARNING: Discarding git+https://github.com/impratikjaiswal/pythonHelpers@v5.1.0. Command errored out with exit status 1: python setup.py egg_info Check the logs for full command output.
+ERROR: Command errored out with exit status 1: python setup.py egg_info Check the logs for full command output.
+WARNING: You are using pip version 21.3.1; however, version 25.2 is available.
+You should consider upgrading via the '/home/ec2-user/amenitypj.in/venv/bin/python -m pip install --upgrade pip' command.
+Attempting to deactivate existing (and activated) Virtual Environment
+}--------------------------------------------------------------------------------{ 
+}--------------------------------------------------------------------------------{ 
+}--------------------------------------------------------------------------------{ 
+==============================
+ error: subprocess-exited-with-error
+
+  × python setup.py egg_info did not run successfully.
+  │ exit code: 1
+  ╰─> [10 lines of output]
+      Traceback (most recent call last):
+        File "<string>", line 2, in <module>
+        File "<pip-setuptools-caller>", line 35, in <module>
+        File "/tmp/pip-req-build-4w1xg7j7/setup.py", line 7, in <module>
+          from cert_play.main.helper.constants_config import ConfigConst
+        File "/tmp/pip-req-build-4w1xg7j7/cert_play/main/helper/constants_config.py", line 1, in <module>
+          from cert_play._git_info import GIT_SUMMARY
+        File "/tmp/pip-req-build-4w1xg7j7/cert_play/_git_info.py", line 4, in <module>
+          from python_helpers.ph_git import PhGit
+      ModuleNotFoundError: No module named 'python_helpers'
+      [end of output]
+
+  note: This error originates from a subprocess, and is likely not a problem with pip.
+error: metadata-generation-failed
+
+× Encountered error while generating package metadata.
+╰─> See above for output.
+
+note: This is an issue with the package mentioned above, not pip.
+hint: See above for details.
+Attempting to deactivate existing (and activated) Virtual Environment
+(venv) [ec2-user@ip-172-31-30-220 scripts]$
+}--------------------------------------------------------------------------------{ 
+}--------------------------------------------------------------------------------{ 
+}--------------------------------------------------------------------------------{ 
+/home/ec2-user/amenitypj.in/venv/lib64/python3.9/site-packages/python_helpers/ph_util.py:22: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  import pkg_resources
+}--------------------------------------------------------------------------------{ 
+}--------------------------------------------------------------------------------{ 
+}--------------------------------------------------------------------------------{ 
+Upload Below File Manually
+  "\Github_Self\amenitypj\data\issues\combined.json"
+    Need to have default file as backup; actual file can be copied in server via sh script
+}--------------------------------------------------------------------------------{ 
+}--------------------------------------------------------------------------------{ Certbot vs Python
+}--------------------------------------------------------------------------------{ 
+Python 3.9 support will be dropped in the next planned release of Certbot - please upgrade your Python version.
+}--------------------------------------------------------------------------------{ 
+}--------------------------------------------------------------------------------{ Certbot auto renew
+}--------------------------------------------------------------------------------{ 
+- The certificate will need to be renewed before it expires. Certbot can automatically renew the certificate in the background, but you may need to take steps to enable that functionality. See https://certbot.org/renewal-setup for instructions.
