@@ -1,0 +1,302 @@
+/* add margin for buttons */
+/* .btn-success, .btn-primary, .btn-secondary */
+.btn {
+    margin-bottom: .2rem;
+}
+
+/* increase size of check box */
+.form-check-inline {
+    width: 30px;
+    height: 30px;
+    margin-left: .75rem;
+}
+
+/* Text In Center */
+.center {
+    text-align: center;
+}
+
+/* Text In Right */
+.right {
+    text-align: right;
+}
+
+/* Float In Right; anchor */
+.a-float-right {
+    float: right;
+}
+
+/* Very small Text */
+.very-small {
+    font-size: 14px;
+}
+
+/* Very small Text */
+.display-inline {
+    display: inline;
+}
+
+/* Button Image - Initial */
+.btn-image-initial {
+    border: none;
+    cursor: pointer;
+    appearance: none;
+    background-color: inherit;
+    transition: transform .7s ease-in-out;
+    margin-left: 3px;
+    margin-bottom: 3px;
+}
+
+.btn-image-with-other-components {
+    margin-top: 43px;
+}
+
+.form-check-with-other-components {
+    margin-top: 35px;
+}
+
+/* Button Image - Rotate */
+.btn-image-rotate {
+    transform: rotate(180deg);
+}
+
+.btn-image-rotate-360 {
+    transform: rotate(360deg);
+}
+
+/* Button Image - RotateY */
+.btn-image-rotate-y {
+    transform: rotateY(360deg);
+}
+
+/* Button Image - RotateY */
+.btn-image-rotate-x {
+    transform: rotateX(360deg);
+}
+
+.div-404 {
+    box-sizing: border-box;
+    max-width: 350px;
+    font: 110%/1.5 system-ui, sans-serif;
+    background: white;
+    color: #131417;
+    margin: auto;
+    display: grid;
+    place-items: center;
+    text-align: justify;
+    padding: 2rem;
+}
+
+body {
+    /* Needed for fixed navbar */
+    padding-top: 60px;
+}
+
+/*
+for 2nd Nav Bar (Apps)
+    The height of the Navbar is ~56px.
+    https://stackoverflow.com/a/42418583/5073483
+}--------------------------------------------------------------------------------{ Start
+*/
+/*.fixed-top-2 {*/
+/*    margin-top: 56px;*/
+/*}*/
+
+/*.body-navbar-1 {*/
+/*    padding-top: 56px;*/
+/*}*/
+
+/*.body-navbar-2 {*/
+/*    padding-top: 112px;*/
+/*}*/
+
+.navbar-brand-2 {
+    font-size: 1.00rem;
+}
+
+/*
+}--------------------------------------------------------------------------------{ End
+*/
+
+/* Copied from form-control */
+.div-output {
+    /* 1 value: top_bottom_left_right */
+    /* 2 values: top_bottom left_right */
+    /* padding: .375rem .75rem; */
+    /* 4 values: top, right, bottom, and left */
+    padding: .375rem .75rem .0rem .75rem;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out
+}
+
+/* Not working as of now */
+.div-output:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 .2rem rgba(0, 123, 255, .25)
+}
+
+.img-credits {
+    height: 15%;
+    width: 15%;
+}
+
+.img-credits-github {
+    height: 7%;
+    width: 7%;
+}
+
+.img-credits-pixabay {
+    height: 6%;
+    width: 6%;
+}
+
+.img-credits-lets-encrypt {
+    height: 10%;
+    width: 10%;
+}
+
+.nav-link-page {
+    /* override property of nav-link; display: block; */
+    display: inline-block;
+}
+
+.nav-link-page-image {
+    /* override property of nav-link; display: block; */
+    display: inline;
+}
+
+/* Disabled Hyperlinks */
+a.disabled {
+    pointer-events: none;
+    cursor: default;
+}
+
+/* Disabled Underlines */
+a.image:link {
+    text-decoration: none;
+}
+
+a.image:visited {
+    text-decoration: none;
+}
+
+a.image:hover {
+    text-decoration: none;
+}
+
+a.image:active {
+    text-decoration: none;
+}
+
+/* New Stuff - Experimental*/
+:root {
+    --lines-border: 1px solid rgb(203 213 225);
+    --lines-border-radious: 0.5rem;
+}
+
+.container__lines,
+.container__lines__div__output,
+.container__lines__div__output_pre,
+.container__lines__div__info,
+.container__lines__div__info_pre {
+    color: var(--white);
+    background: var(--gray);
+}
+
+.container__lines,
+.container__lines__div__output,
+.container__lines__div__info {
+    border-right: var(--lines-border);
+    padding: .375rem;
+    text-align: right;
+    /*overflow: hidden;*/
+    /*width: 100%;*/
+    height: 100%;
+}
+
+.container__textarea__div__output,
+.container__textarea__div__info {
+    border: none;
+    outline: none;
+    padding: .375rem .75rem .0rem .75rem;
+    /*width: 100%;*/
+}
+
+.container__div__div__output,
+.container__div__div__info {
+    display: flex;
+    border: var(--lines-border);
+    border-radius: var(--lines-border-radious);
+    /*overflow: hidden;*/
+    overflow: auto;
+    /*overflow-y:auto;*/
+    /*overflow-x:auto;*/
+}
+
+.container__div__div__output {
+    max-height: 41rem;
+}
+
+.container__div__div__info {
+    max-height: 5rem;
+}
+
+.container__div {
+    display: flex;
+    border: var(--lines-border);
+    border-radius: var(--lines-border-radious);
+    overflow: hidden;
+    max-height: 32rem;
+}
+
+.container__textarea {
+    border: none;
+    outline: none;
+    padding: 0.5rem;
+    width: 100%;
+}
+
+.counter_div {
+    /*display: none;*/
+    visibility: hidden;
+}
+
+.border-top {
+    border-top: 3px solid #ED7D31 !important
+}
+
+.img-logo {
+    padding-right: 10px;
+}
+
+// Default Light Mode
+:root {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+}
+
+// Dark Mode Override
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: #121212;
+    --text-color: #e0e0e0;
+  }
+}
+
+/* Hide the Google Translate iframe and its container */
+.goog-te-banner-frame.skiptranslate, .goog-te-gadget-icon {
+    display: none !important;
+}
+
+/* Reset the body's top margin, which is added by the banner */
+body {
+    top: 0px !important;
+    margin-top: 0px !important; /* Ensure margin is also reset */
+}
