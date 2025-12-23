@@ -126,3 +126,9 @@ https://cdnjs.cloudflare.com/ajax/libs/tooltip.js/1.3.3/umd/tooltip.js
 https://cdnjs.cloudflare.com/ajax/libs/tooltip.js/1.3.3/umd/tooltip.js.map
 https://cdnjs.cloudflare.com/ajax/libs/tooltip.js/1.3.3/umd/tooltip.min.js
 https://cdnjs.cloudflare.com/ajax/libs/tooltip.js/1.3.3/umd/tooltip.min.js.map
+
+https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js
+https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/tokyo-night-dark.min.css
+https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js
+https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/es/core.min.js
+https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/es/highlight.min.js
