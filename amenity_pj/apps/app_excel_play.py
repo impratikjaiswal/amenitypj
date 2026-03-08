@@ -69,6 +69,7 @@ def handle_requests(apj_id, api, log, root_path, default_data, **kwargs):
         PhKeys.ENCODING_ERRORS_SELECTED: Defaults.ENCODING_ERRORS
     }
     app_data = PhUtil.dict_merge(default_data, default_data_app)
+    app_data.update({'last_updated': Util.last_modification_time(os.path.abspath(__file__))})
     requested_data_dict = Util.request_pre(request=request, apj_id=apj_id, api=api, log=log)
     if request.method == PhKeys.GET:
         pass
@@ -85,9 +86,9 @@ def handle_requests(apj_id, api, log, root_path, default_data, **kwargs):
         sample_dict = None
         # When submitting an HTML form,
         # 1) unchecked check-boxes do not send any data, however checked checkboxes do send False (may send True as well)
-        pass
+        # pass
         # 2) Everything is converted to String; below needs to be typecast, TODO: should be handled in parse_config; int
-        pass
+        # pass
         PhUtil.print(f'process_sample is {process_sample}', log=log)
         if process_sample:
             sample_dict = samples_dict.get(sample_name, None)

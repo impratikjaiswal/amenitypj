@@ -11,10 +11,10 @@ def test_set_server_name():
     hosts_pool = [
         'localhost:5000',
         '127.0.0.1:5000',
+        'amenitypj.in',
         'beta.amenitypj.in',
         'alpha.amenitypj.in',
         'past.amenitypj.in',
-        'amenitypj.in',
         'www.amenitypj.in',
         'www.beta.amenitypj.in',
     ]

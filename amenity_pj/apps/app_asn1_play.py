@@ -1,3 +1,5 @@
+import os
+
 from asn1_play.generated_code.asn1.asn1 import Asn1
 from asn1_play.generated_code.asn1.asn1_versions import Asn1Versions
 from asn1_play.main.data_type.data_type_master import DataTypeMaster
@@ -73,6 +75,7 @@ def handle_requests(apj_id, api, log, default_data, **kwargs):
         PhKeys.TLV_PARSING_OF_OUTPUT: False,
     }
     app_data = PhUtil.dict_merge(default_data, default_data_app)
+    app_data.update({'last_updated': Util.last_modification_time(os.path.abspath(__file__))})
     requested_data_dict = Util.request_pre(request=request, apj_id=apj_id, api=api, log=log)
     if request.method == PhKeys.GET:
         pass
@@ -91,10 +94,10 @@ def handle_requests(apj_id, api, log, default_data, **kwargs):
         sample_dict = None
         # When submitting an HTML form,
         # 1) unchecked check-boxes do not send any data, however checked checkboxes do send False (may send True as well)
-        update_checked_item(PhKeys.TLV_PARSING_OF_OUTPUT)
-        update_checked_item(PhKeys.FETCH_ASN1_OBJECTS_LIST)
+        # update_checked_item(PhKeys.TLV_PARSING_OF_OUTPUT)
+        # update_checked_item(PhKeys.FETCH_ASN1_OBJECTS_LIST)
         # 2) Everything is converted to String; below needs to be typecast, TODO: should be handled in parse_config; int
-        pass
+        # pass
         PhUtil.print(f'process_sample is {process_sample}', log=log)
         if process_sample:
             sample_dict = samples_dict.get(sample_name, None)

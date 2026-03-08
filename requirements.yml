@@ -6,3 +6,4 @@
 -r requirements_external.yml
 -r requirements_internal_lib.yml
 -r requirements_internal_tool.yml
+-r requirements_tests.yml

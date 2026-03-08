@@ -124,7 +124,7 @@ def main():
     :return:
     """
     # Must Be True when running from IDE, e.g.: Pycharm
-    execution_from_inside = False
+    execution_from_inside = True
     #
     init_directories(execution_from_inside)
     #
