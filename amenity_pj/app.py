@@ -3,7 +3,7 @@ from logging.config import dictConfig
 
 from flask import Flask, request
 from flask_sitemapper import Sitemapper
-from python_helpers.ph_keys import PhKeys
+from play_helpers.ph_keys import PhKeys
 
 from amenity_pj.handler import app_handler
 from amenity_pj.helper.constants import Const

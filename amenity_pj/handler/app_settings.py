@@ -1,4 +1,4 @@
-from python_helpers.ph_keys import PhKeys
+from play_helpers.ph_keys import PhKeys
 
 
 class AppSettings:

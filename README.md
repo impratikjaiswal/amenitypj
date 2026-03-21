@@ -1,6 +1,9 @@
-# amenitypj
+# amenityPj
+
 Source code of [https://amenitypj.in/](https://amenitypj.in/)
 <BR>Amenity Pj is a collection of FREE & Open Source Apps including asn1Play, tlvPlay, qrPlay, excelPlay, certPlay.
+
+# Stats
 
 [![GitHub License](https://img.shields.io/github/license/impratikjaiswal/amenitypj)](LICENSE)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CONDUCT.md)
@@ -30,25 +33,30 @@ If Primary Url(s) did not work for you (or its down), try these:
 ![sample_web_1](https://github.com/impratikjaiswal/amenitypj/blob/main/amenity_pj/static/images/samples/sample_web_1.gif?raw=true)
 
 # Installation/Setup
+
 Steps can be found [here](https://github.com/impratikjaiswal/pythonHelpers/blob/main/HOW_TO_INSTALL_PYTHON_APPS.md).
 
 # How To Use
+
 There are various ways to Get Started:
 
-  - Online Mode
-    - Website [![Static Badge](https://img.shields.io/badge/amenitypj.in-a)](https://amenitypj.in/) can be used
-  - Offline Mode (Requires Download / Cloning of the Repo)
-    - Code can be directly run from ```amenitypj/amenity_pj/app.py``` using any IDE
-    - Local Web server can be started by running ```/scripts/server_amenity_pj_start_debug.bat```
+- Online Mode
+   - Website [![Static Badge](https://img.shields.io/badge/amenitypj.in-a)](https://amenitypj.in/) can be used
+- Offline Mode (Requires Download / Cloning of the Repo)
+  - Code can be directly run from ```amenitypj/amenity_pj/app.py``` using any IDE
+  - Local Web server can be started by running ```/scripts/server_amenity_pj_start_debug.bat```
 
 # Help
+
 Issue tracker can be found [here](CONTRIBUTING.md#issue-tracker).
 
 # Contributing
- - Code of Conduct can be found [here](CODE_OF_CONDUCT.md).
- - Contributing Guidelines can be found [here](CONTRIBUTING.md).
+
+- Code of Conduct can be found [here](CODE_OF_CONDUCT.md).
+- Contributing Guidelines can be found [here](CONTRIBUTING.md).
 
 # References &amp; Statistics
+
 1. [Amenity Pj](https://impratikjaiswal.github.io/amenitypj)
 
     ![GitHub License](https://img.shields.io/github/license/impratikjaiswal/amenitypj)

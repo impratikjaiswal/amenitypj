@@ -1,5 +1,5 @@
 ##################################################
-#### List of Needed Internal Tools (Names Only)
+#### List of Needed Internal Tools
 ##################################################
 
 # certPlay
@@ -18,4 +18,4 @@ qrPlay
 asn1Play
 
 # dataPlay
-dataPlay
+prismPlay

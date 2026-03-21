@@ -1,6 +1,4 @@
 ##################################################
-#### List of Needed Internal Libraries (Names Only)
+#### List of Needed Build Tools / Libraries
 ##################################################
 
-# Python Helpers
-pythonHelpers

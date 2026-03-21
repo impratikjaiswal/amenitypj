@@ -1,5 +1,5 @@
 from flask import request
-from python_helpers.ph_util import PhUtil
+from play_helpers.ph_util import PhUtil
 
 from amenity_pj.helper.util import Util
 
