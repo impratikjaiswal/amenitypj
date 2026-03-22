@@ -1,5 +1,4 @@
 import os
-
 from play_helpers.ph_util import PhUtil
 
 from amenity_pj import PACKAGE_NAME
@@ -9,7 +8,7 @@ class Folders:
     top_folder_path = [os.pardir]
 
     DIR_STATIC = 0
-    
+
     DIR_DATA = 1
 
     DIR_USER_DATA = 2

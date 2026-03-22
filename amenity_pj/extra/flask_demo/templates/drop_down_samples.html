@@ -5,7 +5,7 @@
     <h3>Sample 1: Last is selected</h3>
     <select name=colours method="GET" action="/">
         {% for colour in colours %}
-            <option value="{{ colour }}" SELECTED>{{ colour }}</option>"
+            <option value="{{ colour }}" SELECTED>{{ colour }}</option>
         {% endfor %}
     </select>
     <BR>
@@ -20,7 +20,7 @@
     <select name="colour" method="GET" action="/">
         {% for colour in colours %}
             {% if colour == default_colour %}
-                <option value="{{ colour }}" SELECTED>{{ colour }}</option>"
+                <option value="{{ colour }}" SELECTED>{{ colour }}</option>
             {% else %}
                 <option value="{{ colour }}">{{ colour }}</option>
             {% endif %}
@@ -35,7 +35,7 @@
     <h3>Sample 5: Live Search </h3>
     <select name=colours class="selectpicker" data-live-search="true">
         {% for colour in colours %}
-            <option value="{{ colour }}">{{ colour }}</option>"
+            <option value="{{ colour }}">{{ colour }}</option>
         {% endfor %}
     </select>
 {% endblock %}

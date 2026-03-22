@@ -2,7 +2,7 @@
     <span class="badge badge-info">Jump To Samples</span>
 </a>
 <a id="toggle_collapse_info_data"
-        {#   data-toggle="collapse" #}
+   {# data-toggle="collapse" #}
    href="#info_data" role="button" aria-expanded="false" aria-controls="info_data">
     <span class="badge badge-success">Info{% if transaction_id %} - {{ transaction_id }}{% endif %}</span>
     <meta name="jinja_transaction_id" content={{ transaction_id }}>
@@ -20,9 +20,14 @@
     <div class="badge float-right">
         Length: <span id="info_data_char_count">0</span>
     </div>
-    {#    <div id="info_statement" class="div-output">#}
-    {#        <pre>{{ info_data }}</pre>#}
-    {#    </div>#}
+    {#
+    <div id="info_statement" class="div-output">#}
+        {#
+        <pre>{{ info_data }}</pre>
+        #}
+        {#
+    </div>
+    #}
     <div class="container__div__div__info">
         <div id="info_statement_line_numbers" class="container__lines__div__info"></div>
         <!-- In case of making change to below div, check/set value of LENGTH_OF_INFO_STATEMENT_INITIAL_TEXT -->
@@ -42,10 +47,10 @@
             <img id="download_output_data" class="btn-image-initial" alt="Download Output Data"
                  src={{ url_for('static', filename='images/download-2/16_16.png') }}>
         </a>
-        {#    <a href="#" class="disabled" data-toggle="tooltip" data-placement="top" title="Compare Output Data">#}
-        {#        <img id="compare_output_data" class="btn-image-initial" alt="Compare Output Data"#}
-        {#             src={{ url_for('static', filename='images/compare-2/16_16.png') }}>#}
-        {#    </a>#}
+        {# <a href="#" class="disabled" data-toggle="tooltip" data-placement="top" title="Compare Output Data"> #}
+        {#     <img id="compare_output_data" class="btn-image-initial" alt="Compare Output Data" #}
+        {#         src={{ url_for('static', filename='images/compare-2/16_16.png') }}> #}
+        {# </a>#}
         <div class="badge float-right">
             Length: <span id="output_data_char_count">0</span>
         </div>
@@ -61,11 +66,16 @@
                 {% endif %}
             </div>
         </div>
-        {#        <BR>#}
-        {#        <div id="output_statement_org" class="div-output">#}
-        {#            <pre>{{ output_data }}</pre>#}
-        {#        </div>#}
-    </div>
+    {# <BR>#}
+    {#
+	    <div id="output_statement_org" class="div-output">#}
+	        {#
+	        <pre>{{ output_data }}</pre>
+	        #}
+	        {#
+	    </div>
+    #}
+</div>
 {% endif %}
 {% if app_title == 'QR Play' %}
     <div id="output_data_images" class="form-group">

@@ -2,7 +2,6 @@ import copy
 import os
 import uuid
 from datetime import datetime
-
 from flask import jsonify, render_template
 from play_helpers.ph_constants import PhConstants
 from play_helpers.ph_keys import PhKeys

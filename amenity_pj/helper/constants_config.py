@@ -1,5 +1,6 @@
 from amenity_pj import _defaults
-from amenity_pj._tool_name import TOOL_NAME, TOOL_TITLE, TOOL_SW_PACKAGE_NAME, TOOL_TEST_PACKAGE_NAME, TOOL_SW_MODULE_NAME
+from amenity_pj._tool_name import TOOL_NAME, TOOL_TITLE, TOOL_SW_PACKAGE_NAME, TOOL_TEST_PACKAGE_NAME, \
+    TOOL_SW_MODULE_NAME
 
 _run_time_incremental = False
 _run_time_play_helpers = False
