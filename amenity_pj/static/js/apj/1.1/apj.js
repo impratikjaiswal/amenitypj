@@ -604,7 +604,7 @@ function googleTranslateElementInit() {
   new google.translate.TranslateElement(
   {
     pageLanguage: 'en',
-//    includedLanguages: 'el,en,fr',
+//    includedLanguages: 'el,en,fr,de,ja,ko,ru,zh-TW',
     autoDisplay: false,
     layout: google.translate.TranslateElement.InlineLayout.SIMPLE
   },

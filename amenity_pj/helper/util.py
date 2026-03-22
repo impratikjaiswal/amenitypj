@@ -1,10 +1,12 @@
 import copy
+import os
 import uuid
+from datetime import datetime
 
 from flask import jsonify, render_template
-from python_helpers.ph_constants import PhConstants
-from python_helpers.ph_keys import PhKeys
-from python_helpers.ph_util import PhUtil
+from play_helpers.ph_constants import PhConstants
+from play_helpers.ph_keys import PhKeys
+from play_helpers.ph_util import PhUtil
 from werkzeug.utils import secure_filename
 
 from amenity_pj.helper.constants import Const
@@ -15,7 +17,7 @@ from amenity_pj.helper.defaults import Defaults
 class Util:
 
     @classmethod
-    def get_apj_data(cls, apj_id, specific_key=None, fail_safe=False, end_point=None):
+    def get_apj_data(cls, apj_id, specific_key=None, fail_safe=True, end_point=None):
         if apj_id is None and end_point:
             apj_id = Const.END_POINT_APJ_MAPPING.get(end_point, None)
         # create a copy so that dictionary manipulations can be done if needed
@@ -207,3 +209,7 @@ class Util:
     @classmethod
     def prepare_title(cls, title_items: list):
         return PhConstants.SEPERATOR_TITLE.join(filter(None, title_items))
+
+    @classmethod
+    def last_modification_time(cls, file_or_folder_path):
+        return datetime.fromtimestamp(os.path.getmtime(file_or_folder_path))

@@ -5,24 +5,24 @@
     {% set icon_folder = 'favicon-2' %}
 
 {# Bootstrap 4 Support #}
+{#
     {% set bootstrap_version = '4.6.2' %}
     {% set bootstrap_select_version = '1.13.14' %}
-    {% set apj_version = '1.0' %}
     {% set highlight_js_version = '11.9.0' %}
     {% set jquery_version = '3.5.1' %}
     {% set popper_version = '1.16.1' %}
     {% set dayjs_version = '1.11.12' %}
+    {% set apj_version = '1.0' %}
+ #}
 
 {# Bootstrap 5 Support #}
-{#
 	{% set bootstrap_version = '5.3.8' %}
 	{% set bootstrap_select_version = '1.13.18' %}
-	{% set apj_version = '1.1' %}
 	{% set highlight_js_version = '11.11.1' %}
 	{% set jquery_version = '3.7.1' %}
 	{% set popper_version = '2.11.8' %}
 	{% set dayjs_version = '1.11.18' %}
- #}
+	{% set apj_version = '1.1' %}
 
     <!-- Meta tags -->
     <meta charset="utf-8">
@@ -40,8 +40,8 @@
     <link rel="stylesheet" type="text/css"
           href="{{ url_for('static', filename='css/bootstrap-select/' ~ bootstrap_select_version ~ '/bootstrap-select.min.css') }}">
     <!-- APJ CSS -->
-    <link rel="stylesheet" type="text/css"
-          href="{{ url_for('static', filename='css/apj/' ~ apj_version ~ '/apj.css') }}">
+<!--    <link rel="stylesheet" type="text/css"-->
+<!--          href="{{ url_for('static', filename='css/apj/' ~ apj_version ~ '/apj.css') }}">-->
     <!-- Page Specific CSS -->
     {% block page_specific_css %}
     {% endblock %}
@@ -73,10 +73,11 @@
     #}
 </head>
 <body>
-<nav class="navbar navbar-expand-md navbar-light bg-light border-top fixed-top">
+<nav class="navbar navbar-expand-md navbar-light bg-light border-top">
+    <div class="container-fluid">
     <img src="{{ url_for('static', filename='images/' ~ icon_folder ~ '/favicon-32x32.png') }}" alt="Pj" class="img-logo"/>
     <a class="navbar-brand" href="{{ url_for('index') }}">{{ title_for('index') }}</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"/>
     </button>
@@ -125,13 +126,14 @@
             </ul>
         </div>
     </div>
+    </div>
 </nav>
 <div class="container-fluid">
     <div class="row">
         {% if nav_bar_app_items %}
             <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
                 <a class="navbar-brand navbar-brand-2" href="{{ url_for(request.endpoint) }}">{{ app_title }}</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavApps"
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavApps"
                         aria-controls="navbarNavApps" aria-expanded="false" aria-label="Toggle navigation Apps">
                     <span class="navbar-toggler-icon"/>
                 </button>
@@ -162,8 +164,8 @@
                             {# <li>{{ 'after category ' ~ category }}#}
                             {# Sample class "alert alert-danger" #}
                             <div class="alert alert-{{ category }} mt-3 alert-dismissible" role="alert">{{ message }}
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    {#                                        onclick=delete_flash(this)#}
+                                <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
+                                    {# onclick=delete_flash(this) #}
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
@@ -220,5 +222,18 @@ TODO:
     myVar = htmlToJs({{output_data|tojson}})
 </script>
 #}
+<footer>
+    {% if last_updated %}
+    <p>Last updated: {{ last_updated.strftime('%Y-%m-%d %H:%M:%S') }}</p>
+    {% endif %}
+    <div>
+        <button id="theme-toggle" type="button" aria-label="Toggle dark mode">🌙</button>
+    </div>
+    <div id="google_translate_element"></div>
+    <!--    <button id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">-->
+    <!--        <span class="sun-icon">☀️</span>-->
+    <!--        <span class="moon-icon">🌙</span>-->
+    <!--    </button>-->
+</footer>
 </body>
 </html>

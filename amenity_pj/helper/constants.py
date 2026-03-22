@@ -4,9 +4,9 @@ from asn1_play.main.helper.constants_config import ConfigConst as ConfigConst_As
 from cert_play.main.helper.constants_config import ConfigConst as ConfigConst_CertPlay
 from data_play.main.helper.constants_config import ConfigConst as ConfigConst_DataPlay
 from excel_play.main.helper.constants_config import ConfigConst as ConfigConst_ExcelPlay
-from python_helpers.ph_constants import PhConstants
-from python_helpers.ph_keys import PhKeys
-from python_helpers.ph_util import PhUtil
+from play_helpers.ph_constants import PhConstants
+from play_helpers.ph_keys import PhKeys
+from play_helpers.ph_util import PhUtil
 from qr_play.main.helper.constants_config import ConfigConst as ConfigConst_QrPlay
 from tlv_play.main.helper.constants_config import ConfigConst as ConfigConst_TlvPlay
 
@@ -27,7 +27,7 @@ class Const:
     LOG_FILE_404_PATH = os.sep.join([LOG_FOLDER_APPS, LOG_404_FILE_NAME])
     LOG_MAX_BYTES = 1000000
     LOG_MAX_BACKUP_COUNT = 1000
-    SQL_DB_FOLDER = os.sep.join([os.pardir, 'data', 'sql_db'])
+    SQL_DB_FOLDER = os.sep.join(['data', 'sql_db'])
     SQL_DB_FILE = 'database.db'
     SQL_DB_SCHEMA_FILE = 'schema.sql'
     UPLOAD_FOLDER_PERMANENT = os.sep.join([os.pardir, 'data', 'user', 'uploads_permanent'])

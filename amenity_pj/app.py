@@ -3,7 +3,7 @@ from logging.config import dictConfig
 
 from flask import Flask, request
 from flask_sitemapper import Sitemapper
-from python_helpers.ph_keys import PhKeys
+from play_helpers.ph_keys import PhKeys
 
 from amenity_pj.handler import app_handler
 from amenity_pj.helper.constants import Const
@@ -33,7 +33,7 @@ prod_env = True
 # yield Const.END_POINT_INDEX, {}, Const.DEPLOYMENT_DATE, 'monthly'
 
 # TODO: Uncomment below for local execution
-# prod_env = False
+prod_env = False
 
 # Prod Logging
 LOG_LEVEL = "INFO"
@@ -292,13 +292,14 @@ def sitemap():
     if sitemap_robot_needed:
         Util.user_visit(request=request, log=log)
         return sitemapper.generate()
+    return None
 
 
 @app.route(Util.get_apj_data(apj_id=Const.APJ_ID_ROBOT_TXT, specific_key=PhKeys.APP_URL))
 def robot():
     if sitemap_robot_needed:
         return app_handler.handle_requests(apj_id=Const.APJ_ID_ROBOT_TXT, log=log)
-
+    return None
 
 
 @app.route(Util.get_apj_data(apj_id=Const.APJ_ID_FAV_ICON, specific_key=PhKeys.APP_URL))

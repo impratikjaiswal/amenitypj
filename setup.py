@@ -1,0 +1,65 @@
+# -*- coding: UTF−8 -*-
+
+import os
+from setuptools import setup, find_packages
+
+from amenity_pj.helper.constants_config import ConfigConst
+
+# all packages dependencies
+packages = find_packages()
+if not packages:
+    print('Selecting Hardcoded Packages')
+    packages = [
+        ConfigConst.TOOL_SW_PACKAGE_NAME,
+        ConfigConst.TOOL_TEST_PACKAGE_NAME,
+    ]
+# Packages are ['amenity_pj', 'amenity_pj.test']
+print(f'Packages are {packages}')
+
+# run-time dependencies
+install_reqs = [
+    'playHelpers',
+	'certPlay',
+	'excelPlay',
+	'tlvPlay',
+	'qrPlay',
+	'asn1Play',
+	'prismPlay',
+	'flask',
+	'flask-sitemapper',
+	# TODO: Needed for sw or for Cicd
+	# Gunicorn (For Prod)
+	'gunicorn',
+	# For Https
+	'certbot-nginx',
+]
+
+# build-time dependencies
+setup_reqs = [
+    'playHelpers',
+]
+
+# get long description from the README.md
+with open(os.path.join(os.path.dirname(__file__), "README.md"), "r", encoding="utf-8") as fd:
+    long_description = fd.read()
+
+setup(
+    use_incremental=True,
+    setup_requires=setup_reqs,
+    name=ConfigConst.TOOL_NAME,
+    author="Pratik Jaiswal",
+    author_email="impratikjaiswal@gmail.com",
+    description=ConfigConst.TOOL_DESCRIPTION,
+    long_description=long_description,
+    long_description_content_type="text/markdown",
+    url=ConfigConst.TOOL_URL,
+    project_urls={
+        "Bug Tracker": ConfigConst.TOOL_URL_BUG_TRACKER,
+    },
+    keywords=ConfigConst.TOOL_META_KEYWORDS,
+    license="GNU GENERAL PUBLIC LICENSE v3.0",
+    python_requires=">=3.9",
+    packages=packages,
+    install_requires=install_reqs,
+    # test_suite="test.sample_package",
+)

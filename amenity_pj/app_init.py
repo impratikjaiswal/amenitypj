@@ -2,7 +2,7 @@ import json
 import os
 import sqlite3
 
-from python_helpers.ph_util import PhUtil
+from play_helpers.ph_util import PhUtil
 
 from amenity_pj.helper.constants import Const
 
@@ -124,7 +124,7 @@ def main():
     :return:
     """
     # Must Be True when running from IDE, e.g.: Pycharm
-    execution_from_inside = False
+    execution_from_inside = True
     #
     init_directories(execution_from_inside)
     #

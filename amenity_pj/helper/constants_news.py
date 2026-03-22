@@ -1,7 +1,7 @@
 ####################
 # News Data All
 ####################
-from python_helpers.ph_keys import PhKeys
+from play_helpers.ph_keys import PhKeys
 
 from amenity_pj.helper.constants import Const
 from amenity_pj.helper.constants_seo import ConstSeo
