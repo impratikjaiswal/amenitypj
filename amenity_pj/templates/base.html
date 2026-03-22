@@ -13,7 +13,7 @@
     {% set popper_version = '1.16.1' %}
     {% set dayjs_version = '1.11.12' %}
     {% set apj_version = '1.0' %}
- #}
+#}
 
 {# Bootstrap 5 Support #}
 	{% set bootstrap_version = '5.3.8' %}
@@ -40,8 +40,8 @@
     <link rel="stylesheet" type="text/css"
           href="{{ url_for('static', filename='css/bootstrap-select/' ~ bootstrap_select_version ~ '/bootstrap-select.min.css') }}">
     <!-- APJ CSS -->
-<!--    <link rel="stylesheet" type="text/css"-->
-<!--          href="{{ url_for('static', filename='css/apj/' ~ apj_version ~ '/apj.css') }}">-->
+    <link rel="stylesheet" type="text/css"
+          href="{{ url_for('static', filename='css/apj/' ~ apj_version ~ '/apj.css') }}">
     <!-- Page Specific CSS -->
     {% block page_specific_css %}
     {% endblock %}
@@ -62,7 +62,7 @@
     <!-- Icon -->
     <link rel="shortcut icon" type="image/x-icon"
           href="{{ url_for('static', filename='images/' ~ icon_folder ~ '/favicon.ico') }}"/>
-    {#  All Locations for FavIcon:
+    {#  TODO: All Locations for FavIcon:
         \amenitypj\amenity_pj\templates\base.html (2 times)
         \amenitypj\_includes\head-custom.html (Needs to repeat in every project)
             Icon will be picked from: \Github_Self\impratikjaiswal.github.io\static (Icon Folder Needs to be synced)

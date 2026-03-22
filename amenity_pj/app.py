@@ -156,6 +156,14 @@ def utility_processor_selected_url_time_out():
 
     return dict(is_selected_url_time_out=is_selected_url_time_out)
 
+# TODO: Needed now ??
+@app.context_processor
+def utility_processor_selected_image_format():
+    def is_selected_image_format(sample, selected_image_format):
+        return Util.is_selected(sample, selected_image_format)
+
+    return dict(is_selected_image_format=is_selected_image_format)
+
 
 @sitemapper.include(lastmod=ConstSeo.LAST_MODIFY_DATE_INDEX)
 @app.route(Util.get_apj_data(apj_id=Const.APJ_ID_AMENITY_PJ, specific_key=PhKeys.APP_URL))
@@ -292,6 +300,7 @@ def sitemap():
     if sitemap_robot_needed:
         Util.user_visit(request=request, log=log)
         return sitemapper.generate()
+	# TODO: Return is needed ? check the fail/safe option for request handling		
     return None
 
 
@@ -299,6 +308,7 @@ def sitemap():
 def robot():
     if sitemap_robot_needed:
         return app_handler.handle_requests(apj_id=Const.APJ_ID_ROBOT_TXT, log=log)
+	# TODO: Return is needed ? check the fail/safe option for request handling		
     return None
 
 
