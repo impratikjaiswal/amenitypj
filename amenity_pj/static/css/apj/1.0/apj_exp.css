@@ -1,0 +1,25 @@
+
+// Default Light Mode
+:root {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+}
+
+// Dark Mode Override
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: #121212;
+    --text-color: #e0e0e0;
+  }
+}
+
+/* Hide the Google Translate iframe and its container */
+.goog-te-banner-frame.skiptranslate, .goog-te-gadget-icon {
+    display: none !important;
+}
+
+/* Reset the body's top margin, which is added by the banner */
+body {
+    top: 0px !important;
+    margin-top: 0px !important; /* Ensure margin is also reset */
+}

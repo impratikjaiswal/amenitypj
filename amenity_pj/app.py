@@ -33,7 +33,7 @@ prod_env = True
 # yield Const.END_POINT_INDEX, {}, Const.DEPLOYMENT_DATE, 'monthly'
 
 # TODO: Uncomment below for local execution
-prod_env = False
+# prod_env = False
 
 # Prod Logging
 LOG_LEVEL = "INFO"

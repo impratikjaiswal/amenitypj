@@ -123,8 +123,9 @@ def main():
 
     :return:
     """
+	# TODO: Should be corelated with prod_env ?
     # Must Be True when running from IDE, e.g.: Pycharm
-    execution_from_inside = True
+    execution_from_inside = False
     #
     init_directories(execution_from_inside)
     #
