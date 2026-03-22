@@ -1,5 +1,4 @@
 import os
-
 from cert_play.main.data_type.data_type_master import DataTypeMaster
 from cert_play.main.data_type.sample import Sample
 from cert_play.main.helper.defaults import Defaults

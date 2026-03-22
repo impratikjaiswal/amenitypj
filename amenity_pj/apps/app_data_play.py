@@ -1,5 +1,4 @@
 import os
-
 from data_play.main.data_type.data_type_master import DataTypeMaster
 from data_play.main.data_type.sample import Sample
 from data_play.main.helper.defaults import Defaults

@@ -1,8 +1,7 @@
 import io
 import os
-import sqlite3
-
 import segno
+import sqlite3
 from flask import Flask, render_template, request, url_for, flash, redirect, send_file, abort
 from werkzeug.exceptions import abort
 

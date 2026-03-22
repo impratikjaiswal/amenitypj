@@ -1,5 +1,4 @@
 import os
-
 from asn1_play.generated_code.asn1.asn1 import Asn1
 from asn1_play.generated_code.asn1.asn1_versions import Asn1Versions
 from asn1_play.main.data_type.data_type_master import DataTypeMaster

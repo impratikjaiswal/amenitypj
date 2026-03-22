@@ -1,8 +1,7 @@
 import os
-from logging.config import dictConfig
-
 from flask import Flask, request
 from flask_sitemapper import Sitemapper
+from logging.config import dictConfig
 from play_helpers.ph_keys import PhKeys
 
 from amenity_pj.handler import app_handler
@@ -156,6 +155,7 @@ def utility_processor_selected_url_time_out():
 
     return dict(is_selected_url_time_out=is_selected_url_time_out)
 
+
 # TODO: Needed now ??
 @app.context_processor
 def utility_processor_selected_image_format():
@@ -300,7 +300,7 @@ def sitemap():
     if sitemap_robot_needed:
         Util.user_visit(request=request, log=log)
         return sitemapper.generate()
-	# TODO: Return is needed ? check the fail/safe option for request handling		
+    # TODO: Return is needed ? check the fail/safe option for request handling
     return None
 
 
@@ -308,7 +308,7 @@ def sitemap():
 def robot():
     if sitemap_robot_needed:
         return app_handler.handle_requests(apj_id=Const.APJ_ID_ROBOT_TXT, log=log)
-	# TODO: Return is needed ? check the fail/safe option for request handling		
+    # TODO: Return is needed ? check the fail/safe option for request handling
     return None
 
 

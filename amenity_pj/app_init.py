@@ -1,7 +1,6 @@
 import json
 import os
 import sqlite3
-
 from play_helpers.ph_util import PhUtil
 
 from amenity_pj.helper.constants import Const
@@ -123,7 +122,7 @@ def main():
 
     :return:
     """
-	# TODO: Should be corelated with prod_env ?
+    # TODO: Should be corelated with prod_env ?
     # Must Be True when running from IDE, e.g.: Pycharm
     execution_from_inside = False
     #
